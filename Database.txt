@@ -12,17 +12,65 @@ CREATE TABLE Existencias (libro INT NOT NULL, cantidad INT NOT NULL, PRIMARY KEY
 
 -------------------------------------------------------------
 
+######## SCHEMAS ########
 
 Usuarios:
 
-CREATE TABLE Users (
-    id INT NOT NULL auto_increment,
-    username VARCHAR(20) NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    gender INT NOT NULL,
-    description VARCHAR(1000),
-    edad DATETIME NOT NULL,
-    preferences 
+CREATE TABLE `first_dates`.`Users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `gender` int(11) NOT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `birthdate` datetime NOT NULL,
+  `photo` blob,
+  `role` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`username`)
+);
 
+CREATE TABLE `first_dates`.`UserAuth` (
+  `id` INT NOT NULL,
+  `password` VARCHAR(512) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `id`
+    FOREIGN KEY (`id`)
+    REFERENCES `first_dates`.`Users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
 
-)
+Citas:
+
+CREATE TABLE `first_dates`.`RequestDate` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userRequest` VARCHAR(20) NOT NULL,
+  `userRequested` VARCHAR(20) NOT NULL,
+  `dateRequest` DATETIME NOT NULL,
+  `dateResponse` DATETIME NULL,
+  `dateDate` DATETIME NOT NULL,
+  `state` ENUM('accepted', 'denied', 'pending') NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+Disponibilidad mesas:
+
+CREATE TABLE `first_dates`.`Availability` (
+  `id` INT NOT NULL,
+  `date` DATETIME NOT NULL,
+  `offeredTables` VARCHAR(45) NOT NULL,
+  `availableTables` INT NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+Valoraciones:
+
+CREATE TABLE `first_dates`.`Rates` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `usernameRate` VARCHAR(20) NOT NULL,
+  `usernameRated` VARCHAR(20) NOT NULL,
+  `rate` TINYINT(1) NOT NULL,
+  `dateRate` DATETIME NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+######## INSERTS ########
