@@ -1,0 +1,28 @@
+REFERENCIA:
+
+CREATE TABLE Autores (id INT NOT NULL auto_increment, nombre VARCHAR(255) NOT NULL, apellido VARCHAR(255) NOT NULL, PRIMARY KEY(id));
+
+CREATE TABLE Libros (id INT NOT NULL auto_increment, titulo VARCHAR(255) NOT NULL, isbn VARCHAR(13) NOT NULL, editorial VARCHAR(255) NOT NULL, anyo YEAR(4), price FLOAT(10,2), PRIMARY KEY(id));
+
+CREATE TABLE LibroAutor (libro INT NOT NULL, autor INT NOT NULL, PRIMARY KEY(libro,autor), CONSTRAINT FOREIGN KEY(libro) REFERENCES Libros(id), CONSTRAINT FOREIGN KEY (autor) REFERENCES Autores(id));
+
+CREATE TABLE Existencias (libro INT NOT NULL, cantidad INT NOT NULL, PRIMARY KEY(libro), CONSTRAINT FOREIGN KEY(libro) REFERENCES Libros(id));
+
+(*)CREATE TABLE Operaciones (fecha DATETIME DEFAULT CURRENT_TIMESTAMP, libro INT NOT NULL, cantidad INT NOT NULL, PRIMARY KEY (fecha,libro), CONSTRAINT FOREIGN KEY (libro) REFERENCES Libros(id));
+
+-------------------------------------------------------------
+
+
+Usuarios:
+
+CREATE TABLE Users (
+    id INT NOT NULL auto_increment,
+    username VARCHAR(20) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    gender INT NOT NULL,
+    description VARCHAR(1000),
+    edad DATETIME NOT NULL,
+    preferences 
+
+
+)
