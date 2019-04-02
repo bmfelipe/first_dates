@@ -1,0 +1,9 @@
+127.0.0.1 - - [25/Mar/2019:15:56:44 +0100] "GET /bookshop/catalog HTTP/1.1" 200 101
+127.0.0.1 - - [25/Mar/2019:15:58:26 +0100] "GET /bookshop/catalog HTTP/1.1" 200 101
+127.0.0.1 - - [25/Mar/2019:15:58:26 +0100] "GET /favicon.ico HTTP/1.1" 200 21630
+127.0.0.1 - - [25/Mar/2019:16:32:00 +0100] "GET /bookshop/catalog HTTP/1.1" 200 296
+127.0.0.1 - - [25/Mar/2019:16:32:00 +0100] "GET /favicon.ico HTTP/1.1" 200 21630
+127.0.0.1 - - [25/Mar/2019:16:33:53 +0100] "GET /bookshop/catalog HTTP/1.1" 200 296
+127.0.0.1 - - [25/Mar/2019:17:46:36 +0100] "GET /bookshop/catalog HTTP/1.1" 200 296
+127.0.0.1 - - [25/Mar/2019:17:46:36 +0100] "GET /favicon.ico HTTP/1.1" 200 21630
+127.0.0.1 - - [25/Mar/2019:17:46:38 +0100] "GET /bookshop/catalog HTTP/1.1" 200 296
