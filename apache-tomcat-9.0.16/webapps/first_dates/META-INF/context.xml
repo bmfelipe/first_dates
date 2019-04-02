@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context reloadable="true">
+  <Resource name="jdbc/First_dates"
+            auth="Container"
+            type="javax.sql.DataSource"
+            username="xxxxx"
+            password="xxxxx"
+            driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://xxxxx/xxxxx"
+            maxActive="8"
+            maxIdle="4"/>
+</Context>
