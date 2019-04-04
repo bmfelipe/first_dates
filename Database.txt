@@ -39,6 +39,19 @@ CREATE TABLE `first_dates`.`UserAuth` (
     ON UPDATE NO ACTION
 );
 
+CREATE TABLE `first_dates`.`Preferences` (
+  `id` INT NOT NULL,
+  `minAge` INT NOT NULL,
+  `maxAge` INT NOT NULL,
+  `sexPref` ENUM('M', 'W', 'M&W') NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `idPref`
+    FOREIGN KEY (`id`)
+    REFERENCES `first_dates`.`Users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
 Citas:
 
 CREATE TABLE `first_dates`.`RequestDate` (
