@@ -1,0 +1,70 @@
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>First Dates</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <style>
+    body {
+      background-color: black;
+      color: white;
+    }
+    .container-fluid {
+      font-family: "Open Sans";
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+    .form-group {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .btn {
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+    .errorLogin {
+      padding-bottom: 20px;
+      color: red;
+    }
+    .custom-control {
+      padding-bottom: 20px;
+    }
+  </style>
+
+  <body>
+    <div class="container-fluid text-center">
+      <h1 class="display-1">First Dates</h1>
+    </div>
+
+    <form action="ServletLogin" method="post" class="text-center">
+      <div class="form-group">
+        <label for="email">Nombre de usuario:<input placeholder="Nombre de usuario" type="text" class="form-control" name="username" required></label>
+      </div>
+
+      <div class="form-group">
+        <label for="pwd">Contraseña:<input placeholder="Contraseña" type="password" class="form-control" name="password" required></label>
+      </div>
+
+      <div class="errorLogin">${errorLogin}</div>
+
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="switch1">
+        <label class="custom-control-label" for="switch1">Recuérdame</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Entrar</button>
+
+      <p class="form-group">¿Todavía no tienes cuenta? <a href="register.jsp">Registrarse</a></p>
+    </form>
+  </body>
+
+</html>

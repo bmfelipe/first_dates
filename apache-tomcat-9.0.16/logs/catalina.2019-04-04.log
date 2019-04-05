@@ -1,0 +1,301 @@
+04-Apr-2019 15:36:28.661 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.16
+04-Apr-2019 15:36:28.664 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 4 2019 16:30:29 UTC
+04-Apr-2019 15:36:28.664 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Número de versión de servidor:         9.0.16.0
+04-Apr-2019 15:36:28.664 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+04-Apr-2019 15:36:28.664 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.14.4
+04-Apr-2019 15:36:28.664 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+04-Apr-2019 15:36:28.665 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+04-Apr-2019 15:36:28.665 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           9.0.1+11
+04-Apr-2019 15:36:28.665 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+04-Apr-2019 15:36:28.665 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16
+04-Apr-2019 15:36:28.665 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16
+04-Apr-2019 15:36:28.668 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+04-Apr-2019 15:36:28.668 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+04-Apr-2019 15:36:28.668 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+04-Apr-2019 15:36:28.668 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16//conf/logging.properties
+04-Apr-2019 15:36:28.668 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+04-Apr-2019 15:36:28.668 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+04-Apr-2019 15:36:28.669 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+04-Apr-2019 15:36:28.669 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+04-Apr-2019 15:36:28.669 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+04-Apr-2019 15:36:28.669 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/
+04-Apr-2019 15:36:28.669 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/
+04-Apr-2019 15:36:28.669 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16//temp
+04-Apr-2019 15:36:28.669 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [/Users/jesuslopez/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+04-Apr-2019 15:36:28.718 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["http-nio-9189"]
+
+04-Apr-2019 15:36:28.781 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["ajp-nio-8009"]
+
+04-Apr-2019 15:36:28.792 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.load Server initialization in [904] milliseconds
+04-Apr-2019 15:36:28.865 INFORMACIÓN [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+04-Apr-2019 15:36:28.865 INFORMACIÓN [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.16]
+04-Apr-2019 15:36:28.876 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/first_dates] de la aplicación web
+04-Apr-2019 15:36:29.531 ADVERTENCIA [main] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = First_dates Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "8" for "maxActive" property, which is being ignored.
+04-Apr-2019 15:36:29.612 INFORMACIÓN [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-Apr-2019 15:36:29.659 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/first_dates] has finished in [783] ms
+04-Apr-2019 15:36:29.659 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/docs] de la aplicación web
+04-Apr-2019 15:36:29.681 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/docs] has finished in [21] ms
+04-Apr-2019 15:36:29.681 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/manager] de la aplicación web
+04-Apr-2019 15:36:29.717 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/manager] has finished in [36] ms
+04-Apr-2019 15:36:29.718 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/examples] de la aplicación web
+04-Apr-2019 15:36:29.976 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/examples] has finished in [258] ms
+04-Apr-2019 15:36:29.976 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/ROOT] de la aplicación web
+04-Apr-2019 15:36:29.994 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/ROOT] has finished in [18] ms
+04-Apr-2019 15:36:29.995 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/host-manager] de la aplicación web
+04-Apr-2019 15:36:30.015 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/host-manager] has finished in [20] ms
+04-Apr-2019 15:36:30.018 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9189"]
+04-Apr-2019 15:36:30.027 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+04-Apr-2019 15:36:30.030 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.start Server startup in [1.237] milliseconds
+04-Apr-2019 15:38:58.215 INFORMACIÓN [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+04-Apr-2019 15:38:58.216 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9189"]
+04-Apr-2019 15:38:58.225 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+04-Apr-2019 15:38:58.233 INFORMACIÓN [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+04-Apr-2019 15:38:58.261 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9189"]
+04-Apr-2019 15:38:58.266 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+04-Apr-2019 15:38:58.268 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9189"]
+04-Apr-2019 15:38:58.268 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+04-Apr-2019 15:38:59.123 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.16
+04-Apr-2019 15:38:59.128 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 4 2019 16:30:29 UTC
+04-Apr-2019 15:38:59.128 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Número de versión de servidor:         9.0.16.0
+04-Apr-2019 15:38:59.128 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+04-Apr-2019 15:38:59.128 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.14.4
+04-Apr-2019 15:38:59.129 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+04-Apr-2019 15:38:59.129 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+04-Apr-2019 15:38:59.129 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           9.0.1+11
+04-Apr-2019 15:38:59.129 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+04-Apr-2019 15:38:59.129 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16
+04-Apr-2019 15:38:59.129 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16
+04-Apr-2019 15:38:59.133 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+04-Apr-2019 15:38:59.133 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+04-Apr-2019 15:38:59.133 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+04-Apr-2019 15:38:59.134 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16//conf/logging.properties
+04-Apr-2019 15:38:59.134 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+04-Apr-2019 15:38:59.134 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+04-Apr-2019 15:38:59.135 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+04-Apr-2019 15:38:59.135 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+04-Apr-2019 15:38:59.135 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+04-Apr-2019 15:38:59.135 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/
+04-Apr-2019 15:38:59.135 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/
+04-Apr-2019 15:38:59.136 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16//temp
+04-Apr-2019 15:38:59.136 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [/Users/jesuslopez/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+04-Apr-2019 15:38:59.185 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["http-nio-8080"]
+
+04-Apr-2019 15:38:59.227 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["ajp-nio-8009"]
+
+04-Apr-2019 15:38:59.231 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.load Server initialization in [642] milliseconds
+04-Apr-2019 15:38:59.290 INFORMACIÓN [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+04-Apr-2019 15:38:59.291 INFORMACIÓN [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.16]
+04-Apr-2019 15:38:59.301 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/first_dates] de la aplicación web
+04-Apr-2019 15:38:59.972 ADVERTENCIA [main] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = First_dates Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "8" for "maxActive" property, which is being ignored.
+04-Apr-2019 15:39:00.077 INFORMACIÓN [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-Apr-2019 15:39:00.120 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/first_dates] has finished in [819] ms
+04-Apr-2019 15:39:00.120 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/docs] de la aplicación web
+04-Apr-2019 15:39:00.142 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/docs] has finished in [21] ms
+04-Apr-2019 15:39:00.142 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/manager] de la aplicación web
+04-Apr-2019 15:39:00.176 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/manager] has finished in [33] ms
+04-Apr-2019 15:39:00.176 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/examples] de la aplicación web
+04-Apr-2019 15:39:00.408 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/examples] has finished in [232] ms
+04-Apr-2019 15:39:00.408 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/ROOT] de la aplicación web
+04-Apr-2019 15:39:00.428 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/ROOT] has finished in [20] ms
+04-Apr-2019 15:39:00.428 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/host-manager] de la aplicación web
+04-Apr-2019 15:39:00.453 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/host-manager] has finished in [25] ms
+04-Apr-2019 15:39:00.458 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+04-Apr-2019 15:39:00.467 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+04-Apr-2019 15:39:00.470 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.start Server startup in [1.238] milliseconds
+04-Apr-2019 19:19:55.940 INFORMACIÓN [Catalina-utility-1] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/first_dates]
+04-Apr-2019 19:19:55.948 INFORMACIÓN [Catalina-utility-1] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/first_dates]
+04-Apr-2019 19:19:56.198 INFORMACIÓN [Catalina-utility-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-Apr-2019 19:19:56.206 INFORMACIÓN [Catalina-utility-1] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-Apr-2019 19:20:36.300 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/first_dates]
+04-Apr-2019 19:20:36.300 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/first_dates]
+04-Apr-2019 19:20:36.439 GRAVE [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Excepción arrancando Contexto con nombre [/first_dates]
+ org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/first_dates]]
+	at org.apache.catalina.util.LifecycleBase.handleSubClassException(LifecycleBase.java:441)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:198)
+	at org.apache.catalina.core.StandardContext.reload(StandardContext.java:3741)
+	at org.apache.catalina.startup.HostConfig.reload(HostConfig.java:1403)
+	at org.apache.catalina.startup.HostConfig.checkResources(HostConfig.java:1376)
+	at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1612)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:305)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:123)
+	at org.apache.catalina.core.ContainerBase.backgroundProcess(ContainerBase.java:1144)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1346)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1350)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1328)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:514)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:300)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+Caused by: java.lang.IllegalArgumentException: El mapeo de Servlet especifica un nombre de servlet desconocido [BookShop]
+	at org.apache.catalina.core.StandardContext.addServletMappingDecoded(StandardContext.java:3157)
+	at org.apache.catalina.Context.addServletMappingDecoded(Context.java:881)
+	at org.apache.catalina.startup.ContextConfig.configureContext(ContextConfig.java:1385)
+	at org.apache.catalina.startup.ContextConfig.webConfig(ContextConfig.java:1162)
+	at org.apache.catalina.startup.ContextConfig.configureStart(ContextConfig.java:768)
+	at org.apache.catalina.startup.ContextConfig.lifecycleEvent(ContextConfig.java:301)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:123)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5034)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	... 17 more
+
+04-Apr-2019 19:20:36.442 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-Apr-2019 19:20:46.449 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/first_dates]
+04-Apr-2019 19:20:46.450 ADVERTENCIA [Catalina-utility-2] org.apache.catalina.deploy.NamingResourcesImpl.cleanUp Failed to retrieve JNDI naming context for container [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/first_dates]] so no cleanup was performed for that container
+ javax.naming.NameNotFoundException: El nombre [comp/env] no este asociado a este contexto
+	at org.apache.naming.NamingContext.lookup(NamingContext.java:817)
+	at org.apache.naming.NamingContext.lookup(NamingContext.java:173)
+	at org.apache.catalina.deploy.NamingResourcesImpl.cleanUp(NamingResourcesImpl.java:1021)
+	at org.apache.catalina.deploy.NamingResourcesImpl.stopInternal(NamingResourcesImpl.java:1003)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5388)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:175)
+	at org.apache.catalina.startup.HostConfig.reload(HostConfig.java:1412)
+	at org.apache.catalina.startup.HostConfig.checkResources(HostConfig.java:1376)
+	at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1612)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:305)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:123)
+	at org.apache.catalina.core.ContainerBase.backgroundProcess(ContainerBase.java:1144)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1346)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1350)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1328)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:514)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:300)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+
+04-Apr-2019 19:20:46.575 ADVERTENCIA [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Error durante el arranque del contexto [/first_dates]
+ org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/first_dates]]
+	at org.apache.catalina.util.LifecycleBase.handleSubClassException(LifecycleBase.java:441)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:198)
+	at org.apache.catalina.startup.HostConfig.reload(HostConfig.java:1412)
+	at org.apache.catalina.startup.HostConfig.checkResources(HostConfig.java:1376)
+	at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1612)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:305)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:123)
+	at org.apache.catalina.core.ContainerBase.backgroundProcess(ContainerBase.java:1144)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1346)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1350)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1328)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:514)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:300)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+Caused by: java.lang.IllegalArgumentException: El mapeo de Servlet especifica un nombre de servlet desconocido [BookShop]
+	at org.apache.catalina.core.StandardContext.addServletMappingDecoded(StandardContext.java:3157)
+	at org.apache.catalina.Context.addServletMappingDecoded(Context.java:881)
+	at org.apache.catalina.startup.ContextConfig.configureContext(ContextConfig.java:1385)
+	at org.apache.catalina.startup.ContextConfig.webConfig(ContextConfig.java:1162)
+	at org.apache.catalina.startup.ContextConfig.configureStart(ContextConfig.java:768)
+	at org.apache.catalina.startup.ContextConfig.lifecycleEvent(ContextConfig.java:301)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:123)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5034)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	... 16 more
+
+04-Apr-2019 19:21:36.602 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/first_dates]
+04-Apr-2019 19:21:36.603 ADVERTENCIA [Catalina-utility-2] org.apache.catalina.deploy.NamingResourcesImpl.cleanUp Failed to retrieve JNDI naming context for container [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/first_dates]] so no cleanup was performed for that container
+ javax.naming.NameNotFoundException: El nombre [comp/env] no este asociado a este contexto
+	at org.apache.naming.NamingContext.lookup(NamingContext.java:817)
+	at org.apache.naming.NamingContext.lookup(NamingContext.java:173)
+	at org.apache.catalina.deploy.NamingResourcesImpl.cleanUp(NamingResourcesImpl.java:1021)
+	at org.apache.catalina.deploy.NamingResourcesImpl.stopInternal(NamingResourcesImpl.java:1003)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+	at org.apache.catalina.core.StandardContext.stopInternal(StandardContext.java:5388)
+	at org.apache.catalina.util.LifecycleBase.stop(LifecycleBase.java:257)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:175)
+	at org.apache.catalina.startup.HostConfig.reload(HostConfig.java:1412)
+	at org.apache.catalina.startup.HostConfig.checkResources(HostConfig.java:1376)
+	at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1612)
+	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:305)
+	at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:123)
+	at org.apache.catalina.core.ContainerBase.backgroundProcess(ContainerBase.java:1144)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1346)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1350)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1328)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:514)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:300)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+
+04-Apr-2019 19:21:36.746 INFORMACIÓN [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-Apr-2019 19:21:46.777 INFORMACIÓN [Catalina-utility-1] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/first_dates]
+04-Apr-2019 19:21:46.777 INFORMACIÓN [Catalina-utility-1] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/first_dates]
+04-Apr-2019 19:21:46.930 INFORMACIÓN [Catalina-utility-1] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-Apr-2019 19:21:46.934 INFORMACIÓN [Catalina-utility-1] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-Apr-2019 19:22:06.976 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/first_dates]
+04-Apr-2019 19:22:06.976 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/first_dates]
+04-Apr-2019 19:22:07.115 INFORMACIÓN [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-Apr-2019 19:22:07.116 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-Apr-2019 19:50:50.190 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.startup.HostConfig.reload Falló la recarga del contexto [/first_dates]
+04-Apr-2019 19:50:50.190 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Ha comenzado la recarga de Contexto [/first_dates]
+04-Apr-2019 19:50:50.323 INFORMACIÓN [Catalina-utility-2] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-Apr-2019 19:50:50.324 INFORMACIÓN [Catalina-utility-2] org.apache.catalina.core.StandardContext.reload Se ha completado la recarga de este Contexto
+04-Apr-2019 23:36:28.483 INFORMACIÓN [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+04-Apr-2019 23:36:28.484 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+04-Apr-2019 23:36:28.494 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+04-Apr-2019 23:36:28.500 INFORMACIÓN [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+04-Apr-2019 23:36:28.513 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+04-Apr-2019 23:36:28.515 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+04-Apr-2019 23:36:28.517 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+04-Apr-2019 23:36:28.517 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+04-Apr-2019 23:49:12.903 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.16
+04-Apr-2019 23:49:12.906 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 4 2019 16:30:29 UTC
+04-Apr-2019 23:49:12.906 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Número de versión de servidor:         9.0.16.0
+04-Apr-2019 23:49:12.907 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Mac OS X
+04-Apr-2019 23:49:12.907 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.14.4
+04-Apr-2019 23:49:12.907 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          x86_64
+04-Apr-2019 23:49:12.907 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home
+04-Apr-2019 23:49:12.907 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           9.0.1+11
+04-Apr-2019 23:49:12.907 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+04-Apr-2019 23:49:12.907 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16
+04-Apr-2019 23:49:12.907 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16
+04-Apr-2019 23:49:12.910 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+04-Apr-2019 23:49:12.911 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+04-Apr-2019 23:49:12.911 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+04-Apr-2019 23:49:12.911 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16//conf/logging.properties
+04-Apr-2019 23:49:12.911 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+04-Apr-2019 23:49:12.911 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+04-Apr-2019 23:49:12.911 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+04-Apr-2019 23:49:12.911 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+04-Apr-2019 23:49:12.912 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+04-Apr-2019 23:49:12.912 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/
+04-Apr-2019 23:49:12.912 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/
+04-Apr-2019 23:49:12.912 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16//temp
+04-Apr-2019 23:49:12.913 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent La biblioteca nativa de Apache Tomcat basada en ARP que permite un rendimiento óptimo en entornos de desarrollo no ha sido hallada en java.library.path: [/Users/jesuslopez/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+04-Apr-2019 23:49:12.953 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["http-nio-8080"]
+
+04-Apr-2019 23:49:12.992 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["ajp-nio-8009"]
+
+04-Apr-2019 23:49:12.996 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.load Server initialization in [588] milliseconds
+04-Apr-2019 23:49:13.064 INFORMACIÓN [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+04-Apr-2019 23:49:13.064 INFORMACIÓN [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.16]
+04-Apr-2019 23:49:13.072 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/first_dates] de la aplicación web
+04-Apr-2019 23:49:13.737 ADVERTENCIA [main] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = First_dates Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "8" for "maxActive" property, which is being ignored.
+04-Apr-2019 23:49:13.822 INFORMACIÓN [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+04-Apr-2019 23:49:13.871 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/first_dates] has finished in [799] ms
+04-Apr-2019 23:49:13.871 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/docs] de la aplicación web
+04-Apr-2019 23:49:13.894 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/docs] has finished in [23] ms
+04-Apr-2019 23:49:13.895 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/manager] de la aplicación web
+04-Apr-2019 23:49:13.970 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/manager] has finished in [76] ms
+04-Apr-2019 23:49:13.971 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/examples] de la aplicación web
+04-Apr-2019 23:49:14.240 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/examples] has finished in [269] ms
+04-Apr-2019 23:49:14.241 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/ROOT] de la aplicación web
+04-Apr-2019 23:49:14.256 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/ROOT] has finished in [15] ms
+04-Apr-2019 23:49:14.256 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/host-manager] de la aplicación web
+04-Apr-2019 23:49:14.277 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/Users/jesuslopez/GitHub/first_dates/apache-tomcat-9.0.16/webapps/host-manager] has finished in [20] ms
+04-Apr-2019 23:49:14.280 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+04-Apr-2019 23:49:14.289 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+04-Apr-2019 23:49:14.292 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.start Server startup in [1.296] milliseconds

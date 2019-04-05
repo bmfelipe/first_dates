@@ -32,7 +32,7 @@ CREATE TABLE `first_dates`.`UserAuth` (
   `id` INT NOT NULL,
   `password` VARCHAR(512) NOT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `id`
+  CONSTRAINT `idAuth`
     FOREIGN KEY (`id`)
     REFERENCES `first_dates`.`Users` (`id`)
     ON DELETE NO ACTION
