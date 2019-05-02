@@ -25,21 +25,36 @@
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <button class="btn btn-outline-danger ml-4 mr-2 my-2 my-sm-0" type="submit">Log Out</button>
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
         <span class="caret"></span>
         <img class="bd-placeholder-img rounded-circle bg-white" dropdown-toggle width="50" height="50" src="anonymous.png">
       </button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 1</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 2</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 3</a></li>
-      <li role="presentation" class="divider"></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 4</a></li>
-    </ul>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+       <button class="dropdown-item" type="button">Action</button>
+       <button class="dropdown-item" type="button">Another action</button>
+       <div class="dropdown-divider"></div>
+       <button class="dropdown-item" type="button">Exit</button>
+      </div>
     </div>
 
   </div>
 
 </nav>
+
+<script>
+
+</script>
+
+<style>
+.dropdown-menu {
+  right: 0;
+  left:auto;
+
+}
+
+.navbar{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+</style>
