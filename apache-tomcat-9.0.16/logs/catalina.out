@@ -10856,3 +10856,215 @@ Caused by: com.mysql.cj.exceptions.InvalidConnectionAttributeException: The serv
 05-Apr-2019 17:13:50.502 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
 05-Apr-2019 17:13:50.503 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8090"]
 05-Apr-2019 17:13:50.504 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+07-Apr-2019 12:10:16.202 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.16
+07-Apr-2019 12:10:16.206 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 4 2019 16:30:29 UTC
+07-Apr-2019 12:10:16.206 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.16.0
+07-Apr-2019 12:10:16.206 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+07-Apr-2019 12:10:16.206 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.15.0-47-generic
+07-Apr-2019 12:10:16.207 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+07-Apr-2019 12:10:16.207 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+07-Apr-2019 12:10:16.207 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           10.0.2+13-Ubuntu-1ubuntu0.18.04.4
+07-Apr-2019 12:10:16.207 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+07-Apr-2019 12:10:16.207 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/matthew/Documents/first_dates/apache-tomcat-9.0.16
+07-Apr-2019 12:10:16.207 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/matthew/Documents/first_dates/apache-tomcat-9.0.16
+07-Apr-2019 12:10:16.223 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+07-Apr-2019 12:10:16.223 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+07-Apr-2019 12:10:16.224 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+07-Apr-2019 12:10:16.224 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/conf/logging.properties
+07-Apr-2019 12:10:16.224 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+07-Apr-2019 12:10:16.224 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+07-Apr-2019 12:10:16.224 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+07-Apr-2019 12:10:16.224 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+07-Apr-2019 12:10:16.225 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+07-Apr-2019 12:10:16.225 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/matthew/Documents/first_dates/apache-tomcat-9.0.16
+07-Apr-2019 12:10:16.225 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/matthew/Documents/first_dates/apache-tomcat-9.0.16
+07-Apr-2019 12:10:16.225 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/temp
+07-Apr-2019 12:10:16.225 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+07-Apr-2019 12:10:16.361 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8090"]
+07-Apr-2019 12:10:16.614 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+07-Apr-2019 12:10:16.682 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [1,939] milliseconds
+07-Apr-2019 12:10:16.817 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+07-Apr-2019 12:10:16.817 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.16]
+07-Apr-2019 12:10:16.851 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/manager]
+07-Apr-2019 12:10:17.633 WARNING [main] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [128] milliseconds.
+07-Apr-2019 12:10:17.732 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/manager] has finished in [880] ms
+07-Apr-2019 12:10:17.733 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/examples]
+07-Apr-2019 12:10:18.553 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/examples] has finished in [820] ms
+07-Apr-2019 12:10:18.554 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/host-manager]
+07-Apr-2019 12:10:18.622 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/host-manager] has finished in [67] ms
+07-Apr-2019 12:10:18.622 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/first_dates]
+07-Apr-2019 12:10:19.079 WARNING [main] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = First_dates Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "8" for "maxActive" property, which is being ignored.
+07-Apr-2019 12:10:19.108 INFO [main] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = FirstDates Ignoring unknown property: value of "Resource reference to a factory for java.sql.Connection
+        instances that may be used for talking to a particular
+        database that is configured in the Context
+        configurartion for the web application." for "description" property
+07-Apr-2019 12:10:19.138 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+07-Apr-2019 12:10:19.250 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/first_dates] has finished in [628] ms
+07-Apr-2019 12:10:19.251 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/docs]
+07-Apr-2019 12:10:19.283 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/docs] has finished in [32] ms
+07-Apr-2019 12:10:19.283 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/ROOT]
+07-Apr-2019 12:10:19.306 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/ROOT] has finished in [22] ms
+07-Apr-2019 12:10:19.313 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8090"]
+07-Apr-2019 12:10:19.336 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+07-Apr-2019 12:10:19.365 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [2,682] milliseconds
+java.sql.SQLException: Cannot create JDBC driver of class '' for connect URL 'null'
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createConnectionFactory(BasicDataSource.java:510)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createDataSource(BasicDataSource.java:599)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:794)
+	at jdbc.DBManager.connect(DBManager.java:29)
+	at jdbc.DBManager.<init>(DBManager.java:21)
+	at controllers.ServletRegister.processRequest(ServletRegister.java:38)
+	at controllers.ServletRegister.doPost(ServletRegister.java:93)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1135)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+Caused by: java.sql.SQLException: No suitable driver
+	at java.sql/java.sql.DriverManager.getDriver(DriverManager.java:298)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createConnectionFactory(BasicDataSource.java:495)
+	... 30 more
+java.sql.SQLException: Cannot create JDBC driver of class '' for connect URL 'null'
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createConnectionFactory(BasicDataSource.java:510)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createDataSource(BasicDataSource.java:599)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:794)
+	at jdbc.DBManager.connect(DBManager.java:29)
+	at jdbc.DBManager.<init>(DBManager.java:21)
+	at controllers.ServletLogin.processRequest(ServletLogin.java:39)
+	at controllers.ServletLogin.doPost(ServletLogin.java:100)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1135)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+Caused by: java.sql.SQLException: No suitable driver
+	at java.sql/java.sql.DriverManager.getDriver(DriverManager.java:298)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createConnectionFactory(BasicDataSource.java:495)
+	... 30 more
+java.sql.SQLException: Cannot create JDBC driver of class '' for connect URL 'null'
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createConnectionFactory(BasicDataSource.java:510)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createDataSource(BasicDataSource.java:599)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:794)
+	at jdbc.DBManager.connect(DBManager.java:29)
+	at jdbc.DBManager.<init>(DBManager.java:21)
+	at controllers.ServletRegister.processRequest(ServletRegister.java:38)
+	at controllers.ServletRegister.doGet(ServletRegister.java:78)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1135)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+Caused by: java.sql.SQLException: No suitable driver
+	at java.sql/java.sql.DriverManager.getDriver(DriverManager.java:298)
+	at org.apache.tomcat.dbcp.dbcp2.BasicDataSource.createConnectionFactory(BasicDataSource.java:495)
+	... 30 more
+NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+09-Apr-2019 15:17:24.350 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.16
+09-Apr-2019 15:17:24.354 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Feb 4 2019 16:30:29 UTC
+09-Apr-2019 15:17:24.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.16.0
+09-Apr-2019 15:17:24.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+09-Apr-2019 15:17:24.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.15.0-47-generic
+09-Apr-2019 15:17:24.355 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+09-Apr-2019 15:17:24.356 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+09-Apr-2019 15:17:24.356 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           10.0.2+13-Ubuntu-1ubuntu0.18.04.4
+09-Apr-2019 15:17:24.356 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+09-Apr-2019 15:17:24.356 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/matthew/Documents/first_dates/apache-tomcat-9.0.16
+09-Apr-2019 15:17:24.356 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/matthew/Documents/first_dates/apache-tomcat-9.0.16
+09-Apr-2019 15:17:24.359 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+09-Apr-2019 15:17:24.359 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+09-Apr-2019 15:17:24.359 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+09-Apr-2019 15:17:24.360 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/conf/logging.properties
+09-Apr-2019 15:17:24.360 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+09-Apr-2019 15:17:24.360 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+09-Apr-2019 15:17:24.360 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+09-Apr-2019 15:17:24.360 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+09-Apr-2019 15:17:24.360 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+09-Apr-2019 15:17:24.360 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/matthew/Documents/first_dates/apache-tomcat-9.0.16
+09-Apr-2019 15:17:24.360 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/matthew/Documents/first_dates/apache-tomcat-9.0.16
+09-Apr-2019 15:17:24.361 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/temp
+09-Apr-2019 15:17:24.361 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+09-Apr-2019 15:17:24.504 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8090"]
+09-Apr-2019 15:17:24.675 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+09-Apr-2019 15:17:24.696 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [2,264] milliseconds
+09-Apr-2019 15:17:24.857 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+09-Apr-2019 15:17:24.857 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.16]
+09-Apr-2019 15:17:24.873 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/manager]
+09-Apr-2019 15:17:25.454 WARNING [main] org.apache.catalina.util.SessionIdGeneratorBase.createSecureRandom Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [105] milliseconds.
+09-Apr-2019 15:17:25.507 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/manager] has finished in [634] ms
+09-Apr-2019 15:17:25.507 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/examples]
+09-Apr-2019 15:17:26.495 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/examples] has finished in [988] ms
+09-Apr-2019 15:17:26.496 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/host-manager]
+09-Apr-2019 15:17:26.527 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/host-manager] has finished in [32] ms
+09-Apr-2019 15:17:26.528 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/first_dates]
+09-Apr-2019 15:17:26.886 WARNING [main] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = First_dates Property maxActive is not used in DBCP2, use maxTotal instead. maxTotal default value is 8. You have set value of "8" for "maxActive" property, which is being ignored.
+09-Apr-2019 15:17:26.904 INFO [main] org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory.getObjectInstance Name = FirstDates Ignoring unknown property: value of "Resource reference to a factory for java.sql.Connection
+        instances that may be used for talking to a particular
+        database that is configured in the Context
+        configurartion for the web application." for "description" property
+09-Apr-2019 15:17:26.921 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+09-Apr-2019 15:17:26.973 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/first_dates] has finished in [446] ms
+09-Apr-2019 15:17:26.974 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/docs]
+09-Apr-2019 15:17:27.012 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/docs] has finished in [38] ms
+09-Apr-2019 15:17:27.012 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/ROOT]
+09-Apr-2019 15:17:27.041 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/matthew/Documents/first_dates/apache-tomcat-9.0.16/webapps/ROOT] has finished in [29] ms
+09-Apr-2019 15:17:27.045 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8090"]
+09-Apr-2019 15:17:27.054 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+09-Apr-2019 15:17:27.094 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [2,397] milliseconds
