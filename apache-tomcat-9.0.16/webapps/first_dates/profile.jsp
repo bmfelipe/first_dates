@@ -19,9 +19,7 @@
     <body>
         
         <!--================Header Menu Area =================-->
-        <header>
              <%@ include file ='/WEB-INF/jsp/navbar.jsp'%>
-        </header>
         <!--================Header Menu Area =================-->
         
         <!--================Home Banner Area =================-->
