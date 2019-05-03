@@ -19,7 +19,7 @@
           <div class="col-md-6 ml-auto mr-auto">
            <div class="profile">
             <div class="avatar">
-              <img src="/WEB-INF/jsp/modelo.png" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+              <img src="modelo.png" alt="Circle Image" class="img-raised rounded-circle img-fluid">
             </div>
             <div class="name">
               <h3 class="title">Andres Trozado</h3>
