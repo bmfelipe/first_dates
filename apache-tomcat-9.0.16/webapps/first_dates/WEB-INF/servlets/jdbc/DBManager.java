@@ -25,7 +25,7 @@ public class DBManager implements AutoCloseable {
       try {
         Context initCtx = new InitialContext();
         Context envCtx = (Context) initCtx.lookup("java:comp/env");
-        DataSource ds = (DataSource) envCtx.lookup("jdbc/FirstDates");
+        DataSource ds = (DataSource) envCtx.lookup("jdbc/First_dates");
         connection = ds.getConnection();
       } catch(SQLException|NamingException e) {
         e.printStackTrace();
