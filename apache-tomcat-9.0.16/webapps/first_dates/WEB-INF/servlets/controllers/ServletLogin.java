@@ -1,6 +1,7 @@
 package controllers;
 
 import jdbc.DBManager;
+import security.BCrypt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -8,6 +9,7 @@ import java.util.logging.Logger;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,29 +36,46 @@ public class ServletLogin extends HttpServlet {
             String entryUsername = request.getParameter("username");
             String entryPassword = request.getParameter("password");
 
-            PrintWriter out = response.getWriter();
-
             try (DBManager db = new DBManager())
             {
                 dbPassword = db.searchUserPassword(entryUsername);
-                out.println(dbPassword);
             }
             catch (SQLException ex)
             {
-                //Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
+                // Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
             }
 
-            if (entryPassword.equals(dbPassword))
-            {
-                HttpSession session = request.getSession();
-                session.setAttribute("username", entryUsername);
-                session.setMaxInactiveInterval(Integer.MAX_VALUE);
-                RequestDispatcher rd = request.getRequestDispatcher("/iniPage.jsp");
-                rd.forward(request, response);
+            if(dbPassword != null){
+                if (BCrypt.checkpw(entryPassword, dbPassword))
+                {
+                    if (request.getParameter("remember") != null) {
+                      String remember = request.getParameter("remember");
+                      System.out.println("remember : " + remember);
+                      Cookie cUsername = new Cookie("cookuser", entryUsername);
+                      Cookie cPassword = new Cookie("cookpass", entryPassword);
+                      Cookie cRemember = new Cookie("cookrem", remember);
+                      cUsername.setMaxAge(60 * 60 * 24 * 15);//15 days
+                      cPassword.setMaxAge(60 * 60 * 24 * 15);
+                      cRemember.setMaxAge(60 * 60 * 24 * 15);
+                      response.addCookie(cUsername);
+                      response.addCookie(cPassword);
+                      response.addCookie(cRemember);
+                    }
+                    HttpSession session = request.getSession();
+                    session.setAttribute("username", entryUsername);
+                    session.setMaxInactiveInterval(Integer.MAX_VALUE);
+                    RequestDispatcher rd = request.getRequestDispatcher("/iniPage.jsp");
+                    rd.forward(request, response);
+                }
+                else
+                {
+                    request.setAttribute("errorLogin", "Email o contraseña incorrectos");
+                    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                    rd.forward(request, response);
+                }
             }
-            else
-            {
+            else{
                 request.setAttribute("errorLogin", "Email o contraseña incorrectos");
                 RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
                 rd.forward(request, response);
@@ -64,6 +83,7 @@ public class ServletLogin extends HttpServlet {
         }
         catch(Exception ex)
         {
+            ex.printStackTrace();
             request.setAttribute("errorLogin", "Ha ocurrido un error en el login");
             RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
             rd.forward(request, response);

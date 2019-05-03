@@ -36,28 +36,47 @@
       color: red;
     }
     .custom-control {
-      padding-bottom: 20px;
+      padding-bottom: 15px;
     }
   </style>
 
   <body>
+
+    <%
+    Cookie[] cookies=request.getCookies();
+    String username = "", password = "", rememberVal = "";
+    if (cookies != null) {
+         for (Cookie cookie : cookies) {
+           if(cookie.getName().equals("cookuser")) {
+             username = cookie.getValue();
+           }
+           if(cookie.getName().equals("cookpass")){
+             password = cookie.getValue();
+           }
+           if(cookie.getName().equals("cookrem")){
+             rememberVal = cookie.getValue();
+           }
+        }
+    }
+    %>
+
     <div class="container-fluid text-center">
       <h1 class="display-1">First Dates</h1>
     </div>
 
     <form action="ServletLogin" method="post" class="text-center">
       <div class="form-group">
-        <label for="email">Nombre de usuario:<input placeholder="Nombre de usuario" type="text" class="form-control" name="username" required></label>
+        <label for="email">Nombre de usuario:<input placeholder="Nombre de usuario" type="text" class="form-control" name="username" value="<%=username%>" required></label>
       </div>
 
       <div class="form-group">
-        <label for="pwd">Contraseña:<input placeholder="Contraseña" type="password" class="form-control" name="password" required></label>
+        <label for="pwd">Contraseña:<input placeholder="Contraseña" type="password" class="form-control" name="password" value="<%=password%>" required></label>
       </div>
 
       <div class="errorLogin">${errorLogin}</div>
 
       <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="switch1">
+        <input type="checkbox" class="custom-control-input" id="switch1" name="remember" value="1" checked>
         <label class="custom-control-label" for="switch1">Recuérdame</label>
       </div>
 

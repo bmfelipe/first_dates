@@ -1,8 +1,6 @@
 package controllers;
 
-import beans.User;
 import jdbc.DBManager;
-import security.BCrypt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -10,13 +8,14 @@ import java.util.logging.Logger;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 
-public class ServletRegister extends HttpServlet {
+public class ServletLogout extends HttpServlet {
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -32,47 +31,24 @@ public class ServletRegister extends HttpServlet {
     {
         try
         {
-            User user = new User();
-            String password = request.getParameter("password");
-            String password2 = request.getParameter("password2");
-
-            if (password2.equals(password))
-            {
-                try (DBManager db = new DBManager()) {
-                    String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
-
-                    user.setUsername(request.getParameter("username"));
-                    user.setName(request.getParameter("name"));
-                    user.setPassword(generatedSecuredPasswordHash);
-                    if (request.getParameter("gender").equals("M")) {
-                      user.setGender(0);
-                    }
-                    else if(request.getParameter("gender").equals("H")) {
-                      user.setGender(1);
-                    }
-                    user.setBirthdate(request.getParameter("birthdate"));
-
-                    Boolean registered = db.registerUser(user);
-                    System.out.println(registered);
-                } catch(SQLException e) {
-                    e.printStackTrace();
-                }
-
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-                rd.forward(request, response);
-            }
-            else
-            {
-                request.setAttribute("errorRegister", "Contraseña repetida mal introducida");
-                RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
-                rd.forward(request, response);
-            }
-
+            Cookie cUsername = new Cookie("cookuser", null);
+            Cookie cPassword = new Cookie("cookpass", null);
+            Cookie cRemember = new Cookie("cookrem", null);
+            cUsername.setMaxAge(0);
+            cPassword.setMaxAge(0);
+            cRemember.setMaxAge(0);
+            response.addCookie(cUsername);
+            response.addCookie(cPassword);
+            response.addCookie(cRemember);
+            HttpSession session = request.getSession();
+            session.invalidate();
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
+            requestDispatcher.forward(request, response);
         }
         catch(Exception ex)
         {
-            request.setAttribute("errorRegister", "Ha ocurrido un error en el registro");
-            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+            request.setAttribute("errorLogout", "Ha ocurrido un error al cerrar sesión");
+            RequestDispatcher rd = request.getRequestDispatcher("/iniPage.jsp");
             rd.forward(request, response);
         }
     }
