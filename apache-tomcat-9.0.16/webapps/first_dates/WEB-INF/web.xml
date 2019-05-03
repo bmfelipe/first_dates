@@ -12,6 +12,11 @@
     </servlet>
 
     <servlet>
+      <servlet-name>ServletLogout</servlet-name>
+      <servlet-class>controllers.ServletLogout</servlet-class>
+    </servlet>
+
+    <servlet>
       <servlet-name>ServletRegister</servlet-name>
       <servlet-class>controllers.ServletRegister</servlet-class>
     </servlet>
@@ -19,6 +24,11 @@
     <servlet-mapping>
       <servlet-name>ServletLogin</servlet-name>
       <url-pattern>/ServletLogin</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+      <servlet-name>ServletLogout</servlet-name>
+      <url-pattern>/ServletLogout</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

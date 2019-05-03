@@ -30,12 +30,6 @@ public class DBManager implements AutoCloseable {
       } catch(SQLException|NamingException e) {
         e.printStackTrace();
       }
-      /*try {
-        Class.forName("com.mysql.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/first_dates", "root", "Lopez_10");
-      } catch(ClassNotFoundException e) {
-        e.printStackTrace();
-      }*/
     }
 
     /**
@@ -50,7 +44,6 @@ public class DBManager implements AutoCloseable {
     }
 
     public String searchUserPassword(String username) throws SQLException {
-        // TODO: program this method
         String dbPassword = null;
         String query = "SELECT * FROM first_dates.Users INNER JOIN first_dates.UserAuth ON first_dates.Users.id=first_dates.UserAuth.id WHERE username = '" + username + "'";
         Statement stmt = connection.createStatement();
@@ -68,17 +61,18 @@ public class DBManager implements AutoCloseable {
     }
 
     public Boolean registerUser(User user) throws SQLException {
-        // TODO: program this method
         Boolean registered = false;
-        /*String query = "SELECT * FROM first_dates.Users INNER JOIN first_dates.UserAuth ON first_dates.Users.id=first_dates.UserAuth.id WHERE username = '" + username + "'";
+        String query = "INSERT INTO first_dates.Users (username, name, gender, birthdate, role) VALUES ('"+user.getUsername()+"', '"+user.getName()+"', "+user.getGender()+", '"+user.getBirthdate()+"', 1)";
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery(query);
+        int rowsAffected = stmt.executeUpdate(query);
 
-        while (rs.next())
-        {
-            dbPassword = rs.getString("password");
-            break;
-        }*/
+        String query2 = "INSERT INTO first_dates.UserAuth (id, password) VALUES (LAST_INSERT_ID(), '"+user.getPassword()+"');";
+        Statement stmt2 = connection.createStatement();
+        rowsAffected = stmt2.executeUpdate(query2);
+
+        if(rowsAffected != 0){
+          registered = true;
+        }
 
         close();
 

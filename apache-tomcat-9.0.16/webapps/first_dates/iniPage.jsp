@@ -1,4 +1,4 @@
-<%@ page language = "java" contentType = "text/html" pageEncoding="UTF-8" session="false"%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +30,11 @@
           String user = (String) session.getAttribute("username");
           %> <%= "@"+user %>
       </p>
+
+      <p><a href="/first_dates/ServletLogout">Cerrar sesión</a></p>
     </div>
+
+    <div class="errorLogout">${errorLogout}</div>
   </body>
 
 </html>
