@@ -19,26 +19,26 @@ public class Home extends HttpServlet {
     throws IOException, ServletException
     {
 
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-
-        if(user.isLoggedIn()){
-          try(DBManager db = new DBManager()){
-              List<User> recommendations = db.getRecommendations(user.getId());
-              request.setAttribute("recommendations",recommendations);
-              List<Date> dates = db.getDateList(user.getId());
-              request.setAttribute("dates",dates);
-
-              RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/home.jsp");
-              rd.forward(request, response);
-
-          }catch (SQLException e){
-              e.printStackTrace();
-          }
-
-        }else{
-          response.sendRedirect("index");
-        }
+        // HttpSession session = request.getSession();
+        // User user = (User) session.getAttribute("user");
+        //
+        // if(user.isLoggedIn()){
+        //   try(DBManager db = new DBManager()){
+        //       List<User> recommendations = db.getRecommendations(user.getId());
+        //       request.setAttribute("recommendations",recommendations);
+        //       List<Date> dates = db.getDateList(user.getId());
+        //       request.setAttribute("dates",dates);
+        //
+        //       RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/home.jsp");
+        //       rd.forward(request, response);
+        //
+        //   }catch (SQLException e){
+        //       e.printStackTrace();
+        //   }
+        //
+        // }else{
+        //   response.sendRedirect("index");
+        // }
 
 
 
