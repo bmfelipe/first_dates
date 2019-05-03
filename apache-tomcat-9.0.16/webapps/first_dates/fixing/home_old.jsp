@@ -45,23 +45,23 @@
       <div class="row">
         <div class="col-lg-4 ">
           <h2>Recommendations</h2>
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div id="carousel-elem" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-              <div class="carousel-item active">
+              <div class="carousel-item active" id="1">
                 <img class=" w-50" src="modelo.png" alt="First slide">
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item" id="2">
                 <img class=" w-50" src="modelo.png" alt="Second slide">
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item" id="3">
                 <img class=" w-50" src="modelo.png" alt="Third slide">
               </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carousel-elem" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carousel-elem" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
@@ -69,8 +69,8 @@
           <div id="like-dislike-buttons">
 
             <p>
-              <a class="btn btn-secondary mr-1" href="#" role="button"><i class="fa fa-heart"></i> </a>
-              <a class="btn btn-secondary ml-1" href="#" role="button"><i class="fa fa-ban"></i></a></p>
+              <a class="btn btn-secondary mr-1" href="#" id="like-btn" user-id="1" role="button"><i class="fa fa-heart"></i> </a>
+              <a class="btn btn-secondary ml-1" href="#" id="dislike-btn" user-id="1" role="button"><i class="fa fa-ban"></i></a></p>
           </div>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
@@ -127,5 +127,43 @@
       </p> --%>
     </div>
   </body>
+  <script>
 
+  $('#like-btn').on('click', function(event) {
+    event.preventDefault();
+    console.log($(this).attr("user-id"));
+      // $.ajax({
+      //     'url' : 'http://localhost:9189/first_dates/add-like',
+      //     'method' : 'POST',
+      //     'data' : {
+      //         'userId' : user,
+      //         'recommendationId' : recommendationId
+      //     },
+      //     success(function(data){
+      //         console.log("Sent data");
+      //     })
+      // });
+  });
+  // $('#dislike-btn').on('click', function(event) {
+  //   event.preventDefault();
+  //   $.ajax({
+  //       'url' : 'http://localhost:9189/first_dates/delete-recommendation',
+  //       'method' : 'POST',
+  //       'data' : {
+  //           'userId' : userId,
+  //           'recommendationId' : recommendationId
+  //       },
+  //       success:function(data){
+  //           console.log("Sent data");
+  //       }
+  //   });
+  // });
+
+  $('#carousel-elem').on('slid.bs.carousel', function (ev) {
+    var id = ev.relatedTarget.id;
+    document.getElementById('like-btn').setAttribute("user-id", id);
+    document.getElementById('dislike-btn').setAttribute("user-id", id);
+
+  });
+  </script>
 </html>
