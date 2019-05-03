@@ -65,8 +65,7 @@ public class ServletLogin extends HttpServlet {
                     HttpSession session = request.getSession();
                     session.setAttribute("username", entryUsername);
                     session.setMaxInactiveInterval(Integer.MAX_VALUE);
-                    RequestDispatcher rd = request.getRequestDispatcher("/iniPage.jsp");
-                    rd.forward(request, response);
+                    response.sendRedirect("/first_dates/fixing/home_old.jsp");
                 }
                 else
                 {

@@ -103,9 +103,9 @@
 
             <tbody>
               <%
-                List<Date> dates = (List<Date>) session.getAttribute("dates");
+                List<DateMatch> dates = (List<DateMatch>) session.getAttribute("dates");
                 if(dates != null){
-                  for(Date date: dates){
+                  for(DateMatch date: dates){
                     %>
                     <tr>
                       <td><%=date.getDateName()%></td>

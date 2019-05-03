@@ -7,6 +7,11 @@
     </description>
 
     <servlet>
+      <servlet-name>Home</servlet-name>
+      <servlet-class>controllers.Home</servlet-class>
+    </servlet>
+
+    <servlet>
       <servlet-name>ServletLogin</servlet-name>
       <servlet-class>controllers.ServletLogin</servlet-class>
     </servlet>
@@ -20,6 +25,11 @@
       <servlet-name>ServletRegister</servlet-name>
       <servlet-class>controllers.ServletRegister</servlet-class>
     </servlet>
+
+    <servlet-mapping>
+      <servlet-name>Home</servlet-name>
+      <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
       <servlet-name>ServletLogin</servlet-name>
