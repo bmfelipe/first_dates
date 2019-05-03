@@ -10,7 +10,7 @@
   <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
 </head>
 <body class="profile-page">
-  <%@ include file ='WEB-INF/navbar.jsp'%>
+  <%@ include file ='/WEB-INF/jsp/navbar.jsp'%>
   <div class="page-header header-filter" data-parallax="true" style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');"></div>
   <div class="main main-raised">
     <div class="profile-content">
