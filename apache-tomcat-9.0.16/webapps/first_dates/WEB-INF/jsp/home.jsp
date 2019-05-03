@@ -40,7 +40,7 @@
   </style>
 
   <body>
-    <%@ include file='navbar.jsp' %>
+    <%@ include file='navbar.jsp'%>
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-lg-4 ">

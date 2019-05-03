@@ -10,7 +10,7 @@
   <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
 </head>
 <body class="profile-page">
-  <%@ include file ='navbar.jsp'%>
+  <%@ include file ='/WEB-INF/jsp/navbar.jsp'%>
   <div class="page-header header-filter" data-parallax="true" style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');"></div>
   <div class="main main-raised">
     <div class="profile-content">
@@ -19,7 +19,7 @@
           <div class="col-md-6 ml-auto mr-auto">
            <div class="profile">
             <div class="avatar">
-              <img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+              <img src="modelo.png" alt="Circle Image" class="img-raised rounded-circle img-fluid">
             </div>
             <div class="name">
               <h3 class="title">Andres Trozado</h3>

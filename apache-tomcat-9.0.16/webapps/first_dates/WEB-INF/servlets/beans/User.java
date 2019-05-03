@@ -1,13 +1,11 @@
 package beans;
 
-import java.util.Date;
-
 public class User {
 	private String username;
 	private String name;
 	private int gender;
 	private String description;
-	private Date birthdate;
+	private String birthdate;
 	private String photo;
   private int role;
   private Preferences preferences;
@@ -45,11 +43,11 @@ public class User {
 		this.description = description;
 	}
 
-  public Date getBirthdate() {
+  public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 

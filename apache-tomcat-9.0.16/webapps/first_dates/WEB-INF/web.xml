@@ -7,8 +7,18 @@
     </description>
 
     <servlet>
+      <servlet-name>Home</servlet-name>
+      <servlet-class>controllers.Home</servlet-class>
+    </servlet>
+
+    <servlet>
       <servlet-name>ServletLogin</servlet-name>
       <servlet-class>controllers.ServletLogin</servlet-class>
+    </servlet>
+
+    <servlet>
+      <servlet-name>ServletLogout</servlet-name>
+      <servlet-class>controllers.ServletLogout</servlet-class>
     </servlet>
 
     <servlet>
@@ -17,8 +27,18 @@
     </servlet>
 
     <servlet-mapping>
+      <servlet-name>Home</servlet-name>
+      <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
       <servlet-name>ServletLogin</servlet-name>
       <url-pattern>/ServletLogin</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+      <servlet-name>ServletLogout</servlet-name>
+      <url-pattern>/ServletLogout</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -38,7 +58,7 @@
         configurartion for the web application.
       </description>
       <res-ref-name>
-        jdbc/FirstDates
+        jdbc/First_dates
       </res-ref-name>
       <res-type>
         javax.sql.DataSource

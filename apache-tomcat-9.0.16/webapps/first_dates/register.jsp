@@ -20,16 +20,16 @@
     }
     .container-fluid {
       font-family: "Open Sans";
-      padding-top: 70px;
-      padding-bottom: 70px;
-    }
-    .form-group {
       padding-top: 10px;
       padding-bottom: 10px;
     }
+    .form-group {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
     .btn {
       margin-top: 10px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     .errorRegister {
       padding-bottom: 20px;
@@ -44,11 +44,11 @@
 
     <form action="ServletRegister" method="post" class="text-center">
       <div class="form-group">
-        <label for="email">Nombre completo:<input placeholder="Nombre completo" type="text" class="form-control" name="name" required></label>
+        <label for="email">Nombre de usuario:<input placeholder="Nombre de usuario" type="text" class="form-control" name="username" required></label>
       </div>
 
       <div class="form-group">
-        <label for="email">Nombre de usuario:<input placeholder="Nombre de usuario" type="text" class="form-control" name="username" required></label>
+        <label for="email">Nombre completo:<input placeholder="Nombre completo" type="text" class="form-control" name="name" required></label>
       </div>
 
       <div class="form-group">
@@ -56,7 +56,15 @@
       </div>
 
       <div class="form-group">
-        <label for="pwd">Repetir la contraseña:<input placeholder="Contraseña" type="password" class="form-control" name="password2" required></label>
+        <label for="pwd">Repetir contraseña:<input placeholder="Repetir contraseña" type="password" class="form-control" name="password2" required></label>
+      </div>
+
+      <div class="form-group">
+        <label for="text">Sexo:<input placeholder="M ó H" type="text" class="form-control" name="gender" required></label>
+      </div>
+
+      <div class="form-group">
+        <label for="text">Fecha de nacimiento:<input placeholder="AAAA/MM/DD" type="text" class="form-control" name="birthdate" required></label>
       </div>
 
       <div class="errorRegister">${errorRegister}</div>
