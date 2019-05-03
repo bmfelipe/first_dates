@@ -27,52 +27,51 @@
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form> --%>
-      <div class="dropdown" style="float: right; padding: 13px">
-        <a href="#" onclick="return false;" role="button" data-toggle="dropdown" id="dropdownMenu1" data-target="#" style="float: left" aria-expanded="true">
-            <i class="fa fa-bell-o" style="font-size: 20px; float: left; color: white">
-            </i>
-        </a>
-        <span class="badge badge-danger">6</span>
-        <ul class="dropdown-menu dropdown-menu-left pull-right" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation">
-                <a href="#" class="dropdown-menu-header">Notifications</a>
-            </li>
-            <ul class="timeline timeline-icons timeline-sm" style="margin:10px;width:210px">
-                                            <li>
-                                                <p>
-                                                    Your “Volume Trendline” PDF is ready <a href="">here</a>
-                                                    <span class="timeline-icon"><i class="fa fa-file-pdf-o" style="color:red"></i></span>
-                                                    <span class="timeline-date">Dec 10, 22:00</span>
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <p>
-                                                    Your “Marketplace Report” PDF is ready <a href="">here</a>
-                                                    <span class="timeline-icon"><i class="fa fa-file-pdf-o"  style="color:red"></i></span>
-                                                    <span class="timeline-date">Dec 6, 10:17</span>
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <p>
-                                                    Your “Top Words” spreadsheet is ready <a href="">here</a>
-                                                    <span class="timeline-icon"><i class="fa fa-file-excel-o"  style="color:green"></i></span>
-                                                    <span class="timeline-date">Dec 5, 04:36</span>
-                                                </p>
-                                            </li>
-                                        </ul>
-            <li role="presentation">
-                <a href="#" class="dropdown-menu-header"></a>
-            </li>
-        </ul>
-    </div>
+      <div class="dropdown">
+
+        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+          <span class="caret"></span>
+          <i class="fa fa-bell-o" style="font-size: 30px; float: left; color: gray"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-left float-right"
+           role="menu" aria-labelledby="dropdownMenu1">
+               <li role="presentation" class="dropdown-item"> <a href="#" class="dropdown-menu-header">Notifications</a>
+               </li>
+               <ul class="timeline timeline-icons timeline-sm" style="margin:10px;width:210px">
+                   <li>
+                       <p>Your &#x201C;Volume Trendline&#x201D; PDF is ready <a href="">here</a>
+                           <span
+                           class="timeline-icon"><i class="fa fa-file-pdf-o" style="color:red"></i>
+                               </span> <span class="timeline-date">Dec 10, 22:00</span>
+                       </p>
+                   </li>
+                   <li>
+                       <p>Your &#x201C;Marketplace Report&#x201D; PDF is ready <a href="">here</a>
+                           <span
+                           class="timeline-icon"><i class="fa fa-file-pdf-o" style="color:red"></i>
+                               </span> <span class="timeline-date">Dec 6, 10:17</span>
+                       </p>
+                   </li>
+                   <li>
+                       <p>Your &#x201C;Top Words&#x201D; spreadsheet is ready <a href="">here</a>
+                           <span
+                           class="timeline-icon"><i class="fa fa-file-excel-o" style="color:green"></i>
+                               </span> <span class="timeline-date">Dec 5, 04:36</span>
+                       </p>
+                   </li>
+               </ul>
+               <li role="presentation" class="dropdown-item"> <a href="#" class="dropdown-menu-header"></a>
+               </li>
+           </ul>
+      </div>
       <div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
           <span class="caret"></span>
           <img class="bd-placeholder-img rounded-circle bg-white" dropdown-toggle width="50" height="50" src="anonymous.png">
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-         <button class="dropdown-item" type="button">Action</button>
-         <button class="dropdown-item" type="button">Another action</button>
+         <button class="dropdown-item" type="button">Profile</button>
+         <button class="dropdown-item" type="button">Settings</button>
          <div class="dropdown-divider"></div>
          <button class="dropdown-item" type="button">Exit</button>
         </div>
