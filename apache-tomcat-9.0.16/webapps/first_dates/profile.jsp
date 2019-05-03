@@ -1,120 +1,106 @@
-<%@ page language = "java" contentType = "text/html" pageEncoding="UTF-8" session="false"%>
+<%@ page language ="java" contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>User Profile Page</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-  <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
-  <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
-</head>
-<body class="profile-page">
-  <%@ include file ='/WEB-INF/jsp/navbar.jsp'%>
-  <div class="page-header header-filter" data-parallax="true" style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');"></div>
-  <div class="main main-raised">
-    <div class="profile-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 ml-auto mr-auto">
-           <div class="profile">
-            <div class="avatar">
-              <img src="modelo.png" alt="Circle Image" class="img-raised rounded-circle img-fluid">
-            </div>
-            <div class="name">
-              <h3 class="title">Andres Trozado</h3>
-              <h6>Designer</h6>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="description text-center">
-        <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ml-auto mr-auto">
-          <div class="profile-tabs">
-            <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-                  <i class="material-icons">camera</i>
-                  Studio
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                  <i class="material-icons">palette</i>
-                  Work
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                  <i class="material-icons">favorite</i>
-                  Favorite
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="tab-content tab-space">
-        <div class="tab-pane active text-center gallery" id="studio">
-          <div class="row">
-            <div class="col-md-3 ml-auto">
-              <img src="https://images.unsplash.com/photo-1524498250077-390f9e378fc0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83079913579babb9d2c94a5941b2e69d&auto=format&fit=crop&w=751&q=80" class="rounded">
-              <img src="https://images.unsplash.com/photo-1528249227670-9ba48616014f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=66b8e7db17b83084f16fdeadfc93b95b&auto=format&fit=crop&w=357&q=80" class="rounded">
-            </div>
-            <div class="col-md-3 mr-auto">
-              <img src="https://images.unsplash.com/photo-1521341057461-6eb5f40b07ab?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=72da2f550f8cbd0ec252ad6fb89c96b2&auto=format&fit=crop&w=334&q=80" class="rounded">
-              <img src="https://images.unsplash.com/photo-1506667527953-22eca67dd919?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6326214b7ce18d74dde5e88db4a12dd5&auto=format&fit=crop&w=750&q=80" class="rounded">
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane text-center gallery" id="works">
-          <div class="row">
-            <div class="col-md-3 ml-auto">
-              <img src="https://images.unsplash.com/photo-1524498250077-390f9e378fc0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83079913579babb9d2c94a5941b2e69d&auto=format&fit=crop&w=751&q=80" class="rounded">
-              <img src="https://images.unsplash.com/photo-1506667527953-22eca67dd919?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6326214b7ce18d74dde5e88db4a12dd5&auto=format&fit=crop&w=750&q=80" class="rounded">
-              <img src="https://images.unsplash.com/photo-1505784045224-1247b2b29cf3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec2bdc92a9687b6af5089b335691830e&auto=format&fit=crop&w=750&q=80" class="rounded">            </div>
-              <div class="col-md-3 mr-auto">
-                <img src="https://images.unsplash.com/photo-1504346466600-714572c4b726?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6754ded479383b7e3144de310fa88277&auto=format&fit=crop&w=750&q=80" class="rounded">
-                <img src="https://images.unsplash.com/photo-1494028698538-2cd52a400b17?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83bf0e71786922a80c420c17b664a1f5&auto=format&fit=crop&w=334&q=80" class="rounded">
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane text-center gallery" id="favorite">
-            <div class="row">
-              <div class="col-md-3 ml-auto">
-                <img src="https://images.unsplash.com/photo-1504346466600-714572c4b726?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6754ded479383b7e3144de310fa88277&auto=format&fit=crop&w=750&q=80" class="rounded">
-                <img src="https://images.unsplash.com/photo-1494028698538-2cd52a400b17?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83bf0e71786922a80c420c17b664a1f5&auto=format&fit=crop&w=334&q=80" class="rounded">
-              </div>
-              <div class="col-md-3 mr-auto">
-                <img src="https://images.unsplash.com/photo-1505784045224-1247b2b29cf3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec2bdc92a9687b6af5089b335691830e&auto=format&fit=crop&w=750&q=80" class="rounded">            
-                <img src="https://images.unsplash.com/photo-1524498250077-390f9e378fc0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83079913579babb9d2c94a5941b2e69d&auto=format&fit=crop&w=751&q=80" class="rounded">
-                <img src="https://images.unsplash.com/photo-1506667527953-22eca67dd919?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6326214b7ce18d74dde5e88db4a12dd5&auto=format&fit=crop&w=750&q=80" class="rounded">
-              </div>
-            </div>
-          </div>
-        </div>
-
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--<link rel="icon" href="img/favicon.png" type="image/png">-->
+        <title>User Profile Page</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/bootstrap.css">
+        <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/iconstyle.css">
+        <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/font-awesome.min.css">
+     
+        <!-- main css -->
+        <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/style.css">
+        <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/responsive.css">
+    </head>
+    <body>
         
-      </div>
-    </div>
-  </div>
-  
-  <footer class="footer text-center ">
-    <p>Made with <a href="https://demos.creative-tim.com/material-kit/index.html" target="_blank">Material Kit</a> by Creative Tim</p>
-  </footer>
-
-  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-
-
-
-</body>
-
+        <!--================Header Menu Area =================-->
+        <header>
+             <%@ include file ='/WEB-INF/jsp/navbar.jsp'%>
+        </header>
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="home_banner_area">
+            <div class="container box_1620">
+              <div class="banner_inner d-flex align-items-center">
+          <div class="banner_content">
+            <div class="media">
+              <div class="d-flex">
+                <img src="modelo.png" alt="">
+              </div>
+              <div class="media-body">
+                <div class="personal_text">
+                  <h6>Saludos me llamo</h6>
+                  <h3>Susana Oria</h3>
+                  <p>Contenta, pero no mucho</p>
+                  <ul class="list basic_info">
+                    <li><a href="#"><i class="lnr lnr-calendar-full"></i> 14 Mayo 1990</a></li>
+                    <li><a href="#"><i class="lnr lnr-phone-handset"></i> 695783157</a></li>
+                    <li><a href="#"><i class="lnr lnr-envelope"></i> @SusanaOria</a></li>
+                    <li><a href="#"><i class="lnr lnr-home"></i> Madrid</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->    
+        <!--================Footer Area =================-->
+        <footer class="footer_area p_120">
+          <div class="container">
+            <div class="row footer_inner">
+              <div class="col-lg-5 col-sm-6">
+                <aside class="f_widget ab_widget">
+                  <div class="f_title">
+                    <h3>About Me</h3>
+                  </div>
+                  <p>Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills,</p>
+                  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </aside>
+              </div>
+              <div class="col-lg-5 col-sm-6">
+                <aside class="f_widget news_widget">
+                  <div class="f_title">
+                    <h3>Newsletter</h3>
+                  </div>
+                  <p>Stay updated with our latest trends</p>
+                  <div id="mc_embed_signup">
+                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+                                  <div class="input-group d-flex flex-row">
+                                        <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>    
+                                    </div>        
+                                    <div class="mt-10 info"></div>
+                                </form>
+                            </div>
+                </aside>
+              </div>
+              <div class="col-lg-2">
+                <aside class="f_widget social_widget">
+                  <div class="f_title">
+                    <h3>Follow Me</h3>
+                  </div>
+                  <p>Let us be social</p>
+                  <ul class="list">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!--================End Footer Area =================-->
+    </body>
 </html>
