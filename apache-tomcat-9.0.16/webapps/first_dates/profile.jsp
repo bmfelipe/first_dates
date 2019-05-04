@@ -80,22 +80,13 @@
     -ms-flex: 1;
     flex: 1
   }
-  .personal_text h6 {
-    font-size: 14px;
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2.1px;
-    font-weight: normal;
-    margin-bottom: 12px;
-    color: #F0F8FF; 
-  }
   .personal_text h4 {
     font-size: 16px;
     font-weight: 500;
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     margin-bottom: 20px;
-    color: #222222; 
+    color:  #F0F8FF; 
   }
   .personal_text h3 {
     font-size: 48px;
