@@ -12,6 +12,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.DriverManager;
+import java.io.InputStream;
+import java.sql.PreparedStatement;
 
 public class DBManager implements AutoCloseable {
 
