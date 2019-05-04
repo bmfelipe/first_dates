@@ -28,7 +28,7 @@
   <!--================Home Banner Area =================-->
   <section class="home_banner_area">
     <div class="container box_1620">
-      <div class="banner_inner d-flex align-items-center">
+      <div class="banner_inner d-flex align-items-center" align="center">
         <div class="banner_content">
           <div class="media">
             <div class="d-flex">
