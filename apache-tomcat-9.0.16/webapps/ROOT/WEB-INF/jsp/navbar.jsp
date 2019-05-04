@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" session="false"%>
 
 <div>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -73,7 +74,7 @@
          <button class="dropdown-item" type="button">Perfil</button>
          <button class="dropdown-item" type="button">Configuración</button>
          <div class="dropdown-divider"></div>
-         <button class="dropdown-item" type="button">Salir</button>
+         <a class="dropdown-item" href="/ServletLogout">Salir</a>
         </div>
       </div>
 
@@ -92,6 +93,6 @@
 .navbar{
   padding-top: 0;
   padding-bottom: 0;
-  margin-bottom: 25px;
+
 }
 </style>

@@ -3,7 +3,7 @@ package beans;
 public class Preferences {
 	private int minAge;
 	private int maxAge;
-  private int sexPref;
+  private String sexPref;
 
   public int getMinAge() {
 		return minAge;
@@ -21,11 +21,11 @@ public class Preferences {
 		this.maxAge = maxAge;
 	}
 
-  public int getSexPref() {
+  public String getSexPref() {
 		return sexPref;
 	}
 
-	public void setSexPref(int sexPref) {
+	public void setSexPref(String sexPref) {
 		this.sexPref = sexPref;
 	}
 }

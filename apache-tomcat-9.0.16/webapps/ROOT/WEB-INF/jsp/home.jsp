@@ -1,4 +1,4 @@
-<%@ page language = "java" contentType = "text/html" pageEncoding="UTF-8" session="false"%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@ page import='java.util.List'%>
 <%@ page import='beans.User'%>
 <%@ page import='beans.DateMatch'%>
@@ -20,9 +20,13 @@
     body {
       background-color: #333;
       color: white;
+      height: 100vh;
+
     }
     .container-fluid {
+      padding-top: 25px;
       font-family: "Open Sans";
+
 
     }
     .dropdown-toggle::after {
@@ -33,12 +37,32 @@
      box-shadow: none;
    }
 
+   .row {
+     height:78vh;
+     max-height: 78vh;
+   }
+
+   .card {
+     height: 78vh;
+     background: #555;
+
+
+   }
+   .titles {
+     background: #777;
+   }
    #like-dislike-buttons {
      margin-top: 10px;
    }
    #date-container {
-     background: #666;
+     overflow-y:auto;
+     overflow-x:hidden;
    }
+   #no-rec {
+     margin: auto;
+     font-size: 15px;
+   }
+
 
   </style>
 
@@ -47,105 +71,130 @@
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-lg-4 ">
-          <h2>Recomendaciones</h2>
-          <form action>
-          <div id="carousel-elem" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <%
-              List<User> recommendations = (List<User>) request.getAttribute("recommendations");
-              int firstId = -1;
-              HttpSession session = request.getSession();
-              User user = (User) session.getAttribute("user");
-              if(recommendations == null){
-
-
-              %>
-              There are no recommendations currently available
-              <%}else{
-                int index = 0;
-
-                for(User recommendation: recommendations){
-                  if(index == 0){
-                     firstId = recommendation.getId();
-                  %>
-                    <div class="carousel-item active">
-                      <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="<%=recommendation.getId()%>">
-                    </div>
-                  <%
-                  }else{
-              %>
-                    <div class="carousel-item active">
-                      <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="<%=recommendation.getId()%>">
-                    </div>
-              <%
-
-                  }
-                  index++;
-                }
-              }
-              %>
+          <div class="card mb-4">
+            <div class="titles">
+              <h2>Recomendaciones</h2>
             </div>
-            <a class="carousel-control-prev" href="#carousel-elem" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel-elem" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          <%
-          if(firstId != -1){
+            <%
+            List<User> recommendations = (List<User>) request.getAttribute("recommendations");
+            int firstId = -1;
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            if(recommendations.isEmpty()){
+              %>
 
-          %>
-            <div id="like-dislike-buttons">
-
-              <p>
-                <button class="btn btn-secondary mr-1" id="like-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-heart"></i> </button>
-                <button class="btn btn-secondary ml-1" id="dislike-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-ban"></i></button>
-              </p>
-            </div>
-          <%
-        }
-          %>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <h2>Citas</h2>
-          <div id="date-container">
-          <table class="table table-striped table-dark">
-
-            <tbody>
+              <div id="no-rec">No hay recomendaciones disponibles</div>
               <%
-                List<DateMatch> dates = (List<DateMatch>) request.getAttribute("dates");
-                if(dates != null){
+            }else{
+              int index = 0;
 
-                  for(DateMatch date: dates){
-                    %>
-                    <tr>
-                      <td><%=date.getDateName(user.getId())%></td>
-                      <td>
-                        <p><a class="btn btn-secondary" href="profile?id=<%=date.getDateId(user.getId())%>" role="button">Perfil</a></p>
-                      </td>
-                      <td><%=date.getStatus()%></td>
-                      <td>
-                        <p><a class="btn btn-secondary" href="date?id=<%=date.getId()%>" role="button">Editar</a></p>
-                      </td>
-                    </tr>
-
+              for(User recommendation: recommendations){
+                if(index == 0){
+                   firstId = recommendation.getId();
+                %>
+                  <div id="carousel-elem" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="<%=recommendation.getId()%>">
+                      </div>
                     <%
-                  }
-                }
-              %>
+                    }else{
+                %>
+                      <div class="carousel-item active">
+                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="<%=recommendation.getId()%>">
+                      </div>
+                <%
 
-            </tbody>
-          </table>
-        </div>
+                    }
+                    index++;
+                  }
+
+                %>
+              </div>
+              <a class="carousel-control-prev" href="#carousel-elem" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carousel-elem" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <%}%>
+            <%
+            if(firstId != -1){
+
+            %>
+              <div id="like-dislike-buttons">
+
+                <p>
+                  <button class="btn btn-secondary mr-1" id="like-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-heart"></i> </button>
+                  <button class="btn btn-secondary ml-1" id="dislike-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-ban"></i></button>
+                </p>
+              </div>
+            <%
+          }
+            %>
+          </div>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <div class="card mb-4">
+            <div class="titles">
+              <h2>Citas</h2>
+            </div>
+            <%
+              List<DateMatch> dates = (List<DateMatch>) request.getAttribute("dates");
+              int count = 0;
+              if(!dates.isEmpty()){
+                %>
+            <div id="date-container">
+
+                  <table class="table table-striped table-hover table-dark table-fixed">
+
+                    <tbody>
+
+                      <%
+                      for(DateMatch date: dates){
+                        %>
+                        <tr>
+                          <td><%=date.getDateName(user.getId())%></td>
+                          <td>
+                            <p><a class="btn btn-secondary" href="profile?id=<%=date.getDateId(user.getId())%>" role="button">Perfil</a></p>
+                          </td>
+                          <td><%=date.getStatus()%></td>
+                          <td>
+                            <p><a class="btn btn-secondary" href="date?id=<%=date.getId()%>" role="button">Editar</a></p>
+                          </td>
+                        </tr>
+
+                        <%
+                        count++;
+                      }
+                    %>
+
+
+
+                </tbody>
+              </table>
+
+            </div>
+            <%}else{
+              %>
+              <div id="no-rec">No tienes citas aun</div>
+              <%
+            }
+          %>
+          </div>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="titles">
+              <h2>Info siguiente cita</h2>
+            </div>
+
+            <div id="no-rec">Cuando tengas una cita fijada, la información saldrá  aqui</div>
+            <%-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> --%>
+          </div>
         </div><!-- /.col-lg-4 -->
       </div>
     </div>

@@ -24,7 +24,7 @@ CREATE TABLE `19_comweb_21d`.`Users` (
   `name` varchar(100) NOT NULL,
   `gender` ENUM ('Mujer', 'Hombre') NOT NULL,
   `description` varchar(1000) DEFAULT NULL,
-  `birthdate` datetime NOT NULL,
+  `birthdate` date NOT NULL,
   `photo` blob,
   `role` ENUM ('Admin', 'Usuario') NOT NULL,
   PRIMARY KEY (`id`,`username`)
@@ -60,10 +60,10 @@ CREATE TABLE `19_comweb_21d`.`Dates` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `dateOneId` INT NOT NULL,
   `dateTwoId` INT,
-  `dateRequest` DATETIME,
-  `dateResponse` DATETIME,
-  `hourRequest` VARCHAR(5),
-  `hourResponse` VARCHAR(5),
+  `dateRequest` DATE,
+  `dateResponse` DATE,
+  `hourRequest` TIME,
+  `hourResponse` TIME,
   `status` ENUM('Pendiente', 'Rechazado', 'Aceptado', 'Fecha pendiente', 'Hora pendiente', 'Fecha fijada') NOT NULL,
   PRIMARY KEY (`id`)
 );
