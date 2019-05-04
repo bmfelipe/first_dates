@@ -67,7 +67,7 @@ public class ServletLogin extends HttpServlet {
                     user.setLoggedIn(true);
                     session.setAttribute("user", user);
                     session.setMaxInactiveInterval(Integer.MAX_VALUE);
-                    response.sendRedirect("/first_dates/fixing/home_old.jsp");
+                    response.sendRedirect("/first_dates/home");
                 }
                 else
                 {
