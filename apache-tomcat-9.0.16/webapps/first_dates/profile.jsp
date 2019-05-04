@@ -138,6 +138,38 @@
     text-align: left;
     background-color: #fff
   }
+  .profile_inner .personal_text {
+    padding-top: 30px;
+  }
+  .profile_inner .personal_text {
+    padding-left: 0px;
+  }
+  .profile_inner {
+    border-bottom: 1px solid #eeeeee;
+  }
+  .profile_inner .personal_text {
+    padding-left: 95px;
+  }
+  .personal_text .basic_info li {
+    margin-bottom: 15px;
+  }
+  .personal_text .basic_info li a {
+    position: relative;
+    padding-left: 40px;
+    font-size: 16px;
+    color: #777777;
+  }
+  .personal_text .basic_info li a i {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #766dff;
+  }
+  .personal_text .basic_info li:last-child {
+    margin-bottom: 0px;
+  }
 
 </style>
 </html>
