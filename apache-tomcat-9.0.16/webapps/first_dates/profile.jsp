@@ -22,8 +22,8 @@
   <!--================Header Menu Area =================-->
 
   <!--================Home Banner Area =================-->
-  <section class="home_banner_area">
-    <div class="container box_1620">
+  <section class="home_banner_area"align="center">
+    <div class="container box_1620" align="center">
       <div class="banner_inner d-flex align-items-center" align="center">
         <div class="banner_content">
           <div class="media">
