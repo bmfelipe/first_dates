@@ -97,7 +97,7 @@
   .personal_text p {
     font-family: "Roboto", sans-serif;
     max-width: 540px;
-    color: #777777;
+    color:  #F0F8FF;
     margin-bottom: 40px; 
   }
   .lnr {
