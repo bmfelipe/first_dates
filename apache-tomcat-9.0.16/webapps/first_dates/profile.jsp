@@ -28,7 +28,7 @@
   <!--================Home Banner Area =================-->
   <section class="home_banner_area">
     <div class="container box_1620">
-      <div class="banner_inner d-flex align-items-center">
+      <div class="banner_inner d-flex align-items-center" align="center">
         <div class="banner_content">
           <div class="media">
             <div class="d-flex">
@@ -54,54 +54,6 @@
   </section>
   <!--================End Home Banner Area =================-->    
   <!--================Footer Area =================-->
-  <footer class="footer_area p_120">
-    <div class="container">
-      <div class="row footer_inner">
-        <div class="col-lg-5 col-sm-6">
-          <aside class="f_widget ab_widget">
-            <div class="f_title">
-              <h3>About Me</h3>
-            </div>
-            <p>Do you want to be even more successful? Learn to love learning and growth. The more effort you put into improving your skills,</p>
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-            </aside>
-          </div>
-          <div class="col-lg-5 col-sm-6">
-            <aside class="f_widget news_widget">
-              <div class="f_title">
-                <h3>Newsletter</h3>
-              </div>
-              <p>Stay updated with our latest trends</p>
-              <div id="mc_embed_signup">
-                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
-                  <div class="input-group d-flex flex-row">
-                    <input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                    <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>    
-                  </div>        
-                  <div class="mt-10 info"></div>
-                </form>
-              </div>
-            </aside>
-          </div>
-          <div class="col-lg-2">
-            <aside class="f_widget social_widget">
-              <div class="f_title">
-                <h3>Follow Me</h3>
-              </div>
-              <p>Let us be social</p>
-              <ul class="list">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-              </ul>
-            </aside>
-          </div>
-        </div>
-      </div>
-    </footer>
     <!--================End Footer Area =================-->
   </body>
   <style>
@@ -112,5 +64,50 @@
   background-image: -webkit-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
   background-image: -ms-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
   margin-bottom: 200px; }
+  .home_banner_area .banner_inner {
+    min-height: 650px;
+  }
+  .banner_content .media{
+    display: block;
+  }
+  .home_banner_area .banner_inner .banner_content .media .d-flex img {
+     width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.5);
+  }
+  .media-body {
+    -ms-flex: 1;
+    flex: 1
+}
+.personal_text h6 {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2.1px;
+  font-weight: normal;
+  margin-bottom: 12px;
+  color: #222222; }
+.personal_text h4 {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #222222; }
+.personal_text h3 {
+  font-size: 48px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: #222222; }
+.personal_text p {
+  font-family: "Roboto", sans-serif;
+  max-width: 540px;
+  color: #777777;
+  margin-bottom: 40px; }
   </style>
   </html>
