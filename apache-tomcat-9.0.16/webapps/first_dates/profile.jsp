@@ -75,8 +75,8 @@
     height: 100px;
     max-width: 100px;
     max-height: 100px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
     border-radius: 50%;
     border: 5px solid rgba(255,255,255,0.5);
   }
