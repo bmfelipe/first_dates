@@ -4,25 +4,14 @@
 <head>
   <title>User Profile Page</title>
   <!-- Required meta tags -->
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!--<link rel="icon" href="img/favicon.png" type="image/png">-->
-
-  <!-- Bootstrap CSS 
-  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/bootstrap.css" type="text/css">
-  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/iconstyle.css" type="text/css">
-  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/font-awesome.min.css" type="text/css">-->
-
-  <!-- main css
-  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/style.css" type="text/css">
-  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/responsive.css" type="text/css"> -->
 </head>
 <body>
 
   <!--================Header Menu Area =================-->
 
-  <%@ include file ='/WEB-INF/jsp/navbar.jsp'%>
+  <%@include file ='/WEB-INF/jsp/navbar.jsp'%>
   <!--================Header Menu Area =================-->
 
   <!--================Home Banner Area =================-->
@@ -71,10 +60,10 @@
     display: block;
   }
   .home_banner_area .banner_inner .banner_content .media .d-flex img {
-     width: 100px;
-    height: 100px;
-    max-width: 100px;
-    max-height: 100px;
+     width: 200px;
+    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 50%;
