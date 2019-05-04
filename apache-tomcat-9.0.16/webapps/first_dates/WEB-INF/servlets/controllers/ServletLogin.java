@@ -1,5 +1,6 @@
 package controllers;
 
+import beans.User;
 import jdbc.DBManager;
 import security.BCrypt;
 import java.sql.ResultSet;
@@ -32,13 +33,13 @@ public class ServletLogin extends HttpServlet {
     {
         try
         {
-            String dbPassword = null;
+            User user = new User();
             String entryUsername = request.getParameter("username");
             String entryPassword = request.getParameter("password");
 
             try (DBManager db = new DBManager())
             {
-                dbPassword = db.searchUserPassword(entryUsername);
+                user = db.searchUser(entryUsername);
             }
             catch (SQLException ex)
             {
@@ -46,8 +47,8 @@ public class ServletLogin extends HttpServlet {
                 ex.printStackTrace();
             }
 
-            if(dbPassword != null){
-                if (BCrypt.checkpw(entryPassword, dbPassword))
+            if(user.getPassword() != null){
+                if (BCrypt.checkpw(entryPassword, user.getPassword()))
                 {
                     if (request.getParameter("remember") != null) {
                       String remember = request.getParameter("remember");
@@ -63,7 +64,8 @@ public class ServletLogin extends HttpServlet {
                       response.addCookie(cRemember);
                     }
                     HttpSession session = request.getSession();
-                    session.setAttribute("username", entryUsername);
+                    user.setLoggedIn(true);
+                    session.setAttribute("user", user);
                     session.setMaxInactiveInterval(Integer.MAX_VALUE);
                     response.sendRedirect("/first_dates/fixing/home_old.jsp");
                 }

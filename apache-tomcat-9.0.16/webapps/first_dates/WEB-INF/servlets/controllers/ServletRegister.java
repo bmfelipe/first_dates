@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.text.SimpleDateFormat;
 
 public class ServletRegister extends HttpServlet {
     /**
@@ -45,7 +46,7 @@ public class ServletRegister extends HttpServlet {
                     user.setName(request.getParameter("name"));
                     user.setPassword(generatedSecuredPasswordHash);
                     user.setGender(request.getParameter("gender"));
-                    user.setBirthdate(request.getParameter("birthdate"));
+                    user.setBirthdate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("birthdate")));
 
                     Boolean registered = db.registerUser(user);
                     System.out.println(registered);

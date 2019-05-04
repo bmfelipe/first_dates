@@ -60,11 +60,11 @@
       </div>
 
       <div class="form-group">
-        <label for="text">Sexo:<input placeholder="M ó H" type="text" class="form-control" name="gender" required></label>
+        <label for="text">Sexo:<input placeholder="Mujer u Hombre" type="text" class="form-control" name="gender" required></label>
       </div>
 
       <div class="form-group">
-        <label for="text">Fecha de nacimiento:<input placeholder="AAAA/MM/DD" type="text" class="form-control" name="birthdate" required></label>
+        <label for="text">Fecha de nacimiento:<input placeholder="DD/MM/AAAA" type="text" class="form-control" name="birthdate" required></label>
       </div>
 
       <div class="errorRegister">${errorRegister}</div>

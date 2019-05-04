@@ -2,7 +2,8 @@ package jdbc;
 
 import beans.User;
 import beans.DateMatch;
-import beans.preferences;
+import beans.Preferences;
+import java.util.Date;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,8 +47,8 @@ public class DBManager implements AutoCloseable {
         connection = null;
     }
 
-    public String searchUserPassword(String username) throws SQLException {
-        String dbPassword = null;
+    public User searchUser(String username) throws SQLException {
+        User user = new User();
         String query = "SELECT * FROM 19_comweb_21d.Users INNER JOIN 19_comweb_21d.UserAuth ON 19_comweb_21d.Users.id=19_comweb_21d.UserAuth.id WHERE username = ?";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1, username);
@@ -55,13 +56,20 @@ public class DBManager implements AutoCloseable {
 
         while (rs.next())
         {
-            dbPassword = rs.getString("password");
+            user.setId(rs.getInt("id"));
+            user.setUsername(rs.getString("username"));
+            user.setName(rs.getString("name"));
+            user.setGender(rs.getString("gender"));
+            user.setDescription(rs.getString("description"));
+            user.setBirthdate(rs.getDate("birthdate"));
+            user.setRole(rs.getString("role"));
+            user.setPassword(rs.getString("password"));
             break;
         }
 
         close();
 
-        return dbPassword;
+        return user;
     }
 
     public Boolean registerUser(User user) throws SQLException {
@@ -71,7 +79,7 @@ public class DBManager implements AutoCloseable {
         stmt.setString(1, user.getUsername());
         stmt.setString(2, user.getName());
         stmt.setString(3, user.getGender());
-        stmt.setString(4, user.getBirthdate());
+        stmt.setDate(4, new java.sql.Date(user.getBirthdate().getTime()));
         stmt.setString(5, "Usuario");
         int rowsAffected = stmt.executeUpdate();
 

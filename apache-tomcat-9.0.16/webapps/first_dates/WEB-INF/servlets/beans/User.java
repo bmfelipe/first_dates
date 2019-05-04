@@ -1,17 +1,19 @@
 package beans;
 
+import java.util.Date;
+
 public class User {
 	private int id;
 	private String username;
 	private String name;
 	private String gender;
 	private String description;
-	private String birthdate;
+	private Date birthdate;
 	private String photo;
   private String role;
   private Preferences preferences;
   private String password;
-	private Boolean loggedIn;
+	private Boolean isLoggedIn;
 
 	public int getId() {
 		return id;
@@ -53,11 +55,11 @@ public class User {
 		this.description = description;
 	}
 
-  public String getBirthdate() {
+  public Date getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(String birthdate) {
+	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
 
@@ -94,10 +96,10 @@ public class User {
 	}
 
 	public Boolean getLoggedIn() {
-		return loggedIn;
+		return isLoggedIn;
 	}
 
-	public void setLoggedIn(Boolean loggedIn) {
-		this.loggedIn = loggedIn;
+	public void setLoggedIn(Boolean isLoggedIn) {
+		this.isLoggedIn = isLoggedIn;
 	}
 }
