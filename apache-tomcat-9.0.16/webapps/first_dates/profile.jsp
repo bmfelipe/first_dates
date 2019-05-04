@@ -10,18 +10,18 @@
   <!--<link rel="icon" href="img/favicon.png" type="image/png">-->
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/bootstrap.css">
-  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/iconstyle.css">
-  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/font-awesome.min.css">
+  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/iconstyle.css" type="text/css">
+  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/font-awesome.min.css" type="text/css">
 
   <!-- main css -->
-  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/style.css">
-  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/responsive.css">
+  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/style.css" type="text/css">
+  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/responsive.css" type="text/css">
 </head>
 <body>
 
   <!--================Header Menu Area =================-->
-  
+
   <%@ include file ='/WEB-INF/jsp/navbar.jsp'%>
   <!--================Header Menu Area =================-->
 
