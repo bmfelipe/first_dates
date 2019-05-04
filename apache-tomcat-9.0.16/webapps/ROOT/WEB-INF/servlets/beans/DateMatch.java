@@ -1,6 +1,8 @@
 package beans;
 
 import java.util.Date;
+import jdbc.DBManager;
+import java.sql.SQLException;
 
 public class DateMatch{
 
@@ -86,6 +88,29 @@ public class DateMatch{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+  public String getDateName(int userId) {
+    try(DBManager db = new DBManager()){
+      String userName;
+      if(this.dateOneId == userId){
+        userName = db.getUserName(this.dateTwoId);
+      }else{
+        userName = db.getUserName(this.dateOneId);
+      }
+      return userName;
+    }catch (SQLException e){
+        e.printStackTrace();
+        return null;
+    }
+  }
+
+  public int getDateId(int id){
+    if(id == this.dateOneId){
+      return this.dateTwoId;
+    }else{
+      return this.dateOneId;
+    }
+  }
   //Correct
 	// /**
 	// * Returns value of e

@@ -103,7 +103,9 @@ public class DBManager implements AutoCloseable {
       try(PreparedStatement st = connection.prepareStatement(query)){
         st.setInt(1,userId);
   	    ResultSet rs = st.executeQuery();
-        rs.next();
+        if(rs.next()==false){
+          return null;
+        }
 
         preferences.setMinAge(rs.getInt("minAge"));
         preferences.setMaxAge(rs.getInt("maxAge"));
@@ -170,5 +172,18 @@ public class DBManager implements AutoCloseable {
           return in;
   	    }
         //return null;
+    }
+
+    public String getUserName(int id)throws SQLException{
+      String query = "SELECT name FROM Users WHERE id = ?";
+
+      try(PreparedStatement st = connection.prepareStatement(query)){
+        st.setInt(1,id);
+        ResultSet rs = st.executeQuery();
+
+        rs.next();
+        String userName = rs.getString("name");
+        return userName;
+      }
     }
 }

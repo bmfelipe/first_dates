@@ -23,9 +23,10 @@ public class Home extends HttpServlet {
     {
 
         HttpSession session = request.getSession();
+
         User user = (User) session.getAttribute("user");
         if(user == null){
-          response.sendRedirect("/first_dates/ServletLogin");
+          response.sendRedirect("/");
         }else if(user.isLoggedIn()){
           try(DBManager db = new DBManager()){
               List<User> recommendations = db.getRecommendations(user.getId());
@@ -41,7 +42,7 @@ public class Home extends HttpServlet {
           }
 
         }else{
-          response.sendRedirect("/first_dates/ServletLogin");
+          response.sendRedirect("/");
         }
 
 

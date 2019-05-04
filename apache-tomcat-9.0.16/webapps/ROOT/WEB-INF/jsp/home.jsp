@@ -1,6 +1,7 @@
 <%@ page language = "java" contentType = "text/html" pageEncoding="UTF-8" session="false"%>
-<%-- <%@ page import='bookshop.Book'%>
-<%@ page import='java.util.List'%> --%>
+<%@ page import='java.util.List'%>
+<%@ page import='beans.User'%>
+<%@ page import='beans.DateMatch'%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,34 +52,37 @@
           <div id="carousel-elem" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <%
-              List<User> recommendations = (List<User>) session.getAttribute("recommendations");
+              List<User> recommendations = (List<User>) request.getAttribute("recommendations");
+              int firstId = -1;
+              HttpSession session = request.getSession();
+              User user = (User) session.getAttribute("user");
               if(recommendations == null){
 
 
               %>
-              <div class="carousel-item active">
-                <img class=" w-50" src="" alt="No recommendations">
-              </div>
+              There are no recommendations currently available
               <%}else{
                 int index = 0;
-                for(User user: recommendations){
+
+                for(User recommendation: recommendations){
                   if(index == 0){
-                    String firstId = user.getId();
+                     firstId = recommendation.getId();
                   %>
                     <div class="carousel-item active">
-                      <img class=" w-50" src="<%=user.getPhoto()%>" id="<%=user.getId()%>">
+                      <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="<%=recommendation.getId()%>">
                     </div>
                   <%
                   }else{
               %>
                     <div class="carousel-item active">
-                      <img class=" w-50" src="<%=user.getPhoto()%>" id="<%=user.getId()%>">
+                      <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="<%=recommendation.getId()%>">
                     </div>
               <%
 
                   }
                   index++;
                 }
+              }
               %>
             </div>
             <a class="carousel-control-prev" href="#carousel-elem" role="button" data-slide="prev">
@@ -90,13 +94,20 @@
               <span class="sr-only">Next</span>
             </a>
           </div>
-          <div id="like-dislike-buttons">
+          <%
+          if(firstId != -1){
 
-            <p>
-              <button class="btn btn-secondary mr-1" id="like-btn" recommendation-id="<%=firstId%>" role="button"><i class="fa fa-heart"></i> </button>
-              <button class="btn btn-secondary ml-1" id="dislike-btn" recommendation-id="<%=firstId%>" role="button"><i class="fa fa-ban"></i></button>
-            </p>
-          </div>
+          %>
+            <div id="like-dislike-buttons">
+
+              <p>
+                <button class="btn btn-secondary mr-1" id="like-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-heart"></i> </button>
+                <button class="btn btn-secondary ml-1" id="dislike-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-ban"></i></button>
+              </p>
+            </div>
+          <%
+        }
+          %>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <h2>Citas</h2>
@@ -105,14 +116,15 @@
 
             <tbody>
               <%
-                List<DateMatch> dates = (List<DateMatch>) session.getAttribute("dates");
+                List<DateMatch> dates = (List<DateMatch>) request.getAttribute("dates");
                 if(dates != null){
+
                   for(DateMatch date: dates){
                     %>
                     <tr>
-                      <td><%=date.getDateName()%></td>
+                      <td><%=date.getDateName(user.getId())%></td>
                       <td>
-                        <p><a class="btn btn-secondary" href="profile?id=<%=date.getDateId()%>" role="button">Perfil</a></p>
+                        <p><a class="btn btn-secondary" href="profile?id=<%=date.getDateId(user.getId())%>" role="button">Perfil</a></p>
                       </td>
                       <td><%=date.getStatus()%></td>
                       <td>
@@ -122,6 +134,7 @@
 
                     <%
                   }
+                }
               %>
 
             </tbody>
@@ -143,8 +156,9 @@
 $('#like-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
+  <% %>
     $.ajax({
-        'url' : 'http://localhost:9189/first_dates/add-like',
+        'url' : 'http://localhost:9189/add-like',
         'method' : 'POST',
         'data' : {
             'userId' : '<%=user.getId()%>',
