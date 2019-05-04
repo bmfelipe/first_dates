@@ -11,7 +11,7 @@
 
   <!--================Header Menu Area =================-->
 
-  <%@include file ='/WEB-INF/jsp/navbar.jsp'%>
+  <%@include file ='/fixing/navbar.jsp'%>
   <!--================Header Menu Area =================-->
 
   <!--================Home Banner Area =================-->
@@ -25,7 +25,6 @@
             </div>
             <div class="media-body">
               <div class="personal_text">
-                <h6>Saludos me llamo</h6>
                 <h3>Susana Oria</h3>
                 <p>Contenta, pero no mucho</p>
                 <ul class="list basic_info">
