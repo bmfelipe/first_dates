@@ -8,19 +8,19 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
+          <a class="nav-link" href="#">Perfil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Dates</a>
+          <a class="nav-link" href="#">Citas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">People</a>
+          <a class="nav-link" href="#">Personas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Restaurants</a>
+          <a class="nav-link" href="#">Restaurantes</a>
         </li>
       </ul>
       <%-- <form class="form-inline mt-2 mt-md-0">
@@ -35,7 +35,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-left float-right"
            role="menu" aria-labelledby="dropdownMenu1">
-               <li role="presentation" class="dropdown-item"> <a href="#" class="dropdown-menu-header">Notifications</a>
+               <li role="presentation" class="dropdown-item"> <a href="#" class="dropdown-menu-header">Notificaciones</a>
                </li>
                <ul class="timeline timeline-icons timeline-sm" style="margin:10px;width:210px">
                    <li>
@@ -70,10 +70,10 @@
           <img class="bd-placeholder-img rounded-circle bg-white" dropdown-toggle width="50" height="50" src="anonymous.png">
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-         <button class="dropdown-item" type="button">Profile</button>
-         <button class="dropdown-item" type="button">Settings</button>
+         <button class="dropdown-item" type="button">Perfil</button>
+         <button class="dropdown-item" type="button">Configuración</button>
          <div class="dropdown-divider"></div>
-         <button class="dropdown-item" type="button">Exit</button>
+         <button class="dropdown-item" type="button">Salir</button>
         </div>
       </div>
 

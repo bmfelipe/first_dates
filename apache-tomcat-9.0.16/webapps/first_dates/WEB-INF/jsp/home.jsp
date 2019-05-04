@@ -1,4 +1,6 @@
 <%@ page language = "java" contentType = "text/html" pageEncoding="UTF-8" session="false"%>
+<%-- <%@ page import='bookshop.Book'%>
+<%@ page import='java.util.List'%> --%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +46,7 @@
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-lg-4 ">
-          <h2>Recommendations</h2>
+          <h2>Recomendaciones</h2>
           <form action>
           <div id="carousel-elem" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -97,7 +99,7 @@
           </div>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <h2>Dates</h2>
+          <h2>Citas</h2>
           <div id="date-container">
           <table class="table table-striped table-dark">
 
@@ -110,11 +112,11 @@
                     <tr>
                       <td><%=date.getDateName()%></td>
                       <td>
-                        <p><a class="btn btn-secondary" href="profile?id=<%=date.getDateId()%>" role="button">Profile</a></p>
+                        <p><a class="btn btn-secondary" href="profile?id=<%=date.getDateId()%>" role="button">Perfil</a></p>
                       </td>
                       <td><%=date.getStatus()%></td>
                       <td>
-                        <p><a class="btn btn-secondary" href="date?id=<%=date.getId()%>" role="button">Edit</a></p>
+                        <p><a class="btn btn-secondary" href="date?id=<%=date.getId()%>" role="button">Editar</a></p>
                       </td>
                     </tr>
 
