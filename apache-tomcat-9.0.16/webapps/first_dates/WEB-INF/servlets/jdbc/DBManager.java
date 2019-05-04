@@ -129,7 +129,7 @@ public class DBManager implements AutoCloseable {
         }
         return recommendations;
       }
-      return null;
+      //return null;
     }
 
     public List<DateMatch> getDateList(int userId)throws SQLException {
@@ -155,10 +155,10 @@ public class DBManager implements AutoCloseable {
 	      }
         return dates;
 	    }
-      return null;
+      //return null;
     }
 
-    public InputStream getImage(int id){
+    public InputStream getImage(int id)throws SQLException{
         String query = "SELECT photo FROM Users WHERE id = ?";
 
         try(PreparedStatement st = connection.prepareStatement(query)){
@@ -169,6 +169,6 @@ public class DBManager implements AutoCloseable {
           InputStream in = rs.getBinaryStream("photo");
           return in;
   	    }
-        return null;
+        //return null;
     }
 }
