@@ -4,7 +4,7 @@ import beans.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.naming.Context;
@@ -45,9 +45,10 @@ public class DBManager implements AutoCloseable {
 
     public String searchUserPassword(String username) throws SQLException {
         String dbPassword = null;
-        String query = "SELECT * FROM 19_comweb_21d.Users INNER JOIN 19_comweb_21d.UserAuth ON 19_comweb_21d.Users.id=19_comweb_21d.UserAuth.id WHERE username = '" + username + "'";
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery(query);
+        String query = "SELECT * FROM 19_comweb_21d.Users INNER JOIN 19_comweb_21d.UserAuth ON 19_comweb_21d.Users.id=19_comweb_21d.UserAuth.id WHERE username = ?";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setString(1, username);
+        ResultSet rs = stmt.executeQuery();
 
         while (rs.next())
         {
@@ -62,13 +63,19 @@ public class DBManager implements AutoCloseable {
 
     public Boolean registerUser(User user) throws SQLException {
         Boolean registered = false;
-        String query = "INSERT INTO 19_comweb_21d.Users (username, name, gender, birthdate, role) VALUES ('"+user.getUsername()+"', '"+user.getName()+"', '"+user.getGender()+"', '"+user.getBirthdate()+"', 'Usuario')";
-        Statement stmt = connection.createStatement();
-        int rowsAffected = stmt.executeUpdate(query);
+        String query = "INSERT INTO 19_comweb_21d.Users (username, name, gender, birthdate, role) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setString(1, user.getUsername());
+        stmt.setString(2, user.getName());
+        stmt.setString(3, user.getGender());
+        stmt.setString(4, user.getBirthdate());
+        stmt.setString(5, "Usuario");
+        int rowsAffected = stmt.executeUpdate();
 
-        String query2 = "INSERT INTO 19_comweb_21d.UserAuth (id, password) VALUES (LAST_INSERT_ID(), '"+user.getPassword()+"');";
-        Statement stmt2 = connection.createStatement();
-        rowsAffected = stmt2.executeUpdate(query2);
+        String query2 = "INSERT INTO 19_comweb_21d.UserAuth (id, password) VALUES (LAST_INSERT_ID(), ?);";
+        PreparedStatement stmt2 = connection.prepareStatement(query2);
+        stmt2.setString(1, user.getPassword());
+        rowsAffected = stmt2.executeUpdate();
 
         if(rowsAffected != 0){
           registered = true;
