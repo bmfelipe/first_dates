@@ -3,10 +3,7 @@ package jdbc;
 import beans.User;
 import beans.DateMatch;
 import beans.Preferences;
-<<<<<<< HEAD
 import java.util.Date;
-=======
->>>>>>> b1ecb2eac5ec7b47a93b63c84deb979cabf57cbe
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
