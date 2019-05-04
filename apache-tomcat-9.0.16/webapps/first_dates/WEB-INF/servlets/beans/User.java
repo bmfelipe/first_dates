@@ -1,15 +1,25 @@
 package beans;
 
 public class User {
+	private int id;
 	private String username;
 	private String name;
-	private int gender;
+	private String gender;
 	private String description;
 	private String birthdate;
 	private String photo;
-  private int role;
+  private String role;
   private Preferences preferences;
   private String password;
+	private Boolean loggedIn;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getUsername() {
 		return username;
@@ -27,11 +37,11 @@ public class User {
 		this.name = name;
 	}
 
-  public int getGender() {
+  public String getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -59,11 +69,11 @@ public class User {
 		this.photo = photo;
 	}
 
-  public int getRole() {
+  public String getRole() {
 		return role;
 	}
 
-	public void setRole(int role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
@@ -81,5 +91,13 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Boolean getLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(Boolean loggedIn) {
+		this.loggedIn = loggedIn;
 	}
 }

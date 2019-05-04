@@ -44,12 +44,7 @@ public class ServletRegister extends HttpServlet {
                     user.setUsername(request.getParameter("username"));
                     user.setName(request.getParameter("name"));
                     user.setPassword(generatedSecuredPasswordHash);
-                    if (request.getParameter("gender").equals("M")) {
-                      user.setGender(0);
-                    }
-                    else if(request.getParameter("gender").equals("H")) {
-                      user.setGender(1);
-                    }
+                    user.setGender(request.getParameter("gender"));
                     user.setBirthdate(request.getParameter("birthdate"));
 
                     Boolean registered = db.registerUser(user);
