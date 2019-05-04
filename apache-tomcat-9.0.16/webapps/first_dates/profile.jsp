@@ -6,12 +6,13 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%@include file ='/fixing/navbar.jsp'%>
 </head>
 <body>
 
   <!--================Header Menu Area =================-->
 
-  <%@include file ='/fixing/navbar.jsp'%>
+
   <!--================Header Menu Area =================-->
 
   <!--================Home Banner Area =================-->
