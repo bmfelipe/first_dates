@@ -789,3 +789,11 @@ Caused by: java.net.BindException: Address already in use
 03-May-2019 10:13:28.605 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9189"]
 03-May-2019 10:13:28.649 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
 03-May-2019 10:13:28.701 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [1,505] milliseconds
+03-May-2019 17:03:43.502 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+03-May-2019 17:03:43.503 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-9189"]
+03-May-2019 17:03:43.507 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+03-May-2019 17:03:43.513 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+03-May-2019 17:03:43.558 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-9189"]
+03-May-2019 17:03:43.563 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+03-May-2019 17:03:43.567 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-9189"]
+03-May-2019 17:03:43.568 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
