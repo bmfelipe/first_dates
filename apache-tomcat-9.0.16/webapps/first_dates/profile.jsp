@@ -92,7 +92,7 @@
     font-size: 48px;
     text-transform: uppercase;
     margin-bottom: 15px;
-    color: #222222; 
+    color:  #F0F8FF; 
   }
   .personal_text p {
     font-family: "Roboto", sans-serif;
