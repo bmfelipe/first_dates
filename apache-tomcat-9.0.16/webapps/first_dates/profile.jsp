@@ -80,24 +80,33 @@
     -ms-flex: 1;
     flex: 1
   }
+  .personal_text h6 {
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.1px;
+    font-weight: normal;
+    margin-bottom: 12px;
+    color: #F0F8FF; 
+  }
   .personal_text h4 {
     font-size: 16px;
     font-weight: 500;
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     margin-bottom: 20px;
-    color:  #F0F8FF; 
+    color: #222222; 
   }
   .personal_text h3 {
     font-size: 48px;
     text-transform: uppercase;
     margin-bottom: 15px;
-    color:  #F0F8FF; 
+    color: #222222; 
   }
   .personal_text p {
     font-family: "Roboto", sans-serif;
     max-width: 540px;
-    color:  #F0F8FF;
+    color: #777777;
     margin-bottom: 40px; 
   }
   .lnr {
