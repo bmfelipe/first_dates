@@ -22,8 +22,8 @@
   <!--================Header Menu Area =================-->
 
   <!--================Home Banner Area =================-->
-  <section class="home_banner_area"align="center">
-    <div class="container box_1620" align="center">
+  <section class="home_banner_area">
+    <div class="container box_1620" >
       <div class="banner_inner d-flex align-items-center" align="center">
         <div class="banner_content">
           <div class="media">
@@ -74,6 +74,7 @@
      -moz-border-radius: 100%;
      border-radius: 50%;
      border: 5px solid rgba(255,255,255,0.5);
+     position: relative;
    }
    .media-body {
     -ms-flex: 1;
