@@ -45,7 +45,7 @@ public class DBManager implements AutoCloseable {
 
     public String searchUserPassword(String username) throws SQLException {
         String dbPassword = null;
-        String query = "SELECT * FROM first_dates.Users INNER JOIN first_dates.UserAuth ON first_dates.Users.id=first_dates.UserAuth.id WHERE username = '" + username + "'";
+        String query = "SELECT * FROM 19_comweb_21d.Users INNER JOIN 19_comweb_21d.UserAuth ON 19_comweb_21d.Users.id=19_comweb_21d.UserAuth.id WHERE username = '" + username + "'";
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
 
@@ -62,11 +62,11 @@ public class DBManager implements AutoCloseable {
 
     public Boolean registerUser(User user) throws SQLException {
         Boolean registered = false;
-        String query = "INSERT INTO first_dates.Users (username, name, gender, birthdate, role) VALUES ('"+user.getUsername()+"', '"+user.getName()+"', "+user.getGender()+", '"+user.getBirthdate()+"', 1)";
+        String query = "INSERT INTO 19_comweb_21d.Users (username, name, gender, birthdate, role) VALUES ('"+user.getUsername()+"', '"+user.getName()+"', "+user.getGender()+", '"+user.getBirthdate()+"', 1)";
         Statement stmt = connection.createStatement();
         int rowsAffected = stmt.executeUpdate(query);
 
-        String query2 = "INSERT INTO first_dates.UserAuth (id, password) VALUES (LAST_INSERT_ID(), '"+user.getPassword()+"');";
+        String query2 = "INSERT INTO 19_comweb_21d.UserAuth (id, password) VALUES (LAST_INSERT_ID(), '"+user.getPassword()+"');";
         Statement stmt2 = connection.createStatement();
         rowsAffected = stmt2.executeUpdate(query2);
 
