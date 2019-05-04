@@ -12,6 +12,102 @@ CREATE TABLE Existencias (libro INT NOT NULL, cantidad INT NOT NULL, PRIMARY KEY
 
 -------------------------------------------------------------
 
+--------##Base de datos del monitor##--------(Matt)
+
+######## SCHEMAS ########
+
+Usuarios;
+
+CREATE TABLE `19_comweb_21d`.`Users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `gender` ENUM ('Mujer', 'Hombre') NOT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `birthdate` datetime NOT NULL,
+  `photo` blob,
+  `role` ENUM ('Admin', 'Usuario') NOT NULL,
+  PRIMARY KEY (`id`,`username`)
+);
+
+CREATE TABLE `19_comweb_21d`.`UserAuth` (
+  `id` INT NOT NULL,
+  `password` VARCHAR(512) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `idAuth`
+    FOREIGN KEY (`id`)
+    REFERENCES `19_comweb_21d`.`Users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+CREATE TABLE `19_comweb_21d`.`Preferences` (
+  `id` INT NOT NULL,
+  `minAge` INT NOT NULL,
+  `maxAge` INT NOT NULL,
+  `sexPref` ENUM('Hombre', 'Mujer', 'Ambos') NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `idPref`
+    FOREIGN KEY (`id`)
+    REFERENCES `19_comweb_21d`.`Users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+Citas;
+
+CREATE TABLE `19_comweb_21d`.`Dates` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `dateOneId` INT NOT NULL,
+  `dateTwoId` INT,
+  `dateRequest` DATETIME,
+  `dateResponse` DATETIME,
+  `hourRequest` VARCHAR(5),
+  `hourResponse` VARCHAR(5),
+  `status` ENUM('Pendiente', 'Rechazado', 'Aceptado', 'Fecha pendiente', 'Hora pendiente', 'Fecha fijada') NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+Disponibilidad mesas;
+
+CREATE TABLE `19_comweb_21d`.`Availability` (
+  `id` INT NOT NULL,
+  `date` DATETIME NOT NULL,
+  `offeredTables` VARCHAR(45) NOT NULL,
+  `availableTables` INT NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+Valoraciones;
+
+CREATE TABLE `19_comweb_21d`.`Rates` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `usernameRate` VARCHAR(20) NOT NULL,
+  `usernameRated` VARCHAR(20) NOT NULL,
+  `rate` TINYINT(1) NOT NULL,
+  `dateRate` DATETIME NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+######## INSERTS ########
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Original
 ######## SCHEMAS ########
 
 Usuarios:
@@ -78,85 +174,6 @@ CREATE TABLE `first_dates`.`Availability` (
 Valoraciones:
 
 CREATE TABLE `first_dates`.`Rates` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `usernameRate` VARCHAR(20) NOT NULL,
-  `usernameRated` VARCHAR(20) NOT NULL,
-  `rate` TINYINT(1) NOT NULL,
-  `dateRate` DATETIME NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-######## INSERTS ########
-
-
---------##Base de datos del monitor##--------(Matt)
-
-######## SCHEMAS ########
-
-Usuarios:
-
-CREATE TABLE `19_comweb_21d`.`Users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `gender` int(11) NOT NULL,
-  `description` varchar(1000) DEFAULT NULL,
-  `birthdate` datetime NOT NULL,
-  `photo` blob,
-  `role` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`username`)
-);
-
-CREATE TABLE `19_comweb_21d`.`UserAuth` (
-  `id` INT NOT NULL,
-  `password` VARCHAR(512) NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `idAuth`
-    FOREIGN KEY (`id`)
-    REFERENCES `19_comweb_21d`.`Users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-);
-
-CREATE TABLE `19_comweb_21d`.`Preferences` (
-  `id` INT NOT NULL,
-  `minAge` INT NOT NULL,
-  `maxAge` INT NOT NULL,
-  `sexPref` ENUM('M', 'W', 'M&W') NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `idPref`
-    FOREIGN KEY (`id`)
-    REFERENCES `19_comweb_21d`.`Users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-);
-
-Citas:
-
-CREATE TABLE `19_comweb_21d`.`RequestDate` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `userRequest` VARCHAR(20) NOT NULL,
-  `userRequested` VARCHAR(20) NOT NULL,
-  `dateRequest` DATETIME NOT NULL,
-  `dateResponse` DATETIME NULL,
-  `dateDate` DATETIME NOT NULL,
-  `state` ENUM('accepted', 'denied', 'pending') NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-Disponibilidad mesas:
-
-CREATE TABLE `19_comweb_21d`.`Availability` (
-  `id` INT NOT NULL,
-  `date` DATETIME NOT NULL,
-  `offeredTables` VARCHAR(45) NOT NULL,
-  `availableTables` INT NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-Valoraciones:
-
-CREATE TABLE `19_comweb_21d`.`Rates` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `usernameRate` VARCHAR(20) NOT NULL,
   `usernameRated` VARCHAR(20) NOT NULL,
