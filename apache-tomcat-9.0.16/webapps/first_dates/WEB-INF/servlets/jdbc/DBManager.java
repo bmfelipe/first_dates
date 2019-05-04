@@ -98,7 +98,7 @@ public class DBManager implements AutoCloseable {
       try(PreparedStatement st = connection.prepareStatement(query)){
         st.setInt(1,userId);
   	    ResultSet rs = st.executeQuery();
-        rs.next()
+        rs.next();
         Preferences preferences = new Preferences();
         preferences.setMinAge(rs.getInt("minAge"));
         preferences.setMaxAge(rs.getInt("maxAge"));
@@ -136,7 +136,7 @@ public class DBManager implements AutoCloseable {
 
   	    while(rs.next()){
           DateMatch dateMatch = new Date();
-          dateMatch.setId(rs.getInt("id")):
+          dateMatch.setId(rs.getInt("id"));
           dateMatch.setDateOneId(rs.getInt("dateOneId"));
           dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
           dateMatch.setStatus(rs.getString("status"));
@@ -160,7 +160,7 @@ public class DBManager implements AutoCloseable {
     	    ResultSet rs = st.executeQuery();
           InputStream in = new InputStream();
 
-  	      rs.next()
+  	      rs.next();
           in = rs.getBinaryStream("photo");
           return in;
   	    }
