@@ -9,20 +9,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!--<link rel="icon" href="img/favicon.png" type="image/png">-->
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href=".../stylesheets/bootstrap.css" type="text/css">
-  <link rel="stylesheet" href=".../stylesheets/iconstyle.css" type="text/css">
-  <link rel="stylesheet" href=".../stylesheets/font-awesome.min.css" type="text/css">
+  <!-- Bootstrap CSS 
+  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/iconstyle.css" type="text/css">
+  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/font-awesome.min.css" type="text/css">-->
 
-  <!-- main css -->
-  <link rel="stylesheet" href=".../stylesheets/style.css" type="text/css">
-  <link rel="stylesheet" href=".../stylesheets/responsive.css" type="text/css">
+  <!-- main css
+  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/style.css" type="text/css">
+  <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/responsive.css" type="text/css"> -->
 </head>
 <body>
 
   <!--================Header Menu Area =================-->
 
   <%@ include file ='/WEB-INF/jsp/navbar.jsp'%>
+  <%@include file="/WEB-INF/jsp/stylesheets/bootstrap.css"%>
+  <%@include file="/WEB-INF/jsp/stylesheets/iconstyle.css"%>
+  <%@include file="/WEB-INF/jsp/stylesheets/font-awesome.min.css"%>
+  <%@include file="/WEB-INF/jsp/stylesheets/style.css"%>
+  <%@include file="/WEB-INF/jsp/stylesheets/responsive.css"%>
   <!--================Header Menu Area =================-->
 
   <!--================Home Banner Area =================-->
