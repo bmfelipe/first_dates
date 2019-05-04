@@ -71,8 +71,14 @@
     display: block;
   }
   .home_banner_area .banner_inner .banner_content .media .d-flex img {
-    width: 100%;
-    height: 100%;
+     width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.5);
   }
   .media-body {
     -ms-flex: 1;
