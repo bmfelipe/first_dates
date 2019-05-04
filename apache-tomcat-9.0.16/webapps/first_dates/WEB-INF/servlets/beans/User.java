@@ -95,7 +95,7 @@ public class User {
 		this.password = password;
 	}
 
-	public Boolean getLoggedIn() {
+	public Boolean isLoggedIn() {
 		return isLoggedIn;
 	}
 
