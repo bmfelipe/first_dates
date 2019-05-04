@@ -17,17 +17,17 @@
   <!-- main css
   <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/style.css" type="text/css">
   <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/responsive.css" type="text/css"> -->
+  <jsp:include page="/WEB-INF/jsp/stylesheets/bootstrap.css"/>
+  <jsp:include page="/WEB-INF/jsp/stylesheets/iconstyle.css"/>
+  <jsp:include page="/WEB-INF/jsp/stylesheets/font-awesome.min.css"/>
+  <jsp:include page="/WEB-INF/jsp/stylesheets/style.css"/>
+  <jsp:include page="/WEB-INF/jsp/stylesheets/responsive.css"/>
 </head>
 <body>
 
   <!--================Header Menu Area =================-->
 
   <%@ include file ='/WEB-INF/jsp/navbar.jsp'%>
-  <jsp:include page="/WEB-INF/jsp/stylesheets/bootstrap.css"/>
-  <jsp:include page="/WEB-INF/jsp/stylesheets/iconstyle.css"/>
-  <jsp:include page="/WEB-INF/jsp/stylesheets/font-awesome.min.css"/>
-  <jsp:include page="/WEB-INF/jsp/stylesheets/style.css"/>
-  <jsp:include page="/WEB-INF/jsp/stylesheets/responsive.css"/>
   <!--================Header Menu Area =================-->
 
   <!--================Home Banner Area =================-->
