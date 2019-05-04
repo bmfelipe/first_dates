@@ -17,11 +17,6 @@
   <!-- main css
   <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/style.css" type="text/css">
   <link rel="stylesheet" href="/WEB-INF/jsp/stylesheets/responsive.css" type="text/css"> -->
-  <%@include file="/WEB-INF/jsp/stylesheets/bootstrap.css"%>
-  <%@include file="/WEB-INF/jsp/stylesheets/iconstyle.css"%>
-  <%@include file="/WEB-INF/jsp/stylesheets/font-awesome.min.css"%>
-  <%@include file="/WEB-INF/jsp/stylesheets/style.css"%>
-  <%@include file="/WEB-INF/jsp/stylesheets/responsive.css"%>
 </head>
 <body>
 
@@ -109,4 +104,13 @@
     </footer>
     <!--================End Footer Area =================-->
   </body>
+  <style>
+    .home_banner_area {
+  position: relative;
+  z-index: 1;
+  background-image: -moz-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
+  background-image: -webkit-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
+  background-image: -ms-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
+  margin-bottom: 200px; }
+  </style>
   </html>
