@@ -25,7 +25,7 @@ CREATE TABLE `19_comweb_21d`.`Users` (
   `gender` ENUM ('Mujer', 'Hombre') NOT NULL,
   `description` varchar(1000) DEFAULT NULL,
   `birthdate` date NOT NULL,
-  `photo` blob,
+  `photo` mediumblob,
   `role` ENUM ('Admin', 'Usuario') NOT NULL,
   PRIMARY KEY (`id`,`username`)
 );
