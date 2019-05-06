@@ -112,7 +112,7 @@ public class DBManager implements AutoCloseable {
         preferences.setMaxAge(rs.getInt("maxAge"));
         preferences.setSexPref(rs.getString("sexPref"));
       }
-      query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),'2012-2-29')+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),'2012-2-29')+1), '%Y')) <= ? and gender = ? ORDER BY RAND() LIMIT 20";
+      query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) <= ? and gender = ? ORDER BY RAND() LIMIT 20";
 
 
       try(PreparedStatement st = connection.prepareStatement(query)){
