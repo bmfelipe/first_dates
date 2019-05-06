@@ -205,17 +205,9 @@
 $('#like-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
-  <% %>
-    $.ajax({
-        'url' : 'http://localhost:9189/add-like',
-        'method' : 'POST',
-        'data' : {
-            'userId' : '<%=user.getId()%>',
-            'recommendationId' : recommendationId
-        },
-        success:function(data){
-            console.log("Sent data");
-        }
+    $.post('http://localhost:9189/add-like',{'recommendationId' : recommendationId})
+    .done(function(data){
+      console.log("Sent data");
     });
 });
 
@@ -223,7 +215,7 @@ $('#dislike-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
   $.ajax({
-      'url' : 'http://localhost:9189/first_dates/add-dislike',
+      'url' : 'http://localhost:9189/add-dislike',
       'method' : 'POST',
       'data' : {
           'recommendationId' : recommendationId

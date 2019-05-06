@@ -10,6 +10,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
+import java.lang.*;
 
 @WebServlet("/add-like")
 public class AddLike extends HttpServlet {
@@ -22,15 +23,23 @@ public class AddLike extends HttpServlet {
     throws IOException, ServletException
     {
 
+
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("user");
+      
         if(user == null){
           response.sendRedirect("/");
         }else if(user.isLoggedIn()){
           try(DBManager db = new DBManager()){
-              int recomendationId = Integer.parseInt(request.getParameter("recommendationId"));
-              Boolean control = db.addLike(user.getId(), recomendationId);
+
+
+
+              int recommendationId = Integer.parseInt(request.getParameter("recommendationId").trim());
+
+              System.out.println("recommendationId " + recommendationId );
+              Boolean control = db.addLike(user.getId(), recommendationId);
+
               if(control == false){
                 response.sendError(500);
               }else{
