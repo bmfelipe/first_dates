@@ -15,161 +15,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-
-  <!--================Header Menu Area =================-->
-
   <%@include file ='/fixing/navbar.jsp'%>
-  <!--================Header Menu Area =================-->
-
-  <!--================Home Banner Area =================-->
-  <section class="home_banner_area">
-    <div class="container box_1620" >
-      <div class="banner_inner d-flex align-items-center" align="center">
-        <div class="banner_content">
-          <div class="media">
-            <div class="d-flex">
-              <img src="modelo.png" alt="">
-            </div>
-            <div class="media-body">
-              <div class="personal_text">
-                <h3>Susana Oria</h3>
-                <p>Contenta, pero no mucho</p>
-                <ul class="list basic_info">
-                  <li><a href="#"><i class="lnr lnr-calendar-full"></i> 14 Mayo 1990</a></li>
-                  <li><a href="#"><i class="lnr lnr-phone-handset"></i> 695783157</a></li>
-                  <li><a href="#"><i class="lnr lnr-envelope"></i> @SusanaOria</a></li>
-                  <li><a href="#"><i class="lnr lnr-home"></i> Madrid</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--================End Home Banner Area =================-->    
-  <!--================Footer Area =================-->
-  <!--================End Footer Area =================-->
+  <div class="container-fluid text-center">
+    <img class=" w-50" src="modelo.png">
+  </div>
 </body>
 <style>
-  .home_banner_area {
-    position: relative;
-    z-index: 1;
-    background-image: -moz-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
-    background-image: -webkit-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
-    background-image: -ms-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
-    margin-bottom: 200px; }
-    .home_banner_area .banner_inner {
-      min-height: 650px;
-    }
-    .banner_content .media{
-      display: block;
-    }
-    .home_banner_area .banner_inner .banner_content .media .d-flex img {
-     width: 200px;
-     height: 200px;
-     max-width: 200px;
-     max-height: 200px;
-     -webkit-border-radius: 100%;
-     -moz-border-radius: 100%;
-     border-radius: 50%;
-     border: 5px solid rgba(255,255,255,0.5);
-     position: relative;
-   }
-   .media-body {
-    -ms-flex: 1;
-    flex: 1
-  }
-  .personal_text h6 {
-    font-size: 14px;
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2.1px;
-    font-weight: normal;
-    margin-bottom: 12px;
-    color: #F0F8FF; 
-  }
-  .personal_text h4 {
-    font-size: 16px;
-    font-weight: 500;
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    color: #222222; 
-  }
-  .personal_text h3 {
-    font-size: 48px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    color: #222222; 
-  }
-  .personal_text p {
-    font-family: "Roboto", sans-serif;
-    max-width: 540px;
-    color: #777777;
-    margin-bottom: 40px; 
-  }
-  .lnr {
-    font-family: 'Linearicons-Free';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+body {
+  background-color: #333;
+  color: white;
+  height: 100vh;
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .lnr-calendar-full:before {
-    content: "\e836";
-  }
-  .lnr-phone-handset:before {
-    content: "\e830";
-  }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: left;
-    background-color: #fff
-  }
-  .profile_inner .personal_text {
-    padding-top: 30px;
-  }
-  .profile_inner .personal_text {
-    padding-left: 0px;
-  }
-  .profile_inner {
-    border-bottom: 1px solid #eeeeee;
-  }
-  .profile_inner .personal_text {
-    padding-left: 95px;
-  }
-  .personal_text .basic_info li {
-    margin-bottom: 15px;
-  }
-  .personal_text .basic_info li a {
-    position: relative;
-    padding-left: 40px;
-    font-size: 16px;
-    color: #777777;
-  }
-  .personal_text .basic_info li a i {
-    position: absolute;
-    left: 0px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: #766dff;
-  }
-  .personal_text .basic_info li:last-child {
-    margin-bottom: 0px;
-  }
+}
+.container-fluid {
+  padding-top: 25px;
+  font-family: "Open Sans";
+
+
+}
+.dropdown-toggle::after {
+    display:none;
+}
+.btn:focus,.btn:active {
+ outline: none !important;
+ box-shadow: none;
+}
+
+.row {
+ height:78vh;
+ max-height: 78vh;
+}
+
+.card {
+ height: 78vh;
+ background: #555;
+
+
+}
+.titles {
+ background: #777;
+}
+#like-dislike-buttons {
+ margin-top: 10px;
+}
+#date-container {
+ overflow-y:auto;
+ overflow-x:hidden;
+}
+#no-rec {
+ margin: auto;
+ font-size: 15px;
+}
 
 </style>
 </html>
