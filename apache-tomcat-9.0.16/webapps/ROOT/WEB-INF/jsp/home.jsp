@@ -214,15 +214,9 @@ $('#like-btn').on('click', function(event) {
 $('#dislike-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
-  $.ajax({
-      'url' : 'http://localhost:9189/add-dislike',
-      'method' : 'POST',
-      'data' : {
-          'recommendationId' : recommendationId
-      },
-      success:function(data){
-          console.log("Sent data");
-      }
+  $.post('http://localhost:9189/add-dislike',{'recommendationId' : recommendationId})
+  .done(function(data){
+    console.log("Sent data");
   });
 });
 
