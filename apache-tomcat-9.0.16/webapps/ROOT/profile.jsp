@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <title>User Profile Page</title>
   <!-- Required meta tags -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -13,12 +14,27 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="assets/css/template.css" rel="stylesheet" media="screen">
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
 </head>
 <body>
   <%@include file ='/fixing/navbar.jsp'%>
-  <div class="container-fluid text-center">
-    <img class=" w-50" src="modelo.png">
-  </div>
+  <div class="col-md-8 text container-fluid text-center">
+      <div class="titles">
+        <h2>Perfil</h2>
+      </div>
+      <br></br>
+      <img src="modelo.png">
+        <br></br>
+      <div class="card mx-auto">
+        <h1>Susana Oria</h1>
+        <cite title="San Francisco, USA">San Francisco, USA<i class="fas fa-map-marker-alt" style="font-size: 30px"></i></cite>
+        <!--<p class="mb-4"> Descripcion</p>-->
+        <h3>Descripcion</h3>contenta pero no mucho
+        <button >Press me</button>
+      </div>
 </body>
 <style>
 body {
@@ -48,6 +64,7 @@ body {
 
 .card {
  height: 78vh;
+ width: 700px;
  background: #555;
 
 
