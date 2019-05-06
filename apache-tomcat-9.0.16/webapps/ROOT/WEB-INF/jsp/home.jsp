@@ -223,10 +223,9 @@ $('#dislike-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
   $.ajax({
-      'url' : 'http://localhost:9189/first_dates/delete-recommendation',
+      'url' : 'http://localhost:9189/first_dates/add-dislike',
       'method' : 'POST',
       'data' : {
-          'userId' : '<%=user.getId()%>',
           'recommendationId' : recommendationId
       },
       success:function(data){

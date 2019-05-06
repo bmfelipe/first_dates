@@ -62,6 +62,7 @@ public class DBManager implements AutoCloseable {
             user.setGender(rs.getString("gender"));
             user.setDescription(rs.getString("description"));
             user.setBirthdate(rs.getDate("birthdate"));
+            user.setPassword(rs.getString("password"));
             user.setRole(rs.getString("role"));
             break;
         }
@@ -185,5 +186,87 @@ public class DBManager implements AutoCloseable {
         String userName = rs.getString("name");
         return userName;
       }
+    }
+
+    public Boolean addLike(int userId, int dateId) throws SQLException{
+      String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+      Boolean created;
+      try(PreparedStatement st = connection.prepareStatement(query)){
+        st.setInt(1,userId);
+        st.setInt(2,dateId);
+        st.setInt(3,dateId);
+        st.setInt(4,userId);
+        ResultSet rs = st.executeQuery();
+        if(rs.next() == false){
+          created = false;
+        }else{
+          created = true;
+          if(rs.getString("status") == "Rechazado"){
+            return true;
+          }
+        }
+      }
+      if(created){
+        query = "UPDATE Dates SET status = 'Aceptado' WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+        try(PreparedStatement st = connection.prepareStatement(query)){
+          st.setInt(1,userId);
+          st.setInt(2,dateId);
+          st.setInt(3,dateId);
+          st.setInt(4,userId);
+          int rows = st.executeUpdate();
+
+        }
+      }else{
+        query = "INSERT INTO Dates (dateOneId, dateTwoId, status) VALUES(?,?,?)";
+        try(PreparedStatement st = connection.prepareStatement(query)){
+          st.setInt(1,userId);
+          st.setInt(2,dateId);
+          st.setString(3,"Pendiente");
+          int rows = st.executeUpdate();
+
+        }
+      }
+      return true;
+    }
+
+    public Boolean addDislike(int userId, int dateId) throws SQLException{
+      String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+      Boolean created;
+      try(PreparedStatement st = connection.prepareStatement(query)){
+        st.setInt(1,userId);
+        st.setInt(2,dateId);
+        st.setInt(3,dateId);
+        st.setInt(4,userId);
+        ResultSet rs = st.executeQuery();
+        if(rs.next() == false){
+          created = false;
+        }else{
+          created = true;
+          if(rs.getString("status") == "Rechazado"){
+            return true;
+          }
+        }
+      }
+      if(created){
+        query = "UPDATE Dates SET status = 'Rechazado' WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+        try(PreparedStatement st = connection.prepareStatement(query)){
+          st.setInt(1,userId);
+          st.setInt(2,dateId);
+          st.setInt(3,dateId);
+          st.setInt(4,userId);
+          int rows = st.executeUpdate();
+
+        }
+      }else{
+        query = "INSERT INTO Dates (dateOneId, dateTwoId, status) VALUES(?,?,?)";
+        try(PreparedStatement st = connection.prepareStatement(query)){
+          st.setInt(1,userId);
+          st.setInt(2,dateId);
+          st.setString(3,"Rechazado");
+          int rows = st.executeUpdate();
+
+        }
+      }
+      return true;
     }
 }
