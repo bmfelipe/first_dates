@@ -49,7 +49,7 @@ public class ServletRegister extends HttpServlet {
                     user.setBirthdate(new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("birthdate")));
 
                     Boolean registered = db.registerUser(user);
-                    System.out.println(registered);
+                    System.out.println("Registered user: "+registered);
                 } catch(SQLException e) {
                     e.printStackTrace();
                 }

@@ -63,7 +63,6 @@ public class DBManager implements AutoCloseable {
             user.setDescription(rs.getString("description"));
             user.setBirthdate(rs.getDate("birthdate"));
             user.setRole(rs.getString("role"));
-            user.setPassword(rs.getString("password"));
             break;
         }
 
