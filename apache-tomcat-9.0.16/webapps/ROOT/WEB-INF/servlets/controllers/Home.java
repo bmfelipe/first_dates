@@ -38,7 +38,7 @@ public class Home extends HttpServlet {
               RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/home.jsp");
               rd.forward(request, response);
 
-          }catch (SQLException e){
+          }catch (SQLException|NamingException e){
               e.printStackTrace();
           }
 
