@@ -14,10 +14,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="assets/css/template.css" rel="stylesheet" media="screen">
-
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
-
+   
 </head>
 <body>
   <%@include file ='/fixing/navbar.jsp'%>
@@ -65,7 +62,7 @@ body {
 .card {
  height: 78vh;
  width: 700px;
- padding-bottom: 200px;
+ margin-bottom: 200px;
  background: #555;
 
 
