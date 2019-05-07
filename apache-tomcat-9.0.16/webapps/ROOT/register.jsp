@@ -15,7 +15,7 @@
 
   <style>
     body {
-      background-color: black;
+      background-color: #333;
       color: white;
     }
     .container-fluid {
@@ -44,27 +44,42 @@
 
     <form action="ServletRegister" method="post" class="text-center">
       <div class="form-group">
-        <label for="email">Nombre de usuario:<input placeholder="Nombre de usuario" type="text" class="form-control" name="username" required></label>
+        <label for="email">Nombre de usuario:
+          <input placeholder="Nombre de usuario" type="text" class="form-control" name="username" required>
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="email">Nombre completo:<input placeholder="Nombre completo" type="text" class="form-control" name="name" required></label>
+        <label for="email">Nombre completo:
+          <input placeholder="Nombre completo" type="text" class="form-control" name="name" required>
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="pwd">Contraseña:<input placeholder="Contraseña" type="password" class="form-control" name="password" required></label>
+        <label for="pwd">Contraseña:
+          <input placeholder="Contraseña" type="password" class="form-control" name="password" required>
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="pwd">Repetir contraseña:<input placeholder="Repetir contraseña" type="password" class="form-control" name="password2" required></label>
+        <label for="pwd">Repetir contraseña:
+          <input placeholder="Repetir contraseña" type="password" class="form-control" name="password2" required>
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="text">Sexo:<input placeholder="Mujer u Hombre" type="text" class="form-control" name="gender" required></label>
+        <label for="text">Sexo:
+          <select class="form-control" name="gender" required>
+            <option value="Mujer">Mujer</option>
+            <option value="Hombre">Hombre</option>
+          </select>
+        </label>
       </div>
 
       <div class="form-group">
-        <label for="text">Fecha de nacimiento:<input placeholder="DD/MM/AAAA" type="text" class="form-control" name="birthdate" required></label>
+        <label for="text">Fecha de nacimiento:<br>
+          <input type="date" name="birthdate" max="3000-12-31" min="1900-01-01" required>
+        </label>
       </div>
 
       <div class="errorRegister">${errorRegister}</div>
