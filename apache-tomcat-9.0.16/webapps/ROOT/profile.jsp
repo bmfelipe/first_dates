@@ -35,6 +35,9 @@
       <div class="card mx-auto mb-auto">
         <h5>Citas con Susana Oria</h5>
         <button>Proponer cita</button>
+        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+          <i class="fa fa-bell-o" style="font-size: 30px; float: left; color: gray"></i>
+        </button>
       </div>
 
 
