@@ -21,6 +21,10 @@
   <div class="col-md-8 text container-fluid text-center">
     <div class="titles">
       <h2>Perfil</h2>
+      <%
+      HttpSession session = request.getSession();
+      User profile = (User) request.getAttribute("user");
+      %>
     </div>
     <br></br>
     <img src="modelo.png">
@@ -32,15 +36,15 @@
       <p>Descripcion</p>contenta pero no mucho
       <h5>Sexo</h5>Mujer
       <h5>Fecha de nacimiento</h5>23/3/1987<br></br>
-        <h5>Citas con Susana Oria</h5>
-        <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
-        <div id="like-dislike-buttons">
-          <p>
-            <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
-            <button class="btn btn-secondary ml-1" id="dislike-btn" role="button"><i class="fa fa-ban"></i></button>
-          </p>
-        </div>
-  
+      <h5>Citas con Susana Oria</h5>
+      <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
+      <div id="like-dislike-buttons">
+        <p>
+          <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
+          <button class="btn btn-secondary ml-1" id="dislike-btn" role="button"><i class="fa fa-ban"></i></button>
+        </p>
+      </div>
+
 
 
     </div>
@@ -71,35 +75,35 @@
   margin-left: 250px;
   padding: 15px 15px;
   width: 200px;
- }
+}
 
- .row {
-   height:78vh;
-   max-height: 78vh;
- }
+.row {
+ height:78vh;
+ max-height: 78vh;
+}
 
- .card {
-   height: 78vh;
-   width: 700px;
-   margin-bottom: 200px;
-   background: #555;
+.card {
+ height: 78vh;
+ width: 700px;
+ margin-bottom: 200px;
+ background: #555;
 
 
- }
- .titles {
-   background: #777;
- }
- #like-dislike-buttons {
-   margin-top: 10px;
- }
- #date-container {
-   overflow-y:auto;
-   overflow-x:hidden;
- }
- #no-rec {
-   margin: auto;
-   font-size: 15px;
- }
+}
+.titles {
+ background: #777;
+}
+#like-dislike-buttons {
+ margin-top: 10px;
+}
+#date-container {
+ overflow-y:auto;
+ overflow-x:hidden;
+}
+#no-rec {
+ margin: auto;
+ font-size: 15px;
+}
 
 </style>
 </html>
