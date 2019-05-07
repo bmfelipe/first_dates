@@ -23,20 +23,31 @@
       <h2>Perfil</h2>
       <%
       HttpSession session = request.getSession();
-      User profile = (User) request.getAttribute("user");
+      User profile = (User) request.getAttribute("target_profile");
+      //userID=profile.getId();
       %>
     </div>
     <br></br>
-    <img src="modelo.png">
+    <img class=" w-50" src="/user-image?id=<%=profile.getId()%>" id="<%=profile.getId()%>">
     <br></br>
     <div class="card mx-auto mb-auto">
-      <h1>Susana Oria</h1>
-      <!--<cite title="San Francisco, USA">San Francisco, USA<i class="fas fa-map-marker-alt" style="font-size: 30px"></i></cite>-->
-      <!--<p class="mb-4"> Descripcion</p>-->
-      <p>Descripcion</p>contenta pero no mucho
-      <h5>Sexo</h5>Mujer
-      <h5>Fecha de nacimiento</h5>23/3/1987<br></br>
-      <h5>Citas con Susana Oria</h5>
+      <h1><%=profile.getName()%></h1>
+      <p>Descripcion</p><%=profile.getDescription()%>
+      <h5>Sexo</h5><%=profile.getGender()%>
+      <h5>Fecha de nacimiento</h5><%=profile.getBirthdate()%><br></br>
+      <%
+      User current_user = (User) session.getAttribute("user");
+      List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates")//getProfileDateList(current_user.getId(),profile.getId());
+      if(!mutual_dates.isEmpty()){%>
+      <h5>Citas con <%=profile.getId()%></h5>
+      <%
+        for(DateMatch dates:mutual_dates){
+          if(dates.getStatus()=="Finalizado"){
+
+          }
+        }%>
+
+      <%=}%>
       <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
       <div id="like-dislike-buttons">
         <p>
@@ -45,10 +56,8 @@
         </p>
       </div>
 
-
-
     </div>
-  </div> 
+  </div>
 </body>
 <style>
   body {

@@ -64,7 +64,7 @@ CREATE TABLE `19_comweb_21d`.`Dates` (
   `dateResponse` DATE,
   `hourRequest` TIME,
   `hourResponse` TIME,
-  `status` ENUM('Pendiente', 'Rechazado', 'Aceptado', 'Fecha pendiente', 'Hora pendiente', 'Fecha fijada') NOT NULL,
+  `status` ENUM('Pendiente', 'Rechazado', 'Aceptado', 'Fecha pendiente', 'Hora pendiente', 'Fecha fijada','Finalizado') NOT NULL,
   PRIMARY KEY (`id`)
 );
 
