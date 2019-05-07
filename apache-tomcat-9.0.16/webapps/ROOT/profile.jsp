@@ -68,8 +68,7 @@
    box-shadow: none;
  }
  .btn-aux{
-  margin: 4px 2px;
-  right: 200px;
+  margin: 100px 2px;
   padding: 15px 15px;
   width: 200px;
  }
