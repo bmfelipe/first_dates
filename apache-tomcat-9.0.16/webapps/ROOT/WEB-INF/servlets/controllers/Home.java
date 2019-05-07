@@ -39,7 +39,8 @@ public class Home extends HttpServlet {
               rd.forward(request, response);
 
           }catch (SQLException|NamingException e){
-              e.printStackTrace();
+              e.printStackTrace();//Send re
+              response.sendRedirect("internal");
           }
 
         }else{
