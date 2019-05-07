@@ -71,6 +71,7 @@
   margin: 4px 2px;
   display: inline-block;
   padding: 15px 32px;
+  width: 250px;
  }
 
  .row {
