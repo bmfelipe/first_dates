@@ -10,6 +10,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
+import javax.naming.NamingException;
 
 @WebServlet("/add-dislike")
 public class AddDislike extends HttpServlet {
@@ -38,7 +39,7 @@ public class AddDislike extends HttpServlet {
                 response.setStatus(200);
               }
 
-          }catch (SQLException e){
+          }catch (SQLException|NamingException e){
               e.printStackTrace();
           }
 

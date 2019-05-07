@@ -10,6 +10,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
+import javax.naming.NamingException;
 
 @WebServlet("/home")
 public class Home extends HttpServlet {
@@ -40,7 +41,7 @@ public class Home extends HttpServlet {
 
           }catch (SQLException|NamingException e){
               e.printStackTrace();//Send re
-              response.sendRedirect("internal");
+              response.sendRedirect("/internalError");
           }
 
         }else{

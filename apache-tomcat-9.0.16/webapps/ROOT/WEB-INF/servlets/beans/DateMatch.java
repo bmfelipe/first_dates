@@ -3,6 +3,7 @@ package beans;
 import java.util.Date;
 import jdbc.DBManager;
 import java.sql.SQLException;
+import javax.naming.NamingException;
 
 public class DateMatch{
 
@@ -98,7 +99,7 @@ public class DateMatch{
         userName = db.getUserName(this.dateOneId);
       }
       return userName;
-    }catch (SQLException e){
+    }catch (SQLException|NamingException e){
         e.printStackTrace();
         return null;
     }

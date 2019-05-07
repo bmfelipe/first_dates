@@ -128,7 +128,6 @@ public class DBManager implements AutoCloseable {
 
           recommendations.add(recommendation);
         }
-        close();
 
         return recommendations;
       }
@@ -137,8 +136,10 @@ public class DBManager implements AutoCloseable {
 
     public List<DateMatch> getDateList(int userId)throws SQLException {
       String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND status NOT LIKE 'Rechazado'";
+
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
+        System.out.println(query);
   	    st.setInt(1,userId);
   	    ResultSet rs = st.executeQuery();
 

@@ -10,6 +10,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
+import javax.naming.NamingException;
 
 @WebServlet("/add-like")
 public class AddLike extends HttpServlet {
@@ -45,7 +46,7 @@ public class AddLike extends HttpServlet {
                 response.setStatus(200);
               }
 
-          }catch (SQLException e){
+          }catch (SQLException|NamingException e){
               e.printStackTrace();
           }
 

@@ -10,6 +10,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
 import java.io.InputStream;
+import javax.naming.NamingException;
 
 @WebServlet("/user-image")
 public class UserImage extends HttpServlet {
@@ -38,7 +39,7 @@ public class UserImage extends HttpServlet {
               }
             }
              // response.sendError(HttpServletResponse.SC_NOT_FOUND);
-          }catch (SQLException e){
+          }catch (SQLException|NamingException e){
               e.printStackTrace();
           }
 
