@@ -69,9 +69,9 @@
  }
  .btn-aux{
   margin: 4px 2px;
-  display: inline-block;
-  padding: 15px 32px;
-  width: 250px;
+  right: 200px;
+  padding: 15px 15px;
+  width: 200px;
  }
 
  .row {
