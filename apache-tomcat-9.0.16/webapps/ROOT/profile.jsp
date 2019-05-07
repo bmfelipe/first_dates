@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <title>User Profile Page</title>
   <!-- Required meta tags -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -13,32 +14,76 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 </head>
 <body>
   <%@include file ='/fixing/navbar.jsp'%>
-  <div class="container-fluid text-center">
-    <img class=" w-50" src="modelo.png">
+  <div class="col-md-8 text container-fluid text-center">
+    <div class="titles">
+      <h2>Perfil</h2>
+      <%
+      HttpSession session = request.getSession();
+      User profile = (User) request.getAttribute("target_profile");
+      //userID=profile.getId();
+      %>
+    </div>
+    <br></br>
+    <img class=" w-50" src="/user-image?id=<%=profile.getId()%>" id="<%=profile.getId()%>">
+    <br></br>
+    <div class="card mx-auto mb-auto">
+      <h1><%=profile.getName()%></h1>
+      <p>Descripcion</p><%=profile.getDescription()%>
+      <h5>Sexo</h5><%=profile.getGender()%>
+      <h5>Fecha de nacimiento</h5><%=profile.getBirthdate()%><br></br>
+      <%
+      User current_user = (User) session.getAttribute("user");
+      List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates")//getProfileDateList(current_user.getId(),profile.getId());
+      if(!mutual_dates.isEmpty()){%>
+      <h5>Citas con <%=profile.getId()%></h5>
+      <%
+        for(DateMatch dates:mutual_dates){
+          if(dates.getStatus()=="Finalizado"){
+
+          }
+        }%>
+
+      <%=}%>
+      <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
+      <div id="like-dislike-buttons">
+        <p>
+          <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
+          <button class="btn btn-secondary ml-1" id="dislike-btn" role="button"><i class="fa fa-ban"></i></button>
+        </p>
+      </div>
+
+    </div>
   </div>
 </body>
 <style>
-body {
-  background-color: #333;
-  color: white;
-  height: 100vh;
+  body {
+    background-color: #333;
+    color: white;
+    height: 100vh;
 
-}
-.container-fluid {
-  padding-top: 25px;
-  font-family: "Open Sans";
+  }
+  .container-fluid {
+    padding-top: 25px;
+    font-family: "Open Sans";
 
 
-}
-.dropdown-toggle::after {
+  }
+  .dropdown-toggle::after {
     display:none;
-}
-.btn:focus,.btn:active {
- outline: none !important;
- box-shadow: none;
+  }
+  .btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+ }
+ .btn-aux{
+  margin: 4px 2px;
+  margin-left: 250px;
+  padding: 15px 15px;
+  width: 200px;
 }
 
 .row {
@@ -48,6 +93,8 @@ body {
 
 .card {
  height: 78vh;
+ width: 700px;
+ margin-bottom: 200px;
  background: #555;
 
 

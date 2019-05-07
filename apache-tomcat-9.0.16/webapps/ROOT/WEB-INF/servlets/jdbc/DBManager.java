@@ -21,19 +21,17 @@ public class DBManager implements AutoCloseable {
 
     private Connection connection;
 
-    public DBManager() throws SQLException {
+    public DBManager() throws SQLException, NamingException {
         connect();
     }
 
-    private void connect() throws SQLException{
-      try {
+    private void connect() throws SQLException, NamingException{
+
         Context initCtx = new InitialContext();
         Context envCtx = (Context) initCtx.lookup("java:comp/env");
         DataSource ds = (DataSource) envCtx.lookup("jdbc/First_dates");
         connection = ds.getConnection();
-      } catch(SQLException|NamingException e) {
-        e.printStackTrace();
-      }
+
     }
 
     /**
@@ -130,18 +128,19 @@ public class DBManager implements AutoCloseable {
 
           recommendations.add(recommendation);
         }
+        close();
+
         return recommendations;
       }
       //return null;
     }
 
     public List<DateMatch> getDateList(int userId)throws SQLException {
-      String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ?";
+      String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND status NOT LIKE 'Rechazado'";
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
   	    st.setInt(1,userId);
   	    ResultSet rs = st.executeQuery();
-
 
   	    while(rs.next()){
           DateMatch dateMatch = new DateMatch();
@@ -159,6 +158,32 @@ public class DBManager implements AutoCloseable {
         return dates;
 	    }
       //return null;
+    }
+    //Returns dates the user and a certain profile had
+    public List<DateMatch> getProfileDateList(int userId,int profileId) throws SQLException{
+      String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND (dateOneId or dateTwoId) =? AND status NOT LIKE 'Rechazado'";
+      List<DateMatch> dates = new ArrayList<DateMatch>();
+      try(PreparedStatement st = connection.prepareStatement(query)){
+        st.setInt(1,userId);
+        st.setInt(2,profileId);
+  	    ResultSet rs = st.executeQuery();
+        while(rs.next()){
+          DateMatch dateMatch = new DateMatch();
+          dateMatch.setId(rs.getInt("id"));
+          dateMatch.setDateOneId(rs.getInt("dateOneId"));
+          dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
+          dateMatch.setStatus(rs.getString("status"));
+          dateMatch.setDateRequest(rs.getDate("dateRequest"));
+          dateMatch.setDateResponse(rs.getDate("dateResponse"));
+          dateMatch.setHourRequest(rs.getString("hourRequest"));
+          dateMatch.setHourResponse(rs.getString("hourResponse"));
+          dates.add(dateMatch);
+	      }
+        return dates;
+
+      }
+
+
     }
 
     public InputStream getImage(int id)throws SQLException{

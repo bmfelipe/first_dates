@@ -10,7 +10,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
-import java.lang.*;
 
 @WebServlet("/add-like")
 public class AddLike extends HttpServlet {
@@ -22,12 +21,12 @@ public class AddLike extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException
     {
-
+        request.setCharacterEncoding("utf-8");
 
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("user");
-      
+
         if(user == null){
           response.sendRedirect("/");
         }else if(user.isLoggedIn()){
