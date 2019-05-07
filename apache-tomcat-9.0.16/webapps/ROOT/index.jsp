@@ -15,7 +15,7 @@
 
   <style>
     body {
-      background-color: black;
+      background-color: #333;
       color: white;
     }
     .container-fluid {
