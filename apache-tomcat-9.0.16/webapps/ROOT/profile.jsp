@@ -38,17 +38,22 @@
       <%
       User current_user = (User) session.getAttribute("user");
       List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates")//getProfileDateList(current_user.getId(),profile.getId());
+      int flag=0;
       if(!mutual_dates.isEmpty()){%>
       <h5>Citas con <%=profile.getId()%></h5>
       <%
-        for(DateMatch dates:mutual_dates){
-          if(dates.getStatus()=="Finalizado"){
-
+        for(DateMatch date:mutual_dates){
+          if(date.getStatus()=="Finalizado"){
+            date.getDateName(user.getId());%><br></br><%
+          }else{
+            flag=1;
           }
-        }%>
+        }
 
-      <%=}%>
+      }
+      if(flag==0){%>
       <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
+      <%=}%>
       <div id="like-dislike-buttons">
         <p>
           <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
