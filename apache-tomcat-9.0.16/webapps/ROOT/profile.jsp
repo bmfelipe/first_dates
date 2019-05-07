@@ -32,6 +32,11 @@
       <p>Descripcion</p>contenta pero no mucho
       <h5>Sexo</h5>Mujer
       <h5>Fecha de nacimiento</h5>23/3/1987
+      <div class="card mx-auto mb-auto">
+        <h5>Citas con Susana Oria</h5>
+        <button>Proponer cita</button>
+      </div>
+
 
     </div>
   </div> 
