@@ -19,71 +19,73 @@
 <body>
   <%@include file ='/fixing/navbar.jsp'%>
   <div class="col-md-8 text container-fluid text-center">
-    <div class="titles">
-      <h2>Perfil</h2>
-    </div>
-    <br></br>
-    <img src="modelo.png">
-    <br></br>
-    <div class="card mx-auto mb-auto">
-      <h1>Susana Oria</h1>
-      <!--<cite title="San Francisco, USA">San Francisco, USA<i class="fas fa-map-marker-alt" style="font-size: 30px"></i></cite>-->
-      <!--<p class="mb-4"> Descripcion</p>-->
-      <p>Descripcion</p>contenta pero no mucho
-      <h3>Sexo</h3>contenta pero no mucho
-      <h3>Fecha de nacimiento</h3>contenta pero no mucho
+    <div class="row">
+      <div class="titles">
+        <h2>Perfil</h2>
+      </div>
+      <br></br>
+      <img src="modelo.png">
+      <br></br>
+      <div class="card mx-auto mb-auto">
+        <h1>Susana Oria</h1>
+        <!--<cite title="San Francisco, USA">San Francisco, USA<i class="fas fa-map-marker-alt" style="font-size: 30px"></i></cite>-->
+        <!--<p class="mb-4"> Descripcion</p>-->
+        <p>Descripcion</p>contenta pero no mucho
+        <h5>Sexo</h5>Mujer
+        <h5>Fecha de nacimiento</h5>23/3/1987
 
+      </div>
     </div>
   </div> 
-  </body>
-  <style>
-    body {
-      background-color: #333;
-      color: white;
-      height: 100vh;
+</body>
+<style>
+  body {
+    background-color: #333;
+    color: white;
+    height: 100vh;
 
-    }
-    .container-fluid {
-      padding-top: 25px;
-      font-family: "Open Sans";
-
-
-    }
-    .dropdown-toggle::after {
-      display:none;
-    }
-    .btn:focus,.btn:active {
-     outline: none !important;
-     box-shadow: none;
-   }
-
-   .row {
-     height:78vh;
-     max-height: 78vh;
-   }
-
-   .card {
-     height: 78vh;
-     width: 700px;
-     margin-bottom: 200px;
-     background: #555;
+  }
+  .container-fluid {
+    padding-top: 25px;
+    font-family: "Open Sans";
 
 
-   }
-   .titles {
-     background: #777;
-   }
-   #like-dislike-buttons {
-     margin-top: 10px;
-   }
-   #date-container {
-     overflow-y:auto;
-     overflow-x:hidden;
-   }
-   #no-rec {
-     margin: auto;
-     font-size: 15px;
-   }
+  }
+  .dropdown-toggle::after {
+    display:none;
+  }
+  .btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+ }
 
- </style>
- </html>
+ .row {
+   height:78vh;
+   max-height: 78vh;
+ }
+
+ .card {
+   height: 78vh;
+   width: 700px;
+   margin-bottom: 200px;
+   background: #555;
+
+
+ }
+ .titles {
+   background: #777;
+ }
+ #like-dislike-buttons {
+   margin-top: 10px;
+ }
+ #date-container {
+   overflow-y:auto;
+   overflow-x:hidden;
+ }
+ #no-rec {
+   margin: auto;
+   font-size: 15px;
+ }
+
+</style>
+</html>
