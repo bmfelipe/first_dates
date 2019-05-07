@@ -35,63 +35,66 @@
       <div class="card mx-auto mb-auto">
         <h5>Citas con Susana Oria</h5>
         <button>Proponer cita</button>
-        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-          <i class="fa fa-bell-o" style="font-size: 30px; float: left; color: gray"></i>
-        </button>
+        <div id="like-dislike-buttons">
+          <p>
+            <button class="btn btn-secondary mr-1" id="like-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-heart"></i> </button>
+            <button class="btn btn-secondary ml-1" id="dislike-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-ban"></i></button>
+          </p>
+        </div>
       </div>
 
 
     </div>
   </div> 
-  </body>
-  <style>
-    body {
-      background-color: #333;
-      color: white;
-      height: 100vh;
+</body>
+<style>
+  body {
+    background-color: #333;
+    color: white;
+    height: 100vh;
 
-    }
-    .container-fluid {
-      padding-top: 25px;
-      font-family: "Open Sans";
-
-
-    }
-    .dropdown-toggle::after {
-      display:none;
-    }
-    .btn:focus,.btn:active {
-     outline: none !important;
-     box-shadow: none;
-   }
-
-   .row {
-     height:78vh;
-     max-height: 78vh;
-   }
-
-   .card {
-     height: 78vh;
-     width: 700px;
-     margin-bottom: 200px;
-     background: #555;
+  }
+  .container-fluid {
+    padding-top: 25px;
+    font-family: "Open Sans";
 
 
-   }
-   .titles {
-     background: #777;
-   }
-   #like-dislike-buttons {
-     margin-top: 10px;
-   }
-   #date-container {
-     overflow-y:auto;
-     overflow-x:hidden;
-   }
-   #no-rec {
-     margin: auto;
-     font-size: 15px;
-   }
+  }
+  .dropdown-toggle::after {
+    display:none;
+  }
+  .btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+ }
 
- </style>
- </html>
+ .row {
+   height:78vh;
+   max-height: 78vh;
+ }
+
+ .card {
+   height: 78vh;
+   width: 700px;
+   margin-bottom: 200px;
+   background: #555;
+
+
+ }
+ .titles {
+   background: #777;
+ }
+ #like-dislike-buttons {
+   margin-top: 10px;
+ }
+ #date-container {
+   overflow-y:auto;
+   overflow-x:hidden;
+ }
+ #no-rec {
+   margin: auto;
+   font-size: 15px;
+ }
+
+</style>
+</html>
