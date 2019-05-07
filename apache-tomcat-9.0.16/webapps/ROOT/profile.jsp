@@ -69,8 +69,7 @@
  }
  .btn-aux{
   margin: 4px 2px;
-  margin-left: 200px;
-  right: 200px;
+  margin-left: 250px;
   padding: 15px 15px;
   width: 200px;
  }
