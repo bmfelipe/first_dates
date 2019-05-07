@@ -65,6 +65,7 @@ body {
 .card {
  height: 78vh;
  width: 700px;
+ padding-bottom: 200px;
  background: #555;
 
 
