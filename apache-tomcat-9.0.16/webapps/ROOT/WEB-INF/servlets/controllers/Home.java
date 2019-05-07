@@ -22,6 +22,7 @@ public class Home extends HttpServlet {
     throws IOException, ServletException
     {
 
+        request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("user");

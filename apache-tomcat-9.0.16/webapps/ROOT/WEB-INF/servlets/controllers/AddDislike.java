@@ -21,6 +21,7 @@ public class AddDislike extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException
     {
+        request.setCharacterEncoding("utf-8");
 
         HttpSession session = request.getSession();
 
