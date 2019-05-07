@@ -28,7 +28,7 @@
       <br></br>
       <img src="modelo.png">
         <br></br>
-      <div class="card mx-auto">
+      <div class="card mx-auto mb-auto">
         <h1>Susana Oria</h1>
         <cite title="San Francisco, USA">San Francisco, USA<i class="fas fa-map-marker-alt" style="font-size: 30px"></i></cite>
         <!--<p class="mb-4"> Descripcion</p>-->
