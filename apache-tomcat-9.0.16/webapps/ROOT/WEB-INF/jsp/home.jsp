@@ -94,13 +94,13 @@
                 %>
                   <div id="carousel-elem" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                      <div class="carousel-item active">
+                      <div class="carousel-item active" id="car-<%=recommendation.getId()%>">
                         <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="<%=recommendation.getId()%>">
                       </div>
                     <%
                     }else{
                 %>
-                      <div class="carousel-item active">
+                      <div class="carousel-item">
                         <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="<%=recommendation.getId()%>">
                       </div>
                 <%
@@ -207,7 +207,13 @@ $('#like-btn').on('click', function(event) {
   var recommendationId = $(this).attr("recommendation-id");
     $.post('http://localhost:9189/add-like',{'recommendationId' : recommendationId})
     .done(function(data){
-      console.log("Sent data");
+      console.log("car-"+recommendationId);
+      $('.carousel').carousel('next');
+      $('#carousel-elem').on('slid.bs.carousel', function (ev) {
+        $("#car-"+recommendationId ) . remove () ;
+
+      });
+
     });
 });
 

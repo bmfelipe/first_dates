@@ -22,6 +22,7 @@ public class Home extends HttpServlet {
     throws IOException, ServletException
     {
 
+        request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("user");
@@ -37,8 +38,9 @@ public class Home extends HttpServlet {
               RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/home.jsp");
               rd.forward(request, response);
 
-          }catch (SQLException e){
-              e.printStackTrace();
+          }catch (SQLException|NamingException e){
+              e.printStackTrace();//Send re
+              response.sendRedirect("internal");
           }
 
         }else{
