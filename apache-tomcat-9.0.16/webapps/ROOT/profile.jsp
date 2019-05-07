@@ -31,8 +31,7 @@
       <!--<p class="mb-4"> Descripcion</p>-->
       <p>Descripcion</p>contenta pero no mucho
       <h5>Sexo</h5>Mujer
-      <h5>Fecha de nacimiento</h5>23/3/1987
-        <br>
+      <h5>Fecha de nacimiento</h5>23/3/1987<br></br>
         <h5>Citas con Susana Oria</h5>
         <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
         <div id="like-dislike-buttons">
