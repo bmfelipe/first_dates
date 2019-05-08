@@ -20,7 +20,7 @@
           <a class="nav-link" href="#">People</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Restaurants</a>
+          <a class="nav-link" href="#">Restaurant</a>
         </li>
       </ul>
       <%-- <form class="form-inline mt-2 mt-md-0">

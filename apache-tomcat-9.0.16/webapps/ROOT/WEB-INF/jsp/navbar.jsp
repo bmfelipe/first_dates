@@ -21,7 +21,7 @@
           <a class="nav-link" href="#">Personas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Restaurantes</a>
+          <a class="nav-link" href="/restaurant.jsp">Restaurante</a>
         </li>
       </ul>
       <%-- <form class="form-inline mt-2 mt-md-0">
