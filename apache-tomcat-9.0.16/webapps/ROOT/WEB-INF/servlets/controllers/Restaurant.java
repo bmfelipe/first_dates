@@ -38,6 +38,7 @@ public class Restaurant extends HttpServlet {
     {
         try
         {
+            Boolean inserted = false;
             Availability availability = new Availability();
             Locale locale = new Locale("es", "ES");
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
@@ -45,25 +46,60 @@ public class Restaurant extends HttpServlet {
 
             dateFormat.setTimeZone(timeZone);
 
-            Date date = dateFormat.parse(request.getParameter("date"));
-            int tables = Integer.parseInt(request.getParameter("tables"));
-
-            availability.setDate(date);
-            availability.setOfferedTables(tables);
-            availability.setAvailableTables(tables);
-
-            try (DBManager db = new DBManager())
+            if (request.getParameter("dateInsert") != null)
             {
-                Boolean inserted = db.offerTables(availability);
-                System.out.println("Availability inserted: "+inserted);
+              Date date = dateFormat.parse(request.getParameter("dateInsert"));
+              int tables = Integer.parseInt(request.getParameter("tablesInsert"));
+
+              availability.setDate(date);
+              availability.setOfferedTables(tables);
+              availability.setAvailableTables(tables);
+
+              try (DBManager db = new DBManager())
+              {
+                  inserted = db.insertAvailability(availability);
+                  System.out.println("Availability inserted: " + inserted);
+              }
+              catch (SQLException ex)
+              {
+                  // Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
+                  ex.printStackTrace();
+              }
+
+              if (inserted)
+              {
+                request.setAttribute("successInsertion", "¡Mesas registradas con éxito!");
+              }
+              else {
+                request.setAttribute("errorInsertion", "¡No se han podido insertar las mesas!");
+              }
             }
-            catch (SQLException ex)
+            else if (request.getParameter("dateSearch") != null)
             {
-                // Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
-                ex.printStackTrace();
+              Date date = dateFormat.parse(request.getParameter("dateSearch"));
+
+              try (DBManager db = new DBManager())
+              {
+                  availability = db.searchAvailability(date);
+              }
+              catch (SQLException ex)
+              {
+                  // Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
+                  ex.printStackTrace();
+              }
+
+              if (availability != null)
+              {
+                request.setAttribute("successSearch", "Estas son las mesas para este día:<br>Mesas ofrecidas: "+availability.getOfferedTables()+"<br>Mesas disponibles: "+availability.getAvailableTables());
+              }
+              else {
+                request.setAttribute("errorSearch", "No hay ninguna mesa registrada este día");
+              }
             }
-            // RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
-            // rd.forward(request, response);
+
+
+            RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
+            rd.forward(request, response);
 
         }
         catch(Exception ex)

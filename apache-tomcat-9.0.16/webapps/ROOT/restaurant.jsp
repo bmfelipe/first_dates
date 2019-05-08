@@ -23,6 +23,22 @@
     background-color: #333;
     color: white;
   }
+
+  .action{
+    text-decoration: underline;
+  }
+
+  .btn{
+    margin-bottom: 60px;
+  }
+  .error{
+    padding-bottom: 10px;
+    color: red;
+  }
+  .success{
+    padding-bottom: 10px;
+    color: green;
+  }
 </style>
 
 <%  Date date = new Date();
@@ -32,17 +48,55 @@
 <body>
   <%@include file ='/WEB-INF/jsp/navbar.jsp'%>
 
+  <h1 class="action">Registrar mesas</h1>
   <form action="/restaurant" method="post" class="text_center">
     <div class="form-group">
       <label for="text">Fecha:
-        <input type="date" name="date" max="3000-12-31" min="<%=strDate%>" required>
+        <input type="date" name="dateInsert" max="3000-12-31" min="<%=strDate%>" required>
       </label>
     </div>
     <div class="form-group">
       <label for="text">Número de mesas a ofrecer:
-        <input type="text" name="tables" required>
+        <input type="text" name="tablesInsert" required>
       </label>
     </div>
+    <div class="success">${successInsertion}</div>
+    <div class="error">${errorInsertion}</div>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+  </form>
+
+  <h1 class="action">Buscar mesas</h1>
+  <form action="/restaurant" method="post" class="text_center">
+    <div class="form-group">
+      <label for="text">Fecha:
+        <input type="date" name="dateSearch" max="3000-12-31" min="<%=strDate%>" required>
+      </label>
+    </div>
+    <div class="success">${successSearch}</div>
+    <div class="error">${errorSearch}</div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+    <!-- <div class="form-group">
+      <label for="text">Número de mesas a ofrecer:
+        <input type="text" name="tables" required>
+      </label>
+    </div> -->
+  </form>
+
+  <h1 class="action">Editar mesas</h1>
+  <form action="/restaurant" method="post" class="text_center">
+    <div class="form-group">
+      <label for="text">Fecha:
+        <input type="date" name="dateUpdate" max="3000-12-31" min="<%=strDate%>" required>
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="text">Número de mesas a ofrecer:
+        <input type="text" name="tablesUpdate" required>
+      </label>
+    </div>
+    <div class="success">${successInsertion}</div>
+    <div class="error">${errorInsertion}</div>
+    <button type="submit" class="btn btn-primary">Editar</button>
   </form>
 
 </body>

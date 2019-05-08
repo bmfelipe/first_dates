@@ -316,7 +316,7 @@ public class DBManager implements AutoCloseable {
     return true;
   }
 
-  public Boolean offerTables(Availability availability) throws SQLException{
+  public Boolean insertAvailability (Availability availability) throws SQLException{
     Boolean inserted = false;
     String query = "INSERT INTO 19_comweb_21d.Availability (date, offeredTables, availableTables) VALUES (?, ?, ?)";
     PreparedStatement stmt = connection.prepareStatement(query);
@@ -331,5 +331,24 @@ public class DBManager implements AutoCloseable {
     }
 
     return inserted;
+  }
+
+  public Availability searchAvailability (Date date) throws SQLException{
+    Availability availability = new Availability();
+    String query = "SELECT offeredTables, availableTables FROM 19_comweb_21d.Availability WHERE date = ?";
+    PreparedStatement stmt = connection.prepareStatement(query);
+    stmt.setDate(1, new java.sql.Date(date.getTime()));
+    ResultSet rs = stmt.executeQuery();
+
+    if (rs.next())
+    {
+      availability.setOfferedTables(rs.getInt("offeredTables"));
+      availability.setAvailableTables(rs.getInt("availableTables"));
+    }
+    else {
+      availability = null;
+    }
+
+    return availability;
   }
 }
