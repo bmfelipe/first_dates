@@ -316,7 +316,7 @@ public class DBManager implements AutoCloseable {
     return true;
   }
 
-  public Boolean offerTables(Availability availability){
+  public Boolean offerTables(Availability availability) throws SQLException{
     Boolean inserted = false;
     String query = "INSERT INTO 19_comweb_21d.Availability (date, offeredTables, availableTables) VALUES (?, ?, ?)";
     PreparedStatement stmt = connection.prepareStatement(query);

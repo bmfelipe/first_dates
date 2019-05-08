@@ -48,17 +48,20 @@ public class Restaurant extends HttpServlet {
             Date date = dateFormat.parse(request.getParameter("date"));
             int tables = Integer.parseInt(request.getParameter("tables"));
 
-            System.out.println(tables);
-            //
-            // try (DBManager db = new DBManager())
-            // {
-            //     user = db.searchUser(entryUsername);
-            // }
-            // catch (SQLException ex)
-            // {
-            //     // Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
-            //     ex.printStackTrace();
-            // }
+            availability.setDate(date);
+            availability.setOfferedTables(tables);
+            availability.setAvailableTables(tables);
+
+            try (DBManager db = new DBManager())
+            {
+                Boolean inserted = db.offerTables(availability);
+                System.out.println("Availability inserted: "+inserted);
+            }
+            catch (SQLException ex)
+            {
+                // Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
+            }
             // RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
             // rd.forward(request, response);
 

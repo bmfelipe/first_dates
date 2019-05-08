@@ -71,7 +71,7 @@ CREATE TABLE `19_comweb_21d`.`Dates` (
 Disponibilidad mesas;
 
 CREATE TABLE `19_comweb_21d`.`Availability` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATETIME NOT NULL,
   `offeredTables` VARCHAR(45) NOT NULL,
   `availableTables` INT NOT NULL,
