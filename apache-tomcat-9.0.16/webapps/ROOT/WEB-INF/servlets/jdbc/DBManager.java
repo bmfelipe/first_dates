@@ -39,7 +39,7 @@ public class DBManager implements AutoCloseable {
      *
      */
     public void close() throws SQLException {
-        if (connection != null) {
+        if (connection != null && !connection.isClosed()) {
             connection.close();
         }
         connection = null;
@@ -65,8 +65,6 @@ public class DBManager implements AutoCloseable {
             break;
         }
 
-        close();
-
         return user;
     }
 
@@ -89,8 +87,6 @@ public class DBManager implements AutoCloseable {
         if(rowsAffected != 0){
           registered = true;
         }
-
-        close();
 
         return registered;
     }

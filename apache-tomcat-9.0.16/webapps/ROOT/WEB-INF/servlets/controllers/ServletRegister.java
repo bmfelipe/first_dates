@@ -42,14 +42,29 @@ public class ServletRegister extends HttpServlet {
                 try (DBManager db = new DBManager()) {
                     String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
 
-                    user.setUsername(request.getParameter("username"));
-                    user.setName(request.getParameter("name"));
-                    user.setPassword(generatedSecuredPasswordHash);
-                    user.setGender(request.getParameter("gender"));
-                    user.setBirthdate(new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("birthdate")));
+                    user = db.searchUser(request.getParameter("username"));
 
-                    Boolean registered = db.registerUser(user);
-                    System.out.println("Registered user: "+registered);
+                    if (user.getUsername() == null) {
+                        user.setUsername(request.getParameter("username"));
+                        user.setName(request.getParameter("name"));
+                        user.setPassword(generatedSecuredPasswordHash);
+                        user.setGender(request.getParameter("gender"));
+                        user.setBirthdate(new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("birthdate")));
+
+                        try (DBManager database = new DBManager()) {
+                            Boolean registered = database.registerUser(user);
+                            System.out.println("Registered user: "+registered);
+
+                        } catch(SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else {
+                      request.setAttribute("errorRegister", "Nombre de usuario no disponible");
+                      RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+                      rd.forward(request, response);
+                    }
+
                 } catch(SQLException e) {
                     e.printStackTrace();
                 }
