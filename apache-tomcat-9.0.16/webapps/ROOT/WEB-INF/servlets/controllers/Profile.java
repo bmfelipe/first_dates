@@ -24,7 +24,7 @@ public class Profile extends HttpServlet {
 		try(DBManager db = new DBManager()){
 			List<DateMatch> mutual_dates = db.getProfileDateList(user.getId(),profileId);
 			request.setAttribute("mutual_dates",mutual_dates);
-			User profile = db.
+			User target_profile = db.searchUserById(profileId);
 			request.setAttribute("target_profile",target_profile);
 
 			RequestDispatcher rd = request.getRequestDispatcher ("/profile.jsp");
