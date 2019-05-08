@@ -55,8 +55,8 @@
 
       }
       if(flag==0){%>
-      <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
-      <%=}%>
+        <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
+      <%}%>
       <div id="like-dislike-buttons">
         <p>
           <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
