@@ -110,13 +110,9 @@ public class DBManager implements AutoCloseable {
         registered = true;
       }
 
-<<<<<<< HEAD
       close();
 
       return registered;
-=======
-        return registered;
->>>>>>> d55ba6f99e93946ae99939096a3df0661ba56e94
     }
 
     public List<User> getRecommendations(int userId) throws SQLException{
