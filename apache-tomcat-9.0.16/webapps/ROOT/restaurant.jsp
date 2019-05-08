@@ -32,11 +32,11 @@
     margin-bottom: 60px;
   }
   .error{
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     color: red;
   }
   .success{
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     color: green;
   }
 </style>

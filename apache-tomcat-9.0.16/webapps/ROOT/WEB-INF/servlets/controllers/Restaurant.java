@@ -90,10 +90,10 @@ public class Restaurant extends HttpServlet {
 
               if (availability != null)
               {
-                request.setAttribute("successSearch", "Estas son las mesas para este día:<br>Mesas ofrecidas: "+availability.getOfferedTables()+"<br>Mesas disponibles: "+availability.getAvailableTables());
+                request.setAttribute("successSearch", "Estas son las mesas registradas para el día "+request.getParameter("dateSearch")+":<br>Mesas ofrecidas: "+availability.getOfferedTables()+"<br>Mesas disponibles: "+availability.getAvailableTables());
               }
               else {
-                request.setAttribute("errorSearch", "No hay ninguna mesa registrada este día");
+                request.setAttribute("errorSearch", "No hay ninguna mesa registrada para el día "+request.getParameter("dateSearch"));
               }
             }
 
