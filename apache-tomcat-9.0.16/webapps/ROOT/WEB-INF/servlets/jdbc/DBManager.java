@@ -3,6 +3,7 @@ package jdbc;
 import beans.User;
 import beans.DateMatch;
 import beans.Preferences;
+import beans.Availability;
 import java.util.Date;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -44,11 +45,14 @@ public class DBManager implements AutoCloseable {
       }
       connection = null;
     }
+
     public User searchUserById(int userId) throws SQLException{
       User user = new User();
       String query = "SELECT * FROM Users WHERE id =?";
       PreparedStatement stmt = connection.prepareStatement(query);
       stmt.setInt(1,userId);
+      ResultSet rs = stmt.executeQuery();
+
       while (rs.next())
       {
         user.setId(rs.getInt("id"));
@@ -85,8 +89,6 @@ public class DBManager implements AutoCloseable {
         break;
       }
 
-      close();
-
       return user;
     }
 
@@ -110,13 +112,7 @@ public class DBManager implements AutoCloseable {
         registered = true;
       }
 
-<<<<<<< HEAD
-      close();
-
       return registered;
-=======
-        return registered;
->>>>>>> d55ba6f99e93946ae99939096a3df0661ba56e94
     }
 
     public List<User> getRecommendations(int userId) throws SQLException{
@@ -318,5 +314,22 @@ public class DBManager implements AutoCloseable {
       }
     }
     return true;
+  }
+
+  public Boolean offerTables(Availability availability){
+    Boolean inserted = false;
+    String query = "INSERT INTO 19_comweb_21d.Availability (date, offeredTables, availableTables) VALUES (?, ?, ?)";
+    PreparedStatement stmt = connection.prepareStatement(query);
+    stmt.setDate(1, new java.sql.Date(availability.getDate().getTime()));
+    stmt.setInt(2, availability.getOfferedTables());
+    stmt.setInt(3, availability.getAvailableTables());
+
+    int rowsAffected = stmt.executeUpdate();
+
+    if(rowsAffected != 0){
+      inserted = true;
+    }
+
+    return inserted;
   }
 }
