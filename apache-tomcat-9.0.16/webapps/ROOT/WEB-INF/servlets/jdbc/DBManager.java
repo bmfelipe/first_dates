@@ -71,7 +71,7 @@ public class DBManager implements AutoCloseable {
 
     public User searchUser(String username) throws SQLException {
       User user = new User();
-      String query = "SELECT * FROM Users INNER JOIN UserAuth ON Users.id=.UserAuth.id WHERE username = ?";
+      String query = "SELECT * FROM 19_comweb_21d.Users INNER JOIN 19_comweb_21d.UserAuth ON 19_comweb_21d.Users.id=19_comweb_21d.UserAuth.id WHERE username = ?";
       PreparedStatement stmt = connection.prepareStatement(query);
       stmt.setString(1, username);
       ResultSet rs = stmt.executeQuery();
