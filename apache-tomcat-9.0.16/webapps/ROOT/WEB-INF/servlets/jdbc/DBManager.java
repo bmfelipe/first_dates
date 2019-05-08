@@ -39,6 +39,7 @@ public class DBManager implements AutoCloseable {
      *
      */
     public void close() throws SQLException {
+<<<<<<< HEAD
       if (connection != null) {
         connection.close();
       }
@@ -63,6 +64,12 @@ public class DBManager implements AutoCloseable {
       }
 
       return user;
+=======
+        if (connection != null && !connection.isClosed()) {
+            connection.close();
+        }
+        connection = null;
+>>>>>>> d55ba6f99e93946ae99939096a3df0661ba56e94
     }
 
     public User searchUser(String username) throws SQLException {
@@ -85,9 +92,13 @@ public class DBManager implements AutoCloseable {
         break;
       }
 
+<<<<<<< HEAD
       close();
 
       return user;
+=======
+        return user;
+>>>>>>> d55ba6f99e93946ae99939096a3df0661ba56e94
     }
 
     public Boolean registerUser(User user) throws SQLException {
@@ -110,9 +121,13 @@ public class DBManager implements AutoCloseable {
         registered = true;
       }
 
+<<<<<<< HEAD
       close();
 
       return registered;
+=======
+        return registered;
+>>>>>>> d55ba6f99e93946ae99939096a3df0661ba56e94
     }
 
     public List<User> getRecommendations(int userId) throws SQLException{
