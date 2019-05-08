@@ -49,6 +49,7 @@ public class DBManager implements AutoCloseable {
       String query = "SELECT * FROM Users WHERE id =?";
       PreparedStatement stmt = connection.prepareStatement(query);
       stmt.setInt(1,userId);
+      ResultSet rs = stmt.executeQuery();
       while (rs.next())
       {
         user.setId(rs.getInt("id"));
