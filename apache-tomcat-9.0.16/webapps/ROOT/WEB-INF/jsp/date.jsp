@@ -151,7 +151,11 @@
               <h5>Edad: <%=date.getAge()%></h5>
             </div>
             <hr/>
-            
+            <div id="date-info">
+            <h6>
+              <%=date.getDescription()%>
+            </h6>
+            </div>
           </div>
         </div>
   </body>
@@ -161,7 +165,7 @@
           startDate: new Date(),
           multidate: true,
           format: "dd/mm/yyyy",
-          daysOfWeekHighlighted: "5,6",
+          daysOfWeekHighlighted: "6,7",
           datesDisabled: ['31/08/2017'],
           language: 'en',
           orientation: 'bottom',

@@ -133,7 +133,11 @@
               <h5>Edad: 28</h5>
             </div>
             <hr/>
-            
+            <div id="date-info">
+            <h6>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac erat vel ante fringilla sagittis. Curabitur lacinia risus eget nisl imperdiet pellentesque. Ut vestibulum ipsum eget ipsum viverra ultrices. Donec pharetra dui tincidunt gravida vulputate. Phasellus sed ornare lacus. Mauris vehicula vestibulum orci eget sagittis. Vivamus eget laoreet sem. Aenean et nisl sit amet magna hendrerit molestie. Fusce venenatis nulla dui, eu malesuada lectus lobortis vitae. Suspendisse accumsan consectetur enim non maximus. Nunc interdum vel ante tristique accumsan. Sed pulvinar non dolor vel aliquam.
+            </h6>
+            </div>
           </div>
         </div>
   </body>
@@ -142,11 +146,11 @@
       $('#startdate_datepicker').datepicker({
           startDate: new Date(),
           multidate: true,
-          format: "dd/mm/yyyy",
-          daysOfWeekHighlighted: "5,6",
-          datesDisabled: ['31/08/2017'],
-          language: 'en',
+          format: "dd-mm-yyyy",
+          daysOfWeekHighlighted: "6,0",
+          datesDisabled: ['31-08-2017'],
           orientation: 'bottom',
+          weekStart: 1
       }).on('changeDate', function(e) {
           // `e` here contains the extra attributes
           $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
