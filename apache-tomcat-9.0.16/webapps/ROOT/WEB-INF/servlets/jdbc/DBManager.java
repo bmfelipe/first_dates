@@ -406,13 +406,14 @@ public class DBManager implements AutoCloseable {
     return updated;
   }
 
-  public User getUserInfo(int id){
+  public User getUserInfo(int id) throws SQLException{
     String query = "SELECT id ,name, username, gender, (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y') AS age FROM Users WHERE id = ?";
+    User user = new User();
 
     try(PreparedStatement st = connection.prepareStatement(query)){
       st.setInt(1,id);
       ResultSet rs = st.executeQuery();
-      User user = new User();
+
       rs.next();
       user.setId(rs.getInt("id"));
       user.setUsername(rs.getString("username"));
@@ -424,25 +425,28 @@ public class DBManager implements AutoCloseable {
     return user;
   }
 
-  public DateMatch getDateInfo(int userId, int dateId){
+  public DateMatch getDateInfo(int userId, int dateId) throws SQLException{
     String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND (dateOneId or dateTwoId) =? AND status NOT IN ('Rechazado', 'Pending', 'Finalizado')";
+    DateMatch date = new DateMatch();
 
     try(PreparedStatement st = connection.prepareStatement(query)){
       st.setInt(1,userId);
       st.setInt(2,dateId);
       ResultSet rs = st.executeQuery();
-      while(rs.next()){
-        DateMatch date = new DateMatch();
-        date.setId(rs.getInt("id"));
-        date.setDateOneId(rs.getInt("dateOneId"));
-        date.setDateTwoId(rs.getInt("dateTwoId"));
-        date.setStatus(rs.getString("status"));
-        date.setDateRequest(rs.getDate("dateRequest"));
-        date.setDateResponse(rs.getDate("dateResponse"));
+      rs.next();
 
-      }
-      return date;
+
+      date.setId(rs.getInt("id"));
+      date.setDateOneId(rs.getInt("dateOneId"));
+      date.setDateTwoId(rs.getInt("dateTwoId"));
+      date.setStatus(rs.getString("status"));
+      date.setDateRequest(rs.getDate("dateRequest"));
+      date.setDateResponse(rs.getDate("dateResponse"));
+
+
+
 
     }
+      return date;
   }
 }

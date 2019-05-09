@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import javax.naming.NamingException;
 
 @WebServlet("/date")
-public class Home extends HttpServlet {
+public class Date extends HttpServlet {
 
     /**
      * Método del servlet que responde a una petición GET.
@@ -33,7 +33,7 @@ public class Home extends HttpServlet {
           int dateId = Integer.parseInt(request.getParameter("id"));
           try(DBManager db = new DBManager()){
               User date = db.getUserInfo(dateId);
-              DateMatch dateInfo = db.getDateInfo(user.getId(),dateId)
+              DateMatch dateInfo = db.getDateInfo(user.getId(),dateId);
               request.setAttribute("date",date);
               request.setAttribute("dateInfo",dateInfo);
 

@@ -105,10 +105,10 @@ public class User {
 	}
 
 	public int getAge(){
-		return this.age
+		return this.age;
 	}
 
-	public void serAge(int age){
+	public void setAge(int age){
 		this.age = age;
 	}
 }
