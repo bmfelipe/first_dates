@@ -74,8 +74,7 @@ public class ServletLogin extends HttpServlet {
                       response.sendRedirect("/home");
                     }
                     else {
-                      RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
-                      rd.forward(request, response);
+                      response.sendRedirect("/restaurant");
                     }
                 }
                 else

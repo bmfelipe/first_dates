@@ -1,6 +1,7 @@
 package controllers;
 
 import beans.Availability;
+import beans.User;
 import jdbc.DBManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,114 +39,127 @@ public class Restaurant extends HttpServlet {
     {
         try
         {
-            Boolean inserted = false;
-            Boolean updated = false;
-            Availability availability = new Availability();
-            Locale locale = new Locale("es", "ES");
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
-            TimeZone timeZone = TimeZone.getTimeZone("Etc/GMT+1");
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
 
-            dateFormat.setTimeZone(timeZone);
-
-            if (request.getParameter("dateInsert") != null)
+            if(user == null)
             {
-              Date date = dateFormat.parse(request.getParameter("dateInsert"));
-              int tables = Integer.parseInt(request.getParameter("tablesInsert"));
+              response.sendRedirect("/");
+            }
+            else if (user.isLoggedIn())
+            {
+              Boolean inserted = false;
+              Boolean updated = false;
+              Availability availability = new Availability();
+              Locale locale = new Locale("es", "ES");
+              SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
+              TimeZone timeZone = TimeZone.getTimeZone("Etc/GMT+1");
 
-              try (DBManager db = new DBManager())
-              {
-                  availability = db.searchAvailability(date);
-              }
-              catch (SQLException ex)
-              {
-                  ex.printStackTrace();
-              }
+              dateFormat.setTimeZone(timeZone);
 
-              if (availability == null)
+              if (request.getParameter("dateInsert") != null)
               {
-                Availability availability2 = new Availability();
-                availability2.setDate(date);
-                availability2.setOfferedTables(tables);
-                availability2.setAvailableTables(tables);
+                Date date = dateFormat.parse(request.getParameter("dateInsert"));
+                int tables = Integer.parseInt(request.getParameter("tablesInsert"));
 
                 try (DBManager db = new DBManager())
                 {
-                    inserted = db.insertAvailability(availability2);
-                    System.out.println("Availability inserted: " + inserted);
+                    availability = db.searchAvailability(date);
                 }
                 catch (SQLException ex)
                 {
                     ex.printStackTrace();
                 }
 
-                if (inserted)
+                if (availability == null)
                 {
-                  request.setAttribute("successInsertion", "¡Mesas registradas para el dia "+request.getParameter("dateInsert")+" con éxito!");
+                  Availability availability2 = new Availability();
+                  availability2.setDate(date);
+                  availability2.setOfferedTables(tables);
+                  availability2.setAvailableTables(tables);
+
+                  try (DBManager db = new DBManager())
+                  {
+                      inserted = db.insertAvailability(availability2);
+                      System.out.println("Availability inserted: " + inserted);
+                  }
+                  catch (SQLException ex)
+                  {
+                      ex.printStackTrace();
+                  }
+
+                  if (inserted)
+                  {
+                    request.setAttribute("successInsertion", "¡Mesas registradas para el dia "+request.getParameter("dateInsert")+" con éxito!");
+                  }
+                  else
+                  {
+                    request.setAttribute("errorInsertion", "¡No se han podido insertar las mesas para el día "+request.getParameter("dateInsert")+"!");
+                  }
                 }
                 else
                 {
-                  request.setAttribute("errorInsertion", "¡No se han podido insertar las mesas para el día "+request.getParameter("dateInsert")+"!");
+                  request.setAttribute("errorInsertion", "Ya hay mesas registradas para el día "+request.getParameter("dateInsert")+".<br>Si quiere puede editar las mesas de este día.");
                 }
               }
-              else
+              else if (request.getParameter("dateSearch") != null)
               {
-                request.setAttribute("errorInsertion", "Ya hay mesas registradas para el día "+request.getParameter("dateInsert")+".<br>Si quiere puede editar las mesas de este día.");
+                Date date = dateFormat.parse(request.getParameter("dateSearch"));
+
+                try (DBManager db = new DBManager())
+                {
+                    availability = db.searchAvailability(date);
+                }
+                catch (SQLException ex)
+                {
+                    ex.printStackTrace();
+                }
+
+                if (availability != null)
+                {
+                  request.setAttribute("successSearch", "Estas son las mesas registradas para el día "+request.getParameter("dateSearch")+":<br>Mesas ofrecidas: "+availability.getOfferedTables()+"<br>Mesas disponibles: "+availability.getAvailableTables());
+                }
+                else
+                {
+                  request.setAttribute("errorSearch", "No hay ninguna mesa registrada para el día "+request.getParameter("dateSearch"));
+                }
               }
+              else if (request.getParameter("dateUpdate") != null)
+              {
+                Date date = dateFormat.parse(request.getParameter("dateUpdate"));
+                int tables = Integer.parseInt(request.getParameter("tablesUpdate"));
+
+                availability.setDate(date);
+                availability.setOfferedTables(tables);
+                availability.setAvailableTables(tables);
+
+                try (DBManager db = new DBManager())
+                {
+                    updated = db.updateAvailability(availability);
+                    System.out.println("Availability updated: " + updated);
+                }
+                catch (SQLException ex)
+                {
+                    ex.printStackTrace();
+                }
+
+                if (updated)
+                {
+                  request.setAttribute("successUpdate", "¡Mesas editadas para el día "+request.getParameter("dateUpdate")+" con éxito!");
+                }
+                else
+                {
+                  request.setAttribute("errorUpdate", "¡No se han podido editar las mesas para el día  "+request.getParameter("dateUpdate")+"!");
+                }
+              }
+
+              RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
+              rd.forward(request, response);
             }
-            else if (request.getParameter("dateSearch") != null)
+            else
             {
-              Date date = dateFormat.parse(request.getParameter("dateSearch"));
-
-              try (DBManager db = new DBManager())
-              {
-                  availability = db.searchAvailability(date);
-              }
-              catch (SQLException ex)
-              {
-                  ex.printStackTrace();
-              }
-
-              if (availability != null)
-              {
-                request.setAttribute("successSearch", "Estas son las mesas registradas para el día "+request.getParameter("dateSearch")+":<br>Mesas ofrecidas: "+availability.getOfferedTables()+"<br>Mesas disponibles: "+availability.getAvailableTables());
-              }
-              else
-              {
-                request.setAttribute("errorSearch", "No hay ninguna mesa registrada para el día "+request.getParameter("dateSearch"));
-              }
+              response.sendRedirect("/");
             }
-            else if (request.getParameter("dateUpdate") != null)
-            {
-              Date date = dateFormat.parse(request.getParameter("dateUpdate"));
-              int tables = Integer.parseInt(request.getParameter("tablesUpdate"));
-
-              availability.setDate(date);
-              availability.setOfferedTables(tables);
-              availability.setAvailableTables(tables);
-
-              try (DBManager db = new DBManager())
-              {
-                  updated = db.updateAvailability(availability);
-                  System.out.println("Availability updated: " + updated);
-              }
-              catch (SQLException ex)
-              {
-                  ex.printStackTrace();
-              }
-
-              if (updated)
-              {
-                request.setAttribute("successUpdate", "¡Mesas editadas para el día "+request.getParameter("dateUpdate")+" con éxito!");
-              }
-              else
-              {
-                request.setAttribute("errorUpdate", "¡No se han podido editar las mesas para el día  "+request.getParameter("dateUpdate")+"!");
-              }
-            }
-
-            RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
-            rd.forward(request, response);
-
         }
         catch(Exception ex)
         {

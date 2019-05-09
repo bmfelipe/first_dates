@@ -47,8 +47,5 @@ public class Home extends HttpServlet {
         }else{
           response.sendRedirect("/");
         }
-
-
-
     }
 }
