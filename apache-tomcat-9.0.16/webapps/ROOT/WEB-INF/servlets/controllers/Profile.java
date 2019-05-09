@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
 import javax.naming.NamingException;
 
-@WebServlet("/user-profile")
+@WebServlet("/profile")
 public class Profile extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
 
@@ -25,8 +25,8 @@ public class Profile extends HttpServlet {
 			List<DateMatch> mutual_dates = db.getProfileDateList(user.getId(),profileId);
 			request.setAttribute("mutual_dates",mutual_dates);
 			User target_profile = db.searchUserById(profileId);
+			System.out.println("Debuug: "+target_profile.getId());
 			request.setAttribute("target_profile",target_profile);
-
 			RequestDispatcher rd = request.getRequestDispatcher ("/profile.jsp");
 			rd.forward(request, response);
 
