@@ -71,7 +71,7 @@
          <button class="dropdown-item" type="button">Perfil</button>
          <button class="dropdown-item" type="button">Configuración</button>
          <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="/ServletLogout">Salir</a>
+         <a class="dropdown-item" href="/logout">Salir</a>
         </div>
       </div>
 

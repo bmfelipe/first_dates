@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.annotation.WebServlet;
 import java.io.*;
 
-@WebServlet("/login")
+@WebServlet("/process-login")
 public class ServletLogin extends HttpServlet {
     /**
      * Processes requests for both HTTP
