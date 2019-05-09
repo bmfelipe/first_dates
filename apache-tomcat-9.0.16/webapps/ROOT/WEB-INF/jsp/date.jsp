@@ -48,7 +48,8 @@
    }
 
    .profile-photo{
-     max-width: 250px;
+     width: 250px;
+
    }
    .user-info {
      padding-top: 20px;
@@ -74,7 +75,7 @@
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active" id="1">
-                  <img class="profile-photo" src="/user-image?id=<%=user.getId()%>" alt="anonymous.png">
+                  <img class="profile-photo" src="/user-image?id=<%=user.getId()%>" onerror="this.src='anonymous.png'">
                 </div>
               </div>
             </div>
@@ -108,7 +109,7 @@
           <%-- <div class="card mb-4"> --%>
 
             <div id="date-container">
-              <div id="heart" style="font-size: 7rem;">
+              <div id="heart" style="font-size: 6rem;">
                 <i class="fa fa-heart fa-5x"></i>
               </div>
             </div>

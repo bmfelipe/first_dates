@@ -13,7 +13,7 @@ import java.io.InputStream;
 import javax.naming.NamingException;
 
 @WebServlet("/user-image")
-public class UserImage extends HttpServlet {
+public class GetImage extends HttpServlet {
 
     /**
      * Método del servlet que responde a una petición GET.
