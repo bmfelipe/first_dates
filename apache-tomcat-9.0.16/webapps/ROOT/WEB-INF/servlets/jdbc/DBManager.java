@@ -130,13 +130,52 @@ public class DBManager implements AutoCloseable {
         preferences.setMaxAge(rs.getInt("maxAge"));
         preferences.setSexPref(rs.getString("sexPref"));
       }
-      query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) <= ? and gender = ? ORDER BY RAND() LIMIT 20";
 
+      query = "SELECT dateOneId, dateTwoId FROM Dates WHERE (dateOneId OR dateTwoId) = ? and status != 'Pendiente'";
+      List<Integer> ids = new ArrayList<Integer>();
 
+      try(PreparedStatement st = connection.prepareStatement(query)){
+        st.setInt(1,userId);
+        ResultSet rs = st.executeQuery();
+
+        while(rs.next()){
+          int id;
+          if(rs.getInt("dateOneId") == userId){
+            id = rs.getInt("dateTwoId");
+          }else{
+            id = rs.getInt("dateOneId");
+          }
+          ids.add(id);
+
+        }
+      }
+
+      String numberElements;
+      if(ids.size() > 0){
+        numberElements = "AND id NOT IN (";
+      }else{
+        numberElements = "";
+      }
+      for(int i = 0; i< ids.size();i++){
+        if(i == (ids.size()-1)){
+          numberElements += "?)";
+        }else{
+          numberElements += "?, ";
+        }
+
+      }
+      query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) <= ? and gender = ? "+numberElements+" ORDER BY RAND() LIMIT 20";
+
+      int numId = 4;
       try(PreparedStatement st = connection.prepareStatement(query)){
         st.setInt(1,preferences.getMinAge());
         st.setInt(2,preferences.getMaxAge());
         st.setString(3,preferences.getSexPref());
+        for(int uId :ids){
+          st.setInt(numId,uId);
+          numId++;
+
+        }
         ResultSet rs = st.executeQuery();
         while(rs.next()){
           User recommendation = new User();
