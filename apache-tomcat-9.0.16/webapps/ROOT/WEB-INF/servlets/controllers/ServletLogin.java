@@ -47,10 +47,12 @@ public class ServletLogin extends HttpServlet {
                 ex.printStackTrace();
             }
 
-            if(user.getPassword() != null){
+            if(user.getPassword() != null)
+            {
                 if (BCrypt.checkpw(entryPassword, user.getPassword()))
                 {
-                    if (request.getParameter("remember") != null) {
+                    if (request.getParameter("remember") != null)
+                    {
                       String remember = request.getParameter("remember");
                       System.out.println("remember : " + remember);
                       Cookie cUsername = new Cookie("cookuser", entryUsername);

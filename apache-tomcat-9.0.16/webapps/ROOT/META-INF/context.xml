@@ -7,7 +7,7 @@
             username="19_comweb_21"
             password="y9HM7yel"
             driverClassName="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://localhost/19_comweb_21d"
+            url="jdbc:mysql://mysql.lab.it.uc3m.es/19_comweb_21d"
             maxActive="8"
             maxIdle="4"/>
 </Context>

@@ -57,7 +57,7 @@
 
       <div class="form-group">
         <label for="pwd">Contraseña:
-          <input placeholder="Contraseña" type="password" class="form-control" name="password" required>
+          <input placeholder="Contraseña" type="password" class="form-control" name="password" minlength="8" maxlength="20" required>
         </label>
       </div>
 

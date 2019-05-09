@@ -42,6 +42,11 @@
       <servlet-class>controllers.ServletRegister</servlet-class>
     </servlet>
 
+    <servlet>
+      <servlet-name>Restaurant</servlet-name>
+      <servlet-class>controllers.Restaurant</servlet-class>
+    </servlet>
+
     <servlet-mapping>
       <servlet-name>Home</servlet-name>
       <url-pattern>/Home</url-pattern>
@@ -60,6 +65,11 @@
     <servlet-mapping>
       <servlet-name>ServletRegister</servlet-name>
       <url-pattern>/ServletRegister</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+      <servlet-name>Restaurant</servlet-name>
+      <url-pattern>/Restaurant</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

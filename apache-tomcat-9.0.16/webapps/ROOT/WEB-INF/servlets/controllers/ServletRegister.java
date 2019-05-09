@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.Locale;
 
 public class ServletRegister extends HttpServlet {
     /**
@@ -37,21 +39,48 @@ public class ServletRegister extends HttpServlet {
             String password = request.getParameter("password");
             String password2 = request.getParameter("password2");
 
+            Locale locale = new Locale("es", "ES");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
+            TimeZone timeZone = TimeZone.getTimeZone("Etc/GMT+1");
+
+            dateFormat.setTimeZone(timeZone);
+
             if (password2.equals(password))
             {
-                try (DBManager db = new DBManager()) {
-                    String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+                String generatedSecuredPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt(12));
 
+                try (DBManager db = new DBManager())
+                {
+                  user = db.searchUser(request.getParameter("username"));
+                }
+                catch(SQLException e)
+                {
+                    e.printStackTrace();
+                }
+
+                if (user.getUsername() == null)
+                {
                     user.setUsername(request.getParameter("username"));
                     user.setName(request.getParameter("name"));
                     user.setPassword(generatedSecuredPasswordHash);
                     user.setGender(request.getParameter("gender"));
-                    user.setBirthdate(new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("birthdate")));
+                    user.setBirthdate(dateFormat.parse(request.getParameter("birthdate")));
 
-                    Boolean registered = db.registerUser(user);
-                    System.out.println("Registered user: "+registered);
-                } catch(SQLException e) {
-                    e.printStackTrace();
+                    try (DBManager db = new DBManager())
+                    {
+                        Boolean registered = db.registerUser(user);
+                        System.out.println("Registered user: "+registered);
+                    }
+                    catch(SQLException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+                else
+                {
+                  request.setAttribute("errorRegister", "Nombre de usuario no disponible");
+                  RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+                  rd.forward(request, response);
                 }
 
                 RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
