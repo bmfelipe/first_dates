@@ -1,4 +1,6 @@
 <%@ page language = "java" contentType = "text/html" pageEncoding="UTF-8" session="false"%>
+<%@ page import='beans.User'%>
+<%@ page import='beans.DateMatch'%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,7 +74,7 @@
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active" id="1">
-                  <img class="profile-photo" src="/user-image?id=<%=user.getId()%>" alt="/anonymous.png">
+                  <img class="profile-photo" src="/user-image?id=<%=user.getId()%>" alt="anonymous.png">
                 </div>
               </div>
             </div>

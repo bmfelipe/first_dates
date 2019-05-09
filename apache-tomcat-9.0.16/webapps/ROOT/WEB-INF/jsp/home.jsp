@@ -172,7 +172,7 @@
                           </td>
                           <td><%=date.getStatus()%></td>
                           <td>
-                            <p><a class="btn btn-secondary" href="/date?id=<%=date.getId()%>" role="button">Editar</a></p>
+                            <p><a class="btn btn-secondary" href="/date?id=<%=date.getDateId(user.getId())%>" role="button">Editar</a></p>
                           </td>
                         </tr>
 

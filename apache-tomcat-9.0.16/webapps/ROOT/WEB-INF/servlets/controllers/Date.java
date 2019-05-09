@@ -30,8 +30,10 @@ public class Date extends HttpServlet {
         if(user == null){
           response.sendRedirect("/");
         }else if(user.isLoggedIn()){
-          int dateId = Integer.parseInt(request.getParameter("id"));
+          System.out.println("Test");
+          int dateId = Integer.parseInt(request.getParameter("id").trim());
           try(DBManager db = new DBManager()){
+              System.out.println("Test "+dateId);
               User date = db.getUserInfo(dateId);
               DateMatch dateInfo = db.getDateInfo(user.getId(),dateId);
               request.setAttribute("date",date);
@@ -39,9 +41,10 @@ public class Date extends HttpServlet {
 
           }catch (SQLException|NamingException e){
               e.printStackTrace();//Send re
-              response.sendRedirect("/internalError");
+              // response.sendRedirect("/internalError");
           }
-
+          RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/date.jsp");
+          rd.forward(request, response);
         }else{
           response.sendRedirect("/");
         }
