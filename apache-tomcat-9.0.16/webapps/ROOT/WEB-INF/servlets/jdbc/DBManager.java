@@ -195,7 +195,7 @@ public class DBManager implements AutoCloseable {
     }
 
     public List<DateMatch> getDateList(int userId)throws SQLException {
-      String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND status NOT LIKE 'Rechazado'";
+      String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND status NOT IN ('Rechazado','Pendiente')";
 
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
@@ -221,11 +221,13 @@ public class DBManager implements AutoCloseable {
     }
     //Returns dates the user and a certain profile had
     public List<DateMatch> getProfileDateList(int userId,int profileId) throws SQLException{
-      String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND (dateOneId or dateTwoId) =? AND status NOT LIKE 'Rechazado'";
+      String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND (dateOneId =? or dateTwoId =?) AND status NOT LIKE 'Rechazado'";
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
         st.setInt(1,userId);
-        st.setInt(2,profileId);
+        st.setInt(2,userId);
+        st.setInt(3,profileId);
+        st.setInt(4,profileId);
         ResultSet rs = st.executeQuery();
         while(rs.next()){
           DateMatch dateMatch = new DateMatch();
@@ -407,7 +409,7 @@ public class DBManager implements AutoCloseable {
   }
 
   public User getUserInfo(int id) throws SQLException{
-    String query = "SELECT id ,name, username, gender, (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y') AS age FROM Users WHERE id = ?";
+    String query = "SELECT id ,name, username, gender, description, (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) AS age FROM Users WHERE id = ?";
     User user = new User();
 
     try(PreparedStatement st = connection.prepareStatement(query)){
@@ -420,18 +422,20 @@ public class DBManager implements AutoCloseable {
       user.setName(rs.getString("name"));
       user.setGender(rs.getString("gender"));
       user.setDescription(rs.getString("description"));
-      user.setAge(rs.getInt("age"));
+      user.setAge(Integer.parseInt(rs.getString("age")));
     }
     return user;
   }
 
   public DateMatch getDateInfo(int userId, int dateId) throws SQLException{
-    String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND (dateOneId or dateTwoId) =? AND status NOT IN ('Rechazado', 'Pending', 'Finalizado')";
+    String query = "SELECT * FROM Dates WHERE (dateOneId =? or dateTwoId =?) AND (dateOneId =? or dateTwoId  =?) AND status NOT IN ('Rechazado', 'Pending', 'Finalizado')";
     DateMatch date = new DateMatch();
 
     try(PreparedStatement st = connection.prepareStatement(query)){
       st.setInt(1,userId);
-      st.setInt(2,dateId);
+      st.setInt(2,userId);
+      st.setInt(3,dateId);
+      st.setInt(4,dateId);
       ResultSet rs = st.executeQuery();
       rs.next();
 

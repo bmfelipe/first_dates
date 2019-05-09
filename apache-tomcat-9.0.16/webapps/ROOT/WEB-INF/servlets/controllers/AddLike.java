@@ -33,7 +33,6 @@ public class AddLike extends HttpServlet {
         }else if(user.isLoggedIn()){
           try(DBManager db = new DBManager()){
 
-              System.out.println("Recommendation ID: " + request.getParameter("recommendationId").trim());
 
               int recommendationId = Integer.parseInt(request.getParameter("recommendationId").trim());
 

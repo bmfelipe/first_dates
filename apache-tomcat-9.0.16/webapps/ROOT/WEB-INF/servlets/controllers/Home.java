@@ -36,13 +36,15 @@ public class Home extends HttpServlet {
               List<DateMatch> dates = db.getDateList(user.getId());
               request.setAttribute("dates",dates);
 
-              RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/home.jsp");
-              rd.forward(request, response);
+
 
           }catch (SQLException|NamingException e){
               e.printStackTrace();//Send re
               response.sendRedirect("/internalError");
           }
+
+          RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/home.jsp");
+          rd.forward(request, response);
 
         }else{
           response.sendRedirect("/");
