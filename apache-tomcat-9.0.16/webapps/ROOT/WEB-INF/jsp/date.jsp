@@ -88,7 +88,7 @@
             <hr/>
             <div class="req-info">
               <h4>Información a rellenar:</h4>
-              <% if(dateInfo.getStatus() == "Fecha pendiente"){%>
+              <% if(dateInfo.getStatus().equals("Aceptado")){%>
                   <div class="date-select">
                   <h5>Selecciona Fecha para tu cita</h5>
                     <div class="dates">
@@ -99,6 +99,7 @@
                         </div>
                     </div>
                   </div>
+                  <p><a class="btn btn-secondary" id="add-date" role="button">Fijar Fecha</a></p>
                 </div>
               <%}else{%>
 
@@ -170,6 +171,26 @@
       });
   });
 
+  $('#add-date').on('click', function(event) {
+    event.preventDefault();
+    // console.log($("#startdate_datepicker").datepicker( 'getDates' ));
+    // console.log($("#startdate_datepicker").value);
+    var dates = ($('#startdate_datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val());
+    var dateId = <%=dateInfo.getId()%>;
+    // var data = "{dates: ";
+    // for(date in dates){
+    //   data+"dates: "
+    // }
+    // data+= "]}";
+      $.post('http://localhost:9189/add-dates',{
+        'dates' : dates,
+        'id': dateId
+      })
+      .done(function(data){
+
+        console.log("Done");
+      });
+  });
 
   </script>
 </html>

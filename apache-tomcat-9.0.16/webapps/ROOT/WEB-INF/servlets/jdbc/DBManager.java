@@ -48,7 +48,7 @@ public class DBManager implements AutoCloseable {
 
     public User searchUserById(int userId) throws SQLException{
       User user = new User();
-      String query = "SELECT * FROM Users WHERE id =?";
+      String query = "SELECT *, (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) AS age FROM Users WHERE id =?";
       PreparedStatement stmt = connection.prepareStatement(query);
       stmt.setInt(1,userId);
       ResultSet rs = stmt.executeQuery();
@@ -63,6 +63,7 @@ public class DBManager implements AutoCloseable {
         user.setBirthdate(rs.getDate("birthdate"));
         user.setPassword(rs.getString("password"));
         user.setRole(rs.getString("role"));
+        user.setAge(Integer.parseInt(rs.getString("age")));
         break;
       }
 
@@ -71,7 +72,7 @@ public class DBManager implements AutoCloseable {
 
     public User searchUser(String username) throws SQLException {
       User user = new User();
-      String query = "SELECT * FROM 19_comweb_21d.Users INNER JOIN 19_comweb_21d.UserAuth ON 19_comweb_21d.Users.id=19_comweb_21d.UserAuth.id WHERE username = ?";
+      String query = "SELECT *, (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) AS age FROM 19_comweb_21d.Users INNER JOIN 19_comweb_21d.UserAuth ON 19_comweb_21d.Users.id=19_comweb_21d.UserAuth.id WHERE username = ?";
       PreparedStatement stmt = connection.prepareStatement(query);
       stmt.setString(1, username);
       ResultSet rs = stmt.executeQuery();
@@ -86,6 +87,7 @@ public class DBManager implements AutoCloseable {
         user.setBirthdate(rs.getDate("birthdate"));
         user.setPassword(rs.getString("password"));
         user.setRole(rs.getString("role"));
+        user.setAge(Integer.parseInt(rs.getString("age")));
         break;
       }
 
@@ -447,10 +449,68 @@ public class DBManager implements AutoCloseable {
       date.setDateRequest(rs.getDate("dateRequest"));
       date.setDateResponse(rs.getDate("dateResponse"));
 
-
-
-
     }
       return date;
   }
+
+  public boolean addDateDate(int dateId, List<Date> dates ) throws SQLException{
+    String query = "UPDATE Dates SET status = 'Fecha pendiente', dateRequest = ?  WHERE id = ? ";
+    System.out.println("TESTT");
+    Date date = dates.get(0);
+    int count = 0;
+      System.out.println("TESTT");
+    connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+    connection.setAutoCommit(false);
+    boolean success = false;
+
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setInt(2,dateId);
+      st.setDate(1, new java.sql.Date(date.getTime()));
+      count = st.executeUpdate();
+      System.out.println("TESTT st: "+st+" c: " + count);
+      if(count > 0)
+        success = true;
+
+
+    }
+      if(success){
+         connection.commit();
+      }else{
+         connection.rollback();
+      }
+      connection.setAutoCommit(true);
+
+      return success;
+  }
+
+//   public boolean sellBook(int book, int units) throws SQLException {
+//     boolean success = false;
+//
+// String query = "UPDATE Existencias SET cantidad=(cantidad-?)WHERE libro = ? AND cantidad > ?";
+// int count = 0;
+// try(PreparedStatement st = connection.prepareStatement(query)){
+//     st.setInt(1, units);
+//     st.setInt(2,book);
+//     st.setInt(3,units);
+//     count = st.executeUpdate();
+//     if(count > 0){
+// 	query = "INSERT INTO Operaciones (libro,cantidad) VALUES (?,?)";
+// 	try(PreparedStatement stx = connection.prepareStatement(query)){
+// 	    stx.setInt(1,book);
+// 	    stx.setInt(2,units);
+// 	    stx.executeUpdate();
+// 	}
+//     	success =  true;
+//     }
+//
+// 	} finally{
+//     if(success){
+//        connection.commit();
+//     }else{
+//        connection.rollback();
+//     }
+//     connection.setAutoCommit(true);
+// }
+// return success;
+// }
 }

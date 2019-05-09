@@ -44,7 +44,7 @@ public class GetImage extends HttpServlet {
           }
 
         }else{
-          response.sendRedirect("index");
+          response.sendRedirect("/");
         }
 
 

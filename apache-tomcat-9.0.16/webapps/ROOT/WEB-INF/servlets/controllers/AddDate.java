@@ -1,0 +1,67 @@
+package controllers;
+
+import beans.User;
+import beans.DateMatch;
+import jdbc.DBManager;
+import java.text.SimpleDateFormat;
+import java.sql.SQLException;
+import java.util.List;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.WebServlet;
+import java.util.ArrayList;
+import javax.naming.NamingException;
+import java.util.Date;
+
+@WebServlet("/add-dates")
+public class AddDate extends HttpServlet {
+
+    /**
+     * Método del servlet que responde a una petición GET.
+     *
+     */
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws IOException, ServletException
+    {
+
+        request.setCharacterEncoding("utf-8");
+        HttpSession session = request.getSession();
+
+        User user = (User) session.getAttribute("user");
+
+        if(user == null){
+          response.sendRedirect("/");
+        }else if(user.isLoggedIn()){
+          try(DBManager db = new DBManager()){
+              System.out.println("TESTT");
+              int dateId = Integer.parseInt(request.getParameter("id").trim());
+              String datesStr = request.getParameter("dates");
+                System.out.println("TESTT");
+              String[] datesLst = datesStr.split(",");
+              List<Date> dates = new ArrayList<Date>();
+              for(String dateStr : datesLst){
+                try{
+                  Date date  =new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
+                  dates.add(date);
+                }catch(Exception e){}
+
+
+              }
+
+                System.out.println("TESTT "+dates);
+              boolean result = db.addDateDate(dateId, dates);
+
+
+          }catch (SQLException|NamingException e){
+              e.printStackTrace();//Send re
+              response.sendRedirect("/internalError");
+          }
+
+          // response.sendRedirect ("/date?id="+dateUserId);
+
+        }else{
+          response.sendRedirect("/");
+        }
+    }
+}
