@@ -20,7 +20,7 @@ import java.util.TimeZone;
 import java.util.Locale;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet("/ServletRegister")
+@WebServlet("/register")
 public class ServletRegister extends HttpServlet {
     /**
      * Processes requests for both HTTP

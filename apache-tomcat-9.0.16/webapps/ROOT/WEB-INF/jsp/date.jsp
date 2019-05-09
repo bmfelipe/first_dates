@@ -24,7 +24,9 @@
       color: white;
     }
     .container-fluid {
+      padding-top: 25px;
       font-family: "Open Sans";
+
 
     }
 
@@ -109,7 +111,7 @@
           <%-- <div class="card mb-4"> --%>
 
             <div id="date-container">
-              <div id="heart" style="font-size: 6rem;">
+              <div id="heart" style="font-size: 4rem;">
                 <i class="fa fa-heart fa-5x"></i>
               </div>
             </div>
