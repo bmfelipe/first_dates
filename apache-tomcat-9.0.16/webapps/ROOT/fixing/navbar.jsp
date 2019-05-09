@@ -33,7 +33,7 @@
           <span class="caret"></span>
           <i class="fa fa-bell-o" style="font-size: 30px; float: left; color: gray"></i>
         </button>
-        <ul class="dropdown-menu dropdown-menu-left float-right"
+        <ul id="drop-menu" class="dropdown-menu dropdown-menu-left float-right"
            role="menu" aria-labelledby="dropdownMenu1">
                <li role="presentation" class="dropdown-item"> <a href="#" class="dropdown-menu-header">Notifications</a>
                </li>
@@ -83,7 +83,7 @@
 </div>
 
 <style>
-.dropdown-menu {
+#drop-menu {
   right: 0;
   left:auto;
 

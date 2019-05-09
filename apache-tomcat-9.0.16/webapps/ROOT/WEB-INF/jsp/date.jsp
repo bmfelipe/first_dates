@@ -11,7 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
-    <%-- <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script> --%>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
@@ -57,6 +56,13 @@
   </style>
 
   <body>
+    <%
+    User date = (User) request.getAttribute("date");
+    DateMatch dateInfo = (DateMatch) request.getAttribute("dateInfo");
+    int firstId = -1;
+    HttpSession session = request.getSession();
+    User user = (User) session.getAttribute("user");
+    %>
     <%@ include file='navbar.jsp' %>
     <div class="container-fluid text-center">
       <div class="row">
@@ -66,37 +72,43 @@
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active" id="1">
-                  <img class="profile-photo" src="modelo.png" alt="First slide">
+                  <img class="profile-photo" src="/user-image?id=<%=user.getId()%>" alt="/anonymous.png">
                 </div>
               </div>
             </div>
             <div class="user-info">
-              <h5>Nombre: Maria</h5>
-              <h5>Edad: 28</h5>
+              <h5>Nombre: <%=user.getName()%></h5>
+              <h5>Edad: <%=user.getAge()%></h5>
             </div>
             <hr/>
             <div class="req-info">
               <h4>Información a rellenar:</h4>
-                <div class="date-select">
-                <h5>Selecciona Fecha para tu cita</h5>
-                  <div class="dates">
-                    <div class="start_date input-group mb-4">
-                      <input class="form-control start_date" type="text" placeholder="Date" id="startdate_datepicker">
-                      <div class="input-group-append">
-                        <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
-                      </div>
+              <% if(dateInfo.getStatus() == "Fecha pendiente"){%>
+                  <div class="date-select">
+                  <h5>Selecciona Fecha para tu cita</h5>
+                    <div class="dates">
+                      <div class="start_date input-group mb-4">
+                        <input class="form-control start_date" type="text" placeholder="Date" id="startdate_datepicker">
+                        <div class="input-group-append">
+                          <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
+                        </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="hour-sel">
-                <label for="text">
-                  <h5>Selecciona una hora para la cita</h5>
-                  <select class="form-control" name="date-hour" required>
-                    <option value="18:00">18:00</option>
-                    <option value="20:00">20:00</option>
-                  </select>
-                </label>
-              </div>
+              <%}else if(dateInfo.getStatus() == "Hora pendiente"){%>
+                <div class="hour-sel">
+                  <label for="text">
+                    <h5>Selecciona una hora para la cita</h5>
+                    <select class="form-control" name="date-hour" required>
+                      <option value="18:00">18:00</option>
+                      <option value="20:00">20:00</option>
+                    </select>
+                  </label>
+                </div>
+                <%}else{%>
+
+                  <h5>Ya esta fijada la fecha</h5>
+                <%}%>
             </div>
           </div>
         </div><!-- /.col-lg-4 -->
@@ -110,9 +122,17 @@
             </div>
             <h2>Detalles</h2>
             <div id="info">
-              <h5>Estado de Cita: Pendiente hora</h5>
-              <h5>Dia: 28-5-2019</h5>
-              <h5>Hora: 20:00</h5>
+              <h5>Estado de Cita: <%=dateInfo.getStatus()%></h5>
+              <%if(dateInfo.getDateResponse() == null){%>
+                <h5>Dia: No fijado</h5>
+              <%}else{%>
+                <h5>Dia: <%=dateInfo.getDateResponse()%></h5>
+              <%}%>
+              <%if(dateInfo.getHourResponse() == null){%>
+                <h5>Hora: No fijada</h5>
+              <%}else{%>
+                <h5>Hora: <%=dateInfo.getHourResponse()%></h5>
+              <%}%>
             </div>
           <%-- </div> --%>
         </div><!-- /.col-lg-4 -->
@@ -122,15 +142,13 @@
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active" id="1">
-                  <img class="profile-photo" src="modelo.png" alt="First slide">
+                  <img class="profile-photo" src="/user-image?id=<%=date.getId()%>" alt="/anonymous.png">
                 </div>
-
               </div>
-
             </div>
             <div class="user-info">
-              <h5>Nombre: Maria</h5>
-              <h5>Edad: 28</h5>
+              <h5>Nombre: <%=date.getName()%></h5>
+              <h5>Edad: <%=date.getAge()%></h5>
             </div>
             <hr/>
             

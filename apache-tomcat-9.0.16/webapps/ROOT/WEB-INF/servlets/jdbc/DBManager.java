@@ -131,11 +131,12 @@ public class DBManager implements AutoCloseable {
         preferences.setSexPref(rs.getString("sexPref"));
       }
 
-      query = "SELECT dateOneId, dateTwoId FROM Dates WHERE (dateOneId OR dateTwoId) = ? and status != 'Pendiente'";
+      query = "SELECT dateOneId, dateTwoId FROM Dates WHERE dateOneId = ? OR ((dateOneId OR dateTwoId) = ? and status != 'Pendiente')";
       List<Integer> ids = new ArrayList<Integer>();
 
       try(PreparedStatement st = connection.prepareStatement(query)){
         st.setInt(1,userId);
+        st.setInt(2,userId);
         ResultSet rs = st.executeQuery();
 
         while(rs.next()){
