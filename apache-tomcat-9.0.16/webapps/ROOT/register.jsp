@@ -57,13 +57,13 @@
 
       <div class="form-group">
         <label for="pwd">Contraseña:
-          <input placeholder="Contraseña" type="password" class="form-control" name="password" minlength="8" maxlength="20" required>
+          <input placeholder="Contraseña" title="Debe contener al menos un número, una letra mayúscula, una letra minúscula, y 8 o más carateres" type="password" class="form-control" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
         </label>
       </div>
 
       <div class="form-group">
         <label for="pwd">Repetir contraseña:
-          <input placeholder="Repetir contraseña" type="password" class="form-control" name="password2" required>
+          <input placeholder="Repetir contraseña" title="Debe contener al menos un número, una letra mayúscula, una letra minúscula, y 8 o más carateres" type="password" class="form-control" name="password2" required>
         </label>
       </div>
 
