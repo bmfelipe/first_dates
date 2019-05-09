@@ -17,7 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import java.io.*;
 
 
-@WebServlet("/ServletLogout")
+@WebServlet("/logout")
 public class ServletLogout extends HttpServlet {
     /**
      * Processes requests for both HTTP
