@@ -235,8 +235,6 @@ public class DBManager implements AutoCloseable {
           dateMatch.setStatus(rs.getString("status"));
           dateMatch.setDateRequest(rs.getDate("dateRequest"));
           dateMatch.setDateResponse(rs.getDate("dateResponse"));
-          dateMatch.setHourRequest(rs.getString("hourRequest"));
-          dateMatch.setHourResponse(rs.getString("hourResponse"));
           dates.add(dateMatch);
         }
         return dates;
@@ -406,5 +404,45 @@ public class DBManager implements AutoCloseable {
     }
 
     return updated;
+  }
+
+  public User getUserInfo(int id){
+    String query = "SELECT id ,name, username, gender, (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y') AS age FROM Users WHERE id = ?";
+
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setInt(1,id);
+      ResultSet rs = st.executeQuery();
+      User user = new User();
+      rs.next();
+      user.setId(rs.getInt("id"));
+      user.setUsername(rs.getString("username"));
+      user.setName(rs.getString("name"));
+      user.setGender(rs.getString("gender"));
+      user.setDescription(rs.getString("description"));
+      user.setAge(rs.getInt("age"));
+    }
+    return user;
+  }
+
+  public DateMatch getDateInfo(int userId, int dateId){
+    String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND (dateOneId or dateTwoId) =? AND status NOT IN ('Rechazado', 'Pending', 'Finalizado')";
+
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setInt(1,userId);
+      st.setInt(2,dateId);
+      ResultSet rs = st.executeQuery();
+      while(rs.next()){
+        DateMatch date = new DateMatch();
+        date.setId(rs.getInt("id"));
+        date.setDateOneId(rs.getInt("dateOneId"));
+        date.setDateTwoId(rs.getInt("dateTwoId"));
+        date.setStatus(rs.getString("status"));
+        date.setDateRequest(rs.getDate("dateRequest"));
+        date.setDateResponse(rs.getDate("dateResponse"));
+
+      }
+      return date;
+
+    }
   }
 }

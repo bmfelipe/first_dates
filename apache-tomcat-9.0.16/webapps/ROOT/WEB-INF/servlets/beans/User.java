@@ -9,6 +9,7 @@ public class User {
 	private String gender;
 	private String description;
 	private Date birthdate;
+	private int age;
 	private String photo;
   private String role;
   private Preferences preferences;
@@ -101,5 +102,13 @@ public class User {
 
 	public void setLoggedIn(Boolean isLoggedIn) {
 		this.isLoggedIn = isLoggedIn;
+	}
+
+	public int getAge(){
+		return this.age
+	}
+
+	public void serAge(int age){
+		this.age = age;
 	}
 }
