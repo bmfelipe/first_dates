@@ -25,7 +25,7 @@ public class Register extends HttpServlet {
 
         request.setCharacterEncoding("utf-8");
 
-          RequestDispatcher rd = request.getRequestDispatcher ("/register.jsp");
+          RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/register.jsp");
           rd.forward(request, response);
 
 

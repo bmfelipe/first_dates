@@ -45,13 +45,13 @@ public class ServletLogout extends HttpServlet {
             response.addCookie(cRemember);
             HttpSession session = request.getSession();
             session.invalidate();
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
             requestDispatcher.forward(request, response);
         }
         catch(Exception ex)
         {
             request.setAttribute("errorLogout", "Ha ocurrido un error al cerrar sesión");
-            RequestDispatcher rd = request.getRequestDispatcher("/iniPage.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
             rd.forward(request, response);
         }
     }

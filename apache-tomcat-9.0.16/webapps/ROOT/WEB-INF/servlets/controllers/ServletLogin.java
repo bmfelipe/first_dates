@@ -82,13 +82,13 @@ public class ServletLogin extends HttpServlet {
                 else
                 {
                     request.setAttribute("errorLogin", "Email o contraseña incorrectos");
-                    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
                     rd.forward(request, response);
                 }
             }
             else{
                 request.setAttribute("errorLogin", "Email o contraseña incorrectos");
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
                 rd.forward(request, response);
             }
         }
@@ -97,7 +97,7 @@ public class ServletLogin extends HttpServlet {
             ex.printStackTrace();
             request.setAttribute("errorLogin", "Ha ocurrido un error en el login");
             System.out.println("error");
-            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
             rd.forward(request, response);
         }
     }

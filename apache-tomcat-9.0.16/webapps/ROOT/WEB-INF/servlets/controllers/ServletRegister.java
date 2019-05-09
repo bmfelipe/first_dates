@@ -81,17 +81,17 @@ public class ServletRegister extends HttpServlet {
                 else
                 {
                   request.setAttribute("errorRegister", "Nombre de usuario no disponible");
-                  RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+                  RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
                   rd.forward(request, response);
                 }
 
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
                 rd.forward(request, response);
             }
             else
             {
                 request.setAttribute("errorRegister", "Contraseña repetida mal introducida");
-                RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
                 rd.forward(request, response);
             }
 
@@ -99,7 +99,7 @@ public class ServletRegister extends HttpServlet {
         catch(Exception ex)
         {
             request.setAttribute("errorRegister", "Ha ocurrido un error en el registro");
-            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
             rd.forward(request, response);
         }
     }

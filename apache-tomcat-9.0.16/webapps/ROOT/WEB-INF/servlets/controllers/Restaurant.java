@@ -165,7 +165,7 @@ public class Restaurant extends HttpServlet {
         {
             ex.printStackTrace();
             request.setAttribute("errorRestaurant", "Ha ocurrido un error en el servidor");
-            RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
             rd.forward(request, response);
         }
     }
