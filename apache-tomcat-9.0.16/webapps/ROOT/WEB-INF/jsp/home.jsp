@@ -94,14 +94,14 @@
                 %>
                   <div id="carousel-elem" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                      <div class="carousel-item active" id="car-<%=recommendation.getId()%>">
-                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="<%=recommendation.getId()%>">
+                      <div class="carousel-item active" id="<%=recommendation.getId()%>">
+                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>">
                       </div>
                     <%
                     }else{
                 %>
-                      <div class="carousel-item">
-                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="<%=recommendation.getId()%>">
+                      <div class="carousel-item" id="<%=recommendation.getId()%>">
+                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>">
                       </div>
                 <%
 
@@ -205,12 +205,16 @@
 $('#like-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
+  console.log(recommendationId);
     $.post('http://localhost:9189/add-like',{'recommendationId' : recommendationId})
     .done(function(data){
-      console.log("car-"+recommendationId);
+      console.log(recommendationId);
+      var totalItems = $('.carousel-inner').length;
+      console.log(totalItems);
+      // if(totalItems)
       $('.carousel').carousel('next');
       $('#carousel-elem').on('slid.bs.carousel', function (ev) {
-        $("#car-"+recommendationId ) . remove () ;
+        $("#"+recommendationId ) . remove () ;
 
       });
 

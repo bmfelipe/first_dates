@@ -139,7 +139,6 @@ public class DBManager implements AutoCloseable {
 
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
-        System.out.println(query);
   	    st.setInt(1,userId);
   	    ResultSet rs = st.executeQuery();
 
