@@ -168,11 +168,11 @@
                         <tr>
                           <td><%=date.getDateName(user.getId())%></td>
                           <td>
-                            <p><a class="btn btn-secondary" href="profile?id=<%=date.getDateId(user.getId())%>" role="button">Perfil</a></p>
+                            <p><a class="btn btn-secondary" href="/profile?id=<%=date.getDateId(user.getId())%>" role="button">Perfil</a></p>
                           </td>
                           <td><%=date.getStatus()%></td>
                           <td>
-                            <p><a class="btn btn-secondary" href="date?id=<%=date.getId()%>" role="button">Editar</a></p>
+                            <p><a class="btn btn-secondary" href="/date?id=<%=date.getDateId(user.getId())%>" role="button">Editar</a></p>
                           </td>
                         </tr>
 
@@ -216,14 +216,12 @@ $('#like-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
   var len = $('#carousel-container').attr("len");
-    console.log("ID: " + recommendationId);
     $.post('http://localhost:9189/add-like',{'recommendationId' : recommendationId})
     .done(function(data){
       $('.carousel').carousel('next');
 
       liked = recommendationId;
       len--;
-        console.log("Length " + len);
 
       if(len == 0){
           $('#carousel-container').remove()
@@ -231,24 +229,38 @@ $('#like-btn').on('click', function(event) {
         document.getElementById('carousel-container').setAttribute("len", len);
       }
 
-      $('#carousel-elem').on('slide.bs.carousel', function (ev) {
 
-        $('#like-btn').prop('disabled', true);
-        $('#dislike-btn').prop('disabled', true);
-
-
-      });
 
     });
 });
 
+$('#carousel-elem').on('slide.bs.carousel', function (ev) {
+
+  $('#like-btn').prop('disabled', true);
+  $('#dislike-btn').prop('disabled', true);
+
+
+});
 $('#dislike-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
-  $.post('http://localhost:9189/add-dislike',{'recommendationId' : recommendationId})
-  .done(function(data){
-    console.log("Sent data");
-  });
+  var len = $('#carousel-container').attr("len");
+    $.post('http://localhost:9189/add-dislike',{'recommendationId' : recommendationId})
+    .done(function(data){
+      $('.carousel').carousel('next');
+
+      liked = recommendationId;
+      len--;
+
+      if(len == 0){
+          $('#carousel-container').remove()
+      }else{
+        document.getElementById('carousel-container').setAttribute("len", len);
+      }
+
+
+
+    });
 });
 
 $('#carousel-elem').on('slid.bs.carousel', function (ev) {

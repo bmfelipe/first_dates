@@ -13,7 +13,7 @@ import java.io.InputStream;
 import javax.naming.NamingException;
 
 @WebServlet("/user-image")
-public class UserImage extends HttpServlet {
+public class GetImage extends HttpServlet {
 
     /**
      * Método del servlet que responde a una petición GET.
@@ -29,7 +29,7 @@ public class UserImage extends HttpServlet {
 
         if(user.isLoggedIn()){
           try(DBManager db = new DBManager()){
-            int id = Integer.parseInt(request.getParameter("id"));
+            int id = Integer.parseInt(request.getParameter("id").trim());
             InputStream in = db.getImage(id);
             if(in != null){
               OutputStream output = response.getOutputStream();

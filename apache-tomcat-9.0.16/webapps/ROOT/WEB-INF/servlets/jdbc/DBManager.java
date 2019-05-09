@@ -195,7 +195,7 @@ public class DBManager implements AutoCloseable {
     }
 
     public List<DateMatch> getDateList(int userId)throws SQLException {
-      String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND status NOT LIKE 'Rechazado'";
+      String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND status NOT IN ('Rechazado','Pendiente')";
 
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
@@ -221,11 +221,13 @@ public class DBManager implements AutoCloseable {
     }
     //Returns dates the user and a certain profile had
     public List<DateMatch> getProfileDateList(int userId,int profileId) throws SQLException{
-      String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND (dateOneId or dateTwoId) =? AND status NOT LIKE 'Rechazado'";
+      String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND (dateOneId =? or dateTwoId =?) AND status NOT LIKE 'Rechazado'";
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
         st.setInt(1,userId);
-        st.setInt(2,profileId);
+        st.setInt(2,userId);
+        st.setInt(3,profileId);
+        st.setInt(4,profileId);
         ResultSet rs = st.executeQuery();
         while(rs.next()){
           DateMatch dateMatch = new DateMatch();
@@ -235,8 +237,6 @@ public class DBManager implements AutoCloseable {
           dateMatch.setStatus(rs.getString("status"));
           dateMatch.setDateRequest(rs.getDate("dateRequest"));
           dateMatch.setDateResponse(rs.getDate("dateResponse"));
-          dateMatch.setHourRequest(rs.getString("hourRequest"));
-          dateMatch.setHourResponse(rs.getString("hourResponse"));
           dates.add(dateMatch);
         }
         return dates;
@@ -406,5 +406,51 @@ public class DBManager implements AutoCloseable {
     }
 
     return updated;
+  }
+
+  public User getUserInfo(int id) throws SQLException{
+    String query = "SELECT id ,name, username, gender, description, (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) AS age FROM Users WHERE id = ?";
+    User user = new User();
+
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setInt(1,id);
+      ResultSet rs = st.executeQuery();
+
+      rs.next();
+      user.setId(rs.getInt("id"));
+      user.setUsername(rs.getString("username"));
+      user.setName(rs.getString("name"));
+      user.setGender(rs.getString("gender"));
+      user.setDescription(rs.getString("description"));
+      user.setAge(Integer.parseInt(rs.getString("age")));
+    }
+    return user;
+  }
+
+  public DateMatch getDateInfo(int userId, int dateId) throws SQLException{
+    String query = "SELECT * FROM Dates WHERE (dateOneId =? or dateTwoId =?) AND (dateOneId =? or dateTwoId  =?) AND status NOT IN ('Rechazado', 'Pending', 'Finalizado')";
+    DateMatch date = new DateMatch();
+
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setInt(1,userId);
+      st.setInt(2,userId);
+      st.setInt(3,dateId);
+      st.setInt(4,dateId);
+      ResultSet rs = st.executeQuery();
+      rs.next();
+
+
+      date.setId(rs.getInt("id"));
+      date.setDateOneId(rs.getInt("dateOneId"));
+      date.setDateTwoId(rs.getInt("dateTwoId"));
+      date.setStatus(rs.getString("status"));
+      date.setDateRequest(rs.getDate("dateRequest"));
+      date.setDateResponse(rs.getDate("dateResponse"));
+
+
+
+
+    }
+      return date;
   }
 }

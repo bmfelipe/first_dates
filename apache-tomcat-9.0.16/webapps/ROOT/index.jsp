@@ -64,7 +64,7 @@
       <h1 class="display-1">First Dates</h1>
     </div>
 
-    <form action="ServletLogin" method="post" class="text-center">
+    <form action="/process-login" method="post" class="text-center">
       <div class="form-group">
         <label for="email">Nombre de usuario:<input placeholder="Nombre de usuario" type="text" class="form-control" name="username" value="<%=username%>" required></label>
       </div>
@@ -82,7 +82,7 @@
 
       <button type="submit" class="btn btn-primary">Entrar</button>
 
-      <p class="form-group">¿Todavía no tienes cuenta? <a href="register.jsp">Registrarse</a></p>
+      <p class="form-group">¿Todavía no tienes cuenta? <a href="/register">Registrarse</a></p>
     </form>
   </body>
 

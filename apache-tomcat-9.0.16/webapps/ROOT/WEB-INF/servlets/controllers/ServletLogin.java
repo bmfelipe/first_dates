@@ -15,8 +15,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.annotation.WebServlet;
 import java.io.*;
 
+@WebServlet("/process-login")
 public class ServletLogin extends HttpServlet {
     /**
      * Processes requests for both HTTP
@@ -94,6 +96,7 @@ public class ServletLogin extends HttpServlet {
         {
             ex.printStackTrace();
             request.setAttribute("errorLogin", "Ha ocurrido un error en el login");
+            System.out.println("error");
             RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
         }

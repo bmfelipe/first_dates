@@ -1,4 +1,6 @@
 <%@ page language = "java" contentType = "text/html" pageEncoding="UTF-8" session="false"%>
+<%@ page import='beans.User'%>
+<%@ page import='beans.DateMatch'%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +24,9 @@
       color: white;
     }
     .container-fluid {
+      padding-top: 25px;
       font-family: "Open Sans";
+
 
     }
 
@@ -46,7 +50,8 @@
    }
 
    .profile-photo{
-     max-width: 250px;
+     width: 250px;
+
    }
    .user-info {
      padding-top: 20px;
@@ -72,7 +77,7 @@
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active" id="1">
-                  <img class="profile-photo" src="/user-image?id=<%=user.getId()%>" alt="/anonymous.png">
+                  <img class="profile-photo" src="/user-image?id=<%=user.getId()%>" onerror="this.src='anonymous.png'">
                 </div>
               </div>
             </div>
@@ -95,17 +100,7 @@
                     </div>
                   </div>
                 </div>
-              <%}else if(dateInfo.getStatus() == "Hora pendiente"){%>
-                <div class="hour-sel">
-                  <label for="text">
-                    <h5>Selecciona una hora para la cita</h5>
-                    <select class="form-control" name="date-hour" required>
-                      <option value="18:00">18:00</option>
-                      <option value="20:00">20:00</option>
-                    </select>
-                  </label>
-                </div>
-                <%}else{%>
+              <%}else{%>
 
                   <h5>Ya esta fijada la fecha</h5>
                 <%}%>
@@ -116,7 +111,7 @@
           <%-- <div class="card mb-4"> --%>
 
             <div id="date-container">
-              <div id="heart" style="font-size: 7rem;">
+              <div id="heart" style="font-size: 4rem;">
                 <i class="fa fa-heart fa-5x"></i>
               </div>
             </div>

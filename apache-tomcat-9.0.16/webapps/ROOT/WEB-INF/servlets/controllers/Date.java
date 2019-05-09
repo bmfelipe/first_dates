@@ -12,44 +12,39 @@ import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
 import javax.naming.NamingException;
 
-@WebServlet("/add-like")
-public class AddLike extends HttpServlet {
+@WebServlet("/date")
+public class Date extends HttpServlet {
 
     /**
      * Método del servlet que responde a una petición GET.
      *
      */
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException
     {
-        request.setCharacterEncoding("utf-8");
 
+        request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("user");
-
         if(user == null){
           response.sendRedirect("/");
         }else if(user.isLoggedIn()){
+          System.out.println("Test");
+          int dateId = Integer.parseInt(request.getParameter("id").trim());
           try(DBManager db = new DBManager()){
-
-
-              int recommendationId = Integer.parseInt(request.getParameter("recommendationId").trim());
-
-              System.out.println("recommendationId " + recommendationId );
-              Boolean control = db.addLike(user.getId(), recommendationId);
-
-              if(control == false){
-                response.sendError(500);
-              }else{
-                response.setStatus(200);
-              }
+              System.out.println("Test "+dateId);
+              User date = db.getUserInfo(dateId);
+              DateMatch dateInfo = db.getDateInfo(user.getId(),dateId);
+              request.setAttribute("date",date);
+              request.setAttribute("dateInfo",dateInfo);
 
           }catch (SQLException|NamingException e){
-
-              e.printStackTrace();
+              e.printStackTrace();//Send re
+              // response.sendRedirect("/internalError");
           }
-
+          RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/date.jsp");
+          rd.forward(request, response);
         }else{
           response.sendRedirect("/");
         }

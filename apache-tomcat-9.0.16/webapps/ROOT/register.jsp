@@ -42,7 +42,7 @@
       <h1 class="display-1">¡Crea tu cuenta!</h1>
     </div>
 
-    <form action="ServletRegister" method="post" class="text-center">
+    <form action="/process-register" method="post" class="text-center">
       <div class="form-group">
         <label for="email">Nombre de usuario:
           <input placeholder="Nombre de usuario" type="text" class="form-control" name="username" required>
