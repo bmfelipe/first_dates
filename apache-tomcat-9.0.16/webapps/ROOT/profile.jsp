@@ -31,7 +31,8 @@
       %>
     </div>
     <br></br>
-    <img class=" w-50" src="/user-image?id=<%=profile.getId()%>" id="<%=profile.getId()%>">
+    <!--<img class=" w-50" src="/user-image?id=<%=profile.getId()%>" id="<%=profile.getId()%>">-->
+    <%=profile.getId()%>
     <br></br>
     <div class="card mx-auto mb-auto">
       <h1><%=profile.getName()%></h1>
