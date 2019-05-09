@@ -100,14 +100,14 @@
                     <div class="carousel-inner">
 
                       <div class="carousel-item active" id="<%=recommendation.getId()%>">
-                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>">
+                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" alt="/anonymous.png">
                       </div>
                     <%
                     }else{
                 %>
 
                       <div class="carousel-item" id="<%=recommendation.getId()%>">
-                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>">
+                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" alt="/anonymous.png">
                       </div>
                 <%
 
