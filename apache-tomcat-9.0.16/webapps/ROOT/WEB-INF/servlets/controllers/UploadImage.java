@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.io.InputStream;
 import javax.naming.NamingException;
 
-@WebServlet("/user-image")
+//@WebServlet("/user-image")
 public class UploadImage extends HttpServlet {
 	/*
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
