@@ -4,10 +4,10 @@
   <Resource name="jdbc/First_dates"
             auth="Container"
             type="javax.sql.DataSource"
-            username="19_comweb_21"
-            password="y9HM7yel"
-            driverClassName="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://localhost/19_comweb_21d"
+            username="root"
+            password="Lopez_10"
+            driverClassName="com.mysql.cj.jdbc.Driver"
+            url="jdbc:mysql://localhost/19_comweb_21d?serverTimezone=UTC"
             maxActive="8"
             maxIdle="4"/>
 </Context>
