@@ -9,9 +9,6 @@
   <title>User Profile Page</title>
   <!-- Required meta tags -->
   <!-- Upload image bar -->
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,22 +35,17 @@
     <br></br>
     <img src="/WEB-INF/modelo.png">
     <!-- Upload image bar -->
-    <div class="container">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Upload Image</label>
-          <div class="input-group">
-            <span class="input-group-btn">
-              <span class="btn btn-default btn-file">
-                Browse <input type="file" id="imgInp">
-              </span>
-            </span>
-            <input type="text" class="form-control" readonly>
-          </div>
-          <img id='img-upload'/>
-        </div>
-      </div>
-    </div>
+    <br><div class="container">
+      <div class="row">
+        <div class="col-sm-2 imgUp">
+          <div class="imagePreview"></div>
+          <label class="btn btn-primary">
+            Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+          </label>
+        </div><!-- col-2 -->
+        <i class="fa fa-plus imgAdd"></i>
+      </div><!-- row -->
+    </div><!-- container -->
     <!-- Upload image bar -->
     <br></br>
     <div class="card mx-auto mb-auto">
@@ -144,66 +136,89 @@ if(flag==0){%>
  margin: auto;
  font-size: 15px;
 }
-.btn-file {
-  position: relative;
-  overflow: hidden;
+
+
+
+.imagePreview {
+  width: 100%;
+  height: 180px;
+  background-position: center center;
+  background:url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);
+  background-color:#fff;
+  background-size: cover;
+  background-repeat:no-repeat;
+  display: inline-block;
+  box-shadow:0px -3px 6px 2px rgba(0,0,0,0.2);
 }
-.btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 100px;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  outline: none;
-  background: white;
-  cursor: inherit;
-  display: block;
+.btn-primary
+{
+  display:block;
+  border-radius:0px;
+  box-shadow:0px 4px 6px 2px rgba(0,0,0,0.2);
+  margin-top:-5px;
+}
+.imgUp
+{
+  margin-bottom:15px;
+}
+.del
+{
+  position:absolute;
+  top:0px;
+  right:15px;
+  width:30px;
+  height:30px;
+  text-align:center;
+  line-height:30px;
+  background-color:rgba(255,255,255,0.6);
+  cursor:pointer;
+}
+.imgAdd
+{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background-color:#4bd7ef;
+  color:#fff;
+  box-shadow:0px 0px 2px 1px rgba(0,0,0,0.2);
+  text-align:center;
+  line-height:30px;
+  margin-top:0px;
+  cursor:pointer;
+  font-size:15px;
 }
 
-#img-upload{
-  width: 100%;
-}
+
+
 </style>
 <script>
-  $(document).ready( function() {
-    $(document).on('change', '.btn-file :file', function() {
-      var input = $(this),
-      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-      input.trigger('fileselect', [label]);
-    });
 
-    $('.btn-file :file').on('fileselect', function(event, label) {
-
-      var input = $(this).parents('.input-group').find(':text'),
-      log = label;
-
-      if( input.length ) {
-        input.val(log);
-      } else {
-        if( log ) alert(log);
-      }
-      
-    });
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-          $('#img-upload').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-
-    $("#imgInp").change(function(){
-      readURL(this);
-    });   
+  $(".imgAdd").click(function(){
+    $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp"><div class="imagePreview"></div><label class="btn btn-primary">Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
   });
+  $(document).on("click", "i.del" , function() {
+    $(this).parent().remove();
+  });
+  $(function() {
+    $(document).on("change",".uploadFile", function()
+    {
+      var uploadFile = $(this);
+      var files = !!this.files ? this.files : [];
+        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+        
+        if (/^image/.test( files[0].type)){ // only image file
+            var reader = new FileReader(); // instance of the FileReader
+            reader.readAsDataURL(files[0]); // read the local file
+            
+            reader.onloadend = function(){ // set image data as background of div
+                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
+              }
+            }
+            
+          });
+  });
+
 </script>
 
 </html>
