@@ -95,17 +95,7 @@
                     </div>
                   </div>
                 </div>
-              <%}else if(dateInfo.getStatus() == "Hora pendiente"){%>
-                <div class="hour-sel">
-                  <label for="text">
-                    <h5>Selecciona una hora para la cita</h5>
-                    <select class="form-control" name="date-hour" required>
-                      <option value="18:00">18:00</option>
-                      <option value="20:00">20:00</option>
-                    </select>
-                  </label>
-                </div>
-                <%}else{%>
+              <%}else{%>
 
                   <h5>Ya esta fijada la fecha</h5>
                 <%}%>

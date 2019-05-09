@@ -88,15 +88,7 @@
                   </div>
                 </div>
               </div>
-              <div class="hour-sel">
-                <label for="text">
-                  <h5>Selecciona una hora para la cita</h5>
-                  <select class="form-control" name="date-hour" required>
-                    <option value="18:00">18:00</option>
-                    <option value="20:00">20:00</option>
-                  </select>
-                </label>
-              </div>
+              
             </div>
           </div>
         </div><!-- /.col-lg-4 -->
@@ -134,9 +126,7 @@
             </div>
             <hr/>
             <div id="date-info">
-            <h6>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac erat vel ante fringilla sagittis. Curabitur lacinia risus eget nisl imperdiet pellentesque. Ut vestibulum ipsum eget ipsum viverra ultrices. Donec pharetra dui tincidunt gravida vulputate. Phasellus sed ornare lacus. Mauris vehicula vestibulum orci eget sagittis. Vivamus eget laoreet sem. Aenean et nisl sit amet magna hendrerit molestie. Fusce venenatis nulla dui, eu malesuada lectus lobortis vitae. Suspendisse accumsan consectetur enim non maximus. Nunc interdum vel ante tristique accumsan. Sed pulvinar non dolor vel aliquam.
-            </h6>
+
             </div>
           </div>
         </div>
