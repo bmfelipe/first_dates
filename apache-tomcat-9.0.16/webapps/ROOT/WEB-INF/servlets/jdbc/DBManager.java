@@ -390,4 +390,21 @@ public class DBManager implements AutoCloseable {
 
     return availability;
   }
+
+  public Boolean updateAvailability (Availability availability) throws SQLException{
+    Boolean updated = false;
+    String query = "UPDATE 19_comweb_21d.Availability SET offeredTables = ?, availableTables = ? WHERE date = ?";
+    PreparedStatement stmt = connection.prepareStatement(query);
+    stmt.setInt(1, availability.getOfferedTables());
+    stmt.setInt(2, availability.getAvailableTables());
+    stmt.setDate(3, new java.sql.Date(availability.getDate().getTime()));
+
+    int rowsAffected = stmt.executeUpdate();
+
+    if(rowsAffected != 0){
+      updated = true;
+    }
+
+    return updated;
+  }
 }

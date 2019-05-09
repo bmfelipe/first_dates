@@ -2,23 +2,14 @@
 
 <div>
       <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">First Dates</a>
+    <a class="navbar-brand" href="">First Dates</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Perfil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Citas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Personas</a>
+          <a class="nav-link" href="/restaurant.jsp">Restaurante<span class="sr-only">(current)</span></a>
         </li>
       </ul>
       <%-- <form class="form-inline mt-2 mt-md-0">
@@ -31,7 +22,7 @@
           <span class="caret"></span>
           <i class="fa fa-bell-o" style="font-size: 30px; float: left; color: gray"></i>
         </button>
-        <ul id="drop-menu" class="dropdown-menu dropdown-menu-left float-right"
+        <ul class="dropdown-menu dropdown-menu-left float-right"
            role="menu" aria-labelledby="dropdownMenu1">
                <li role="presentation" class="dropdown-item"> <a href="#" class="dropdown-menu-header">Notificaciones</a>
                </li>
@@ -81,7 +72,7 @@
 </div>
 
 <style>
-#drop-menu {
+.dropdown-menu {
   right: 0;
   left:auto;
 
