@@ -62,6 +62,9 @@
      margin: auto;
      font-size: 15px;
    }
+   #carousel-elem {
+     padding-top: 20px;
+   }
 
 
   </style>
@@ -87,19 +90,22 @@
               <%
             }else{
               int index = 0;
-
               for(User recommendation: recommendations){
                 if(index == 0){
                    firstId = recommendation.getId();
                 %>
+                  <div id=carousel-container len="<%=recommendations.size()%>">
                   <div id="carousel-elem" class="carousel slide" data-ride="carousel">
+
                     <div class="carousel-inner">
+
                       <div class="carousel-item active" id="<%=recommendation.getId()%>">
                         <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>">
                       </div>
                     <%
                     }else{
                 %>
+
                       <div class="carousel-item" id="<%=recommendation.getId()%>">
                         <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>">
                       </div>
@@ -110,6 +116,7 @@
                   }
 
                 %>
+
               </div>
               <a class="carousel-control-prev" href="#carousel-elem" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -132,6 +139,8 @@
                   <button class="btn btn-secondary ml-1" id="dislike-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-ban"></i></button>
                 </p>
               </div>
+            </div>
+
             <%
           }
             %>
@@ -202,19 +211,31 @@
 
 <script>
 
+var liked = "";
 $('#like-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
-  console.log(recommendationId);
+  var len = $('#carousel-container').attr("len");
+    console.log("ID: " + recommendationId);
     $.post('http://localhost:9189/add-like',{'recommendationId' : recommendationId})
     .done(function(data){
-      console.log(recommendationId);
-      var totalItems = $('.item').length;
-      console.log(totalItems);
-      // if(totalItems)
       $('.carousel').carousel('next');
-      $('#carousel-elem').on('slid.bs.carousel', function (ev) {
-        $("#"+recommendationId ) . remove () ;
+
+      liked = recommendationId;
+      len--;
+        console.log("Length " + len);
+
+      if(len == 0){
+          $('#carousel-container').remove()
+      }else{
+        document.getElementById('carousel-container').setAttribute("len", len);
+      }
+
+      $('#carousel-elem').on('slide.bs.carousel', function (ev) {
+
+        $('#like-btn').prop('disabled', true);
+        $('#dislike-btn').prop('disabled', true);
+
 
       });
 
@@ -232,8 +253,14 @@ $('#dislike-btn').on('click', function(event) {
 
 $('#carousel-elem').on('slid.bs.carousel', function (ev) {
   var id = ev.relatedTarget.id;
+  if(liked != ""){
+    $("#"+liked ) . remove () ;
+    liked = "";
+  }
   document.getElementById('like-btn').setAttribute("recommendation-id", id);
   document.getElementById('dislike-btn').setAttribute("recommendation-id", id);
+  $('#like-btn').prop('disabled', false);
+  $('#dislike-btn').prop('disabled', false);
 
 });
 </script>
