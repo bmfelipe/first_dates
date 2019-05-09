@@ -69,7 +69,14 @@ public class ServletLogin extends HttpServlet {
                     user.setLoggedIn(true);
                     session.setAttribute("user", user);
                     session.setMaxInactiveInterval(Integer.MAX_VALUE);
-                    response.sendRedirect("/home");
+                    if (user.getRole().equals("Usuario"))
+                    {
+                      response.sendRedirect("/home");
+                    }
+                    else {
+                      RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
+                      rd.forward(request, response);
+                    }
                 }
                 else
                 {
