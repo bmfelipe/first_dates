@@ -8,6 +8,11 @@
 
   <title>User Profile Page</title>
   <!-- Required meta tags -->
+  <!-- Upload image bar -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -31,8 +36,25 @@
       %>
     </div>
     <br></br>
-    <img class=" w-50" src="/user-image?id=<%=profile.getId()%>" id="<%=profile.getId()%>">
-    <%=profile.getId()%>
+    <img src="/WEB-INF/modelo.png">
+    <!-- Upload image bar -->
+    <div class="container">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Upload Image</label>
+          <div class="input-group">
+            <span class="input-group-btn">
+              <span class="btn btn-default btn-file">
+                Browse <input type="file" id="imgInp">
+              </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+          </div>
+          <img id='img-upload'/>
+        </div>
+      </div>
+    </div>
+    <!-- Upload image bar -->
     <br></br>
     <div class="card mx-auto mb-auto">
       <h1><%=profile.getName()%></h1>
@@ -46,27 +68,27 @@
       if(!mutual_dates.isEmpty()){%>
       <h5>Citas con <%=profile.getId()%></h5>
       <%
-        for(DateMatch date:mutual_dates){
-          if(date.getStatus()=="Finalizado"){
-            date.getDateName(profile.getId());%><br></br><%
-          }else{
-            flag=1;
-          }
-        }
+      for(DateMatch date:mutual_dates){
+      if(date.getStatus()=="Finalizado"){
+      date.getDateName(profile.getId());%><br></br><%
+    }else{
+    flag=1;
+  }
+}
 
-      }
-      if(flag==0){%>
-        <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
-      <%}%>
-      <div id="like-dislike-buttons">
-        <p>
-          <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
-          <button class="btn btn-secondary ml-1" id="dislike-btn" role="button"><i class="fa fa-ban"></i></button>
-        </p>
-      </div>
+}
+if(flag==0){%>
+<button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
+<%}%>
+<div id="like-dislike-buttons">
+  <p>
+    <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
+    <button class="btn btn-secondary ml-1" id="dislike-btn" role="button"><i class="fa fa-ban"></i></button>
+  </p>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 </body>
 <style>
   body {
@@ -122,6 +144,66 @@
  margin: auto;
  font-size: 15px;
 }
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
 
+#img-upload{
+  width: 100%;
+}
 </style>
+<script>
+  $(document).ready( function() {
+    $(document).on('change', '.btn-file :file', function() {
+      var input = $(this),
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+      input.trigger('fileselect', [label]);
+    });
+
+    $('.btn-file :file').on('fileselect', function(event, label) {
+
+      var input = $(this).parents('.input-group').find(':text'),
+      log = label;
+
+      if( input.length ) {
+        input.val(log);
+      } else {
+        if( log ) alert(log);
+      }
+      
+    });
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#img-upload').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#imgInp").change(function(){
+      readURL(this);
+    });   
+  });
+</script>
+
 </html>
