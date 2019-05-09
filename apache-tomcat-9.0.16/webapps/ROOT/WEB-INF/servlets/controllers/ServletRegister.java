@@ -18,7 +18,9 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import java.util.Locale;
+import javax.servlet.annotation.WebServlet;
 
+@WebServlet("/ServletRegister")
 public class ServletRegister extends HttpServlet {
     /**
      * Processes requests for both HTTP

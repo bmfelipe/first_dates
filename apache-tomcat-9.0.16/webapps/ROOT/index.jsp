@@ -82,7 +82,7 @@
 
       <button type="submit" class="btn btn-primary">Entrar</button>
 
-      <p class="form-group">¿Todavía no tienes cuenta? <a href="register.jsp">Registrarse</a></p>
+      <p class="form-group">¿Todavía no tienes cuenta? <a href="/ServletRegister">Registrarse</a></p>
     </form>
   </body>
 
