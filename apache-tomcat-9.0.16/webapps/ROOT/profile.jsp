@@ -40,7 +40,7 @@
       <h5>Fecha de nacimiento</h5><%=profile.getBirthdate()%><br></br>
       <%
       User current_user = (User) session.getAttribute("user");
-      List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");//getProfileDateList(current_user.getId(),profile.getId());
+      List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
       int flag=0;
       if(!mutual_dates.isEmpty()){%>
       <h5>Citas con <%=profile.getId()%></h5>
