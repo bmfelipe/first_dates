@@ -209,7 +209,7 @@ $('#like-btn').on('click', function(event) {
     $.post('http://localhost:9189/add-like',{'recommendationId' : recommendationId})
     .done(function(data){
       console.log(recommendationId);
-      var totalItems = $('.carousel-inner').length;
+      var totalItems = $('.item').length;
       console.log(totalItems);
       // if(totalItems)
       $('.carousel').carousel('next');
