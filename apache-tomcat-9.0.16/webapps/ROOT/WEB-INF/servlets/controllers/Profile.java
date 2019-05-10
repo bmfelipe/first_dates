@@ -20,7 +20,7 @@ public class Profile extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		String auxId=request.getParameter("id");
-		int profileId;
+		int profileId=0;
 		if(auxId!=null){
 			profileId = Integer.parseInt(request.getParameter("id").trim());
 		}
