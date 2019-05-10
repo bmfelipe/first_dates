@@ -19,12 +19,15 @@ public class Profile extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		//String auxId=request.getParameter("id");
-		int profileId = Integer.parseInt(request.getParameter("id").trim());
+		String auxId=request.getParameter("id");
+		if(auxId!=null){
+			int profileId = Integer.parseInt(request.getParameter("id").trim());
+		}
+		
 		String own_profile;
 		
 		try(DBManager db = new DBManager()){
-			if(profileId==null){
+			if(auxId==null){
 				own_profile="true";
 				request.setAttribute("own_profile",own_profile);
 				request.setAttribute("target_profile",user);
@@ -43,10 +46,10 @@ public class Profile extends HttpServlet {
 				rd.forward(request, response);
 			}
 
-			}catch (SQLException|NamingException e){
+		}catch (SQLException|NamingException e){
               e.printStackTrace();//Send re
               response.sendRedirect("/internalError");
           }
 
+      }
   }
-}
