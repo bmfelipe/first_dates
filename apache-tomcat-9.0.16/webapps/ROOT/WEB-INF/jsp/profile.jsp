@@ -56,7 +56,8 @@
       if(!mutual_dates.isEmpty()){%>
       <h5>Citas con <%=profile.getName()%></h5>
       <% 
-      for(DateMatch dates:mutual_dates){%>document.write("[1]Debuug id: "+<%date.getStatus()%>)<%
+      for(DateMatch dates:mutual_dates){
+      System.out.println("[1]Debuug id: "+date.getStatus());
       if(dates.getStatus().equals("Finalizado")){%>
       <h7><%dates.getDateName(profile.getId());%>></h7>
       <br></br><%
