@@ -69,6 +69,10 @@
    #left-container {
      margin: auto;
    }
+  #days {
+    margin:auto;
+    font-size:300px;
+  }
 
 
   </style>
@@ -204,11 +208,20 @@
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="titles">
-              <h2>Info siguiente cita</h2>
+              <h2>Dias hasta siguiente cita</h2>
             </div>
-
+            <%
+            User userDateInfo = (User) request.getAttribute("userDateInfo");
+            DateMatch dateInfo = (DateMatch) request.getAttribute("dateInfo");
+            if(dateInfo.getDaysUntilDate() != -1){%>
+              <div id="days-left-container">
+                <h1>Quedan</h1>
+                <h1 id="days"><%=dateInfo.getDaysUntilDate()%></h1>
+                <h1>días para tu cita con <%=userDateInfo.getName()%>, la fecha es: <%=dateInfo.getDateResponse()%>.</h1>
+              </div>
+            <%}else{%>
             <div id="no-rec">Cuando tengas una cita fijada, la información saldrá  aqui</div>
-            <%-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> --%>
+            <%}%>
           </div>
         </div><!-- /.col-lg-4 -->
       </div>

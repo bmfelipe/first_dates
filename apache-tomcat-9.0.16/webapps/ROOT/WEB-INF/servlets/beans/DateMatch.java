@@ -20,6 +20,7 @@ public class DateMatch{
   private Date dateRequest;
   private Date dateResponse;
   private int dateSetBy;
+  private int days;
 
 
 
@@ -215,5 +216,12 @@ public class DateMatch{
 
   public void setDateSetBy(int dateSetBy){
     this.dateSetBy = dateSetBy;
+  }
+
+  public int getDaysUntilDate(){
+    return this.days;
+  }
+  public void setDaysUntilDate(int days){
+    this.days = days;
   }
 }

@@ -35,6 +35,19 @@ public class Home extends HttpServlet {
               request.setAttribute("recommendations",recommendations);
               List<DateMatch> dates = db.getDateList(user.getId());
               request.setAttribute("dates",dates);
+              DateMatch dateMatch = new DateMatch();
+              dateMatch = db.getDaysUntilDate(user.getId());
+              User date = new User();
+              if(dateMatch != null){
+                if(user.getId() == dateMatch.getDateOneId()){
+                  date = db.getUserInfo(dateMatch.getDateTwoId());
+                }else{
+                  date = db.getUserInfo(dateMatch.getDateOneId());
+                }
+                request.setAttribute("dateInfo", dateMatch);
+                request.setAttribute("userDateInfo", date);
+              }
+
 
 
 

@@ -422,13 +422,17 @@ public class DBManager implements AutoCloseable {
       st.setInt(1,id);
       ResultSet rs = st.executeQuery();
 
-      rs.next();
-      user.setId(rs.getInt("id"));
-      user.setUsername(rs.getString("username"));
-      user.setName(rs.getString("name"));
-      user.setGender(rs.getString("gender"));
-      user.setDescription(rs.getString("description"));
-      user.setAge(Integer.parseInt(rs.getString("age")));
+      if(rs.next()){
+        user.setId(rs.getInt("id"));
+        user.setUsername(rs.getString("username"));
+        user.setName(rs.getString("name"));
+        user.setGender(rs.getString("gender"));
+        user.setDescription(rs.getString("description"));
+        user.setAge(Integer.parseInt(rs.getString("age")));
+      }else{
+        return null;
+      }
+
     }
     return user;
   }
@@ -589,34 +593,32 @@ public class DBManager implements AutoCloseable {
     }
   }
 
-//   public boolean sellBook(int book, int units) throws SQLException {
-//     boolean success = false;
-//
-// String query = "UPDATE Existencias SET cantidad=(cantidad-?)WHERE libro = ? AND cantidad > ?";
-// int count = 0;
-// try(PreparedStatement st = connection.prepareStatement(query)){
-//     st.setInt(1, units);
-//     st.setInt(2,book);
-//     st.setInt(3,units);
-//     count = st.executeUpdate();
-//     if(count > 0){
-// 	query = "INSERT INTO Operaciones (libro,cantidad) VALUES (?,?)";
-// 	try(PreparedStatement stx = connection.prepareStatement(query)){
-// 	    stx.setInt(1,book);
-// 	    stx.setInt(2,units);
-// 	    stx.executeUpdate();
-// 	}
-//     	success =  true;
-//     }
-//
-// 	} finally{
-//     if(success){
-//        connection.commit();
-//     }else{
-//        connection.rollback();
-//     }
-//     connection.setAutoCommit(true);
-// }
-// return success;
-// }
+
+  public DateMatch getDaysUntilDate(int userId) throws SQLException{
+    String query = "SELECT *,DATEDIFF(dateResponse,NOW()) AS days FROM Dates WHERE (dateOneId = ? OR dateTwoId = ?) AND status = 'Fecha Fijada' ORDER BY dateResponse ASC LIMIT 1";
+    DateMatch dateMatch = new DateMatch();
+
+    try(PreparedStatement st = connection.prepareStatement(query))
+    {
+      st.setInt(1,userId);
+      st.setInt(2,userId);
+      ResultSet rs = st.executeQuery();
+
+      if(rs.next()){
+
+
+        dateMatch.setId(rs.getInt("id"));
+        dateMatch.setDateOneId(rs.getInt("dateOneId"));
+        dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
+        dateMatch.setDateResponse(rs.getDate("dateResponse"));
+        dateMatch.setDaysUntilDate(rs.getInt("days"));
+      }else{
+        return null;
+      }
+
+    }
+    return dateMatch;
+
+  }
+
 }
