@@ -51,6 +51,7 @@ public class AddDate extends HttpServlet {
 
             }catch (SQLException|NamingException e){
                 //Send re
+                e.printStackTrace();
                 response.sendRedirect("/internalError");
             }
           }else{
