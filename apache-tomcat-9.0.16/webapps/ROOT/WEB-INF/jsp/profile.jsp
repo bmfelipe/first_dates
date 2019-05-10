@@ -29,7 +29,7 @@
       <%
       HttpSession session = request.getSession();
       User profile = (User) request.getAttribute("target_profile");
-      boolean own_profile = request.getAttribute("own_profile");
+      boolean own_profile = (Object)request.getAttribute("own_profile");
       //userID=profile.getId();
       %>
     </div>
