@@ -197,11 +197,12 @@ public class DBManager implements AutoCloseable {
     }
 
     public List<DateMatch> getDateList(int userId)throws SQLException {
-      String query = "SELECT * FROM Dates WHERE (dateOneId or dateTwoId) = ? AND status NOT IN ('Rechazado','Pendiente')";
+      String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND status NOT IN ('Rechazado','Pendiente')";
 
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
   	    st.setInt(1,userId);
+        st.setInt(2,userId);
   	    ResultSet rs = st.executeQuery();
 
         while(rs.next()){
@@ -212,8 +213,7 @@ public class DBManager implements AutoCloseable {
           dateMatch.setStatus(rs.getString("status"));
           dateMatch.setDateRequest(rs.getDate("dateRequest"));
           dateMatch.setDateResponse(rs.getDate("dateResponse"));
-          dateMatch.setHourRequest(rs.getString("hourRequest"));
-          dateMatch.setHourResponse(rs.getString("hourResponse"));
+          dateMatch.setDateSetBy(rs.getInt("dateSetBy"));
 
           dates.add(dateMatch);
         }
@@ -448,39 +448,87 @@ public class DBManager implements AutoCloseable {
       date.setStatus(rs.getString("status"));
       date.setDateRequest(rs.getDate("dateRequest"));
       date.setDateResponse(rs.getDate("dateResponse"));
+      date.setDateSetBy(rs.getInt("dateSetBy"));
 
     }
       return date;
   }
 
-  public boolean addDateDate(int dateId, List<Date> dates ) throws SQLException{
-    String query = "UPDATE Dates SET status = 'Fecha pendiente', dateRequest = ?  WHERE id = ? ";
-    System.out.println("TESTT");
+  public DateMatch getDateInfoById(int dateId) throws SQLException{
+    String query = "SELECT * FROM Dates WHERE id= ?";
+    DateMatch date = new DateMatch();
+
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setInt(1,dateId);
+      ResultSet rs = st.executeQuery();
+      rs.next();
+
+
+      date.setId(rs.getInt("id"));
+      date.setDateOneId(rs.getInt("dateOneId"));
+      date.setDateTwoId(rs.getInt("dateTwoId"));
+      date.setStatus(rs.getString("status"));
+      date.setDateRequest(rs.getDate("dateRequest"));
+      date.setDateResponse(rs.getDate("dateResponse"));
+      date.setDateSetBy(rs.getInt("dateSetBy"));
+
+    }
+      return date;
+  }
+
+  public boolean addDateDate(int dateInfoId, List<Date> dates, int userId) throws SQLException{
+    DateMatch dateInfo = getDateInfoById(dateInfoId);
+    String query;
     Date date = dates.get(0);
-    int count = 0;
-      System.out.println("TESTT");
     connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
     connection.setAutoCommit(false);
     boolean success = false;
+    int count = 0;
 
-    try(PreparedStatement st = connection.prepareStatement(query)){
-      st.setInt(2,dateId);
-      st.setDate(1, new java.sql.Date(date.getTime()));
-      count = st.executeUpdate();
-      System.out.println("TESTT st: "+st+" c: " + count);
-      if(count > 0)
-        success = true;
+    if(dateInfo.getDateSetBy() == 0){
+      query = "UPDATE Dates SET status = 'Fecha pendiente', dateRequest = ?, setDateBy = ?  WHERE id = ? ";
 
+      try(PreparedStatement st = connection.prepareStatement(query)){
+        st.setDate(1, new java.sql.Date(date.getTime()));
+        st.setInt(2,dateInfoId);
+        st.setInt(3, userId);
+        count = st.executeUpdate();
+        if(count > 0)
+          success = true;
+      }
+    }else{
+      Availability dateAvailable = searchAvailability(date);
+      if(dateAvailable.getAvailableTables() == 0){
+        query = "UPDATE Dates SET status = 'Aceptado', dateResponse = NULL, dateRequest = NULL, dateSetBy = NULL  WHERE id = ? ";
+
+        try(PreparedStatement st = connection.prepareStatement(query)){
+          st.setInt(1,dateInfoId);
+          count = st.executeUpdate();
+          if(count > 0)
+            success = true;
+        }
+      }else{
+
+        query = "UPDATE Dates SET status = 'Fecha fijada', dateResponse = ?  WHERE id = ? ";
+
+        try(PreparedStatement st = connection.prepareStatement(query)){
+          st.setDate(1, new java.sql.Date(date.getTime()));
+          st.setInt(2,dateInfoId);
+          count = st.executeUpdate();
+          if(count > 0)
+            success = true;
+        }
+      }
 
     }
-      if(success){
-         connection.commit();
-      }else{
-         connection.rollback();
-      }
-      connection.setAutoCommit(true);
+    if(success){
+       connection.commit();
+    }else{
+       connection.rollback();
+    }
+    connection.setAutoCommit(true);
 
-      return success;
+    return success;
   }
 
 //   public boolean sellBook(int book, int units) throws SQLException {

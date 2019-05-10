@@ -19,8 +19,7 @@ public class DateMatch{
   //Temp
   private Date dateRequest;
   private Date dateResponse;
-  private String hourRequest;
-  private String hourResponse;
+  private int dateSetBy;
 
 
 
@@ -183,7 +182,7 @@ public class DateMatch{
   * @return
   */
   public Date getDateRequest() {
-    return dateRequest;
+    return this.dateRequest;
   }
 
   /**
@@ -199,7 +198,7 @@ public class DateMatch{
   * @return
   */
   public Date getDateResponse() {
-    return dateResponse;
+    return this.dateResponse;
   }
 
   /**
@@ -210,35 +209,11 @@ public class DateMatch{
     this.dateResponse = dateResponse;
   }
 
-  /**
-  * Returns value of g
-  * @return
-  */
-  public String getHourRequest() {
-    return hourRequest;
+  public int getDateSetBy(){
+    return this.dateSetBy;
   }
 
-  /**
-  * Sets new value of g
-  * @param
-  */
-  public void setHourRequest(String hourRequest) {
-    this.hourRequest = hourRequest;
-  }
-
-  /**
-  * Returns value of g
-  * @return
-  */
-  public String getHourResponse() {
-    return hourResponse;
-  }
-
-  /**
-  * Sets new value of g
-  * @param
-  */
-  public void setHourResponse(String hourResponse) {
-    this.hourResponse = hourResponse;
+  public void setDateSetBy(int dateSetBy){
+    this.dateSetBy = dateSetBy;
   }
 }

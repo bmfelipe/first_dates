@@ -60,8 +60,9 @@ CREATE TABLE `19_comweb_21d`.`Dates` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `dateOneId` INT NOT NULL,
   `dateTwoId` INT,
-  `dateRequest` DATE,
-  `dateResponse` DATE,
+  `dayRequest` DATE,
+  `dateSetBy` INT,
+  `dayResponse` DATE,
   `status` ENUM('Pendiente', 'Rechazado', 'Aceptado', 'Fecha pendiente', 'Fecha fijada','Finalizado') NOT NULL,
   PRIMARY KEY (`id`)
 );
