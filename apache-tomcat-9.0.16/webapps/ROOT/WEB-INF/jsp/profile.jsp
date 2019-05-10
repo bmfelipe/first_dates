@@ -57,12 +57,11 @@
       <h5>Citas <%=profile.getName()%></h5>
       <% 
       for(DateMatch dates:mutual_dates){
-      if(dates.getStatus().equals("Finalizado")){%>
-      <%System.out.println("[1]Debuug id: "+dates.getDateName(profile.getId()));%>
+      if(dates.getStatus()!="Rechazado" && dates.getStatus()!="Pendiente"){
+      pendiente=0;%>
       <h5><%=dates.getDateName(profile.getId())%> --> Status <%=dates.getStatus()%></h5>
       <br></br><%
-    }if (dates.getStatus().equals("Pendiente")){%>
-    <h5><%=dates.getDateName(profile.getId())%> --> Status <%=dates.getStatus()%></h5><%
+    }if (dates.getStatus().equals("Pendiente")){
     pendiente=1;
   }
 }
