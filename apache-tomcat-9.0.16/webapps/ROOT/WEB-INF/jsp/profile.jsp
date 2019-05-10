@@ -26,9 +26,10 @@
   <div class="col-md-8 text container-fluid text-center">
     <div class="titles">
       <h2>Perfil</h2>
-      <% 
+      <%
       HttpSession session = request.getSession();
       User profile = (User) request.getAttribute("target_profile");
+      boolean own_profile = request.getAttribute("own_profile");
       //userID=profile.getId();
       %>
     </div>
@@ -54,7 +55,7 @@
       List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
       int pendiente=0;
       if(!mutual_dates.isEmpty()){%>
-      <h5>Citas con <%=profile.getName()%></h5>
+      <h5>Citas <%=profile.getName()%></h5>
       <% 
       for(DateMatch dates:mutual_dates){
       if(dates.getStatus().equals("Finalizado")){%>
@@ -68,15 +69,15 @@
 }
 
 }
-if(pendiente==0){%>
+if(pendiente==0 && own_profile==false){%>
 <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
 <%}%>
-<div id="like-dislike-buttons">
+<!-- <div id="like-dislike-buttons">
   <p>
     <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
     <button class="btn btn-secondary ml-1" id="dislike-btn" role="button"><i class="fa fa-ban"></i></button>
   </p>
-</div>
+</div> -->
 
 </div>
 </div>
