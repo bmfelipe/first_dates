@@ -29,8 +29,7 @@
       <%
       HttpSession session = request.getSession();
       User profile = (User) request.getAttribute("target_profile");
-      String own_profile = request.getAttribute("own_profile");
-      //userID=profile.getId();
+      String own_profile = (String)request.getAttribute("own_profile");
       %>
     </div>
     <br></br>
