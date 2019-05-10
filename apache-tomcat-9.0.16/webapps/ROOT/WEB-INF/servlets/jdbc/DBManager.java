@@ -219,7 +219,6 @@ public class DBManager implements AutoCloseable {
         }
         return dates;
       }
-      //return null;
     }
     //Returns dates the user and a certain profile had
     public List<DateMatch> getProfileDateList(int userId,int profileId) throws SQLException{
