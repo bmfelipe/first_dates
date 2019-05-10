@@ -21,16 +21,17 @@ public class Profile extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		String auxId=request.getParameter("id").trim();
 		int profileId = Integer.parseInt(request.getParameter("id").trim());
-		if(auxId==NULL){
-			request.setAttribute("own_profile",true);
-			request.setAttribute("target_profile",user);
-			List<DateMatch> mutual_dates = db.getDateList(user.getId());
-			request.setAttribute("mutual_dates",mutual_dates);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
-			rd.forward(request, response);
+		try(DBManager db = new DBManager()){
+			if(auxId==NULL){
+				request.setAttribute("own_profile",true);
+				request.setAttribute("target_profile",user);
+				List<DateMatch> mutual_dates = db.getDateList(user.getId());
+				request.setAttribute("mutual_dates",mutual_dates);
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+				rd.forward(request, response);
 
-		}else{
-			try(DBManager db = new DBManager()){
+			}else{
+				
 				request.setAttribute("own_profile",false);
 				List<DateMatch> mutual_dates = db.getProfileDateList(user.getId(),profileId);
 				request.setAttribute("mutual_dates",mutual_dates);
