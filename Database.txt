@@ -20,7 +20,7 @@ Usuarios;
 
 CREATE TABLE `19_comweb_21d`.`Users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
+  `username` varchar(250) NOT NULL,
   `name` varchar(100) NOT NULL,
   `gender` ENUM ('Mujer', 'Hombre') NOT NULL,
   `description` varchar(1000) DEFAULT NULL,

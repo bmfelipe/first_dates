@@ -44,8 +44,8 @@
 
     <form action="/process-register" method="post" class="text-center">
       <div class="form-group">
-        <label for="email">Nombre de usuario:
-          <input placeholder="Nombre de usuario" type="text" class="form-control" name="username" required>
+        <label for="email">Email:
+          <input placeholder="Email" type="email" class="form-control" name="username" required>
         </label>
       </div>
 

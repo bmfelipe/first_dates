@@ -2,6 +2,12 @@
 <%@ page import='java.util.Date' %>
 <%@ page import='java.text.SimpleDateFormat' %>
 <%@ page import='java.text.DateFormat' %>
+<%@ page import='beans.DateMatch' %>
+<%@ page import='java.util.List' %>
+<%@ page import='java.util.Calendar' %>
+<%@ page import='java.time.DayOfWeek' %>
+<%@ page import='java.time.LocalDate' %>
+<%@ page import='java.time.Month' %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,7 +38,6 @@
     }
 
     .row {
-      height:78vh;
       max-height: 78vh;
       padding: 10px 0;
       padding-left: 10px;
@@ -55,7 +60,7 @@
 
     .success{
       padding-top: 15px;
-      color: forestgreen;
+      color: white;
     }
 
     .form-group {
@@ -72,6 +77,15 @@
       text-decoration: underline;
     }
 
+    hr{
+      background-color: #333;
+      width: 100%;
+    }
+
+    .col-9{
+      margin-top: 35px;
+    }
+
   </style>
 
   <%  Date date = new Date();
@@ -83,9 +97,10 @@
 
     <div class="container-fluid text-center">
       <div class="row">
-        <div class="col-lg-3">
-          <h2>Registrar Mesas</h2>
+        <div class="col-lg-6">
+          <h2>Gestionar Restaurante</h2>
           <div class="card mb-4 scroll">
+            <h3>Registrar Mesas</h3>
             <form action="/restaurant" method="post" class="text_center">
               <div class="form-group">
                 <label for="text">Fecha:<br>
@@ -101,11 +116,8 @@
               <div class="success">${successInsertion}</div>
               <div class="error">${errorInsertion}</div>
             </form>
-          </div>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-3">
-          <h2>Buscar Mesas</h2>
-          <div class="card mb-4 scroll">
+            <hr>
+            <h3>Buscar Mesas</h3>
             <form action="/restaurant" method="post" class="text_center">
               <div class="form-group">
                 <label for="text">Fecha:<br>
@@ -116,28 +128,14 @@
               <div class="success">${successSearch}</div>
               <div class="error">${errorSearch}</div>
             </form>
-          </div>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-3">
-          <h2>Editar Mesas</h2>
-          <div class="card mb-4 scroll">
+            <hr>
+            <h3>Editar Mesas</h3>
             <form action="/restaurant" method="post" class="text_center">
               <div class="form-group">
                 <label for="text">Fecha:<br>
                   <input type="date" name="dateUpdate" max="3000-12-31" min="<%=strDate%>" required>
                 </label>
               </div>
-              <%-- <div class="date-select text_center">
-              <h5>Selecciona Fecha para tu cita</h5>
-                <div class="dates">
-                  <div class="start_date input-group mb-4 col-4">
-                    <input class="form-control start_date" type="text" placeholder="Date" id="startdate_datepicker">
-                    <div class="input-group-append">
-                      <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
-                    </div>
-                </div>
-              </div>
-            </div> --%>
               <div class="form-group">
                 <label for="text">Número de mesas a ofrecer:<br>
                   <input type="text" name="tablesUpdate" required>
@@ -147,86 +145,35 @@
               <div class="success">${successUpdate}</div>
               <div class="error">${errorUpdate}</div>
             </form>
-          </div><!-- /.col-lg-4 -->
+          </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-6">
           <h2>Agenda</h2>
           <div class="card mb-4 scroll">
-            <div class="row">
-        			<div class="col-2 text-right">
-        				<h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-        				<h2>OCT</h2>
-        			</div>
-        			<div class="col-10">
-        				<h3 class="text-uppercase"><strong>Ice Cream Social</strong></h3>
-        				<ul class="list-inline">
-        				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-        					<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
-        				</ul>
-        				<p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        			</div>
-        		</div>
-            <div class="row">
-        			<div class="col-2 text-right">
-        				<h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-        				<h2>OCT</h2>
-        			</div>
-        			<div class="col-10">
-        				<h3 class="text-uppercase"><strong>Ice Cream Social</strong></h3>
-        				<ul class="list-inline">
-        				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-        					<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
-        				</ul>
-        				<p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        			</div>
-        		</div>
-            <div class="row">
-        			<div class="col-2 text-right">
-        				<h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-        				<h2>OCT</h2>
-        			</div>
-        			<div class="col-10">
-        				<h3 class="text-uppercase"><strong>Ice Cream Social</strong></h3>
-        				<ul class="list-inline">
-        				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-        					<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
-        				</ul>
-        				<p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        			</div>
-        		</div>
-            <div class="row">
-        			<div class="col-2 text-right">
-        				<h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-        				<h2>OCT</h2>
-        			</div>
-        			<div class="col-10">
-        				<h3 class="text-uppercase"><strong>Ice Cream Social</strong></h3>
-        				<ul class="list-inline">
-        				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-        					<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
-        				</ul>
-        				<p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        			</div>
-        		</div>
-            <div class="row">
-        			<div class="col-2 text-right">
-        				<h1 class="display-4"><span class="badge badge-secondary">23</span></h1>
-        				<h2>OCT</h2>
-        			</div>
-        			<div class="col-10">
-        				<h3 class="text-uppercase"><strong>Ice Cream Social</strong></h3>
-        				<ul class="list-inline">
-        				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Monday</li>
-        					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 12:30 PM - 2:00 PM</li>
-        					<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Cafe</li>
-        				</ul>
-        				<p>Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        			</div>
-        		</div>
+            <% List<DateMatch> confirmedDates = (List<DateMatch>) request.getAttribute("confirmedDates");
+              for (DateMatch confirmedDate : confirmedDates) {
+                LocalDate currentDate = new java.sql.Date(confirmedDate.getDateRequest().getTime()).toLocalDate();
+                int dayOfMonth = currentDate.getDayOfMonth();
+                DayOfWeek dayOfWeek = currentDate.getDayOfWeek();
+                Month month = currentDate.getMonth();
+                String name1 = confirmedDate.getDateName(confirmedDate.getDateOneId());
+                String name2 = confirmedDate.getDateName(confirmedDate.getDateTwoId());
+            %>
+                <div class="row">
+                  <div class="col-3 text_center">
+                    <h1 class="display-4"><span class="badge badge-secondary"><%=dayOfMonth%></span></h1>
+                    <h2><%=month%></h2>
+                  </div>
+                  <div class="col-9">
+                    <h3><strong><%=name1%> <i class="fa fa-heart" aria-hidden="true"></i> <%=name2%></strong></h3>
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> <%=dayOfWeek%></li>
+                      <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 8:00 PM - 10:00 PM</li>
+                    </ul>
+                  </div>
+                </div>
+                <hr>
+          <%}%>
           </div><!-- /.col-lg-4 -->
         </div>
       </div>
@@ -249,8 +196,6 @@
           $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
       });
   });
-
-
   </script>
 
 </html>

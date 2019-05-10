@@ -22,15 +22,8 @@ public class Register extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException
     {
-
         request.setCharacterEncoding("utf-8");
-
-          RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/register.jsp");
-          rd.forward(request, response);
-
-
-
-
-
+        RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/register.jsp");
+        rd.forward(request, response);
     }
 }
