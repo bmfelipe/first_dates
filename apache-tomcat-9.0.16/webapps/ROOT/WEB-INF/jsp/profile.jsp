@@ -54,13 +54,13 @@
       List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
       int pendiente=0;
       if(!mutual_dates.isEmpty()){%>
-      <h5>Tus citas<%=profile.getName()%></h5>
+      <h5>Citas <%=profile.getName()%></h5>
       <% 
       for(DateMatch dates:mutual_dates){
       if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente")){
       pendiente=0;%>
       <h5><%=dates.getDateName(profile.getId())%> --> Status <%=dates.getStatus()%></h5>
-      <%
+      <br></br><%
     }if (dates.getStatus().equals("Pendiente")){
     pendiente=1;
   }
@@ -69,15 +69,14 @@
 }
 if(pendiente==0 && own_profile=="false"){%>
 <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
-<%}
-if(own_profile.equals("true")){
-//Editar
-%><i class="fas fa-user-edit"></i><%
+<%}%>
+<%
 
+if (own_profile.equals("true")) {
+  %><i class="fas fa-user-edit"></i><%
 }
+
 %>
-}
-}
 
 
 <!-- <div id="like-dislike-buttons">
