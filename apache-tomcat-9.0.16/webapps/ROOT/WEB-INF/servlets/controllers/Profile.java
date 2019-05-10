@@ -19,7 +19,7 @@ public class Profile extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		String auxId=request.getParameter("id").trim();
+		String auxId=request.getParameter("id");
 		int profileId = Integer.parseInt(request.getParameter("id").trim());
 		boolean own_profile;
 		
