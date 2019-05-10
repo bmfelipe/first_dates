@@ -59,7 +59,7 @@
       for(DateMatch dates:mutual_dates){
       System.out.println("[1]Debuug id: "+dates.getStatus());
       if(dates.getStatus().equals("Finalizado")){%>
-      <h7><%dates.getDateName(profile.getId());%>></h7>
+      <h7><%dates.getDateName(profile.getId());%></h7>
       <br></br><%
     }else{
     flag=1;
