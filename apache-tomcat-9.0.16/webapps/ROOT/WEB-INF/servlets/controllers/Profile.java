@@ -26,7 +26,7 @@ public class Profile extends HttpServlet {
 			request.setAttribute("mutual_dates",mutual_dates);
 			User target_profile = db.getUserInfo(profileId);
 			request.setAttribute("target_profile",target_profile);
-			RequestDispatcher rd = request.getRequestDispatcher ("/profile.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/profile.jsp");
 			rd.forward(request, response);
 
 		}catch (SQLException|NamingException e){
