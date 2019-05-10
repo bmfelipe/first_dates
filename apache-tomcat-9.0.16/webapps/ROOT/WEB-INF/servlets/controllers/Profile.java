@@ -23,7 +23,7 @@ public class Profile extends HttpServlet {
 		int profileId = Integer.parseInt(request.getParameter("id").trim());
 		
 		try(DBManager db = new DBManager()){
-			if(auxId==NULL){
+			if(auxId==null){
 				request.setAttribute("own_profile",true);
 				request.setAttribute("target_profile",user);
 				List<DateMatch> mutual_dates = db.getDateList(user.getId());
