@@ -72,7 +72,7 @@ if(pendiente==0 && own_profile=="false"){%>
 <%}
 if(own_profile.equals("true")){
 //Editar
-%><i class="fas fa-edit"></i><%
+%><i class="fas fa-user-edit"></i><%
 
 }
 %>
