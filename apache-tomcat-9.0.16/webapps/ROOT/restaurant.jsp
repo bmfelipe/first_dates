@@ -85,12 +85,14 @@
     .col-9{
       margin-top: 35px;
     }
-
+    
   </style>
 
-  <%  Date date = new Date();
+  <%
+      Date date = new Date();
       DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-      String strDate = dateFormat.format(date); %>
+      String strDate = dateFormat.format(date);
+  %>
 
   <body>
     <%@include file ='/WEB-INF/jsp/navbar-admin.jsp'%>
@@ -150,7 +152,8 @@
         <div class="col-lg-6">
           <h2>Agenda</h2>
           <div class="card mb-4 scroll">
-            <% List<DateMatch> confirmedDates = (List<DateMatch>) request.getAttribute("confirmedDates");
+            <%
+              List<DateMatch> confirmedDates = (List<DateMatch>) request.getAttribute("confirmedDates");
               for (DateMatch confirmedDate : confirmedDates) {
                 LocalDate currentDate = new java.sql.Date(confirmedDate.getDateRequest().getTime()).toLocalDate();
                 int dayOfMonth = currentDate.getDayOfMonth();

@@ -70,7 +70,7 @@ Disponibilidad mesas;
 
 CREATE TABLE `19_comweb_21d`.`Availability` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `date` DATETIME NOT NULL,
+  `date` DATE NOT NULL,
   `offeredTables` VARCHAR(45) NOT NULL,
   `availableTables` INT NOT NULL,
   PRIMARY KEY (`id`)
