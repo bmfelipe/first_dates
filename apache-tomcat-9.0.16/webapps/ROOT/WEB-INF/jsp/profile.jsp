@@ -57,7 +57,7 @@
       <h5>Citas <%=profile.getName()%></h5>
       <% 
       for(DateMatch dates:mutual_dates){
-      if(dates.getStatus()!="Rechazado" && dates.getStatus()!="Pendiente"){
+      if(dates.getStatus()!="Rechazado" && !dates.getStatus().equals("Pendiente")){
       pendiente=0;%>
       <h5><%=dates.getDateName(profile.getId())%> --> Status <%=dates.getStatus()%></h5>
       <br></br><%
