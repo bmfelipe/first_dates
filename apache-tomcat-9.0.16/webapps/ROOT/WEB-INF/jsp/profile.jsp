@@ -74,7 +74,7 @@ if(pendiente==0 && own_profile=="false"){%>
 
 if (own_profile.equals("true")) {
   %><div id="like-dislike-buttons">
-  <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="far fa-edit"></i></i> </button>
+  <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </button>
   </div>
   <%
 }
