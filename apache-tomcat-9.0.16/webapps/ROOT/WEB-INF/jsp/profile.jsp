@@ -57,7 +57,9 @@
       <h5>Citas con <%=profile.getName()%></h5>
       <% 
       for(DateMatch dates:mutual_dates){
-      document.write("[1]Debuug id: "+date.getStatus());
+      <script>
+        document.write("[1]Debuug id: "+date.getStatus());
+      </script>
       if(dates.getStatus().equals("Finalizado")){%>
       <h7><%dates.getDateName(profile.getId());%>></h7>
       <br></br><%
