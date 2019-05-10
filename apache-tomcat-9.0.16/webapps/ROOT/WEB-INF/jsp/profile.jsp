@@ -58,7 +58,7 @@
       <% 
       for(DateMatch date:mutual_dates){
       if(date.getStatus().equals("Finalizado")){%>
-      <h7><%date.getDateName(profile.getId());%>%></h7>
+      <h7><%date.getDateName(profile.getId());%>></h7>
       <br></br><%
     }else{
     flag=1;
