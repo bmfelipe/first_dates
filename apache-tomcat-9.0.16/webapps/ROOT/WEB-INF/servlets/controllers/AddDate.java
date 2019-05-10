@@ -38,21 +38,19 @@ public class AddDate extends HttpServlet {
             try(DBManager db = new DBManager()){
                 int dateId = Integer.parseInt(request.getParameter("id").trim());
                 String dateStr = request.getParameter("dates");
-                System.out.println(dateStr);
+
                 List<Date> dates = new ArrayList<Date>();
                   try{
-                    Date date  =new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
+                    Date date  =new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
                     dates.add(date);
-                  }catch(Exception e){}
-
-
-
-
+                  }catch(Exception e){
+                    e.printStackTrace();
+                  }
                 boolean result = db.addDateDate(dateId, dates, user.getId());
 
 
             }catch (SQLException|NamingException e){
-                e.printStackTrace();//Send re
+                //Send re
                 response.sendRedirect("/internalError");
             }
           }else{

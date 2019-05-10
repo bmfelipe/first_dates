@@ -485,6 +485,7 @@ public class DBManager implements AutoCloseable {
     int count = 0;
 
     if(dateInfo.getDateSetBy() == 0){
+
       query = "UPDATE Dates SET status = 'Fecha pendiente', dateRequest = ?, setDateBy = ?  WHERE id = ? ";
 
       try(PreparedStatement st = connection.prepareStatement(query)){
@@ -497,7 +498,12 @@ public class DBManager implements AutoCloseable {
       }
     }else{
       Availability dateAvailable = searchAvailability(date);
-      if(dateAvailable.getAvailableTables() == 0){
+
+      if(dateAvailable == null){
+        return false;
+      }
+      int tables = dateAvailable.getAvailableTables();
+      if(tables == 0){
         query = "UPDATE Dates SET status = 'Aceptado', dateResponse = NULL, dateRequest = NULL, dateSetBy = NULL  WHERE id = ? ";
 
         try(PreparedStatement st = connection.prepareStatement(query)){
@@ -514,8 +520,13 @@ public class DBManager implements AutoCloseable {
           st.setDate(1, new java.sql.Date(date.getTime()));
           st.setInt(2,dateInfoId);
           count = st.executeUpdate();
-          if(count > 0)
+          if(count > 0){
+            tables--;
+            dateAvailable.setAvailableTables(tables);
+            updateAvailability(dateAvailable);
             success = true;
+          }
+
         }
       }
 

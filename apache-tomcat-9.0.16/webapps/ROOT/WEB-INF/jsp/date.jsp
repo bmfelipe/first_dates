@@ -203,7 +203,7 @@
         'id': dateId
       })
       .done(function(data){
-        $(".date-select").remove();
+        $(".date-confirm").remove();
         $(".req-info").append("<h5>Fecha Fijada. Esperamos que disfruteis de la cita");
 
       });
