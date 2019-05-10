@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<%@ page import='beans.User' %>
 
 <div>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -15,6 +16,9 @@
           <a class="nav-link" href="/profile">Perfil</a>
         </li>
       </ul>
+      <% HttpSession session = request.getSession();
+         User user = (User) session.getAttribute("user"); %>
+      <%=user.getName()%>
       <a class="btn btn-secondary" href="/logout" role="button">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a>
     </div>
   </nav>
@@ -24,5 +28,9 @@
   .navbar{
     padding-top: 10px;
     padding-bottom: 10px;
+  }
+  
+  .btn {
+    margin-left: 10px;
   }
 </style>
