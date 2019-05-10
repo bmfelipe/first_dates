@@ -31,7 +31,7 @@ public class Profile extends HttpServlet {
 
 		}else{
 			try(DBManager db = new DBManager()){
-				request.setAttribute("own_profile",false)
+				request.setAttribute("own_profile",false);
 				List<DateMatch> mutual_dates = db.getProfileDateList(user.getId(),profileId);
 				request.setAttribute("mutual_dates",mutual_dates);
 				User target_profile = db.getUserInfo(profileId);
