@@ -69,16 +69,15 @@
 }
 if(pendiente==0 && own_profile=="false"){%>
 <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
-<%}%>
-<%
+<%}
 if(own_profile.equals("true")){
 //Editar
 %><i class="fas fa-edit"></i><%
 
 }
-
+%>
 }
-}  %>
+}
 
 
 <!-- <div id="like-dislike-buttons">
