@@ -45,7 +45,8 @@
     <br></br>
     <div class="card mx-auto mb-auto">
       <h1><%=profile.getName()%></h1>
-      <p>Descripcion</p><%=profile.getDescription()%>
+      <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q></p>
+      <!-- <p>Descripcion</p><%=profile.getDescription()%> -->
       <h5>Sexo</h5><%=profile.getGender()%>
       <h5>Fecha de nacimiento</h5><%=profile.getBirthdate()%><br></br>
       <%
@@ -53,7 +54,7 @@
       List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
       int flag=0;
       if(!mutual_dates.isEmpty()){%>
-      <h5>Citas con <%=profile.getId()%></h5>
+      <h5>Citas con <%=profile.getName()%></h5>
       <% 
       for(DateMatch date:mutual_dates){
       if(date.getStatus()=="Finalizado"){
