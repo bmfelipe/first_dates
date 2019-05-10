@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 
-  <title>User Profile Page</title>
+  <title>Perfil</title>
   <!-- Required meta tags -->
   <!-- Upload image bar -->
 
@@ -73,14 +73,13 @@ if(pendiente==0 && own_profile=="false"){%>
 <%
 
 if (own_profile.equals("true")) {
-  %><div id="like-dislike-buttons">
-  <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </button>
-  </div>
-  <%
+%><div id="like-dislike-buttons">
+  <button class="btn btn-secondary mr-1" href="/config" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </button>
+</div>
+<%
 }
 
 %>
-
 
 <!-- <div id="like-dislike-buttons">
   <p>
