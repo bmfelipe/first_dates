@@ -38,13 +38,12 @@ public class Profile extends HttpServlet {
 				request.setAttribute("target_profile",target_profile);
 				RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/profile.jsp");
 				rd.forward(request, response);
+			}
 
 			}catch (SQLException|NamingException e){
               e.printStackTrace();//Send re
               response.sendRedirect("/internalError");
           }
-
-      }
 
   }
 }
