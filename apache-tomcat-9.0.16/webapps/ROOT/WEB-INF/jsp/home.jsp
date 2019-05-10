@@ -66,6 +66,10 @@
      padding-top: 20px;
    }
 
+   #left-container {
+     margin: auto;
+   }
+
 
   </style>
 
