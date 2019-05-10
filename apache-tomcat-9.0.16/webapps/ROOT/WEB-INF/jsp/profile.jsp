@@ -60,7 +60,7 @@
       if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente")){
       pendiente=0;%>
       <h5><%=dates.getDateName(profile.getId())%> --> Status <%=dates.getStatus()%></h5>
-      <br></br><%
+      <%
     }if (dates.getStatus().equals("Pendiente")){
     pendiente=1;
   }
