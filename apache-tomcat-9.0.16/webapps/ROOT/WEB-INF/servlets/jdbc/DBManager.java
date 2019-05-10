@@ -133,12 +133,13 @@ public class DBManager implements AutoCloseable {
         preferences.setSexPref(rs.getString("sexPref"));
       }
 
-      query = "SELECT dateOneId, dateTwoId FROM Dates WHERE dateOneId = ? OR ((dateOneId OR dateTwoId) = ? and status != 'Pendiente')";
+      query = "SELECT dateOneId, dateTwoId FROM Dates WHERE dateOneId = ? OR ((dateOneId = ? OR dateTwoId = ?)  and status != 'Pendiente')";
       List<Integer> ids = new ArrayList<Integer>();
 
       try(PreparedStatement st = connection.prepareStatement(query)){
         st.setInt(1,userId);
         st.setInt(2,userId);
+        st.setInt(3,userId);
         ResultSet rs = st.executeQuery();
 
         while(rs.next()){
@@ -167,7 +168,7 @@ public class DBManager implements AutoCloseable {
         }
 
       }
-      query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) <= ? and gender = ? "+numberElements+" ORDER BY RAND() LIMIT 20";
+      query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) <= ? and gender = ? AND role NOT LIKE 'Admin' "+numberElements+" ORDER BY RAND() LIMIT 20";
 
       int numId = 4;
       try(PreparedStatement st = connection.prepareStatement(query)){
@@ -384,6 +385,7 @@ public class DBManager implements AutoCloseable {
     {
       availability.setOfferedTables(rs.getInt("offeredTables"));
       availability.setAvailableTables(rs.getInt("availableTables"));
+      availability.setDate(date);
     }
     else {
       availability = null;
@@ -394,6 +396,9 @@ public class DBManager implements AutoCloseable {
 
   public Boolean updateAvailability (Availability availability) throws SQLException{
     Boolean updated = false;
+    System.out.println(availability.getOfferedTables());
+    System.out.println(availability.getAvailableTables());
+    System.out.println(availability.getDate());
     String query = "UPDATE 19_comweb_21d.Availability SET offeredTables = ?, availableTables = ? WHERE date = ?";
     PreparedStatement stmt = connection.prepareStatement(query);
     stmt.setInt(1, availability.getOfferedTables());
@@ -483,10 +488,9 @@ public class DBManager implements AutoCloseable {
     connection.setAutoCommit(false);
     boolean success = false;
     int count = 0;
-
     if(dateInfo.getDateSetBy() == 0){
 
-      query = "UPDATE Dates SET status = 'Fecha pendiente', dateRequest = ?, setDateBy = ?  WHERE id = ? ";
+      query = "UPDATE Dates SET status = 'Fecha pendiente', dateRequest = ?, dateSetBy = ?  WHERE id = ? ";
 
       try(PreparedStatement st = connection.prepareStatement(query)){
         st.setDate(1, new java.sql.Date(date.getTime()));
