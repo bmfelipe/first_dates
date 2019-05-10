@@ -22,7 +22,7 @@
 
 </head>
 <body>
-  <%@include file ='/fixing/navbar.jsp'%>
+  <%@include file ='/WEB-INF/jsp/navbar.jsp'%>
   <div class="col-md-8 text container-fluid text-center">
     <div class="titles">
       <h2>Perfil</h2>
