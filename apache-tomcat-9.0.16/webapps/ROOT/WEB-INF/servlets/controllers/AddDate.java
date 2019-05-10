@@ -33,30 +33,50 @@ public class AddDate extends HttpServlet {
         if(user == null){
           response.sendRedirect("/");
         }else if(user.isLoggedIn()){
-          try(DBManager db = new DBManager()){
-              System.out.println("TESTT");
-              int dateId = Integer.parseInt(request.getParameter("id").trim());
-              String datesStr = request.getParameter("dates");
-                System.out.println("TESTT");
-              String[] datesLst = datesStr.split(",");
-              List<Date> dates = new ArrayList<Date>();
-              for(String dateStr : datesLst){
-                try{
-                  Date date  =new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
-                  dates.add(date);
-                }catch(Exception e){}
+          String confirm =  request.getParameter("confirm");
+          if(confirm.equals("true")){
+            try(DBManager db = new DBManager()){
+                int dateId = Integer.parseInt(request.getParameter("id").trim());
+                String dateStr = request.getParameter("dates");
+
+                List<Date> dates = new ArrayList<Date>();
+                  try{
+                    Date date  =new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+                    dates.add(date);
+                  }catch(Exception e){
+                    e.printStackTrace();
+                  }
+                boolean result = db.addDateDate(dateId, dates, user.getId());
 
 
-              }
+            }catch (SQLException|NamingException e){
+                //Send re
+                response.sendRedirect("/internalError");
+            }
+          }else{
+            try(DBManager db = new DBManager()){
+                int dateId = Integer.parseInt(request.getParameter("id").trim());
+                String datesStr = request.getParameter("dates");
+                String[] datesLst = datesStr.split(",");
+                List<Date> dates = new ArrayList<Date>();
+                for(String dateStr : datesLst){
+                  try{
+                    Date date  =new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
+                    dates.add(date);
+                  }catch(Exception e){}
 
-                System.out.println("TESTT "+dates);
-              boolean result = db.addDateDate(dateId, dates);
+
+                }
+
+                boolean result = db.addDateDate(dateId, dates, user.getId());
 
 
-          }catch (SQLException|NamingException e){
-              e.printStackTrace();//Send re
-              response.sendRedirect("/internalError");
+            }catch (SQLException|NamingException e){
+                e.printStackTrace();//Send re
+                response.sendRedirect("/internalError");
+            }
           }
+
 
           // response.sendRedirect ("/date?id="+dateUserId);
 

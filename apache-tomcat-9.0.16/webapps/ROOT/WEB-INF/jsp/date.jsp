@@ -99,8 +99,17 @@
                         </div>
                     </div>
                   </div>
-                  <p><a class="btn btn-secondary" id="add-date" role="button">Fijar Fecha</a></p>
+                  <p><a class="btn btn-secondary" id="add-date-req" role="button">Fijar Fecha</a></p>
                 </div>
+              <%}else if((dateInfo.getStatus().equals("Fecha pendiente") && user.getId()!= dateInfo.getDateSetBy())){%>
+                <div class="date-confirm">
+                <h5>Confirma Fecha para tu cita</h5>
+                  <div class="dates">
+                      <h6>Fecha: <%=dateInfo.getDateRequest()%></h6>
+                </div>
+                <p><a class="btn btn-secondary" id="add-date-res" role="button">Fijar Fecha</a></p>
+                </div>
+
               <%}else{%>
 
                   <h5>Ya esta fijada la fecha</h5>
@@ -124,11 +133,7 @@
               <%}else{%>
                 <h5>Dia: <%=dateInfo.getDateResponse()%></h5>
               <%}%>
-              <%if(dateInfo.getHourResponse() == null){%>
-                <h5>Hora: No fijada</h5>
-              <%}else{%>
-                <h5>Hora: <%=dateInfo.getHourResponse()%></h5>
-              <%}%>
+
             </div>
           <%-- </div> --%>
         </div><!-- /.col-lg-4 -->
@@ -171,24 +176,36 @@
       });
   });
 
-  $('#add-date').on('click', function(event) {
+  $('#add-date-req').on('click', function(event) {
     event.preventDefault();
-    // console.log($("#startdate_datepicker").datepicker( 'getDates' ));
-    // console.log($("#startdate_datepicker").value);
+
     var dates = ($('#startdate_datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val());
     var dateId = <%=dateInfo.getId()%>;
-    // var data = "{dates: ";
-    // for(date in dates){
-    //   data+"dates: "
-    // }
-    // data+= "]}";
+
       $.post('http://localhost:9189/add-dates',{
         'dates' : dates,
         'id': dateId
       })
       .done(function(data){
+        $(".date-select").remove();
+        $(".req-info").append("<h5>Fecha Fijada. Esperando respuesta de <%=date.getName()%></h5>");
 
-        console.log("Done");
+      });
+  });
+
+  $('#add-date-res').on('click', function(event) {
+    event.preventDefault();
+    var dates = '<%=dateInfo.getDateRequest()%>';
+    var dateId = <%=dateInfo.getId()%>;
+      $.post('http://localhost:9189/add-dates',{
+        'dates':dates,
+        'confirm' : 'true',
+        'id': dateId
+      })
+      .done(function(data){
+        $(".date-confirm").remove();
+        $(".req-info").append("<h5>Fecha Fijada. Esperamos que disfruteis de la cita");
+
       });
   });
 

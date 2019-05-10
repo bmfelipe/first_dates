@@ -78,72 +78,74 @@
             <div class="titles">
               <h2>Recomendaciones</h2>
             </div>
-            <%
-            List<User> recommendations = (List<User>) request.getAttribute("recommendations");
-            int firstId = -1;
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
-            if(recommendations.isEmpty()){
-              %>
-
-              <div id="no-rec">No hay recomendaciones disponibles</div>
+            <div id="left-container">
               <%
-            }else{
-              int index = 0;
-              for(User recommendation: recommendations){
-                if(index == 0){
-                   firstId = recommendation.getId();
-                %>
-                  <div id=carousel-container len="<%=recommendations.size()%>">
-                  <div id="carousel-elem" class="carousel slide" data-ride="carousel">
-
-                    <div class="carousel-inner">
-
-                      <div class="carousel-item active" id="<%=recommendation.getId()%>">
-                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" alt="/anonymous.png">
-                      </div>
-                    <%
-                    }else{
+              List<User> recommendations = (List<User>) request.getAttribute("recommendations");
+              int firstId = -1;
+              HttpSession session = request.getSession();
+              User user = (User) session.getAttribute("user");
+              if(recommendations.isEmpty()){
                 %>
 
-                      <div class="carousel-item" id="<%=recommendation.getId()%>">
-                        <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" alt="/anonymous.png">
-                      </div>
+                <div id="no-rec">No hay recomendaciones disponibles</div>
                 <%
+              }else{
+                int index = 0;
+                for(User recommendation: recommendations){
+                  if(index == 0){
+                     firstId = recommendation.getId();
+                  %>
+                    <div id=carousel-container len="<%=recommendations.size()%>">
+                    <div id="carousel-elem" class="carousel slide" data-ride="carousel">
 
+                      <div class="carousel-inner">
+
+                        <div class="carousel-item active" id="<%=recommendation.getId()%>">
+                          <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" alt="/anonymous.png">
+                        </div>
+                      <%
+                      }else{
+                  %>
+
+                        <div class="carousel-item" id="<%=recommendation.getId()%>">
+                          <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" alt="/anonymous.png">
+                        </div>
+                  <%
+
+                      }
+                      index++;
                     }
-                    index++;
-                  }
 
-                %>
+                  %>
 
+                </div>
+                <a class="carousel-control-prev" href="#carousel-elem" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-elem" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
               </div>
-              <a class="carousel-control-prev" href="#carousel-elem" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carousel-elem" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-            <%}%>
-            <%
-            if(firstId != -1){
+              <%}%>
+              <%
+              if(firstId != -1){
 
-            %>
-              <div id="like-dislike-buttons">
+              %>
+                <div id="like-dislike-buttons">
 
-                <p>
-                  <button class="btn btn-secondary mr-1" id="like-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-heart"></i> </button>
-                  <button class="btn btn-secondary ml-1" id="dislike-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-ban"></i></button>
-                </p>
+                  <p>
+                    <button class="btn btn-secondary mr-1" id="like-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-heart"></i> </button>
+                    <button class="btn btn-secondary ml-1" id="dislike-btn" recommendation-id="<%out.println( firstId );%>" role="button"><i class="fa fa-ban"></i></button>
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <%
-          }
-            %>
+              <%
+            }
+              %>
+            </div>
           </div>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
@@ -225,6 +227,7 @@ $('#like-btn').on('click', function(event) {
 
       if(len == 0){
           $('#carousel-container').remove()
+          $('#left-container').append("<div id='no-rec'>No quedan mas recomendaciones</div>").css("margin", "auto", "font-size", "15px");
       }else{
         document.getElementById('carousel-container').setAttribute("len", len);
       }
@@ -254,6 +257,7 @@ $('#dislike-btn').on('click', function(event) {
 
       if(len == 0){
           $('#carousel-container').remove()
+          $('#left-container').append("<div id='no-rec'>No quedan mas recomendaciones</div>").css("margin", "auto", "font-size", "15px");
       }else{
         document.getElementById('carousel-container').setAttribute("len", len);
       }
