@@ -57,8 +57,9 @@
       <h5>Citas con <%=profile.getName()%></h5>
       <% 
       for(DateMatch date:mutual_dates){
-      if(date.getStatus()=="Finalizado"){
-      date.getDateName(profile.getId());%><br></br><%
+      if(date.getStatus()=="Finalizado"){%>
+      <h7><%date.getDateName(profile.getId());%>%></h7>
+      <br></br><%
     }else{
     flag=1;
   }
@@ -137,13 +138,13 @@ if(flag==0){%>
 body{ padding:20px;}
 
 .custom-file-upload input[type="file"] {
-    display: none;
+  display: none;
 }
 .custom-file-upload .custom-file-upload1 {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
 }
 
 
