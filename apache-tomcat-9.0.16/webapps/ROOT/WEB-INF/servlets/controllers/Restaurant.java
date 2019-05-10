@@ -146,31 +146,47 @@ public class Restaurant extends HttpServlet {
               {
                 Date date = dateFormat.parse(request.getParameter("dateUpdate"));
                 int tables = Integer.parseInt(request.getParameter("tablesUpdate"));
+                Availability availability3 = new Availability();
+                Boolean confirmedFound = false;
 
                 availability.setDate(date);
                 availability.setOfferedTables(tables);
                 availability.setAvailableTables(tables);
 
-                if (confirmedDates != null)
+                try (DBManager db = new DBManager())
                 {
-                  try (DBManager db = new DBManager())
-                  {
-                      updated = db.updateAvailability(availability);
-                      System.out.println("Availability updated: " + updated);
-                  }
-                  catch (SQLException ex)
-                  {
-                      ex.printStackTrace();
-                  }
+                    availability3 = db.searchAvailability(date);
+
+                    if (availability3.getOfferedTables() == availability3.getAvailableTables())
+                    {
+                      try (DBManager database = new DBManager())
+                      {
+                          updated = database.updateAvailability(availability);
+                          System.out.println("Availability updated: " + updated);
+                      }
+                      catch (SQLException ex)
+                      {
+                          ex.printStackTrace();
+                      }
+                    }
+                    else
+                    {
+                      confirmedFound = true;
+                      request.setAttribute("errorUpdate", "¡Ya hay mesas confirmadas para el día "+request.getParameter("dateUpdate")+"!");
+                    }
+                }
+                catch (SQLException ex)
+                {
+                    ex.printStackTrace();
                 }
 
                 if (updated)
                 {
                   request.setAttribute("successUpdate", "¡Mesas editadas para el día "+request.getParameter("dateUpdate")+" con éxito!");
                 }
-                else
+                else if(!updated && !confirmedFound)
                 {
-                  request.setAttribute("errorUpdate", "¡No se han podido editar las mesas para el día  "+request.getParameter("dateUpdate")+"!");
+                  request.setAttribute("errorUpdate", "¡No se han podido editar las mesas para el día "+request.getParameter("dateUpdate")+"!");
                 }
               }
 
