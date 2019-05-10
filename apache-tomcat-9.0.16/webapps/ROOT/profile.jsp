@@ -33,7 +33,7 @@
       %>
     </div>
     <br></br>
-    <img src="/WEB-INF/modelo.png">
+    <img src="/modelo.png">
     <!-- Upload image bar -->
     <div class="custom-file-upload" style=padding-top:20px;>
       <label for="file-upload" class="custom-file-upload1">
