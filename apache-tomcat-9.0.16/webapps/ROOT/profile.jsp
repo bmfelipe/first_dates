@@ -23,9 +23,9 @@
 </head>
 <body>
   <%@include file ='/fixing/navbar.jsp'%>
- <div class="col-md-8 text container-fluid text-center">
-  <div class="titles">
-    <h2>Perfil</h2>
+  <div class="col-md-8 text container-fluid text-center">
+    <div class="titles">
+      <h2>Perfil</h2>
       <% 
       HttpSession session = request.getSession();
       User profile = (User) request.getAttribute("target_profile");
@@ -35,17 +35,12 @@
     <br></br>
     <img src="/WEB-INF/modelo.png">
     <!-- Upload image bar -->
-    <br><div class="container">
-      <div class="row">
-        <div class="col-sm-2 imgUp">
-          <div class="imagePreview"></div>
-          <label class="btn btn-primary">
-            Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
-          </label>
-        </div><!-- col-2 -->
-        <i class="fa fa-plus imgAdd"></i>
-      </div><!-- row -->
-    </div><!-- container -->
+    <div class="custom-file-upload" style=padding-top:20px;>
+      <label for="file-upload" class="custom-file-upload1">
+        <i class="fa fa-cloud-upload"></i> Seleccionar foto de perfil
+      </label>
+      <input id="file-upload" type="file"/>
+    </div>
     <!-- Upload image bar -->
     <br></br>
     <div class="card mx-auto mb-auto">
@@ -138,86 +133,24 @@ if(flag==0){%>
 }
 
 
+body{ padding:20px;}
 
-.imagePreview {
-  width: 100%;
-  height: 180px;
-  background-position: center center;
-  background:url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);
-  background-color:#fff;
-  background-size: cover;
-  background-repeat:no-repeat;
-  display: inline-block;
-  box-shadow:0px -3px 6px 2px rgba(0,0,0,0.2);
+.custom-file-upload input[type="file"] {
+    display: none;
 }
-.btn-primary
-{
-  display:block;
-  border-radius:0px;
-  box-shadow:0px 4px 6px 2px rgba(0,0,0,0.2);
-  margin-top:-5px;
+.custom-file-upload .custom-file-upload1 {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }
-.imgUp
-{
-  margin-bottom:15px;
-}
-.del
-{
-  position:absolute;
-  top:0px;
-  right:15px;
-  width:30px;
-  height:30px;
-  text-align:center;
-  line-height:30px;
-  background-color:rgba(255,255,255,0.6);
-  cursor:pointer;
-}
-.imgAdd
-{
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  background-color:#4bd7ef;
-  color:#fff;
-  box-shadow:0px 0px 2px 1px rgba(0,0,0,0.2);
-  text-align:center;
-  line-height:30px;
-  margin-top:0px;
-  cursor:pointer;
-  font-size:15px;
-}
+
+
 
 
 
 </style>
 <script>
-
-  $(".imgAdd").click(function(){
-    $(this).closest(".row").find('.imgAdd').before('<div class="col-sm-2 imgUp"><div class="imagePreview"></div><label class="btn btn-primary">Upload<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
-  });
-  $(document).on("click", "i.del" , function() {
-    $(this).parent().remove();
-  });
-  $(function() {
-    $(document).on("change",".uploadFile", function()
-    {
-      var uploadFile = $(this);
-      var files = !!this.files ? this.files : [];
-        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-
-        if (/^image/.test( files[0].type)){ // only image file
-            var reader = new FileReader(); // instance of the FileReader
-            reader.readAsDataURL(files[0]); // read the local file
-
-            reader.onloadend = function(){ // set image data as background of div
-                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-                uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
-              }
-            }
-
-          });
-  });
 
 </script>
 
