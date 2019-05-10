@@ -57,7 +57,7 @@
       <h5>Citas con <%=profile.getName()%></h5>
       <% 
       for(DateMatch date:mutual_dates){
-      if((date.getStatus()=="Finalizado")==0){%>
+      if((date.getStatus().equals("Finalizado")){%>
       <h7><%date.getDateName(profile.getId());%>%></h7>
       <br></br><%
     }else{
