@@ -197,7 +197,7 @@ public class DBManager implements AutoCloseable {
     }
 
     public List<DateMatch> getDateList(int userId)throws SQLException {
-      String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND status NOT IN ('Rechazado','Pendiente')";
+      String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND status NOT IN ('Rechazado','Pendiente','Finalizado')";
 
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
