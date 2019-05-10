@@ -184,7 +184,8 @@
 
       $.post('http://localhost:9189/add-dates',{
         'dates' : dates,
-        'id': dateId
+        'id': dateId,
+        'confirm': 'false'
       })
       .done(function(data){
         $(".date-select").remove();
