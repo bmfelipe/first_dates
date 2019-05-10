@@ -29,7 +29,7 @@
       <%
       HttpSession session = request.getSession();
       User profile = (User) request.getAttribute("target_profile");
-      boolean own_profile = (Object)request.getAttribute("own_profile");
+      int own_profile = request.getAttribute("own_profile");
       //userID=profile.getId();
       %>
     </div>
@@ -69,7 +69,7 @@
 }
 
 }
-if(pendiente==0 && own_profile==false){%>
+if(pendiente==0 && own_profile==0){%>
 <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
 <%}%>
 <!-- <div id="like-dislike-buttons">
