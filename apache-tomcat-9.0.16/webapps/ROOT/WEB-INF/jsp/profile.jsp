@@ -45,16 +45,16 @@
     <br></br>
     <div class="card mx-auto mb-auto">
       <h1><%=profile.getName()%></h1>
-      <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription();%></q></p>
+      <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q></p>
       <!-- <p>Descripcion</p><%=profile.getDescription()%> -->
-      <h5>Sexo</h5><%=profile.getGender();%>
-      <h5>Fecha de nacimiento</h5><%=profile.getBirthdate();%><br></br>
+      <h5>Sexo</h5><%=profile.getGender()%>
+      <h5>Fecha de nacimiento</h5><%=profile.getBirthdate()%><br></br>
       <%
       User current_user = (User) session.getAttribute("user");
       List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
       int flag=0;
       if(!mutual_dates.isEmpty()){%>
-      <h5>Citas con <%=profile.getName();%></h5>
+      <h5>Citas con <%=profile.getName()%></h5>
       <% 
       for(DateMatch dates:mutual_dates){
       if(dates.getStatus().equals("Finalizado")){%>
