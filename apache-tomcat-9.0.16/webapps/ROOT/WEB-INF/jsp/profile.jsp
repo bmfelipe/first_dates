@@ -57,6 +57,7 @@
       <h5>Citas con <%=profile.getName()%></h5>
       <% 
       for(DateMatch date:mutual_dates){
+      System.out.println("[1]Debuug id: "+date.getStatus());
       if(date.getStatus().equals("Finalizado")){%>
       <h7><%date.getDateName(profile.getId());%>></h7>
       <br></br><%
