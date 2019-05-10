@@ -86,7 +86,7 @@
               <%
               List<User> recommendations = (List<User>) request.getAttribute("recommendations");
               int firstId = -1;
-              HttpSession session = request.getSession();
+              HttpSession sessionHome = request.getSession();
               User user = (User) session.getAttribute("user");
               if(recommendations.isEmpty()){
                 %>

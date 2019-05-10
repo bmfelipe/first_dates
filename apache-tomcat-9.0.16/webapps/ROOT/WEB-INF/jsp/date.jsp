@@ -65,7 +65,7 @@
     User date = (User) request.getAttribute("date");
     DateMatch dateInfo = (DateMatch) request.getAttribute("dateInfo");
     int firstId = -1;
-    HttpSession session = request.getSession();
+    HttpSession sessionDate = request.getSession();
     User user = (User) session.getAttribute("user");
     %>
     <%@ include file='navbar.jsp' %>
