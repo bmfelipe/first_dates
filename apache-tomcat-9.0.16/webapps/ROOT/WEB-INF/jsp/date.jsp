@@ -65,8 +65,8 @@
     User date = (User) request.getAttribute("date");
     DateMatch dateInfo = (DateMatch) request.getAttribute("dateInfo");
     int firstId = -1;
-    HttpSession sessionDate = request.getSession();
-    User user = (User) session.getAttribute("user");
+    // HttpSession sessionDate = request.getSession();
+    // User user = (User) session.getAttribute("user");
     %>
     <%@ include file='navbar.jsp' %>
     <div class="container-fluid text-center">
