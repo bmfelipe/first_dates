@@ -1,7 +1,7 @@
-<%@ page language ="java" contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<!-- <%@ page language ="java" contentType="text/html" pageEncoding="UTF-8" session="false"%> 
 <%@ page import='java.util.List'%>
 <%@ page import='beans.User'%>
-<%@ page import='beans.DateMatch'%>
+<%@ page import='beans.DateMatch'%>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,15 +22,15 @@
 
 </head>
 <body>
-  <%@include file ='/fixing/navbar.jsp'%>
+  <!-- <%@include file ='/fixing/navbar.jsp'%> -->
   <div class="col-md-8 text container-fluid text-center">
     <div class="titles">
       <h2>Perfil</h2>
-      <%
+      <!-- <% 
       HttpSession session = request.getSession();
       User profile = (User) request.getAttribute("target_profile");
       //userID=profile.getId();
-      %>
+      %>-->
     </div>
     <br></br>
     <img src="/WEB-INF/modelo.png">
@@ -50,16 +50,16 @@
     <br></br>
     <div class="card mx-auto mb-auto">
       <h1><%=profile.getName()%></h1>
-      <p>Descripcion</p><%=profile.getDescription()%>
-      <h5>Sexo</h5><%=profile.getGender()%>
+      <p>Descripcion</p><!-- <%=profile.getDescription()%> -->
+      <h5>Sexo</h5><!-- <%=profile.getGender()%> -->
       <h5>Fecha de nacimiento</h5><%=profile.getBirthdate()%><br></br>
-      <%
+      <!-- <%
       User current_user = (User) session.getAttribute("user");
       List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
       int flag=0;
-      if(!mutual_dates.isEmpty()){%>
-      <h5>Citas con <%=profile.getId()%></h5>
-      <%
+      if(!mutual_dates.isEmpty()){%>-->
+      <h5>Citas con <!-- <%=profile.getId()% -->></h5>
+      <!-- <% 
       for(DateMatch date:mutual_dates){
       if(date.getStatus()=="Finalizado"){
       date.getDateName(profile.getId());%><br></br><%
@@ -69,9 +69,9 @@
 }
 
 }
-if(flag==0){%>
+if(flag==0){%>-->
 <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
-<%}%>
+<!-- <%}%> -->
 <div id="like-dislike-buttons">
   <p>
     <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
@@ -205,17 +205,17 @@ if(flag==0){%>
       var uploadFile = $(this);
       var files = !!this.files ? this.files : [];
         if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-        
+
         if (/^image/.test( files[0].type)){ // only image file
             var reader = new FileReader(); // instance of the FileReader
             reader.readAsDataURL(files[0]); // read the local file
-            
+
             reader.onloadend = function(){ // set image data as background of div
                 //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
                 uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
               }
             }
-            
+
           });
   });
 
