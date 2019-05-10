@@ -2,6 +2,7 @@ package controllers;
 
 import beans.Availability;
 import beans.User;
+import beans.DateMatch;
 import jdbc.DBManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +22,8 @@ import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import java.util.Locale;
 import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/restaurant")
 public class Restaurant extends HttpServlet {
@@ -54,8 +57,22 @@ public class Restaurant extends HttpServlet {
               Locale locale = new Locale("es", "ES");
               SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
               TimeZone timeZone = TimeZone.getTimeZone("Etc/GMT+1");
+              List<DateMatch> confirmedDates = new ArrayList<DateMatch>();
+              int pendingDates = 0;
 
               dateFormat.setTimeZone(timeZone);
+
+              Date nowDate = new Date();
+
+              try (DBManager db = new DBManager())
+              {
+                  confirmedDates = db.getConfirmedDateList(nowDate);
+                  request.setAttribute("confirmedDates", confirmedDates);
+              }
+              catch (SQLException ex)
+              {
+                  ex.printStackTrace();
+              }
 
               if (request.getParameter("dateInsert") != null)
               {
@@ -109,6 +126,7 @@ public class Restaurant extends HttpServlet {
                 try (DBManager db = new DBManager())
                 {
                     availability = db.searchAvailability(date);
+                    pendingDates = db.getCountPendingDates(date);
                 }
                 catch (SQLException ex)
                 {
@@ -117,7 +135,7 @@ public class Restaurant extends HttpServlet {
 
                 if (availability != null)
                 {
-                  request.setAttribute("successSearch", "Estas son las mesas registradas para el día "+request.getParameter("dateSearch")+":<br>Mesas ofrecidas: "+availability.getOfferedTables()+"<br>Mesas disponibles: "+availability.getAvailableTables());
+                  request.setAttribute("successSearch", "Estas son las mesas registradas para el día "+request.getParameter("dateSearch")+":<br>Mesas ofrecidas: "+availability.getOfferedTables()+"<br>Mesas disponibles: "+availability.getAvailableTables()+"<br>Citas pendientes de confirmación: "+pendingDates);
                 }
                 else
                 {
@@ -133,14 +151,17 @@ public class Restaurant extends HttpServlet {
                 availability.setOfferedTables(tables);
                 availability.setAvailableTables(tables);
 
-                try (DBManager db = new DBManager())
+                if (confirmedDates != null)
                 {
-                    updated = db.updateAvailability(availability);
-                    System.out.println("Availability updated: " + updated);
-                }
-                catch (SQLException ex)
-                {
-                    ex.printStackTrace();
+                  try (DBManager db = new DBManager())
+                  {
+                      updated = db.updateAvailability(availability);
+                      System.out.println("Availability updated: " + updated);
+                  }
+                  catch (SQLException ex)
+                  {
+                      ex.printStackTrace();
+                  }
                 }
 
                 if (updated)

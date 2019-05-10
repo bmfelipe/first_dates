@@ -219,7 +219,6 @@ public class DBManager implements AutoCloseable {
         }
         return dates;
       }
-      //return null;
     }
     //Returns dates the user and a certain profile had
     public List<DateMatch> getProfileDateList(int userId,int profileId) throws SQLException{
@@ -529,6 +528,50 @@ public class DBManager implements AutoCloseable {
     connection.setAutoCommit(true);
 
     return success;
+  }
+
+  public int getCountPendingDates(Date date) throws SQLException
+  {
+    int pendingDates = 0;
+    String query = "SELECT COUNT(*) AS pendingDates FROM 19_comweb_21d.Dates WHERE status = 'Fecha pendiente' and dateRequest = ?";
+
+    try(PreparedStatement st = connection.prepareStatement(query))
+    {
+      st.setDate(1, new java.sql.Date(date.getTime()));
+      ResultSet rs = st.executeQuery();
+
+      while(rs.next())
+      {
+        pendingDates = rs.getInt("pendingDates");
+        break;
+      }
+      return pendingDates;
+    }
+  }
+
+  public List<DateMatch> getConfirmedDateList(Date nowDate) throws SQLException
+  {
+    List<DateMatch> dates = new ArrayList<DateMatch>();
+    String query = "SELECT id, dateOneId, dateTwoId, dateRequest FROM 19_comweb_21d.Dates WHERE status = 'Fecha fijada' and dateRequest >= ? ORDER BY dateRequest ASC";
+
+    try(PreparedStatement st = connection.prepareStatement(query))
+    {
+      st.setDate(1, new java.sql.Date(nowDate.getTime()));
+      ResultSet rs = st.executeQuery();
+
+      while(rs.next())
+      {
+        DateMatch dateMatch = new DateMatch();
+
+        dateMatch.setId(rs.getInt("id"));
+        dateMatch.setDateOneId(rs.getInt("dateOneId"));
+        dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
+        dateMatch.setDateRequest(rs.getDate("dateRequest"));
+
+        dates.add(dateMatch);
+      }
+      return dates;
+    }
   }
 
 //   public boolean sellBook(int book, int units) throws SQLException {
