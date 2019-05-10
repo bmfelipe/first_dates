@@ -73,7 +73,9 @@ if(pendiente==0 && own_profile=="false"){%>
 <%
 
 if (own_profile.equals("true")) {
-  %><button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fas fa-user-edit"></i> </button>
+  %><div id="like-dislike-buttons">
+  <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fas fa-user-edit"></i> </button>
+  </div>
   <%
 }
 
