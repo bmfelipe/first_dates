@@ -25,12 +25,12 @@
 </div>
 
 <style>
-  .navbar{
+  .navbar {
     padding-top: 10px;
     padding-bottom: 10px;
   }
 
   .btn {
-    margin-left: 10px;
+    margin-left: 20px;
   }
 </style>

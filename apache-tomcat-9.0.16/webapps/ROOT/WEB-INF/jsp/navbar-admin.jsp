@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/restaurant.jsp">Restaurante<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/restaurant">Restaurante<span class="sr-only">(current)</span></a>
         </li>
       </ul>
       <% HttpSession session = request.getSession();
@@ -22,12 +22,12 @@
 </div>
 
 <style>
-  .navbar{
+  .navbar {
     padding-top: 10px;
     padding-bottom: 10px;
   }
 
   .btn {
-    margin-left: 10px;
+    margin-left: 20px;
   }
 </style>
