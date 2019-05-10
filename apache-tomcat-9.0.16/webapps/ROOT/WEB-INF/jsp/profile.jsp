@@ -27,7 +27,7 @@
     <div class="titles">
       <h2>Perfil</h2>
       <%
-      HttpSession session = request.getSession();
+      //HttpSession session = request.getSession();
       User profile = (User) request.getAttribute("target_profile");
       String own_profile = (String)request.getAttribute("own_profile");
       %>
