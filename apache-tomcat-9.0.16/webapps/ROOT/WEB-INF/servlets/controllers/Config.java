@@ -48,7 +48,7 @@ public class Config extends HttpServlet {
           }
 
 
-      }catch (SQLException|NamingException e){
+      }catch (Exception ex){
               e.printStackTrace();//Send re
               response.sendRedirect("/internalError");
           }
