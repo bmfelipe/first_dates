@@ -206,423 +206,449 @@ public class DBManager implements AutoCloseable {
 
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
-  	    st.setInt(1,userId);
-        st.setInt(2,userId);
-  	    ResultSet rs = st.executeQuery();
-
-        while(rs.next()){
-          DateMatch dateMatch = new DateMatch();
-          dateMatch.setId(rs.getInt("id"));
-          dateMatch.setDateOneId(rs.getInt("dateOneId"));
-          dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
-          dateMatch.setStatus(rs.getString("status"));
-          dateMatch.setDateRequest(rs.getDate("dateRequest"));
-          dateMatch.setDateResponse(rs.getDate("dateResponse"));
-          dateMatch.setDateSetBy(rs.getInt("dateSetBy"));
-
-          dates.add(dateMatch);
-        }
-        return dates;
-      }
-    }
-    //Returns dates the user and a certain profile had
-    public List<DateMatch> getProfileDateList(int userId,int profileId) throws SQLException{
-      String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND (dateOneId =? or dateTwoId =?) AND status NOT LIKE 'Rechazado'";
-      List<DateMatch> dates = new ArrayList<DateMatch>();
-      try(PreparedStatement st = connection.prepareStatement(query)){
-        st.setInt(1,userId);
-        st.setInt(2,userId);
-        st.setInt(3,profileId);
-        st.setInt(4,profileId);
-        ResultSet rs = st.executeQuery();
-        while(rs.next()){
-          DateMatch dateMatch = new DateMatch();
-          dateMatch.setId(rs.getInt("id"));
-          dateMatch.setDateOneId(rs.getInt("dateOneId"));
-          dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
-          dateMatch.setStatus(rs.getString("status"));
-          dateMatch.setDateRequest(rs.getDate("dateRequest"));
-          dateMatch.setDateResponse(rs.getDate("dateResponse"));
-          dates.add(dateMatch);
-        }
-        return dates;
-
-      }
-
-
-    }
-
-    public InputStream getImage(int id)throws SQLException{
-      String query = "SELECT photo FROM Users WHERE id = ?";
-
-      try(PreparedStatement st = connection.prepareStatement(query)){
-       st.setInt(1,id);
+       st.setInt(1,userId);
+       st.setInt(2,userId);
        ResultSet rs = st.executeQuery();
 
-       rs.next();
-       InputStream in = rs.getBinaryStream("photo");
-       return in;
-     }
-        //return null;
-   }
-
-   public String getUserName(int id)throws SQLException{
-    String query = "SELECT name FROM Users WHERE id = ?";
-
-    try(PreparedStatement st = connection.prepareStatement(query)){
-      st.setInt(1,id);
-      ResultSet rs = st.executeQuery();
-
-      rs.next();
-      String userName = rs.getString("name");
-      return userName;
-    }
-  }
-
-  public boolean addLike(int userId, int dateId) throws SQLException{
-    String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
-    boolean created;
-    try(PreparedStatement st = connection.prepareStatement(query)){
-      st.setInt(1,userId);
-      st.setInt(2,dateId);
-      st.setInt(3,dateId);
-      st.setInt(4,userId);
-      ResultSet rs = st.executeQuery();
-      if(rs.next() == false){
-        created = false;
-      }else{
-        created = true;
-        if(rs.getString("status") == "Rechazado"){
-          return true;
-        }
-      }
-    }
-    if(created){
-      query = "UPDATE Dates SET status = 'Aceptado' WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
-      try(PreparedStatement st = connection.prepareStatement(query)){
-        st.setInt(1,userId);
-        st.setInt(2,dateId);
-        st.setInt(3,dateId);
-        st.setInt(4,userId);
-        int rows = st.executeUpdate();
-
-      }
-    }else{
-      query = "INSERT INTO Dates (dateOneId, dateTwoId, status) VALUES(?,?,?)";
-      try(PreparedStatement st = connection.prepareStatement(query)){
-        st.setInt(1,userId);
-        st.setInt(2,dateId);
-        st.setString(3,"Pendiente");
-        int rows = st.executeUpdate();
-
-      }
-    }
-    return true;
-  }
-
-  public boolean addDislike(int userId, int dateId) throws SQLException{
-    String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
-    boolean created;
-    try(PreparedStatement st = connection.prepareStatement(query)){
-      st.setInt(1,userId);
-      st.setInt(2,dateId);
-      st.setInt(3,dateId);
-      st.setInt(4,userId);
-      ResultSet rs = st.executeQuery();
-      if(rs.next() == false){
-        created = false;
-      }else{
-        created = true;
-        if(rs.getString("status") == "Rechazado"){
-          return true;
-        }
-      }
-    }
-    if(created){
-      query = "UPDATE Dates SET status = 'Rechazado' WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
-      try(PreparedStatement st = connection.prepareStatement(query)){
-        st.setInt(1,userId);
-        st.setInt(2,dateId);
-        st.setInt(3,dateId);
-        st.setInt(4,userId);
-        int rows = st.executeUpdate();
-
-      }
-    }else{
-      query = "INSERT INTO Dates (dateOneId, dateTwoId, status) VALUES(?,?,?)";
-      try(PreparedStatement st = connection.prepareStatement(query)){
-        st.setInt(1,userId);
-        st.setInt(2,dateId);
-        st.setString(3,"Rechazado");
-        int rows = st.executeUpdate();
-
-      }
-    }
-    return true;
-  }
-
-  public boolean insertAvailability (Availability availability) throws SQLException{
-    boolean inserted = false;
-    String query = "INSERT INTO 19_comweb_21d.Availability (date, offeredTables, availableTables) VALUES (?, ?, ?)";
-    PreparedStatement stmt = connection.prepareStatement(query);
-    stmt.setDate(1, new java.sql.Date(availability.getDate().getTime()));
-    stmt.setInt(2, availability.getOfferedTables());
-    stmt.setInt(3, availability.getAvailableTables());
-
-    int rowsAffected = stmt.executeUpdate();
-
-    if(rowsAffected != 0){
-      inserted = true;
-    }
-
-    return inserted;
-  }
-
-  public Availability searchAvailability (Date date) throws SQLException{
-    Availability availability = new Availability();
-    String query = "SELECT offeredTables, availableTables FROM 19_comweb_21d.Availability WHERE date = ?";
-    PreparedStatement stmt = connection.prepareStatement(query);
-    stmt.setDate(1, new java.sql.Date(date.getTime()));
-    ResultSet rs = stmt.executeQuery();
-
-    if (rs.next())
-    {
-      availability.setOfferedTables(rs.getInt("offeredTables"));
-      availability.setAvailableTables(rs.getInt("availableTables"));
-      availability.setDate(date);
-    }
-    else {
-      availability = null;
-    }
-
-    return availability;
-  }
-
-  public boolean updateAvailability (Availability availability) throws SQLException{
-    boolean updated = false;
-    System.out.println(availability.getOfferedTables());
-    System.out.println(availability.getAvailableTables());
-    System.out.println(availability.getDate());
-    String query = "UPDATE 19_comweb_21d.Availability SET offeredTables = ?, availableTables = ? WHERE date = ?";
-    PreparedStatement stmt = connection.prepareStatement(query);
-    stmt.setInt(1, availability.getOfferedTables());
-    stmt.setInt(2, availability.getAvailableTables());
-    stmt.setDate(3, new java.sql.Date(availability.getDate().getTime()));
-
-    int rowsAffected = stmt.executeUpdate();
-
-    if(rowsAffected != 0){
-      updated = true;
-    }
-
-    return updated;
-  }
-
-  public User getUserInfo(int id) throws SQLException{
-    String query = "SELECT id ,name, username, gender, description, (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) AS age FROM Users WHERE id = ?";
-    User user = new User();
-
-    try(PreparedStatement st = connection.prepareStatement(query)){
-      st.setInt(1,id);
-      ResultSet rs = st.executeQuery();
-
-      if(rs.next()){
-        user.setId(rs.getInt("id"));
-        user.setUsername(rs.getString("username"));
-        user.setName(rs.getString("name"));
-        user.setGender(rs.getString("gender"));
-        user.setDescription(rs.getString("description"));
-        user.setAge(Integer.parseInt(rs.getString("age")));
-      }else{
-        return null;
-      }
-
-    }
-    return user;
-  }
-
-  public DateMatch getDateInfo(int userId, int dateId) throws SQLException{
-    String query = "SELECT * FROM Dates WHERE (dateOneId =? or dateTwoId =?) AND (dateOneId =? or dateTwoId  =?) AND status NOT IN ('Rechazado', 'Pending', 'Finalizado')";
-    DateMatch date = new DateMatch();
-
-    try(PreparedStatement st = connection.prepareStatement(query)){
-      st.setInt(1,userId);
-      st.setInt(2,userId);
-      st.setInt(3,dateId);
-      st.setInt(4,dateId);
-      ResultSet rs = st.executeQuery();
-      rs.next();
-
-
-      date.setId(rs.getInt("id"));
-      date.setDateOneId(rs.getInt("dateOneId"));
-      date.setDateTwoId(rs.getInt("dateTwoId"));
-      date.setStatus(rs.getString("status"));
-      date.setDateRequest(rs.getDate("dateRequest"));
-      date.setDateResponse(rs.getDate("dateResponse"));
-      date.setDateSetBy(rs.getInt("dateSetBy"));
-
-    }
-      return date;
-  }
-
-  public DateMatch getDateInfoById(int dateId) throws SQLException{
-    String query = "SELECT * FROM Dates WHERE id= ?";
-    DateMatch date = new DateMatch();
-
-    try(PreparedStatement st = connection.prepareStatement(query)){
-      st.setInt(1,dateId);
-      ResultSet rs = st.executeQuery();
-      rs.next();
-
-
-      date.setId(rs.getInt("id"));
-      date.setDateOneId(rs.getInt("dateOneId"));
-      date.setDateTwoId(rs.getInt("dateTwoId"));
-      date.setStatus(rs.getString("status"));
-      date.setDateRequest(rs.getDate("dateRequest"));
-      date.setDateResponse(rs.getDate("dateResponse"));
-      date.setDateSetBy(rs.getInt("dateSetBy"));
-
-    }
-      return date;
-  }
-
-  public boolean addDateDate(int dateInfoId, List<Date> dates, int userId) throws SQLException{
-    DateMatch dateInfo = getDateInfoById(dateInfoId);
-    String query;
-    Date date = dates.get(0);
-    connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
-    connection.setAutoCommit(false);
-    boolean success = false;
-    int count = 0;
-    if(dateInfo.getDateSetBy() == 0){
-
-      query = "UPDATE Dates SET status = 'Fecha pendiente', dateRequest = ?, dateSetBy = ?  WHERE id = ? ";
-
-      try(PreparedStatement st = connection.prepareStatement(query)){
-        st.setDate(1, new java.sql.Date(date.getTime()));
-        st.setInt(2,dateInfoId);
-        st.setInt(3, userId);
-        count = st.executeUpdate();
-        if(count > 0)
-          success = true;
-      }
-    }else{
-      Availability dateAvailable = searchAvailability(date);
-
-      if(dateAvailable == null){
-        return false;
-      }
-      int tables = dateAvailable.getAvailableTables();
-      if(tables == 0){
-        query = "UPDATE Dates SET status = 'Aceptado', dateResponse = NULL, dateRequest = NULL, dateSetBy = NULL  WHERE id = ? ";
-
-        try(PreparedStatement st = connection.prepareStatement(query)){
-          st.setInt(1,dateInfoId);
-          count = st.executeUpdate();
-          if(count > 0)
-            success = true;
-        }
-      }else{
-
-        query = "UPDATE Dates SET status = 'Fecha fijada', dateResponse = ?  WHERE id = ? ";
-
-        try(PreparedStatement st = connection.prepareStatement(query)){
-          st.setDate(1, new java.sql.Date(date.getTime()));
-          st.setInt(2,dateInfoId);
-          count = st.executeUpdate();
-          if(count > 0){
-            tables--;
-            dateAvailable.setAvailableTables(tables);
-            updateAvailability(dateAvailable);
-            success = true;
-          }
-
-        }
-      }
-
-    }
-    if(success){
-       connection.commit();
-    }else{
-       connection.rollback();
-    }
-    connection.setAutoCommit(true);
-
-    return success;
-  }
-
-  public int getCountPendingDates(Date date) throws SQLException
-  {
-    int pendingDates = 0;
-    String query = "SELECT COUNT(*) AS pendingDates FROM 19_comweb_21d.Dates WHERE status = 'Fecha pendiente' and dateRequest = ?";
-
-    try(PreparedStatement st = connection.prepareStatement(query))
-    {
-      st.setDate(1, new java.sql.Date(date.getTime()));
-      ResultSet rs = st.executeQuery();
-
-      while(rs.next())
-      {
-        pendingDates = rs.getInt("pendingDates");
-        break;
-      }
-      return pendingDates;
-    }
-  }
-
-  public List<DateMatch> getConfirmedDateList(Date nowDate) throws SQLException
-  {
-    List<DateMatch> dates = new ArrayList<DateMatch>();
-    String query = "SELECT id, dateOneId, dateTwoId, dateRequest FROM 19_comweb_21d.Dates WHERE status = 'Fecha fijada' and dateRequest >= ? ORDER BY dateRequest ASC";
-
-    try(PreparedStatement st = connection.prepareStatement(query))
-    {
-      st.setDate(1, new java.sql.Date(nowDate.getTime()));
-      ResultSet rs = st.executeQuery();
-
-      while(rs.next())
-      {
+       while(rs.next()){
         DateMatch dateMatch = new DateMatch();
-
         dateMatch.setId(rs.getInt("id"));
         dateMatch.setDateOneId(rs.getInt("dateOneId"));
         dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
+        dateMatch.setStatus(rs.getString("status"));
         dateMatch.setDateRequest(rs.getDate("dateRequest"));
+        dateMatch.setDateResponse(rs.getDate("dateResponse"));
+        dateMatch.setDateSetBy(rs.getInt("dateSetBy"));
 
         dates.add(dateMatch);
       }
       return dates;
     }
   }
-
-
-  public DateMatch getDaysUntilDate(int userId) throws SQLException{
-    String query = "SELECT *,DATEDIFF(dateResponse,NOW()) AS days FROM Dates WHERE (dateOneId = ? OR dateTwoId = ?) AND status = 'Fecha Fijada' ORDER BY dateResponse ASC LIMIT 1";
-    DateMatch dateMatch = new DateMatch();
-
-    try(PreparedStatement st = connection.prepareStatement(query))
-    {
+    //Returns dates the user and a certain profile had
+  public List<DateMatch> getProfileDateList(int userId,int profileId) throws SQLException{
+    String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND (dateOneId =? or dateTwoId =?) AND status NOT LIKE 'Rechazado'";
+    List<DateMatch> dates = new ArrayList<DateMatch>();
+    try(PreparedStatement st = connection.prepareStatement(query)){
       st.setInt(1,userId);
       st.setInt(2,userId);
+      st.setInt(3,profileId);
+      st.setInt(4,profileId);
       ResultSet rs = st.executeQuery();
-
-      if(rs.next()){
-
-
+      while(rs.next()){
+        DateMatch dateMatch = new DateMatch();
         dateMatch.setId(rs.getInt("id"));
         dateMatch.setDateOneId(rs.getInt("dateOneId"));
         dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
+        dateMatch.setStatus(rs.getString("status"));
+        dateMatch.setDateRequest(rs.getDate("dateRequest"));
         dateMatch.setDateResponse(rs.getDate("dateResponse"));
-        dateMatch.setDaysUntilDate(rs.getInt("days"));
-      }else{
-        return null;
+        dates.add(dateMatch);
       }
+      return dates;
 
     }
-    return dateMatch;
+
 
   }
+
+  public InputStream getImage(int id)throws SQLException{
+    String query = "SELECT photo FROM Users WHERE id = ?";
+
+    try(PreparedStatement st = connection.prepareStatement(query)){
+     st.setInt(1,id);
+     ResultSet rs = st.executeQuery();
+
+     rs.next();
+     InputStream in = rs.getBinaryStream("photo");
+     return in;
+   }
+        //return null;
+ }
+
+ public String getUserName(int id)throws SQLException{
+  String query = "SELECT name FROM Users WHERE id = ?";
+
+  try(PreparedStatement st = connection.prepareStatement(query)){
+    st.setInt(1,id);
+    ResultSet rs = st.executeQuery();
+
+    rs.next();
+    String userName = rs.getString("name");
+    return userName;
+  }
+}
+
+public Boolean addLike(int userId, int dateId) throws SQLException{
+  String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+  Boolean created;
+  try(PreparedStatement st = connection.prepareStatement(query)){
+    st.setInt(1,userId);
+    st.setInt(2,dateId);
+    st.setInt(3,dateId);
+    st.setInt(4,userId);
+    ResultSet rs = st.executeQuery();
+    if(rs.next() == false){
+      created = false;
+    }else{
+      created = true;
+      if(rs.getString("status") == "Rechazado"){
+        return true;
+      }
+    }
+  }
+  if(created){
+    query = "UPDATE Dates SET status = 'Aceptado' WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setInt(1,userId);
+      st.setInt(2,dateId);
+      st.setInt(3,dateId);
+      st.setInt(4,userId);
+      int rows = st.executeUpdate();
+
+    }
+  }else{
+    query = "INSERT INTO Dates (dateOneId, dateTwoId, status) VALUES(?,?,?)";
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setInt(1,userId);
+      st.setInt(2,dateId);
+      st.setString(3,"Pendiente");
+      int rows = st.executeUpdate();
+
+    }
+  }
+  return true;
+}
+
+public Boolean addDislike(int userId, int dateId) throws SQLException{
+  String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+  Boolean created;
+  try(PreparedStatement st = connection.prepareStatement(query)){
+    st.setInt(1,userId);
+    st.setInt(2,dateId);
+    st.setInt(3,dateId);
+    st.setInt(4,userId);
+    ResultSet rs = st.executeQuery();
+    if(rs.next() == false){
+      created = false;
+    }else{
+      created = true;
+      if(rs.getString("status") == "Rechazado"){
+        return true;
+      }
+    }
+  }
+}
+
+public boolean addDislike(int userId, int dateId) throws SQLException{
+    String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+    boolean created;
+  if(created){
+    query = "UPDATE Dates SET status = 'Rechazado' WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setInt(1,userId);
+      st.setInt(2,dateId);
+      st.setInt(3,dateId);
+      st.setInt(4,userId);
+      int rows = st.executeUpdate();
+
+    }
+  }else{
+    query = "INSERT INTO Dates (dateOneId, dateTwoId, status) VALUES(?,?,?)";
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setInt(1,userId);
+      st.setInt(2,dateId);
+      st.setString(3,"Rechazado");
+      int rows = st.executeUpdate();
+
+    }
+  }
+  return true;
+}
+
+public Boolean insertAvailability (Availability availability) throws SQLException{
+  Boolean inserted = false;
+  String query = "INSERT INTO 19_comweb_21d.Availability (date, offeredTables, availableTables) VALUES (?, ?, ?)";
+  PreparedStatement stmt = connection.prepareStatement(query);
+  stmt.setDate(1, new java.sql.Date(availability.getDate().getTime()));
+  stmt.setInt(2, availability.getOfferedTables());
+  stmt.setInt(3, availability.getAvailableTables());
+
+  int rowsAffected = stmt.executeUpdate();
+
+  if(rowsAffected != 0){
+    inserted = true;
+  }
+
+  return inserted;
+}
+
+public Availability searchAvailability (Date date) throws SQLException{
+  Availability availability = new Availability();
+  String query = "SELECT offeredTables, availableTables FROM 19_comweb_21d.Availability WHERE date = ?";
+  PreparedStatement stmt = connection.prepareStatement(query);
+  stmt.setDate(1, new java.sql.Date(date.getTime()));
+  ResultSet rs = stmt.executeQuery();
+
+  if (rs.next())
+  {
+    availability.setOfferedTables(rs.getInt("offeredTables"));
+    availability.setAvailableTables(rs.getInt("availableTables"));
+    availability.setDate(date);
+  }
+  else {
+    availability = null;
+  }
+
+  return availability;
+}
+
+public Boolean updateAvailability (Availability availability) throws SQLException{
+  Boolean updated = false;
+  System.out.println(availability.getOfferedTables());
+  System.out.println(availability.getAvailableTables());
+  System.out.println(availability.getDate());
+  String query = "UPDATE 19_comweb_21d.Availability SET offeredTables = ?, availableTables = ? WHERE date = ?";
+  PreparedStatement stmt = connection.prepareStatement(query);
+  stmt.setInt(1, availability.getOfferedTables());
+  stmt.setInt(2, availability.getAvailableTables());
+  stmt.setDate(3, new java.sql.Date(availability.getDate().getTime()));
+
+  int rowsAffected = stmt.executeUpdate();
+
+  if(rowsAffected != 0){
+    updated = true;
+  }
+
+  return updated;
+}
+
+public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref) throws SQLException{
+
+  Boolean updated = false;
+
+  String query ="UPDATE Preferences SET minAge=?,  maxAge=?, sexPref=? WHERE id=?";
+  try{
+    PreparedStatement stmt = connection.prepareStatement(query);
+    stmt.setInt(1,minAge);
+    stmt.setInt(2,maxAge);
+    stmt.setString(3,sexPref);
+    stmt.setInt(4,id);
+    int rowsAffected = stmt.executeUpdate();
+    if(rowsAffected != 0){
+      updated = true;
+    }
+  }
+  return updated;
+}
+
+
+
+public User getUserInfo(int id) throws SQLException{
+  String query = "SELECT id ,name, username, gender, description, (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) AS age FROM Users WHERE id = ?";
+  User user = new User();
+
+  try(PreparedStatement st = connection.prepareStatement(query)){
+    st.setInt(1,id);
+    ResultSet rs = st.executeQuery();
+
+    if(rs.next()){
+      user.setId(rs.getInt("id"));
+      user.setUsername(rs.getString("username"));
+      user.setName(rs.getString("name"));
+      user.setGender(rs.getString("gender"));
+      user.setDescription(rs.getString("description"));
+      user.setAge(Integer.parseInt(rs.getString("age")));
+    }else{
+      return null;
+    }
+
+  }
+  return user;
+}
+
+public DateMatch getDateInfo(int userId, int dateId) throws SQLException{
+  String query = "SELECT * FROM Dates WHERE (dateOneId =? or dateTwoId =?) AND (dateOneId =? or dateTwoId  =?) AND status NOT IN ('Rechazado', 'Pending', 'Finalizado')";
+  DateMatch date = new DateMatch();
+
+  try(PreparedStatement st = connection.prepareStatement(query)){
+    st.setInt(1,userId);
+    st.setInt(2,userId);
+    st.setInt(3,dateId);
+    st.setInt(4,dateId);
+    ResultSet rs = st.executeQuery();
+    rs.next();
+
+
+    date.setId(rs.getInt("id"));
+    date.setDateOneId(rs.getInt("dateOneId"));
+    date.setDateTwoId(rs.getInt("dateTwoId"));
+    date.setStatus(rs.getString("status"));
+    date.setDateRequest(rs.getDate("dateRequest"));
+    date.setDateResponse(rs.getDate("dateResponse"));
+    date.setDateSetBy(rs.getInt("dateSetBy"));
+
+  }
+  return date;
+}
+
+public DateMatch getDateInfoById(int dateId) throws SQLException{
+  String query = "SELECT * FROM Dates WHERE id= ?";
+  DateMatch date = new DateMatch();
+
+  try(PreparedStatement st = connection.prepareStatement(query)){
+    st.setInt(1,dateId);
+    ResultSet rs = st.executeQuery();
+    rs.next();
+
+
+    date.setId(rs.getInt("id"));
+    date.setDateOneId(rs.getInt("dateOneId"));
+    date.setDateTwoId(rs.getInt("dateTwoId"));
+    date.setStatus(rs.getString("status"));
+    date.setDateRequest(rs.getDate("dateRequest"));
+    date.setDateResponse(rs.getDate("dateResponse"));
+    date.setDateSetBy(rs.getInt("dateSetBy"));
+
+  }
+  return date;
+}
+
+public boolean addDateDate(int dateInfoId, List<Date> dates, int userId) throws SQLException{
+  DateMatch dateInfo = getDateInfoById(dateInfoId);
+  String query;
+  Date date = dates.get(0);
+  connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+  connection.setAutoCommit(false);
+  boolean success = false;
+  int count = 0;
+  if(dateInfo.getDateSetBy() == 0){
+
+    query = "UPDATE Dates SET status = 'Fecha pendiente', dateRequest = ?, dateSetBy = ?  WHERE id = ? ";
+
+    try(PreparedStatement st = connection.prepareStatement(query)){
+      st.setDate(1, new java.sql.Date(date.getTime()));
+      st.setInt(2,dateInfoId);
+      st.setInt(3, userId);
+      count = st.executeUpdate();
+      if(count > 0)
+        success = true;
+    }
+  }else{
+    Availability dateAvailable = searchAvailability(date);
+
+    if(dateAvailable == null){
+      return false;
+    }
+    int tables = dateAvailable.getAvailableTables();
+    if(tables == 0){
+      query = "UPDATE Dates SET status = 'Aceptado', dateResponse = NULL, dateRequest = NULL, dateSetBy = NULL  WHERE id = ? ";
+
+      try(PreparedStatement st = connection.prepareStatement(query)){
+        st.setInt(1,dateInfoId);
+        count = st.executeUpdate();
+        if(count > 0)
+          success = true;
+      }
+    }else{
+
+      query = "UPDATE Dates SET status = 'Fecha fijada', dateResponse = ?  WHERE id = ? ";
+
+      try(PreparedStatement st = connection.prepareStatement(query)){
+        st.setDate(1, new java.sql.Date(date.getTime()));
+        st.setInt(2,dateInfoId);
+        count = st.executeUpdate();
+        if(count > 0){
+          tables--;
+          dateAvailable.setAvailableTables(tables);
+          updateAvailability(dateAvailable);
+          success = true;
+        }
+
+      }
+    }
+
+  }
+  if(success){
+   connection.commit();
+ }else{
+   connection.rollback();
+ }
+ connection.setAutoCommit(true);
+
+ return success;
+}
+
+public int getCountPendingDates(Date date) throws SQLException
+{
+  int pendingDates = 0;
+  String query = "SELECT COUNT(*) AS pendingDates FROM 19_comweb_21d.Dates WHERE status = 'Fecha pendiente' and dateRequest = ?";
+
+  try(PreparedStatement st = connection.prepareStatement(query))
+  {
+    st.setDate(1, new java.sql.Date(date.getTime()));
+    ResultSet rs = st.executeQuery();
+
+    while(rs.next())
+    {
+      pendingDates = rs.getInt("pendingDates");
+      break;
+    }
+    return pendingDates;
+  }
+}
+
+public List<DateMatch> getConfirmedDateList(Date nowDate) throws SQLException
+{
+  List<DateMatch> dates = new ArrayList<DateMatch>();
+  String query = "SELECT id, dateOneId, dateTwoId, dateRequest FROM 19_comweb_21d.Dates WHERE status = 'Fecha fijada' and dateRequest >= ? ORDER BY dateRequest ASC";
+
+  try(PreparedStatement st = connection.prepareStatement(query))
+  {
+    st.setDate(1, new java.sql.Date(nowDate.getTime()));
+    ResultSet rs = st.executeQuery();
+
+    while(rs.next())
+    {
+      DateMatch dateMatch = new DateMatch();
+
+      dateMatch.setId(rs.getInt("id"));
+      dateMatch.setDateOneId(rs.getInt("dateOneId"));
+      dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
+      dateMatch.setDateRequest(rs.getDate("dateRequest"));
+
+      dates.add(dateMatch);
+    }
+    return dates;
+  }
+}
+
+
+public DateMatch getDaysUntilDate(int userId) throws SQLException{
+  String query = "SELECT *,DATEDIFF(dateResponse,NOW()) AS days FROM Dates WHERE (dateOneId = ? OR dateTwoId = ?) AND status = 'Fecha Fijada' ORDER BY dateResponse ASC LIMIT 1";
+  DateMatch dateMatch = new DateMatch();
+
+  try(PreparedStatement st = connection.prepareStatement(query))
+  {
+    st.setInt(1,userId);
+    st.setInt(2,userId);
+    ResultSet rs = st.executeQuery();
+
+    if(rs.next()){
+
+
+      dateMatch.setId(rs.getInt("id"));
+      dateMatch.setDateOneId(rs.getInt("dateOneId"));
+      dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
+      dateMatch.setDateResponse(rs.getDate("dateResponse"));
+      dateMatch.setDaysUntilDate(rs.getInt("days"));
+    }else{
+      return null;
+    }
+
+  }
+  return dateMatch;
+
+}
 
 }

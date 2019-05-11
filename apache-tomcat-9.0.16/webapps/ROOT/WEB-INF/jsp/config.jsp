@@ -22,23 +22,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 ">
-					<form class="form-horizontal">
+					<form action="/config" method="post" class="form-horizontal">
 						<fieldset>
 							<!-- Form Name -->
 							<legend>Configuracion de usuario</legend>
 							<!-- Text input-->
-							<div class="form-group">
-								<label class="col-md-4 control-label" for="Name (Full name)">Nombre completo</label>  
-								<div class="col-md-4">
-									<div class="input-group">
-										<div class="input-group-addon">
-											<i class="fa fa-user">
-											</i>
-										</div>
-										<input id="Name (Full name)" name="Name (Full name)" type="text" placeholder="Name (Full name)" class="form-control input-md">
-									</div>
-								</div>
-							</div>
 							<!-- Text input-->
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="Date Of Birth">Edad mínima</label>  
@@ -49,7 +37,7 @@
 											<i class="fa fa-birthday-cake"></i>
 
 										</div>
-										<input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Edad mínima" class="form-control input-md">
+										<input id="Date Of Birth" name="minAge" type="text" placeholder="Edad mínima" class="form-control input-md">
 									</div>
 
 
@@ -64,7 +52,7 @@
 										<div class="input-group-addon">
 											<i class="fa fa-birthday-cake"></i>     
 										</div>
-										<input id="Date Of Birth" name="Date Of Birth" type="text" placeholder="Edad máxima" class="form-control input-md">
+										<input id="Date Of Birth" name="maxAge" type="text" placeholder="Edad máxima" class="form-control input-md">
 									</div>
 
 
@@ -77,15 +65,15 @@
 								<label class="col-md-4 control-label" for="Gender">Busco</label>
 								<div class="col-md-4"> 
 									<label class="radio-inline" for="Gender-0">
-										<input type="radio" name="Gender" id="Gender-0" value="1" checked="checked">
+										<input type="radio" name="gender" id="Gender-0" value="Hombre" checked="checked">
 										Chicos
 									</label> 
 									<label class="radio-inline" for="Gender-1">
-										<input type="radio" name="Gender" id="Gender-1" value="2">
+										<input type="radio" name="gender" id="Gender-1" value="Mujer">
 										Chicas
 									</label> 
 									<label class="radio-inline" for="Gender-2">
-										<input type="radio" name="Gender" id="Gender-2" value="3">
+										<input type="radio" name="gender" id="Gender-2" value="Ambos">
 										Ambos
 									</label>
 								</div>
@@ -96,7 +84,7 @@
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="Overview (max 200 words)">Descripción</label>
 								<div class="col-md-4">                     
-									<textarea class="form-control" rows="10"  id="Overview (max 200 words)" name="Overview (max 200 words)">Descripción</textarea>
+									<textarea class="form-control" rows="10"  id="Overview (max 200 words)" name="descripcion">Descripción</textarea>
 								</div>
 							</div>
 
