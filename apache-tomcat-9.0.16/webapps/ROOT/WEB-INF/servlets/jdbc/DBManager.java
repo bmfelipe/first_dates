@@ -414,7 +414,7 @@ public Boolean updateAvailability (Availability availability) throws SQLExceptio
   return updated;
 }
 
-public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref){
+public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref) throws SQLException{
 
   Boolean updated = false;
 
