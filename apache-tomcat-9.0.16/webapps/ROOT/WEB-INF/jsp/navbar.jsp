@@ -19,7 +19,7 @@
       <% HttpSession session = request.getSession();
          User user = (User) session.getAttribute("user"); %>
       <%=user.getName()%>
-      <a class="btn btn-secondary" href="/logout" role="button">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+      <a class="btn btn-secondary navbutton" href="/logout" role="button">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a>
     </div>
   </nav>
 </div>
@@ -30,7 +30,7 @@
     padding-bottom: 10px;
   }
 
-  .btn {
-    margin-left: 20px;
+  .navbutton {
+    margin-left: 15px;
   }
 </style>

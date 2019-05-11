@@ -94,8 +94,8 @@ public class DBManager implements AutoCloseable {
       return user;
     }
 
-    public Boolean registerUser(User user) throws SQLException {
-      Boolean registered = false;
+    public boolean registerUser(User user) throws SQLException {
+      boolean registered = false;
       String query = "INSERT INTO 19_comweb_21d.Users (username, name, gender, birthdate, role) VALUES (?, ?, ?, ?, ?)";
       PreparedStatement stmt = connection.prepareStatement(query);
       stmt.setString(1, user.getUsername());
@@ -109,6 +109,10 @@ public class DBManager implements AutoCloseable {
       PreparedStatement stmt2 = connection.prepareStatement(query2);
       stmt2.setString(1, user.getPassword());
       rowsAffected = stmt2.executeUpdate();
+
+      String query3 = "INSERT INTO 19_comweb_21d.Preferences (id, minAge, maxAge, sexPref) VALUES (LAST_INSERT_ID(), 18, 99, 'Ambos');";
+      PreparedStatement stmt3 = connection.prepareStatement(query3);
+      rowsAffected = stmt3.executeUpdate();
 
       if(rowsAffected != 0){
         registered = true;
@@ -275,9 +279,9 @@ public class DBManager implements AutoCloseable {
     }
   }
 
-  public Boolean addLike(int userId, int dateId) throws SQLException{
+  public boolean addLike(int userId, int dateId) throws SQLException{
     String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
-    Boolean created;
+    boolean created;
     try(PreparedStatement st = connection.prepareStatement(query)){
       st.setInt(1,userId);
       st.setInt(2,dateId);
@@ -316,9 +320,9 @@ public class DBManager implements AutoCloseable {
     return true;
   }
 
-  public Boolean addDislike(int userId, int dateId) throws SQLException{
+  public boolean addDislike(int userId, int dateId) throws SQLException{
     String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
-    Boolean created;
+    boolean created;
     try(PreparedStatement st = connection.prepareStatement(query)){
       st.setInt(1,userId);
       st.setInt(2,dateId);
@@ -357,8 +361,8 @@ public class DBManager implements AutoCloseable {
     return true;
   }
 
-  public Boolean insertAvailability (Availability availability) throws SQLException{
-    Boolean inserted = false;
+  public boolean insertAvailability (Availability availability) throws SQLException{
+    boolean inserted = false;
     String query = "INSERT INTO 19_comweb_21d.Availability (date, offeredTables, availableTables) VALUES (?, ?, ?)";
     PreparedStatement stmt = connection.prepareStatement(query);
     stmt.setDate(1, new java.sql.Date(availability.getDate().getTime()));
@@ -394,8 +398,8 @@ public class DBManager implements AutoCloseable {
     return availability;
   }
 
-  public Boolean updateAvailability (Availability availability) throws SQLException{
-    Boolean updated = false;
+  public boolean updateAvailability (Availability availability) throws SQLException{
+    boolean updated = false;
     System.out.println(availability.getOfferedTables());
     System.out.println(availability.getAvailableTables());
     System.out.println(availability.getDate());

@@ -85,7 +85,7 @@
     .col-9{
       margin-top: 35px;
     }
-    
+
   </style>
 
   <%
@@ -104,10 +104,17 @@
           <div class="card mb-4 scroll">
             <h3>Registrar Mesas</h3>
             <form action="/restaurant" method="post" class="text_center">
-              <div class="form-group">
-                <label for="text">Fecha:<br>
+              <div class="form-group col-sm">
+                <%-- <label for="text">Fecha:<br>
                   <input type="date" name="dateInsert" max="3000-12-31" min="<%=strDate%>" required>
-                </label>
+                </label> --%>
+                <h5>Fecha</h5>
+                <div class="start_date input-group mb-4">
+                  <input class="form-control start_date" type="text" placeholder="Date" id="startdate_datepicker">
+                  <div class="input-group-append">
+                    <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="text">Número de mesas a ofrecer:<br>
@@ -189,7 +196,7 @@
       $('#startdate_datepicker').datepicker({
           startDate: new Date(),
           multidate: false,
-          format: "dd-mm-yyyy",
+          format: "yyyy-mm-dd",
           daysOfWeekHighlighted: "6,0",
           datesDisabled: ['31-08-2017'],
           orientation: 'bottom',

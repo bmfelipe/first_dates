@@ -116,7 +116,7 @@ public class Restaurant extends HttpServlet {
                 }
                 else
                 {
-                  request.setAttribute("errorInsertion", "Ya hay mesas registradas para el día "+request.getParameter("dateInsert")+".<br>Si quiere puede editar las mesas de este día.");
+                  request.setAttribute("errorInsertion", "¡Ya hay mesas registradas para el día "+request.getParameter("dateInsert")+"!"+".<br>Si quiere puede editar las mesas de este día.");
                 }
               }
               else if (request.getParameter("dateSearch") != null)
@@ -139,7 +139,7 @@ public class Restaurant extends HttpServlet {
                 }
                 else
                 {
-                  request.setAttribute("errorSearch", "No hay ninguna mesa registrada para el día "+request.getParameter("dateSearch"));
+                  request.setAttribute("errorSearch", "¡No hay ninguna mesa registrada para el día "+request.getParameter("dateSearch")+"!");
                 }
               }
               else if (request.getParameter("dateUpdate") != null)
@@ -172,7 +172,7 @@ public class Restaurant extends HttpServlet {
                     else
                     {
                       confirmedFound = true;
-                      request.setAttribute("errorUpdate", "¡Ya hay mesas confirmadas para el día "+request.getParameter("dateUpdate")+"!");
+                      request.setAttribute("errorUpdate", "¡No se han podido editar las mesas porque ya hay mesas reservadas para el día "+request.getParameter("dateUpdate")+"!");
                     }
                 }
                 catch (SQLException ex)
@@ -201,7 +201,7 @@ public class Restaurant extends HttpServlet {
         catch(Exception ex)
         {
             ex.printStackTrace();
-            request.setAttribute("errorRestaurant", "Ha ocurrido un error en el servidor");
+            request.setAttribute("errorRestaurant", "¡Ha ocurrido un error en el servidor!");
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
             rd.forward(request, response);
         }
