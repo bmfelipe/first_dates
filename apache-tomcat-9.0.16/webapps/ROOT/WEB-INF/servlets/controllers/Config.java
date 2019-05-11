@@ -49,7 +49,7 @@ public class Config extends HttpServlet {
 
 
       }catch (Exception ex){
-              e.printStackTrace();//Send re
+              ex.printStackTrace();//Send re
               response.sendRedirect("/internalError");
           }
 
