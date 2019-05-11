@@ -338,26 +338,6 @@ public Boolean addDislike(int userId, int dateId) throws SQLException{
       }
     }
   }
-}
-
-public Boolean addDislike(int userId, int dateId) throws SQLException{
-  String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
-  Boolean created;
-  try(PreparedStatement st = connection.prepareStatement(query)){
-    st.setInt(1,userId);
-    st.setInt(2,dateId);
-    st.setInt(3,dateId);
-    st.setInt(4,userId);
-    ResultSet rs = st.executeQuery();
-    if(rs.next() == false){
-      created = false;
-    }else{
-      created = true;
-      if(rs.getString("status") == "Rechazado"){
-        return true;
-      }
-    }
-  }
   if(created){
     query = "UPDATE Dates SET status = 'Rechazado' WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
     try(PreparedStatement st = connection.prepareStatement(query)){
