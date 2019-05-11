@@ -268,12 +268,12 @@ public class DBManager implements AutoCloseable {
         //return null;
  }
 
- public boolean postImage(int id, FileInputStream photo){
+ public boolean postImage(int id, FileInputStream photo,File image){
   Boolean updated = false;
 
   String query ="UPDATE Users SET photo=? WHERE id=?";
   try(PreparedStatement stmt = connection.prepareStatement(query)){
-    stmt.setBinaryStream(1, (InputStream) photo, (int)(photo.length()));
+    stmt.setBinaryStream(1, (InputStream) photo, (int)(image.length()));
     stmt.setInt(2,id);
     int rowsAffected = stmt.executeUpdate();
     if(rowsAffected != 0){

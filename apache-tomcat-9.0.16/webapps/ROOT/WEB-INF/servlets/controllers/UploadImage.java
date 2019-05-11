@@ -26,7 +26,7 @@ public class UploadImage extends HttpServlet {
 		if(user.isLoggedIn()){
 			try(DBManager db = new DBManager()){
 				int id = Integer.parseInt(request.getParameter("id").trim());
-				updated = db.postImage(user.getId(),photoStream);
+				updated = db.postImage(user.getId(),photoStream,image);
 				if(updated==false){
 					request.setAttribute("errorUploadPhoto", "No se han podido guardar los cambios");
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
