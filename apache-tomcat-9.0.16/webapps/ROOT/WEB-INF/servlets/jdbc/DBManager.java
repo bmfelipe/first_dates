@@ -380,7 +380,7 @@ public Boolean addDislike(int userId, int dateId) throws SQLException{
       }
     }
     return true;
-  }
+  } 
 
 public Boolean insertAvailability (Availability availability) throws SQLException{
   Boolean inserted = false;
