@@ -417,36 +417,18 @@ public Boolean updateAvailability (Availability availability) throws SQLExceptio
 public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref){
 
   Boolean updated = false;
-  String query ="SELECT COUNT(1) FROM table_name WHERE id=?";
-  PreparedStatement stmt = connection.prepareStatement(query);
-  stmt.setInt(1,id);
-  ResultSet rs = stmt.executeQuery();
-  int count = Integer.parseInt(rs);
 
-  if(count==0){
-
-    String query1 ="UPDATE Preferences SET minAge=?,  maxAge=?, sexPref=? WHERE id=?";
-    PreparedStatement stmt1 = connection.prepareStatement(query1);
-    stmt1.setInt(1,minAge);
-    stmt1.setInt(2,maxAge);
-    stmt1.setString(3,sexPref);
-    stmt1.setInt(4,id);
-    int rowsAffected = stmt1.executeUpdate();
-    if(rowsAffected != 0){
-      updated = true;
-    }
-    return updated;
-
-
-  }else{
-    String query2 ="INSERT INTO Preferences (minAge, maxAge, sexPref) VALUES (?, ?, ?)";
-    PreparedStatement stmt2 = connection.prepareStatement(query2);
-    stmt2.setInt(1,minAge);
-    stmt2.setInt(2,maxAge);
-    stmt2.setString(3,sexPref);
+  String query1 ="UPDATE Preferences SET minAge=?,  maxAge=?, sexPref=? WHERE id=?";
+  PreparedStatement stmt1 = connection.prepareStatement(query1);
+  stmt1.setInt(1,minAge);
+  stmt1.setInt(2,maxAge);
+  stmt1.setString(3,sexPref);
+  stmt1.setInt(4,id);
+  int rowsAffected = stmt1.executeUpdate();
+  if(rowsAffected != 0){
     updated = true;
-    return updated;
   }
+  return updated;
 }
 
 
