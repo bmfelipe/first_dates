@@ -321,7 +321,6 @@ public Boolean addLike(int userId, int dateId) throws SQLException{
 }
 
 public Boolean addDislike(int userId, int dateId) throws SQLException{
-<<<<<<< HEAD
   String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
   Boolean created;
   try(PreparedStatement st = connection.prepareStatement(query)){
