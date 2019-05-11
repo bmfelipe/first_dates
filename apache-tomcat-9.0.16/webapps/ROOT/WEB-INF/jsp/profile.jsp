@@ -36,12 +36,17 @@
     <br></br>
     <img src="/modelo.png">
     <!-- Upload image bar -->
+    <%
+      if(own_profile.equals("true")){
+    %>
     <div class="custom-file-upload" style= padding-top:20px;>
       <label for="file-upload" class="custom-file-upload1">
         <i class="fa fa-cloud-upload"></i> Seleccionar foto de perfil
       </label>
       <input id="file-upload" name="photo" type="image"/>
     </div>
+    <%}%>
+
     <!-- Upload image bar -->
     <br></br>
     <div class="card mx-auto mb-auto">
