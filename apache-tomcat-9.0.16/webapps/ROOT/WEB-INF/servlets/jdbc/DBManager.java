@@ -266,7 +266,7 @@ public class DBManager implements AutoCloseable {
         //return null;
  }
 
- public boolean postImage(int id, InputStream photo){
+ public boolean postImage(int id, FileInputStream photo){
   Boolean updated = false;
 
   String query ="UPDATE Users SET photo=? WHERE id=?";
