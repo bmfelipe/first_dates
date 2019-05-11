@@ -1,4 +1,4 @@
-/*package controllers;
+package controllers;
 
 import beans.User;
 import beans.DateMatch;
@@ -12,36 +12,48 @@ import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
 import javax.naming.NamingException;
 
-@WebServlet("/Config")
+@WebServlet("/config")
 public class Config extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
 
-		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
+		try{
+			request.setCharacterEncoding("utf-8");
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user");
+			//Parameters
+			//String name = request.getParameter("name");
+			int minAge = request.getParameter("minAge");
+			int maxAge = request.getParameter("maxAge");
+			String sexPref= request.getParameter("gender");
 
-		try(DBManager db = new DBManager()){
-				//request.setAttribute("own_profile",own_profile);
-				//request.setAttribute("target_profile",user);
-				List<DateMatch> mutual_dates = db.getDateList(user.getId());
-				request.setAttribute("mutual_dates",mutual_dates);
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
-				rd.forward(request, response);
+			boolean updated=false;
 
-				own_profile="false";
-				request.setAttribute("own_profile",own_profile);
-				List<DateMatch> mutual_dates = db.getProfileDateList(user.getId(),profileId);
-				request.setAttribute("mutual_dates",mutual_dates);
-				User target_profile = db.getUserInfo(profileId);
-				request.setAttribute("target_profile",target_profile);
-				RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/profile.jsp");
-				rd.forward(request, response);
+			try(DBManager db = new DBManager()){
+				updated=db.updatePreferences(user.getId(),minAge,maxAge,sexPref);
+				if(updated==false){
+					request.setAttribute("errorConfiguracion", "No se han podido guardar los cambios");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+					rd.forward(request, response);
+				}else{
+					request.setAttribute("successConfiguracion", "Se han guardado tus preferencias");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+					rd.forward(request, response);
+				}
+
+			}catch (SQLException|NamingException e){
+              e.printStackTrace();//Send re
+              request.setAttribute("errorRegister", "Ha ocurrido un error en el registro");
+              RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+              rd.forward(request, response);
+          }
 
 
-		}catch (SQLException|NamingException e){
+      }catch (SQLException|NamingException e){
               e.printStackTrace();//Send re
               response.sendRedirect("/internalError");
           }
 
-      }
-  }*/
+
+
+  }//Post
+}//class
