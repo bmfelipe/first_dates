@@ -72,7 +72,7 @@
    }
   #days {
     margin:auto;
-    font-size:300px;
+    font-size:30vh;
   }
 
 
@@ -214,6 +214,7 @@
             <%
             User userDateInfo = (User) request.getAttribute("userDateInfo");
             DateMatch dateInfo = (DateMatch) request.getAttribute("dateInfo");
+
             if(dateInfo.getDaysUntilDate() != -1){%>
               <div id="days-left-container">
                 <h1>Quedan</h1>
