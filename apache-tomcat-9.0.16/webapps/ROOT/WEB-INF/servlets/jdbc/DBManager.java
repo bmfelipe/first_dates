@@ -376,7 +376,7 @@ public Boolean addDislike(int userId, int dateId) throws SQLException{
     }
   }
   return true;
-} 
+}
 
 public Boolean insertAvailability (Availability availability) throws SQLException{
   Boolean inserted = false;
@@ -433,6 +433,23 @@ public Boolean updateAvailability (Availability availability) throws SQLExceptio
   }
 
   return updated;
+}
+
+public List<Date> getAvailableDates () throws SQLException{
+  Availability availability = new Availability();
+  List<Date> dates = new ArrayList<Date>();
+  String query = "SELECT date FROM 19_comweb_21d.Availability WHERE availableTables > 0";
+  PreparedStatement stmt = connection.prepareStatement(query);
+  ResultSet rs = stmt.executeQuery();
+  
+  while (rs.next())
+  {
+    Date date = new Date();
+    date = (rs.getDate("date"));
+    dates.add(date);
+  }
+
+  return dates;
 }
 
 public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref) throws SQLException{
@@ -541,13 +558,13 @@ public DateMatch getDateInfoById(int dateId) throws SQLException{
   return date;
 }
 
-public boolean addDateDate(int dateInfoId, List<Date> dates, int userId) throws SQLException{
+public Boolean addDateDate(int dateInfoId, List<Date> dates, int userId) throws SQLException{
   DateMatch dateInfo = getDateInfoById(dateInfoId);
   String query;
   Date date = dates.get(0);
   connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
   connection.setAutoCommit(false);
-  boolean success = false;
+  Boolean success = false;
   int count = 0;
   if(dateInfo.getDateSetBy() == 0){
 
@@ -670,7 +687,8 @@ public DateMatch getDaysUntilDate(int userId) throws SQLException{
       dateMatch.setDateResponse(rs.getDate("dateResponse"));
       dateMatch.setDaysUntilDate(rs.getInt("days"));
     }else{
-      return null;
+      dateMatch.setDaysUntilDate(-1);
+      return dateMatch;
     }
 
   }

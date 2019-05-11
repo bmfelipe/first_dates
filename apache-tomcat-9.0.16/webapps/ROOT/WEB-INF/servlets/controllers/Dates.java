@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
 import javax.naming.NamingException;
+import java.util.Date;
 
 @WebServlet("/date")
 public class Dates extends HttpServlet {
@@ -34,6 +35,9 @@ public class Dates extends HttpServlet {
           try(DBManager db = new DBManager()){
               User date = db.getUserInfo(dateId);
               DateMatch dateInfo = db.getDateInfo(user.getId(),dateId);
+              List<Date> availableDates = db.getAvailableDates();
+              System.out.println(availableDates);
+              request.setAttribute("availableDates",availableDates);
               request.setAttribute("date",date);
               request.setAttribute("dateInfo",dateInfo);
 

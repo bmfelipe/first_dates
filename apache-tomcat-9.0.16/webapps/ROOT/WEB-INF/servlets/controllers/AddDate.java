@@ -46,7 +46,7 @@ public class AddDate extends HttpServlet {
                   }catch(Exception e){
                     e.printStackTrace();
                   }
-                boolean result = db.addDateDate(dateId, dates, user.getId());
+                Boolean result = db.addDateDate(dateId, dates, user.getId());
 
 
             }catch (SQLException|NamingException e){

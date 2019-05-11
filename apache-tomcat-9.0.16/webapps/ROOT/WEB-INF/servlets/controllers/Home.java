@@ -38,15 +38,16 @@ public class Home extends HttpServlet {
               DateMatch dateMatch = new DateMatch();
               dateMatch = db.getDaysUntilDate(user.getId());
               User date = new User();
-              if(dateMatch != null){
+              if(dateMatch.getDaysUntilDate() != -1){
                 if(user.getId() == dateMatch.getDateOneId()){
                   date = db.getUserInfo(dateMatch.getDateTwoId());
                 }else{
                   date = db.getUserInfo(dateMatch.getDateOneId());
                 }
-                request.setAttribute("dateInfo", dateMatch);
+
                 request.setAttribute("userDateInfo", date);
               }
+              request.setAttribute("dateInfo", dateMatch);
 
 
 

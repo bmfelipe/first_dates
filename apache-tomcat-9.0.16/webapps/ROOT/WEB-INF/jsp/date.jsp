@@ -1,6 +1,8 @@
 <%@ page language = "java" contentType = "text/html" pageEncoding="UTF-8" session="false"%>
 <%@ page import='beans.User'%>
 <%@ page import='beans.DateMatch'%>
+<%@ page import='java.util.Date'%>
+<%@ page import='java.util.List'%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -161,15 +163,48 @@
         </div>
   </body>
   <script>
+
+  var availableDates = [
+
+    <%
+    List<Date> availableDates =  (List<Date>)request.getAttribute("availableDates");
+    int size = availableDates.size();
+
+    int index = 1;
+    for(Date availableDate : availableDates){
+        if(size != index){%>
+          '<%=availableDate%>'
+        <%}else{%>
+          '<%=availableDate%>',
+        <%}
+        index++;
+
+    }
+    %>
+
+  ];
+
+
+
+function available(date) {
+  dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+  if ($.inArray(dmy, availableDates) != -1) {
+    return [true, "","Available"];
+  } else {
+    return [false,"","unAvailable"];
+  }
+}
+
   $(document).ready(function() {
       $('#startdate_datepicker').datepicker({
-          startDate: new Date(),
-          multidate: true,
-          format: "dd/mm/yyyy",
+          // startDate: new Date(),
+          multidate: false,
+          format: "yyyy-mm-dd",
           daysOfWeekHighlighted: "6,7",
-          datesDisabled: ['31/08/2017'],
+          // datesDisabled: ['31/08/2017'],
           language: 'en',
           orientation: 'bottom',
+          beforeShowDay:available
       }).on('changeDate', function(e) {
           // `e` here contains the extra attributes
           $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
