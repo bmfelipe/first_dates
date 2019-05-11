@@ -418,9 +418,8 @@ public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref) th
 
   Boolean updated = false;
 
-  String query ="UPDATE Preferences SET minAge=?,  maxAge=?, sexPref=? WHERE id=?";
-  try{
-    PreparedStatement stmt = connection.prepareStatement(query);
+  String query ="UPDATE Preferences SET minAge=?,maxAge=?, sexPref=? WHERE id=?";
+  try(PreparedStatement stmt = connection.prepareStatement(query)){
     stmt.setInt(1,minAge);
     stmt.setInt(2,maxAge);
     stmt.setString(3,sexPref);
