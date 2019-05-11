@@ -25,11 +25,14 @@ public class Config extends HttpServlet {
 			int minAge = Integer.parseInt(request.getParameter("minAge"));
 			int maxAge = Integer.parseInt(request.getParameter("maxAge"));
 			String sexPref= request.getParameter("gender");
+			String description = request.getParameter("descripcion");
 
 			boolean updated=false;
+			boolean describe_updated=false;
 
 			try(DBManager db = new DBManager()){
 				updated=db.updatePreferences(user.getId(),minAge,maxAge,sexPref);
+				describe_updated=db.updateDescription(user.getId(),description);
 				if(updated==false){
 					request.setAttribute("errorConfiguracion", "No se han podido guardar los cambios");
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");

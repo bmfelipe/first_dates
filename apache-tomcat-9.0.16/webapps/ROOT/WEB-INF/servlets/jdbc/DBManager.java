@@ -341,8 +341,8 @@ public Boolean addDislike(int userId, int dateId) throws SQLException{
 }
 
 public boolean addDislike(int userId, int dateId) throws SQLException{
-    String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
-    boolean created;
+  String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+  boolean created;
   if(created){
     query = "UPDATE Dates SET status = 'Rechazado' WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
     try(PreparedStatement st = connection.prepareStatement(query)){
@@ -426,7 +426,6 @@ public Boolean updateAvailability (Availability availability) throws SQLExceptio
 public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref) throws SQLException{
 
   Boolean updated = false;
-
   String query ="UPDATE Preferences SET minAge=?,maxAge=?, sexPref=? WHERE id=?";
   try(PreparedStatement stmt = connection.prepareStatement(query)){
     stmt.setInt(1,minAge);
@@ -440,6 +439,22 @@ public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref) th
   }
   return updated;
 }
+public Boolean updateDescription(int id,String description) throws SQLException{
+  Boolean updated = false;
+  String query ="UPDATE Users SET description=? WHERE id=?";
+  try(PreparedStatement stmt = connection.prepareStatement(query)){
+    stmt.setString(1,description);
+    stmt.setInt(4,id);
+    int rowsAffected = stmt.executeUpdate();
+  }if(rowsAffected != 0){
+    updated = true;
+  }
+
+
+  return updated;
+
+}
+
 
 
 
