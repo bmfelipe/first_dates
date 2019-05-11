@@ -80,7 +80,7 @@ public class ServletRegister extends HttpServlet {
                 }
                 else
                 {
-                  request.setAttribute("errorRegister", "Nombre de usuario no disponible");
+                  request.setAttribute("errorRegister", "Email no disponible");
                   RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
                   rd.forward(request, response);
                 }

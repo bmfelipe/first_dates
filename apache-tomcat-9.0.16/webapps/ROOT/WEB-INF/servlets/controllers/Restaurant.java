@@ -116,7 +116,7 @@ public class Restaurant extends HttpServlet {
                 }
                 else
                 {
-                  request.setAttribute("errorInsertion", "¡Ya hay mesas registradas para el día "+request.getParameter("dateInsert")+"!"+".<br>Si quiere puede editar las mesas de este día.");
+                  request.setAttribute("errorInsertion", "¡Ya hay mesas registradas para el día "+request.getParameter("dateInsert")+"!"+"<br>Si quiere puede editar las mesas de este día.");
                 }
               }
               else if (request.getParameter("dateSearch") != null)
@@ -157,23 +157,27 @@ public class Restaurant extends HttpServlet {
                 {
                     availability3 = db.searchAvailability(date);
 
-                    if (availability3.getOfferedTables() == availability3.getAvailableTables())
+                    if(availability3 != null)
                     {
-                      try (DBManager database = new DBManager())
+                      if (availability3.getOfferedTables() == availability3.getAvailableTables())
                       {
-                          updated = database.updateAvailability(availability);
-                          System.out.println("Availability updated: " + updated);
+                        try (DBManager database = new DBManager())
+                        {
+                            updated = database.updateAvailability(availability);
+                            System.out.println("Availability updated: " + updated);
+                        }
+                        catch (SQLException ex)
+                        {
+                            ex.printStackTrace();
+                        }
                       }
-                      catch (SQLException ex)
+                      else
                       {
-                          ex.printStackTrace();
+                        confirmedFound = true;
+                        request.setAttribute("errorUpdate", "¡No se han podido editar las mesas porque ya hay mesas reservadas para el día "+request.getParameter("dateUpdate")+"!");
                       }
                     }
-                    else
-                    {
-                      confirmedFound = true;
-                      request.setAttribute("errorUpdate", "¡No se han podido editar las mesas porque ya hay mesas reservadas para el día "+request.getParameter("dateUpdate")+"!");
-                    }
+
                 }
                 catch (SQLException ex)
                 {
@@ -186,7 +190,7 @@ public class Restaurant extends HttpServlet {
                 }
                 else if(!updated && !confirmedFound)
                 {
-                  request.setAttribute("errorUpdate", "¡No se han podido editar las mesas para el día "+request.getParameter("dateUpdate")+"!");
+                  request.setAttribute("errorUpdate", "¡No se han podido editar las mesas porque no hay ninguna mesa registrada para el día "+request.getParameter("dateUpdate")+"!");
                 }
               }
 

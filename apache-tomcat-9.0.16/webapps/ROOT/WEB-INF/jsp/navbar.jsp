@@ -19,7 +19,7 @@
       <% HttpSession session = request.getSession();
          User user = (User) session.getAttribute("user"); %>
       <%=user.getName()%>
-      <a class="btn btn-secondary navbutton" href="/logout" role="button">Salir <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+      <a class="btn btn-secondary navbutton" href="/logout" role="button">Salir <i class="fas fa-sign-out-alt" aria-hidden="true"></i></a>
     </div>
   </nav>
 </div>

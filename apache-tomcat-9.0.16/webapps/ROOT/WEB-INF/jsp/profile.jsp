@@ -1,4 +1,4 @@
-<%@ page language ="java" contentType="text/html" pageEncoding="UTF-8" session="false"%> 
+<%@ page language ="java" contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@ page import='java.util.List'%>
 <%@ page import='beans.User'%>
 <%@ page import='beans.DateMatch'%>
@@ -17,6 +17,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -55,7 +56,7 @@
       int pendiente=0;
       if(!mutual_dates.isEmpty()){%>
       <h5>Citas <%=profile.getName()%></h5>
-      <% 
+      <%
       for(DateMatch dates:mutual_dates){
       if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente")){
       pendiente=0;%>

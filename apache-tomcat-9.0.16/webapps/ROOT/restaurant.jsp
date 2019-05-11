@@ -23,13 +23,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
 
   <style>
     body{
       background-color: #333;
+      background-size: cover;
+      background-image: url("resources/background/photo5.jpg");
       color: white;
-      height: 100vh;
     }
 
     .container-fluid {
@@ -38,15 +40,17 @@
     }
 
     .row {
-      max-height: 78vh;
+      max-height: 15vh;
       padding: 10px 0;
       padding-left: 10px;
       padding-right: 10px;
     }
 
     .card {
-      height: 78vh;
-      background: #555;
+      height: 73vh;
+      background-color: rgba(20, 20, 20, 0.8);
+      padding-top: 20px;
+      padding-bottom: 20px;
     }
 
     .titles {
@@ -68,22 +72,26 @@
     }
 
     .scroll {
-      max-height: 78vh;
+      max-height: 100vh;
       overflow-y: auto;
-    }
-
-    h2{
-      padding-bottom: 25px;
-      text-decoration: underline;
     }
 
     hr{
       background-color: #333;
       width: 100%;
+      margin-top: 15px;
     }
 
     .col-9{
-      margin-top: 35px;
+      margin-top: 22px;
+    }
+
+    .fa-grip-lines{
+      color: #333;
+    }
+
+    .fa-angle-down{
+      padding-bottom: 15px;
     }
 
   </style>
@@ -100,26 +108,33 @@
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-lg-6">
-          <h2>Gestionar Restaurante</h2>
+          <h2>Gestión</h2>
+          <i class="fas fa-angle-down"></i>
           <div class="card mb-4 scroll">
             <h3>Registrar Mesas</h3>
+            <i class="fas fa-grip-lines"></i>
             <form action="/restaurant" method="post" class="text_center">
-              <div class="form-group col-sm">
-                <%-- <label for="text">Fecha:<br>
-                  <input type="date" name="dateInsert" max="3000-12-31" min="<%=strDate%>" required>
-                </label> --%>
-                <h5>Fecha</h5>
-                <div class="start_date input-group mb-4">
-                  <input class="form-control start_date" type="text" placeholder="Date" id="startdate_datepicker">
-                  <div class="input-group-append">
-                    <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true "></span>
+              <div class="d-flex justify-content-center">
+                <div class="form-group col-sm-4">
+                  <h5>Fecha</h5>
+                  <div class="start_date input-group mb-4">
+                    <input class="form-control start_date" type="text" name="dateInsert" placeholder="Fecha a registrar" id="startdate_datepicker" autocomplete="off">
+                    <div class="input-group-append">
+                      <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true"></span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="text">Número de mesas a ofrecer:<br>
-                  <input type="text" name="tablesInsert" required>
-                </label>
+              <div class="d-flex justify-content-center">
+                <div class="form-group col-sm-4">
+                  <h5>Mesas a ofrecer</h5>
+                  <div class="start_date input-group mb-4">
+                    <input class="form-control start_date" type="text" name="tablesInsert" placeholder="Número de mesas" autocomplete="off">
+                    <div class="input-group-append">
+                      <span class="fas fa-chair input-group-text start_date_calendar" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <button type="submit" class="btn btn-secondary">Registrar</button>
               <div class="success">${successInsertion}</div>
@@ -127,11 +142,18 @@
             </form>
             <hr>
             <h3>Buscar Mesas</h3>
+            <i class="fas fa-grip-lines"></i>
             <form action="/restaurant" method="post" class="text_center">
-              <div class="form-group">
-                <label for="text">Fecha:<br>
-                  <input type="date" name="dateSearch" max="3000-12-31" min="<%=strDate%>" required>
-                </label>
+              <div class="d-flex justify-content-center">
+                <div class="form-group col-sm-4">
+                  <h5>Fecha</h5>
+                  <div class="start_date input-group mb-4">
+                    <input class="form-control start_date" type="text" name="dateSearch" placeholder="Fecha a buscar" id="startdate_datepicker2" autocomplete="off">
+                    <div class="input-group-append">
+                      <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <button type="submit" class="btn btn-secondary">Buscar</button>
               <div class="success">${successSearch}</div>
@@ -139,16 +161,29 @@
             </form>
             <hr>
             <h3>Editar Mesas</h3>
+            <i class="fas fa-grip-lines"></i>
             <form action="/restaurant" method="post" class="text_center">
-              <div class="form-group">
-                <label for="text">Fecha:<br>
-                  <input type="date" name="dateUpdate" max="3000-12-31" min="<%=strDate%>" required>
-                </label>
+              <div class="d-flex justify-content-center">
+                <div class="form-group col-sm-4">
+                  <h5>Fecha</h5>
+                  <div class="start_date input-group mb-4">
+                    <input class="form-control start_date" type="text" name="dateUpdate" placeholder="Fecha a editar" id="startdate_datepicker3" autocomplete="off">
+                    <div class="input-group-append">
+                      <span class="fa fa-calendar input-group-text start_date_calendar" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="text">Número de mesas a ofrecer:<br>
-                  <input type="text" name="tablesUpdate" required>
-                </label>
+              <div class="d-flex justify-content-center">
+                <div class="form-group col-sm-4">
+                  <h5>Mesas a editar</h5>
+                  <div class="start_date input-group mb-4">
+                    <input class="form-control start_date" type="text" name="tablesUpdate" placeholder="Número de mesas" autocomplete="off">
+                    <div class="input-group-append">
+                      <span class="fa fa-chair input-group-text start_date_calendar" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                </div>
               </div>
               <button type="submit" class="btn btn-secondary">Editar</button>
               <div class="success">${successUpdate}</div>
@@ -158,6 +193,7 @@
         </div>
         <div class="col-lg-6">
           <h2>Agenda</h2>
+          <i class="fas fa-angle-down"></i>
           <div class="card mb-4 scroll">
             <%
               List<DateMatch> confirmedDates = (List<DateMatch>) request.getAttribute("confirmedDates");
@@ -194,6 +230,34 @@
   <script>
   $(document).ready(function() {
       $('#startdate_datepicker').datepicker({
+          startDate: new Date(),
+          multidate: false,
+          format: "yyyy-mm-dd",
+          daysOfWeekHighlighted: "6,0",
+          datesDisabled: ['31-08-2017'],
+          orientation: 'bottom',
+          weekStart: 1
+      }).on('changeDate', function(e) {
+          // `e` here contains the extra attributes
+          $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
+      });
+  });
+  $(document).ready(function() {
+      $('#startdate_datepicker2').datepicker({
+          startDate: new Date(),
+          multidate: false,
+          format: "yyyy-mm-dd",
+          daysOfWeekHighlighted: "6,0",
+          datesDisabled: ['31-08-2017'],
+          orientation: 'bottom',
+          weekStart: 1
+      }).on('changeDate', function(e) {
+          // `e` here contains the extra attributes
+          $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
+      });
+  });
+  $(document).ready(function() {
+      $('#startdate_datepicker3').datepicker({
           startDate: new Date(),
           multidate: false,
           format: "yyyy-mm-dd",
