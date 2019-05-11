@@ -266,7 +266,24 @@ public class DBManager implements AutoCloseable {
         //return null;
  }
 
- public String getUserName(int id)throws SQLException{
+ public boolean postImage(int id, InputStream photo){
+  Boolean updated = false;
+
+  String query ="UPDATE Users SET photo=? WHERE id=?";
+  try(PreparedStatement stmt = connection.prepareStatement(query)){
+    stmt.setBinaryStream(1, (InputStream) photo, (int)(photo.length()));
+    stmt.setInt(2,id);
+    int rowsAffected = stmt.executeUpdate();
+    if(rowsAffected != 0){
+      updated = true;
+    }
+  }
+  return updated;
+
+
+}
+
+public String getUserName(int id)throws SQLException{
   String query = "SELECT name FROM Users WHERE id = ?";
 
   try(PreparedStatement st = connection.prepareStatement(query)){

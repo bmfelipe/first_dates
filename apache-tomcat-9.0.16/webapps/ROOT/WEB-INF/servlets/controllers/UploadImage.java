@@ -1,4 +1,4 @@
-/*package controllers;
+package controllers;
 
 import beans.User;
 import jdbc.DBManager;
@@ -12,27 +12,31 @@ import java.util.ArrayList;
 import java.io.InputStream;
 import javax.naming.NamingException;
 
-@WebServlet("/user-image")
+@WebServlet("/profile-image")
 public class UploadImage extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		byte[] buffer = new byte[10240];
+		boolean updated=false;
+		File image = new File(request.getParameter("photo"));
+		FileInputStream photoStream = new FileInputStream(image);
 
 		if(user.isLoggedIn()){
 			try(DBManager db = new DBManager()){
 				int id = Integer.parseInt(request.getParameter("id").trim());
-				InputStream in = db.getImage(id);
-				if(in != null){
-					OutputStream output = response.getOutputStream();
-					response.setContentType("image/jpg");
-					for (int length = 0; (length = in.read(buffer)) > 0;) {
-						output.write(buffer, 0, length);
-					}
+				updated = db.postImage(user.getId(),photoStream);
+				if(updated==false){
+					request.setAttribute("errorUploadPhoto", "No se han podido guardar los cambios");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+					rd.forward(request, response);
+				}else{
+					request.setAttribute("successUploadImage", "Se ha guardado la imagen");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+					rd.forward(request, response);
 				}
-             // response.sendError(HttpServletResponse.SC_NOT_FOUND);
+
 			}catch (SQLException|NamingException e){
 				e.printStackTrace();
 			}
@@ -46,4 +50,4 @@ public class UploadImage extends HttpServlet {
 	}
 
 
-}*/
+}
