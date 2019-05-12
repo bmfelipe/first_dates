@@ -42,7 +42,7 @@
      padding-bottom: 20px;
    }
    .card::-webkit-scrollbar {
-     width: 0 !important
+     width: 0 !important;
    }
 
    #like-dislike-buttons {
@@ -112,14 +112,17 @@
                       <div class="carousel-inner">
 
                         <div class="carousel-item active" id="<%=recommendation.getId()%>">
-                          <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" alt="/anonymous.png">
+                          <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" onerror="this.src='resources/default.png'">
+                          <h5 class="pt-2"><%=recommendation.getName()%></h5>
                         </div>
                       <%
                       }else{
                   %>
 
                         <div class="carousel-item" id="<%=recommendation.getId()%>">
-                          <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" alt="/anonymous.png">
+                          <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" onerror="this.src='resources/default.png'">
+
+                          <h5 class="pt-2"><%=recommendation.getName()%></h5>
                         </div>
                   <%
 

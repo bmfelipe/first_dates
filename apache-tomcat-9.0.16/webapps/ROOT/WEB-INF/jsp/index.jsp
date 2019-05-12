@@ -23,8 +23,8 @@
     }
     .container-fluid {
       font-family: "Open Sans";
-      padding-top: 70px;
-      padding-bottom: 70px;
+      padding-top: 5vh;
+      padding-bottom: 5vh;
     }
     .form-group {
       padding-top: 10px;
