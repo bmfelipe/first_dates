@@ -23,6 +23,7 @@ public class Home extends HttpServlet {
     throws IOException, ServletException
     {
 
+        try{
         request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession();
 
@@ -63,5 +64,9 @@ public class Home extends HttpServlet {
         }else{
           response.sendRedirect("/");
         }
+      }catch(Exception e){
+        e.printStackTrace();
+        response.sendRedirect("/errorPage.jsp");
+      }
     }
 }

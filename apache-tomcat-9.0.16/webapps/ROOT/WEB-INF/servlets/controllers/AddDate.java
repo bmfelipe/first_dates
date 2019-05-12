@@ -24,68 +24,72 @@ public class AddDate extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException
     {
+        try{
+          request.setCharacterEncoding("utf-8");
+          HttpSession session = request.getSession();
 
-        request.setCharacterEncoding("utf-8");
-        HttpSession session = request.getSession();
+          User user = (User) session.getAttribute("user");
 
-        User user = (User) session.getAttribute("user");
+          if(user == null){
+            response.sendRedirect("/");
+          }else if(user.isLoggedIn() && user.getRole().equals("Usuario")){
+            String confirm =  request.getParameter("confirm");
+            if(confirm.equals("true")){
+              try(DBManager db = new DBManager()){
+                  int dateId = Integer.parseInt(request.getParameter("id").trim());
+                  String dateStr = request.getParameter("dates");
 
-        if(user == null){
-          response.sendRedirect("/");
-        }else if(user.isLoggedIn() && user.getRole().equals("Usuario")){
-          String confirm =  request.getParameter("confirm");
-          if(confirm.equals("true")){
-            try(DBManager db = new DBManager()){
-                int dateId = Integer.parseInt(request.getParameter("id").trim());
-                String dateStr = request.getParameter("dates");
+                  List<Date> dates = new ArrayList<Date>();
+                    try{
+                      Date date  =new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
 
-                List<Date> dates = new ArrayList<Date>();
-                  try{
-                    Date date  =new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+                      dates.add(date);
+                    }catch(Exception e){
+                      e.printStackTrace();
+                    }
+                  Boolean result = db.addDateDate(dateId, dates, user.getId());
 
-                    dates.add(date);
-                  }catch(Exception e){
-                    e.printStackTrace();
+
+              }catch (SQLException|NamingException e){
+                  //Send re
+                  e.printStackTrace();
+                  response.sendRedirect("/errorPage.jsp");
+              }
+            }else{
+              try(DBManager db = new DBManager()){
+                  int dateId = Integer.parseInt(request.getParameter("id").trim());
+                  String datesStr = request.getParameter("dates");
+                  String[] datesLst = datesStr.split(",");
+
+                  List<Date> dates = new ArrayList<Date>();
+                  for(String dateStr : datesLst){
+                    try{
+                      System.out.println(dateStr);
+                      Date date  =new SimpleDateFormat("dd-MM-yyyy").parse(dateStr);
+                      dates.add(date);
+                    }catch(Exception e){}
+
+
                   }
-                Boolean result = db.addDateDate(dateId, dates, user.getId());
+
+                  boolean result = db.addDateDate(dateId, dates, user.getId());
 
 
-            }catch (SQLException|NamingException e){
-                //Send re
-                e.printStackTrace();
-                response.sendRedirect("/internalError");
+              }catch (SQLException|NamingException e){
+                  e.printStackTrace();//Send re
+                  response.sendRedirect("/errorPage.jsp");
+              }
             }
+
+
+            // response.sendRedirect ("/date?id="+dateUserId);
+
           }else{
-            try(DBManager db = new DBManager()){
-                int dateId = Integer.parseInt(request.getParameter("id").trim());
-                String datesStr = request.getParameter("dates");
-                String[] datesLst = datesStr.split(",");
-
-                List<Date> dates = new ArrayList<Date>();
-                for(String dateStr : datesLst){
-                  try{
-                    System.out.println(dateStr);
-                    Date date  =new SimpleDateFormat("dd-MM-yyyy").parse(dateStr);
-                    dates.add(date);
-                  }catch(Exception e){}
-
-
-                }
-
-                boolean result = db.addDateDate(dateId, dates, user.getId());
-
-
-            }catch (SQLException|NamingException e){
-                e.printStackTrace();//Send re
-                response.sendRedirect("/internalError");
-            }
+            response.sendRedirect("/");
           }
-
-
-          // response.sendRedirect ("/date?id="+dateUserId);
-
-        }else{
-          response.sendRedirect("/");
+        }catch(Exception e){
+          e.printStackTrace();
+          response.sendRedirect("/errorPage.jsp");
         }
     }
 }

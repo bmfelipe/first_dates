@@ -22,6 +22,7 @@ public class GetImage extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException
     {
+        try{
         request.setCharacterEncoding("utf-8");
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -46,6 +47,10 @@ public class GetImage extends HttpServlet {
         }else{
           response.sendRedirect("/");
         }
+      }catch(Exception e){
+        e.printStackTrace();
+        response.sendRedirect("/errorPage.jsp");
+      }
 
 
 

@@ -22,6 +22,7 @@ public class AddDislike extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException
     {
+      try{
         request.setCharacterEncoding("utf-8");
 
         HttpSession session = request.getSession();
@@ -41,13 +42,18 @@ public class AddDislike extends HttpServlet {
 
           }catch (SQLException|NamingException e){
               e.printStackTrace();
+
+              response.sendRedirect("/errorPage.jsp");
           }
 
         }else{
           response.sendRedirect("/");
         }
 
-
+      }catch(Exception e){
+        e.printStackTrace();
+        response.sendRedirect("/errorPage.jsp");
+      }
 
     }
 }
