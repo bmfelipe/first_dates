@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.io.InputStream;
 import javax.naming.NamingException;
 
+@MultipartConfig
 @WebServlet("/upload-image")
 public class UploadImage extends HttpServlet {
 	
