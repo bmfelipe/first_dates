@@ -19,34 +19,38 @@
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
 
   <style>
     body {
-      background-color: #333;
-      color: white;
       height: 100vh;
       background-size: cover;
       background-image: url("resources/background/photo1.jpg");
       color: white;
     }
+
     .container-fluid {
-      padding-top: 1vh;
+      padding-top: 3vh;
       font-family: "Open Sans";
-
-
     }
 
-
    #heart {
-     color: #aaa  ;
+     color: rgba(20, 20, 20, 0.8);
    }
+
    .card {
-     height: 85vh;
-     background: #555;
-     background-color: rgba(245, 245, 245, 0.4);
+     height: 70vh;
+     background-color: rgba(20, 20, 20, 0.8);
+     padding: 20px;
+   }
 
+   .fa-angle-down{
+     padding-bottom: 15px;
+   }
 
+   .card::-webkit-scrollbar {
+     width: 0 !important
    }
 
    .date-select {
@@ -60,7 +64,7 @@
 
    .profile-photo{
      width: 25vh;
-
+     margin-bottom: 2vh;
    }
    .user-info {
      padding-top: 1vh;
@@ -87,8 +91,9 @@
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-lg-4 ">
-          <div class="card mb-4" id="you-card">
-            <h2>Yo</h2>
+          <h2>Yo</h2>
+          <i class="fas fa-angle-down"></i>
+          <div class="card mb-4 overflow" id="you-card">
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active" id="1">
@@ -158,8 +163,9 @@
           <%-- </div> --%>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
+          <h2>Tu Cita</h2>
+          <i class="fas fa-angle-down"></i>
           <div class="card mb-4">
-            <h2>Tu cita</h2>
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active" id="1">
@@ -175,7 +181,7 @@
             <div id="date-info">
               <%if(date.getDescription() == null){%>
               <h6>
-                No description available
+                No hay descripción disponible
               </h6>
               <%}else{%>
             <h6>

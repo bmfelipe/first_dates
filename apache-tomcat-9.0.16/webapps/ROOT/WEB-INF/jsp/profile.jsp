@@ -16,6 +16,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="jquery.roundimage.js"></script>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <meta charset="utf-8">
@@ -28,7 +32,7 @@
     <h2>Perfil</h2>
     <i class="fas fa-angle-down"></i>
     <%
-    //HttpSession session = request.getSession();
+    User description = (User) session.getAttribute("user");
     User profile = (User) request.getAttribute("target_profile");
     String own_profile = (String)request.getAttribute("own_profile");
     %>
@@ -65,7 +69,7 @@
     <%
     if(profile.getDescription()!=null){
     %>
-    <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
+    <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=description.getDescription()%></q>
     <%}else{%>
     <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921">No hay descripción aún</q>
     <%}%>
