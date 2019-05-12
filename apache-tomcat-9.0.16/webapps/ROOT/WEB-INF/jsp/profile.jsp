@@ -36,19 +36,20 @@
     </div>
     <div class="card mx-auto mb-4 scroll">
       <h1><%=profile.getName()%></h1>
-      <img src="/fixing/modelo.png">
+      <img id="upload-image">
       <!-- Upload image bar -->
       <%
       if(own_profile.equals("true")){
       %>
-      <!-- <form action="/upload-image" method="post"> -->
+      <form action="/upload-image" method="post" enctype="multipart/form-data">
         <div class="custom-file-upload" style= padding-top:20px;>
           <label for="file-upload" class="custom-file-upload1">
             <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
           </label>
-          <input href="/upload-image" id="file-upload" name="photo" type="file"/>
+          <input id="file-upload" name="photo" type="file" />
+          <input name="submit-photo" type="submit" />
         </div>
-      <!-- </form> -->
+      </form>
 
       <%}%>
 
