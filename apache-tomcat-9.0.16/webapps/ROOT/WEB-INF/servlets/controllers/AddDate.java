@@ -42,6 +42,7 @@ public class AddDate extends HttpServlet {
                 List<Date> dates = new ArrayList<Date>();
                   try{
                     Date date  =new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+
                     dates.add(date);
                   }catch(Exception e){
                     e.printStackTrace();
@@ -59,10 +60,12 @@ public class AddDate extends HttpServlet {
                 int dateId = Integer.parseInt(request.getParameter("id").trim());
                 String datesStr = request.getParameter("dates");
                 String[] datesLst = datesStr.split(",");
+
                 List<Date> dates = new ArrayList<Date>();
                 for(String dateStr : datesLst){
                   try{
-                    Date date  =new SimpleDateFormat("dd/MM/yyyy").parse(dateStr);
+                    System.out.println(dateStr);
+                    Date date  =new SimpleDateFormat("dd-MM-yyyy").parse(dateStr);
                     dates.add(date);
                   }catch(Exception e){}
 

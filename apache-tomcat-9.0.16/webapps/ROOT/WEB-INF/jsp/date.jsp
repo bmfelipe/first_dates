@@ -27,7 +27,7 @@
       color: white;
     }
     .container-fluid {
-      padding-top: 25px;
+      padding-top: 1vh;
       font-family: "Open Sans";
 
 
@@ -38,7 +38,7 @@
      color: #aaa  ;
    }
    .card {
-     height: 78vh;
+     height: 85vh;
      background: #555;
 
    }
@@ -48,7 +48,7 @@
      border-radius: 4px; */
      padding-right: 20%;
      padding-left:20%;
-     padding-top: 10px;
+     padding-top: 1vh;
      /* overflow: hidden; */
    }
 
@@ -57,7 +57,7 @@
 
    }
    .user-info {
-     padding-top: 20px;
+     padding-top: 1vh;
    }
 
 
@@ -68,6 +68,7 @@
     User date = (User) request.getAttribute("date");
     DateMatch dateInfo = (DateMatch) request.getAttribute("dateInfo");
     int firstId = -1;
+    List<Date> availableDates =  (List<Date>)request.getAttribute("availableDates");
     // HttpSession sessionDate = request.getSession();
     // User user = (User) session.getAttribute("user");
     %>
@@ -80,7 +81,7 @@
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active" id="1">
-                  <img class="profile-photo" src="/user-image?id=<%=user.getId()%>" onerror="this.src='anonymous.png'">
+                  <img class="profile-photo" src="/user-image?id=<%=user.getId()%>" onerror="this.src='resources/default.png'">
                 </div>
               </div>
             </div>
@@ -91,7 +92,10 @@
             <hr/>
             <div class="req-info">
               <h4>Información a rellenar:</h4>
-              <% if(dateInfo.getStatus().equals("Aceptado")){%>
+              <% if(dateInfo.getStatus().equals("Aceptado")){
+                  if(availableDates.size() != 0){
+                %>
+
                   <div class="date-select">
                   <h5>Selecciona Fecha para tu cita</h5>
                     <div class="dates">
@@ -104,7 +108,9 @@
                   </div>
                   <p><a class="btn btn-secondary" id="add-date-req" role="button">Fijar Fecha</a></p>
                 </div>
-              <%}else if((dateInfo.getStatus().equals("Fecha pendiente") && user.getId()!= dateInfo.getDateSetBy())){%>
+                <%}else{%>
+                  <h5>No hay fechas disponibles aun, vuelve mas tarde</h5>
+              <%}}else if((dateInfo.getStatus().equals("Fecha pendiente") && user.getId()!= dateInfo.getDateSetBy())){%>
                 <div class="date-confirm">
                 <h5>Confirma Fecha para tu cita</h5>
                   <div class="dates">
@@ -146,7 +152,7 @@
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active" id="1">
-                  <img class="profile-photo" src="/user-image?id=<%=date.getId()%>" alt="/anonymous.png">
+                  <img class="profile-photo" src="/user-image?id=<%=date.getId()%>"  onerror="this.src='resources/default.png'">
                 </div>
               </div>
             </div>
@@ -156,9 +162,15 @@
             </div>
             <hr/>
             <div id="date-info">
+              <%if(date.getDescription() == null){%>
+              <h6>
+                No description available
+              </h6>
+              <%}else{%>
             <h6>
               <%=date.getDescription()%>
             </h6>
+            <%}%>
             </div>
           </div>
         </div>
@@ -168,7 +180,7 @@
   var availableDates = [
 
     <%
-    List<Date> availableDates =  (List<Date>)request.getAttribute("availableDates");
+
     int size = availableDates.size();
     SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
     int index = 1;
@@ -214,6 +226,7 @@
       $('#startdate_datepicker').datepicker({
           multidate: false,
           format: "dd-mm-yyyy",
+          autoclose: true,
           daysOfWeekHighlighted: "6,0",
           weekStart: 1,
           language: 'en',
@@ -234,7 +247,8 @@
   $('#add-date-req').on('click', function(event) {
     event.preventDefault();
 
-    var dates = ($('#startdate_datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val());
+    var dates = ($('#startdate_datepicker').datepicker({ dateFormat: 'dd-mm-yyyy' }).val());
+    // console.log(dates);
     var dateId = <%=dateInfo.getId()%>;
 
       $.post('http://localhost:9189/add-dates',{

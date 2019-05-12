@@ -556,8 +556,8 @@ public Boolean addDateDate(int dateInfoId, List<Date> dates, int userId) throws 
 
     try(PreparedStatement st = connection.prepareStatement(query)){
       st.setDate(1, new java.sql.Date(date.getTime()));
-      st.setInt(2,dateInfoId);
-      st.setInt(3, userId);
+      st.setInt(2,userId);
+      st.setInt(3, dateInfoId);
       count = st.executeUpdate();
       if(count > 0)
         success = true;

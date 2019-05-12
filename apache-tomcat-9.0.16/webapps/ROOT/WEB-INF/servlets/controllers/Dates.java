@@ -36,7 +36,6 @@ public class Dates extends HttpServlet {
               User date = db.getUserInfo(dateId);
               DateMatch dateInfo = db.getDateInfo(user.getId(),dateId);
               List<Date> availableDates = db.getAvailableDates();
-              System.out.println(availableDates);
               request.setAttribute("availableDates",availableDates);
               request.setAttribute("date",date);
               request.setAttribute("dateInfo",dateInfo);
