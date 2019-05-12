@@ -30,13 +30,13 @@ public class UploadImage extends HttpServlet {
             //obtains input stream of the upload file
             //the InputStream will point to a stream that contains
             //the contents of the file
-            inputStream = filePart.getInputStream();
+            photoStream = filePart.getInputStream();
         }
 
 		if(user.isLoggedIn()){
 			try(DBManager db = new DBManager()){
 				int id = user.getId();
-				updated = db.postImage(id,photoStream,image);
+				updated = db.postImage(id,photoStream);
 				if(updated==false){
 					request.setAttribute("errorUploadPhoto", "No se han podido guardar los cambios");
 					RequestDispatcher rd = request.getRequestDispatcher("/errorPage.jsp");
