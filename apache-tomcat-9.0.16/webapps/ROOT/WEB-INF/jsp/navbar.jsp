@@ -21,26 +21,27 @@
       <%=user.getName()%>
       <a class="btn btn-secondary navbutton" href="/logout" role="button">Salir <i class="fas fa-sign-out-alt" aria-hidden="true"></i></a>
     </div>
-  </nav>
-</div>
+    <script>
+      var header = document.getElementById("navbarCollapse");
+      var btns = header.getElementsByClassName("li");
+      btns[i].addEventListener("click", function() {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      </script>
+    </nav>
+  </div>
 
-<style>
-  .navbar {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: rgba(0, 0, 0, 0.8)!important;
-  }
+  <style>
+    .navbar {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: rgba(0, 0, 0, 0.8)!important;
+    }
 
-  .navbutton {
-    margin-left: 15px;
-  }
-</style>
+    .navbutton {
+      margin-left: 15px;
+    }
+  </style>
 
-<script>
-  var header = document.getElementById("navbarCollapse");
-  var btns = header.getElementsByClassName("li");
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  </script>
+
