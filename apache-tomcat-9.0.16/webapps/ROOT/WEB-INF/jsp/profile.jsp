@@ -99,7 +99,7 @@ if (own_profile.equals("true")) {
 </body>
 <style>
   body {
-    background-color: #333;
+    background-color: url("resources/background/photo4.jpg");
     color: white;
     height: 100vh;
 
@@ -151,9 +151,6 @@ if (own_profile.equals("true")) {
  margin: auto;
  font-size: 15px;
 }
-
-
-body{ padding:20px;}
 
 .custom-file-upload input[type="file"] {
   display: none;

@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
 	<%@include file ='/WEB-INF/jsp/navbar.jsp'%>
@@ -116,4 +117,13 @@
 	</div>
 
 </body>
+<style type="text/css">
+	body {
+		background-color: url("resources/background/photo2.jpg");
+		color: white;
+		height: 100vh;
+
+	}
+</style>
 </html>
+
