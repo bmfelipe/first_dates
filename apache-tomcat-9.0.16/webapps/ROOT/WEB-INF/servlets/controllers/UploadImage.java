@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.io.InputStream;
 import javax.naming.NamingException;
 
-@MultipartConfig
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50)
 @WebServlet("/upload-image")
 public class UploadImage extends HttpServlet {
 	
