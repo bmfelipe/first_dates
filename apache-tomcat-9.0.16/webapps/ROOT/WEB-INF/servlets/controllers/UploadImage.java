@@ -21,8 +21,8 @@ public class UploadImage extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		boolean updated=false;
-		System.out.println("[1]Debug: Hola UploadImage" +request.getParameter("photo"));
-		File image = new File("../default.jpng");
+		System.out.println("[1]Debug: Hola UploadImage" +request.getParameter("pic"));
+		File image = new File(request.getParameter("pic"));
 		FileInputStream photoStream = new FileInputStream(image);
 
 		if(user.isLoggedIn()){
@@ -41,6 +41,7 @@ public class UploadImage extends HttpServlet {
 
 			}catch (SQLException|NamingException e){
 				e.printStackTrace();
+				response.sendRedirect("errorPage.jsp");
 			}
 
 		}else{
