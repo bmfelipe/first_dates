@@ -35,30 +35,18 @@ public class DateManager extends HttpServlet {
         }else if(user.isLoggedIn() && user.getRole().equals("Usuario")){
           String confirm =  request.getParameter("result");
           int dateId = Integer.parseInt(request.getParameter("id").trim());
-          if(confirm.equals("yes")){
-            try(DBManager db = new DBManager()){
 
-                Boolean result = db.acceptRefuseDate(dateId, true);
+          try(DBManager db = new DBManager()){
 
-
-            }catch (SQLException|NamingException e){
-                //Send re
-                e.printStackTrace();
-                response.sendRedirect("/errorPage.jsp");
-            }
-          }else{
-            try(DBManager db = new DBManager()){
-
-                Boolean result = db.acceptRefuseDate(dateId, false);
+              Boolean result = db.acceptRefuseDate(dateId, confirm, user.getId());
 
 
-            }catch (SQLException|NamingException e){
-                //Send re
-                e.printStackTrace();
-                response.sendRedirect("/errorPage.jsp");
-            }
-
+          }catch (SQLException|NamingException e){
+              //Send re
+              e.printStackTrace();
+              response.sendRedirect("/errorPage.jsp");
           }
+
           response.sendRedirect("/home");
 
           // response.sendRedirect ("/date?id="+dateUserId);

@@ -100,10 +100,9 @@ public class DBManager implements AutoCloseable {
     public boolean registerUser(User user) throws SQLException {
       boolean registered = false;
       String query = "INSERT INTO 19_comweb_21d.Users (username, name, gender, birthdate, role) VALUES (?, ?, ?, ?, ?)";
-      
+
       connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
       connection.setAutoCommit(false);
-      boolean success = false;
 
       PreparedStatement stmt = connection.prepareStatement(query);
       stmt.setString(1, user.getUsername());
@@ -113,19 +112,37 @@ public class DBManager implements AutoCloseable {
       stmt.setString(5, "Usuario");
       int rowsAffected = stmt.executeUpdate();
 
+      if(rowsAffected != 0){
+       connection.commit();
+      }else{
+       connection.rollback();
+      }
       String query2 = "INSERT INTO 19_comweb_21d.UserAuth (id, password) VALUES (LAST_INSERT_ID(), ?);";
       PreparedStatement stmt2 = connection.prepareStatement(query2);
       stmt2.setString(1, user.getPassword());
       rowsAffected = stmt2.executeUpdate();
+
+      if(rowsAffected != 0){
+       connection.commit();
+      }else{
+       connection.rollback();
+      }
 
       String query3 = "INSERT INTO 19_comweb_21d.Preferences (id, minAge, maxAge, sexPref) VALUES (LAST_INSERT_ID(), 18, 99, 'Ambos');";
       PreparedStatement stmt3 = connection.prepareStatement(query3);
       rowsAffected = stmt3.executeUpdate();
 
       if(rowsAffected != 0){
+       connection.commit();
+      }else{
+       connection.rollback();
+      }
+
+      if(rowsAffected != 0){
         registered = true;
       }
 
+     connection.setAutoCommit(true);
       return registered;
     }
 
@@ -310,7 +327,8 @@ public class DBManager implements AutoCloseable {
 
  public boolean postImage(int id, InputStream inputStream)throws SQLException{
   Boolean updated = false;
-
+  connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+  connection.setAutoCommit(false);
   String query ="UPDATE Users SET photo=? WHERE id=?";
   try(PreparedStatement stmt = connection.prepareStatement(query)){
     //stmt.setBinaryStream(1, (InputStream) photo, (int)(image.length()));
@@ -320,7 +338,14 @@ public class DBManager implements AutoCloseable {
     if(rowsAffected != 0){
       updated = true;
     }
+    if(rowsAffected != 0){
+     connection.commit();
+    }else{
+     connection.rollback();
+    }
+
   }
+  connection.setAutoCommit(true);
   return updated;
 
 }
@@ -340,6 +365,8 @@ public String getUserName(int id)throws SQLException{
 
 public Boolean addLike(int userId, int dateId) throws SQLException{
   String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+  connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+  connection.setAutoCommit(false);
   Boolean created = false;
   try(PreparedStatement st = connection.prepareStatement(query)){
     st.setInt(1,userId);
@@ -357,6 +384,7 @@ public Boolean addLike(int userId, int dateId) throws SQLException{
     }
   }
   if(created){
+
     query = "UPDATE Dates SET status = 'Aceptado' WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
     try(PreparedStatement st = connection.prepareStatement(query)){
       st.setInt(1,userId);
@@ -364,8 +392,15 @@ public Boolean addLike(int userId, int dateId) throws SQLException{
       st.setInt(3,dateId);
       st.setInt(4,userId);
       int rows = st.executeUpdate();
+      if(rows != 0){
+       connection.commit();
+      }else{
+       connection.rollback();
+      }
 
     }
+
+
   }else{
     query = "INSERT INTO Dates (dateOneId, dateTwoId, status) VALUES(?,?,?)";
     try(PreparedStatement st = connection.prepareStatement(query)){
@@ -373,14 +408,22 @@ public Boolean addLike(int userId, int dateId) throws SQLException{
       st.setInt(2,dateId);
       st.setString(3,"Pendiente");
       int rows = st.executeUpdate();
-
+      if(rows != 0){
+       connection.commit();
+      }else{
+       connection.rollback();
+      }
     }
+
   }
+  connection.setAutoCommit(true);
   return true;
 }
 
 public Boolean addDislike(int userId, int dateId) throws SQLException{
   String query = "SELECT * FROM Dates WHERE ((dateOneId = ? and dateTwoId = ?) or (dateOneId = ? and dateTwoId = ?))";
+  connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+  connection.setAutoCommit(false);
   Boolean created;
   try(PreparedStatement st = connection.prepareStatement(query)){
     st.setInt(1,userId);
@@ -405,6 +448,11 @@ public Boolean addDislike(int userId, int dateId) throws SQLException{
       st.setInt(3,dateId);
       st.setInt(4,userId);
       int rows = st.executeUpdate();
+      if(rows != 0){
+       connection.commit();
+      }else{
+       connection.rollback();
+      }
 
     }
   }else{
@@ -414,13 +462,21 @@ public Boolean addDislike(int userId, int dateId) throws SQLException{
       st.setInt(2,dateId);
       st.setString(3,"Rechazado");
       int rows = st.executeUpdate();
+      if(rows != 0){
+       connection.commit();
+      }else{
+       connection.rollback();
+      }
 
     }
   }
+  connection.setAutoCommit(true);
   return true;
 }
 
 public Boolean insertAvailability (Availability availability) throws SQLException{
+  connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+  connection.setAutoCommit(false);
   Boolean inserted = false;
   String query = "INSERT INTO 19_comweb_21d.Availability (date, offeredTables, availableTables) VALUES (?, ?, ?)";
   PreparedStatement stmt = connection.prepareStatement(query);
@@ -433,7 +489,12 @@ public Boolean insertAvailability (Availability availability) throws SQLExceptio
   if(rowsAffected != 0){
     inserted = true;
   }
-
+  if(rowsAffected != 0){
+   connection.commit();
+  }else{
+   connection.rollback();
+  }
+  connection.setAutoCommit(true);
   return inserted;
 }
 
@@ -459,10 +520,13 @@ public Availability searchAvailability (Date date) throws SQLException{
 
 public Boolean updateAvailability (Availability availability) throws SQLException{
   Boolean updated = false;
+  connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+  connection.setAutoCommit(false);
   System.out.println(availability.getOfferedTables());
   System.out.println(availability.getAvailableTables());
   System.out.println(availability.getDate());
   String query = "UPDATE 19_comweb_21d.Availability SET offeredTables = ?, availableTables = ? WHERE date = ?";
+
   PreparedStatement stmt = connection.prepareStatement(query);
   stmt.setInt(1, availability.getOfferedTables());
   stmt.setInt(2, availability.getAvailableTables());
@@ -473,6 +537,12 @@ public Boolean updateAvailability (Availability availability) throws SQLExceptio
   if(rowsAffected != 0){
     updated = true;
   }
+  if(rowsAffected != 0){
+   connection.commit();
+  }else{
+   connection.rollback();
+  }
+  connection.setAutoCommit(true);
 
   return updated;
 }
@@ -497,6 +567,8 @@ public List<Date> getAvailableDates () throws SQLException{
 public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref) throws SQLException{
 
   Boolean updated = false;
+  connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+  connection.setAutoCommit(false);
   String query ="UPDATE 19_comweb_21d.Preferences SET minAge=?,maxAge=?, sexPref=? WHERE id=?";
   try(PreparedStatement stmt = connection.prepareStatement(query)){
     stmt.setInt(1,minAge);
@@ -507,20 +579,35 @@ public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref) th
     if(rowsAffected != 0){
       updated = true;
     }
+    if(rowsAffected != 0){
+     connection.commit();
+    }else{
+     connection.rollback();
+    }
+    connection.setAutoCommit(true);
   }
   return updated;
 }
 public Boolean updateDescription(int id,String description) throws SQLException{
   Boolean updated = false;
+  int rowsAffected;
+  connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+  connection.setAutoCommit(false);
   String query ="UPDATE 19_comweb_21d.Users SET description=? WHERE id=?";
   try(PreparedStatement stmt = connection.prepareStatement(query)){
     stmt.setString(1,description);
     stmt.setInt(2,id);
-    int rowsAffected = stmt.executeUpdate();
+    rowsAffected = stmt.executeUpdate();
     if(rowsAffected != 0){
       updated = true;
     }
   }
+  if(rowsAffected != 0){
+   connection.commit();
+  }else{
+   connection.rollback();
+  }
+  connection.setAutoCommit(true);
 
   return updated;
 }
@@ -733,7 +820,7 @@ public DateMatch getDaysUntilDate(int userId) throws SQLException{
 
 }
 
-public boolean acceptRefuseDate(int dateId, boolean confirm) throws SQLException{
+public boolean acceptRefuseDate(int dateId, String confirm, int userId) throws SQLException{
 
   connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
   connection.setAutoCommit(false);
@@ -741,22 +828,41 @@ public boolean acceptRefuseDate(int dateId, boolean confirm) throws SQLException
   String query;
   String state = "";
   int count;
-  if(confirm){
+  if(confirm.equals("yes")){
     state = "Aceptado";
+  }else if(confirm.equals("add")){
+    state = "Cita solicitada";
   }else{
     state = "Cita rechazada";
   }
-   query = "UPDATE Dates SET status = ? WHERE id = ? ";
+  if(confirm.equals("yes") || confirm.equals("no")){
+    query = "UPDATE Dates SET status = ? WHERE id = ? ";
 
-  try(PreparedStatement st = connection.prepareStatement(query)){
-    st.setString(1, state);
-    st.setInt(2,dateId);
-    count = st.executeUpdate();
-    if(count > 0){
-      success = true;
-    }
+   try(PreparedStatement st = connection.prepareStatement(query)){
+     st.setString(1, state);
+     st.setInt(2,dateId);
+     count = st.executeUpdate();
+     if(count > 0){
+       success = true;
+     }
 
-  }
+   }
+ }else{
+   query = "INSERT INTO Dates (dateOneId,dateTwoId,status) VALUES (?,?,?)";
+
+   try(PreparedStatement st = connection.prepareStatement(query)){
+     st.setInt(1,userId);
+     st.setInt(2,dateId);
+     st.setString(3, state);
+
+     count = st.executeUpdate();
+     if(count > 0){
+       success = true;
+     }
+
+   }
+ }
+
 
 
 
