@@ -22,7 +22,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 ">
-					<form action="/config" method="post" class="form-horizontal">
+					<form class="form-horizontal">
 						<fieldset>
 							<!-- Form Name -->
 							<legend>Configuracion de usuario</legend>
