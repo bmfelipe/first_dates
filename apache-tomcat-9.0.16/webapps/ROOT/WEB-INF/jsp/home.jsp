@@ -83,6 +83,10 @@
   .fa-angle-down{
     padding-bottom: 15px;
   }
+  .col-3{
+    padding: 0;
+    margin:0
+  }
 
   </style>
 
