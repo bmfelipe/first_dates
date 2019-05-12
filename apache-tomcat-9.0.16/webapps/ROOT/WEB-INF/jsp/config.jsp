@@ -116,4 +116,13 @@
 	</div>
 
 </body>
+<style type="text/css">
+	body {
+		background-color: #333;
+		color: white;
+		height: 100vh;
+
+	}
+</style>
 </html>
+
