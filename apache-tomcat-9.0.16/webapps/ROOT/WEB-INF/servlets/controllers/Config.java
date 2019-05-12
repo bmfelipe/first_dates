@@ -35,18 +35,18 @@ public class Config extends HttpServlet {
 				describe_updated=db.updateDescription(user.getId(),description);
 				if(updated==false){
 					request.setAttribute("errorConfiguracion", "No se han podido guardar los cambios");
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
 					rd.forward(request, response);
 				}else{
 					request.setAttribute("successConfiguracion", "Se han guardado tus preferencias");
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
 					rd.forward(request, response);
 				}
 
 			}catch (SQLException|NamingException e){
               e.printStackTrace();//Send re
               request.setAttribute("errorRegister", "Ha ocurrido un error en el registro");
-              RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+              RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
               rd.forward(request, response);
           }
 
