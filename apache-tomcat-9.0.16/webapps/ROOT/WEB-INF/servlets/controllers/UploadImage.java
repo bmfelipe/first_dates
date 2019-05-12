@@ -25,7 +25,7 @@ public class UploadImage extends HttpServlet {
 
 		if(user.isLoggedIn()){
 			try(DBManager db = new DBManager()){
-				int id = user.getId().trim();
+				int id = user.getId();
 				updated = db.postImage(id,photoStream,image);
 				if(updated==false){
 					request.setAttribute("errorUploadPhoto", "No se han podido guardar los cambios");
