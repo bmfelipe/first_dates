@@ -24,7 +24,7 @@
 </head>
 <body>
   <%@include file ='/WEB-INF/jsp/navbar.jsp'%>
-  <div class="col-md-8 text container-fluid text-center">
+  <div class="text container-fluid text-center">
     <h2>Perfil</h2>
     <i class="fas fa-angle-down"></i>
     <%
@@ -34,7 +34,7 @@
     %>
     <div class="card mx-auto mb-4 overflow-auto">
       <h1><%=profile.getName()%></h1>
-    
+
         <%
         if(own_profile.equals("true")){
         %>
@@ -73,7 +73,7 @@
 
     if (own_profile.equals("true")) {
     %><div id="like-dislike-buttons">
-      <a class="btn btn-secondary btn-edit mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
+      <a class="btn btn-secondary btn-edit mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i>Editar preferencias </a>
     </div>
     <%
   }
@@ -121,9 +121,11 @@ if(pendiente==0 && own_profile=="false"){%>
    color: white;
    height: 100vh;
  }
+
  .container-fluid {
   padding-top: 25px;
   font-family: "Open Sans";
+  margin:auto;
 
 
 }
