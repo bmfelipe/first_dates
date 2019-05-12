@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import java.util.ArrayList;
 import java.io.InputStream;
 import javax.naming.NamingException;
+import javax.servlet.annotation.MultipartConfig;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
