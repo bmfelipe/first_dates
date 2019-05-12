@@ -52,7 +52,7 @@
     <br></br>
     <div class="card mx-auto mb-auto">
       <h1><%=profile.getName()%></h1>
-      <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q></p>
+      <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
       <!-- <p>Descripcion</p><%=profile.getDescription()%> -->
       <h5>Sexo</h5><%=profile.getGender()%>
       <h5>Fecha de nacimiento</h5><%=profile.getBirthdate()%><br></br>
