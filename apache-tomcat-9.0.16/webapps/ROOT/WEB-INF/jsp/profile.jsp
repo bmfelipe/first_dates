@@ -48,14 +48,6 @@
           <input name="submit-photo" type="submit" />
         </div>
       </form>
-
-      <script>
-        function imageUpload(){
-          var x = document.getElementById("file-upload");
-          var txt = file.name;   
-        } 
-      </script>
-
       <%}%>
 
       <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
