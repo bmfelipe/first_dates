@@ -14,9 +14,10 @@ import javax.naming.NamingException;
 
 @WebServlet("/config")
 public class Config extends HttpServlet {
-	public void processRequest(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
-
-		try{
+	public void processRequest(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException
+	{
+		try
+		{
 			request.setCharacterEncoding("utf-8");
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
@@ -31,34 +32,37 @@ public class Config extends HttpServlet {
 			boolean updated=false;
 			boolean describe_updated=false;
 
-			try(DBManager db = new DBManager()){
+			try(DBManager db = new DBManager())
+			{
 				updated=db.updatePreferences(user.getId(),minAge,maxAge,sexPref);
 				describe_updated=db.updateDescription(user.getId(),description);
-				if(updated==false){
+				if(updated==false)
+				{
 					request.setAttribute("errorConfiguracion", "No se han podido guardar los cambios");
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
 					rd.forward(request, response);
-				}else{
+				}
+				else
+				{
 					request.setAttribute("successConfiguracion", "Se han guardado tus preferencias");
 					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
 					rd.forward(request, response);
 				}
 
-			}catch (SQLException|NamingException e){
-              e.printStackTrace();//Send re
-              request.setAttribute("errorRegister", "Ha ocurrido un error en el registro");
-              RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
-              rd.forward(request, response);
-          }
-
-
-      }catch (Exception ex){
-              ex.printStackTrace();//Send re
-              response.sendRedirect("/errorPage.jsp");
-          }
-
-
-
+			}
+			catch (SQLException|NamingException e)
+			{
+        e.printStackTrace();//Send re
+        request.setAttribute("errorRegister", "Ha ocurrido un error en el registro");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
+        rd.forward(request, response);
+      }
+    }
+		catch (Exception ex)
+		{
+      ex.printStackTrace();//Send re
+      response.sendRedirect("/errorPage.jsp");
+    }
   }//Post
 
 
@@ -67,22 +71,22 @@ public class Config extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         processRequest(request, response);
-    }
+  }
 
-    /**
-     * Handles the HTTP
-     * <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-        processRequest(request, response);
-    }
+  /**
+   * Handles the HTTP
+   * <code>POST</code> method.
+   *
+   * @param request servlet request
+   * @param response servlet response
+   * @throws ServletException if a servlet-specific error occurs
+   * @throws IOException if an I/O error occurs
+   */
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+          throws ServletException, IOException {
+      request.setCharacterEncoding("utf-8");
+      processRequest(request, response);
+  }
 
 }//class
