@@ -25,6 +25,10 @@
     body {
       background-color: #333;
       color: white;
+      height: 100vh;
+      background-size: cover;
+      background-image: url("resources/background/photo1.jpg");
+      color: white;
     }
     .container-fluid {
       padding-top: 1vh;
@@ -40,6 +44,8 @@
    .card {
      height: 85vh;
      background: #555;
+     background-color: rgba(245, 245, 245, 0.4);
+
 
    }
 
@@ -60,7 +66,10 @@
      padding-top: 1vh;
    }
 
-
+   .opacity {
+     background-color: rgba(20, 20, 20, 0.7);
+     height: 100vh;
+   }
   </style>
 
   <body>
@@ -72,7 +81,9 @@
     // HttpSession sessionDate = request.getSession();
     // User user = (User) session.getAttribute("user");
     %>
+    <div class="opacity">
     <%@ include file='navbar.jsp' %>
+
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-lg-4 ">
@@ -174,6 +185,7 @@
             </div>
           </div>
         </div>
+      </div>
   </body>
   <script>
 

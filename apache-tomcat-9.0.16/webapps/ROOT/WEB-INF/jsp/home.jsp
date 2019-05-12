@@ -22,7 +22,9 @@
       background-color: #333;
       color: white;
       height: 100vh;
-
+      background-size: cover;
+      background-image: url("resources/background/photo1.jpg");
+      color: white;
     }
     .container-fluid {
       padding-top: 25px;
@@ -44,9 +46,9 @@
    }
 
    .card {
-     height: 78vh;
+     height: 80vh;
      background: #555;
-
+     background-color: rgba(245, 245, 245, 0.4);
 
    }
    .titles {
@@ -75,11 +77,17 @@
     font-size:30vh;
   }
 
+  .opacity {
+    background-color: rgba(20, 20, 20, 0.7);
+    height: 100vh;
+  }
 
   </style>
 
   <body>
+    <div class="opacity">
     <%@ include file='navbar.jsp'%>
+
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-lg-4 ">
@@ -227,6 +235,7 @@
           </div>
         </div><!-- /.col-lg-4 -->
       </div>
+    </div>
     </div>
   </body>
 

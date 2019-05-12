@@ -28,6 +28,7 @@
   .navbar {
     padding-top: 10px;
     padding-bottom: 10px;
+    background-color: black!important;
   }
 
   .navbutton {
