@@ -35,7 +35,7 @@
       %>
     </div>
     <br></br>
-    <img src="/modelo.png">
+    <img src="/fixing/modelo.png">
     <!-- Upload image bar -->
     <%
     if(own_profile.equals("true")){
