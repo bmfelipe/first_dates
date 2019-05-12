@@ -34,68 +34,68 @@
       String own_profile = (String)request.getAttribute("own_profile");
       %>
     </div>
-    <br></br>
-    <img src="/fixing/modelo.png">
-    <!-- Upload image bar -->
-    <%
-    if(own_profile.equals("true")){
-    %>
-    <div class="custom-file-upload" style= padding-top:20px;>
-      <label for="file-upload" class="custom-file-upload1">
-        <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
-      </label>
-      <input id="file-upload" name="photo" type="file"/>
-    </div>
+    <div class="card mx-auto mb-4 scroll">
+      <h1><%=profile.getName()%></h1>
+      <img src="/fixing/modelo.png">
+      <!-- Upload image bar -->
+      <%
+      if(own_profile.equals("true")){
+      %>
+      <div class="custom-file-upload" style= padding-top:20px;>
+        <label for="file-upload" class="custom-file-upload1">
+          <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
+        </label>
+        <input id="file-upload" name="photo" type="file"/>
+      </div>
+      <%}%>
+
+        <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
+        <!-- <p>Descripcion</p><%=profile.getDescription()%> -->
+        <%=profile.getGender()%><br>
+        <%=profile.getBirthdate()%>
+        <%
+
+        if (own_profile.equals("true")) {
+        %><div id="like-dislike-buttons">
+          <a class="btn btn-secondary mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
+        </div>
+        <%
+        }
+
+        %>
+        <hr>
+        <%
+        User current_user = (User) session.getAttribute("user");
+        List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
+        int pendiente=0;
+        if(!mutual_dates.isEmpty()){%>
+          <h3>Citas</h3>
+          <i class="fas fa-grip-lines"></i>
+        <%
+        for(DateMatch dates:mutual_dates){
+        if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente")){
+        pendiente=0;%>
+        <hr>
+        <h5><%=dates.getDateName(profile.getId())%> <i class="fas fa-arrow-circle-right"></i> <%=dates.getStatus()%></h5>
+        <%
+      }if (dates.getStatus().equals("Pendiente")){
+        pendiente=1;
+      }
+    }
+
+    }
+    if(pendiente==0 && own_profile=="false"){%>
+    <button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
     <%}%>
 
-    <!-- Upload image bar -->
-    <br></br>
-    <div class="card mx-auto mb-auto">
-      <h1><%=profile.getName()%></h1>
-      <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
-      <!-- <p>Descripcion</p><%=profile.getDescription()%> -->
-      <h5>Sexo</h5><%=profile.getGender()%>
-      <h5>Fecha de nacimiento</h5><%=profile.getBirthdate()%><br></br>
-      <%
-      User current_user = (User) session.getAttribute("user");
-      List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
-      int pendiente=0;
-      if(!mutual_dates.isEmpty()){%>
-      <h5>Citas <%=profile.getName()%></h5>
-      <%
-      for(DateMatch dates:mutual_dates){
-      if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente")){
-      pendiente=0;%>
-      <h5><%=dates.getDateName(profile.getId())%> --> Status <%=dates.getStatus()%></h5>
-      <%
-    }if (dates.getStatus().equals("Pendiente")){
-    pendiente=1;
-  }
-}
+  <!-- <div id="like-dislike-buttons">
+    <p>
+      <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
+      <button class="btn btn-secondary ml-1" id="dislike-btn" role="button"><i class="fa fa-ban"></i></button>
+    </p>
+  </div> -->
 
-}
-if(pendiente==0 && own_profile=="false"){%>
-<button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
-<%}%>
-<%
-
-if (own_profile.equals("true")) {
-%><div id="like-dislike-buttons">
-  <a class="btn btn-secondary mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
-</div>
-<%
-}
-
-%>
-
-<!-- <div id="like-dislike-buttons">
-  <p>
-    <button class="btn btn-secondary mr-1" id="like-btn" role="button"><i class="fa fa-heart"></i> </button>
-    <button class="btn btn-secondary ml-1" id="dislike-btn" role="button"><i class="fa fa-ban"></i></button>
-  </p>
-</div> -->
-
-</div>
+  </div>
 </div>
 </body>
 <style>
@@ -131,11 +131,28 @@ if (own_profile.equals("true")) {
 }
 
 .card {
- height: auto;
- width: 70%;
+ height: 78vh;
  background-color: rgba(20, 20, 20, 0.8);
- padding-top: 20px;
- padding-bottom: 30px;
+ padding-top: 2vh;
+ padding-bottom: 2vh;
+ width: 60%;
+ margin-bottom: 1vh;
+ margin-top: 1vh;
+}
+
+img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+hr{
+  background-color: #333;
+  width: 100%;
+}
+
+.fa-grip-lines{
+  color: #333;
 }
 
 #like-dislike-buttons {
@@ -150,6 +167,11 @@ if (own_profile.equals("true")) {
  font-size: 15px;
 }
 
+.scroll {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
 .custom-file-upload input[type="file"] {
   display: none;
 }
@@ -160,9 +182,9 @@ if (own_profile.equals("true")) {
   cursor: pointer;
 }
 
-
-
-
+.btn-secondary{
+  margin-bottom: 1vh;
+}
 
 </style>
 <script>
