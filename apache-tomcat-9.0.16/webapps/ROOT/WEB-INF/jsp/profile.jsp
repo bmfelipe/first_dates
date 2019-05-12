@@ -80,7 +80,7 @@ if(pendiente==0 && own_profile=="false"){%>
 
 if (own_profile.equals("true")) {
 %><div id="like-dislike-buttons">
-  <a class="btn btn-secondary mr-1" href="/config" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
+  <a class="btn btn-secondary mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
 </div>
 <%
 }
