@@ -28,7 +28,7 @@
     <h2>Perfil</h2>
     <i class="fas fa-angle-down"></i>
     <%
-    //HttpSession session = request.getSession();
+    User description = (User) session.getAttribute("user");
     User profile = (User) request.getAttribute("target_profile");
     String own_profile = (String)request.getAttribute("own_profile");
     %>
@@ -62,7 +62,7 @@
     <%
     if(profile.getDescription()!=null){
     %>
-    <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
+    <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=description.getDescription()%></q>
     <%}else{%>
     <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921">No hay descripción aún</q>
     <%}%>
