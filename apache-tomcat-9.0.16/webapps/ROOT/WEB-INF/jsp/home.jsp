@@ -253,9 +253,18 @@
 
             if(dateInfo.getDaysUntilDate() != -1){%>
               <div id="days-left-container">
-                <h1>Quedan</h1>
+                <%if(dateInfo.getDaysUntilDate() == 1){%>
+                  <h1>Queda</h1>
+                <%}else{%>
+                  <h1>Quedan</h1>
+                <%}%>
                 <h1 id="days"><%=dateInfo.getDaysUntilDate()%></h1>
-                <h1>días para tu cita con <%=userDateInfo.getName()%>, la fecha es: <%=dateInfo.getDateResponse()%>.</h1>
+                <%if(dateInfo.getDaysUntilDate() == 1){%>
+                  <h1>día para tu cita con <%=userDateInfo.getName()%>, la fecha es: <%=dateInfo.getDateResponse()%>.</h1>
+                <%}else{%>
+                  <h1>días para tu cita con <%=userDateInfo.getName()%>, la fecha es: <%=dateInfo.getDateResponse()%>.</h1>
+                <%}%>
+
               </div>
             <%}else{%>
             <div id="no-rec">Cuando tengas una cita fijada, la información saldrá  aqui</div>

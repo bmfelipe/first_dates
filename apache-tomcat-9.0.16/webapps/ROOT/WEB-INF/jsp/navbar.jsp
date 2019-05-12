@@ -12,7 +12,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/profile">Perfil</a>
         </li>
       </ul>
@@ -43,5 +43,3 @@
       margin-left: 15px;
     }
   </style>
-
-
