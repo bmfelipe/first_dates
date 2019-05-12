@@ -68,7 +68,7 @@
     <%}%>
     <!-- <p>Descripcion</p><%=profile.getDescription()%> -->
     <%=profile.getGender()%><br>
-    <%=profile.getBirthdate()%>
+    <%=profile.getAge()%> años
     <%
 
     if (own_profile.equals("true")) {

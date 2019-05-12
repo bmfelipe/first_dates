@@ -223,13 +223,41 @@
   </body>
 
   <script>
+
+
+  var availableDates = [
+
+    <%
+    List<Date> availableDates =  (List<Date>)request.getAttribute("availableDates");
+    int size = availableDates.size();
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
+    int index = 1;
+    String availableDateStr;
+
+    for(Date availableDate : availableDates){
+
+        availableDateStr = sdf.format(availableDate);
+        // availableDateStr = String.format("%td-%tm-%tY",availableDate, availableDate,availableDate);
+        if(size != index){%>
+          '<%=availableDateStr%>',
+        <%}else{%>
+          '<%=availableDateStr%>'
+        <%}
+        index++;
+
+    }
+    %>
+
+  ];
+
   $(document).ready(function() {
       $('#startdate_datepicker').datepicker({
           startDate: new Date(),
           multidate: false,
-          format: "yyyy-mm-dd",
+          autoclose:true,
+          format: "dd-mm-yyyy",
           daysOfWeekHighlighted: "6,0",
-          datesDisabled: ['31-08-2017'],
+          datesDisabled: availableDates,
           orientation: 'bottom',
           weekStart: 1
       }).on('changeDate', function(e) {
@@ -241,11 +269,18 @@
       $('#startdate_datepicker2').datepicker({
           startDate: new Date(),
           multidate: false,
-          format: "yyyy-mm-dd",
+          autoclose:true,
+          format: "dd-mm-yyyy",
           daysOfWeekHighlighted: "6,0",
-          datesDisabled: ['31-08-2017'],
           orientation: 'bottom',
-          weekStart: 1
+          weekStart: 1,
+          beforeShowDay:function(date) {
+            var currentDate =
+              date.getDate() + '-' +
+              (date.getMonth() + 1) +
+              '-' + date.getFullYear();
+            return (availableDates.indexOf(currentDate) != -1)
+          }
       }).on('changeDate', function(e) {
           // `e` here contains the extra attributes
           $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
@@ -255,11 +290,18 @@
       $('#startdate_datepicker3').datepicker({
           startDate: new Date(),
           multidate: false,
-          format: "yyyy-mm-dd",
+          autoclose:true,
+          format: "dd-mm-yyyy",
           daysOfWeekHighlighted: "6,0",
-          datesDisabled: ['31-08-2017'],
           orientation: 'bottom',
-          weekStart: 1
+          weekStart: 1,
+          beforeShowDay:function(date) {
+            var currentDate =
+              date.getDate() + '-' +
+              (date.getMonth() + 1) +
+              '-' + date.getFullYear();
+            return (availableDates.indexOf(currentDate) != -1)
+          }
       }).on('changeDate', function(e) {
           // `e` here contains the extra attributes
           $(this).find('.input-group-addon .count').text(' ' + e.dates.length);

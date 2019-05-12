@@ -69,6 +69,8 @@ public class Restaurant extends HttpServlet {
               {
                   confirmedDates = db.getConfirmedDateList(nowDate);
                   request.setAttribute("confirmedDates", confirmedDates);
+                  List<Date> availableDates = db.getAvailableDates();
+                  request.setAttribute("availableDates", availableDates);
               }
               catch (SQLException|NamingException ex)
               {
