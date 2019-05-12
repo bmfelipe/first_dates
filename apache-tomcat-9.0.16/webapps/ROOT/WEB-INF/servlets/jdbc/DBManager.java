@@ -18,6 +18,7 @@ import javax.sql.DataSource;
 import java.sql.DriverManager;
 import java.io.InputStream;
 
+
 public class DBManager implements AutoCloseable {
 
   private Connection connection;
@@ -424,7 +425,7 @@ public List<Date> getAvailableDates () throws SQLException{
   String query = "SELECT date FROM 19_comweb_21d.Availability WHERE availableTables > 0";
   PreparedStatement stmt = connection.prepareStatement(query);
   ResultSet rs = stmt.executeQuery();
-  
+
   while (rs.next())
   {
     Date date = new Date();

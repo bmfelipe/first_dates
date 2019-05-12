@@ -3,6 +3,7 @@
 <%@ page import='beans.DateMatch'%>
 <%@ page import='java.util.Date'%>
 <%@ page import='java.util.List'%>
+<%@ page import='java.text.SimpleDateFormat'%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +53,7 @@
    }
 
    .profile-photo{
-     width: 250px;
+     width: 25vh;
 
    }
    .user-info {
@@ -169,13 +170,18 @@
     <%
     List<Date> availableDates =  (List<Date>)request.getAttribute("availableDates");
     int size = availableDates.size();
-
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
     int index = 1;
+    String availableDateStr;
+
     for(Date availableDate : availableDates){
+
+        availableDateStr = sdf.format(availableDate);
+        // availableDateStr = String.format("%td-%tm-%tY",availableDate, availableDate,availableDate);
         if(size != index){%>
-          '<%=availableDate%>'
+          '<%=availableDateStr%>',
         <%}else{%>
-          '<%=availableDate%>',
+          '<%=availableDateStr%>'
         <%}
         index++;
 
@@ -184,27 +190,41 @@
 
   ];
 
-
-
-function available(date) {
-  dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
-  if ($.inArray(dmy, availableDates) != -1) {
-    return [true, "","Available"];
-  } else {
-    return [false,"","unAvailable"];
-  }
-}
-
   $(document).ready(function() {
+
+
+
+
+
+    // function available(date) {
+    // dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+    // // console.log(availableDates);
+    // // console.log(dmy);
+    //   if ($.inArray(dmy, availableDates) != -1) {
+    //     console.log("test");
+    //
+    //     return [ true, "","Available"];
+    //   } else {
+    //
+    //     return [ false,"","unAvailable"];
+    //   }
+    // }
+
+
       $('#startdate_datepicker').datepicker({
-          // startDate: new Date(),
           multidate: false,
-          format: "yyyy-mm-dd",
-          daysOfWeekHighlighted: "6,7",
-          // datesDisabled: ['31/08/2017'],
+          format: "dd-mm-yyyy",
+          daysOfWeekHighlighted: "6,0",
+          weekStart: 1,
           language: 'en',
-          orientation: 'bottom',
-          beforeShowDay:available
+          orientation: 'top',
+          beforeShowDay:function(date) {
+            var currentDate =
+              date.getDate() + '-' +
+              (date.getMonth() + 1) +
+              '-' + date.getFullYear();
+            return (availableDates.indexOf(currentDate) != -1)
+          }
       }).on('changeDate', function(e) {
           // `e` here contains the extra attributes
           $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
