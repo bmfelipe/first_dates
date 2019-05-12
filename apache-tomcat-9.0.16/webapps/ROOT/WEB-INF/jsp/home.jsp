@@ -59,7 +59,7 @@
    }
    #date-container {
      overflow-y:auto;
-     overflow-x:hidden;
+     overflow-x:auto;
    }
    #no-rec {
      margin: auto;
