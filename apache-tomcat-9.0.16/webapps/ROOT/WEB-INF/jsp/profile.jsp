@@ -41,14 +41,14 @@
       <%
       if(own_profile.equals("true")){
       %>
-      <form action="/upload-image" method="post">
+      <!-- <form action="/upload-image" method="post"> -->
         <div class="custom-file-upload" style= padding-top:20px;>
           <label for="file-upload" class="custom-file-upload1">
             <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
           </label>
-          <input id="file-upload" name="photo" type="file" value="submit"/>
+          <input href="/upload-image" id="file-upload" name="photo" type="file"/>
         </div>
-      </form>
+      <!-- </form> -->
 
       <%}%>
 
