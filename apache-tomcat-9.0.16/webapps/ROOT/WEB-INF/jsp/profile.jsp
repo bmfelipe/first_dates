@@ -45,7 +45,7 @@
             <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
           </label>
           <input id="file-upload" name="pic" type="file" accept="image/*" onchange="imageUpload()"/>
-          <input name="submit-photo" type="submit" />
+          <input name="submit-photo" type="submit" value="pic" />
         </div>
       </form>
       <%}%>
