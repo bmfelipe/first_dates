@@ -14,7 +14,7 @@ import javax.naming.NamingException;
 
 @WebServlet("/config")
 public class Config extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
+	public void processRequest(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
 
 		try{
 			request.setCharacterEncoding("utf-8");
@@ -53,10 +53,35 @@ public class Config extends HttpServlet {
 
       }catch (Exception ex){
               ex.printStackTrace();//Send re
-              response.sendRedirect("/internalError");
+              response.sendRedirect("/errorPage.jsp");
           }
 
 
 
   }//Post
+
+
+
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP
+     * <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        processRequest(request, response);
+    }
+
 }//class
