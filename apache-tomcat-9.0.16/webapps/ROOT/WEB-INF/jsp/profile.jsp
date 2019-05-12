@@ -131,8 +131,8 @@ if (own_profile.equals("true")) {
 
 .card {
  height: auto;
- width: 60%;
- background-color: rgba(20, 20, 20, 0.9);
+ width: 70%;
+ background-color: rgba(20, 20, 20, 0.8);
  padding-top: 20px;
  padding-bottom: 30px;
 }

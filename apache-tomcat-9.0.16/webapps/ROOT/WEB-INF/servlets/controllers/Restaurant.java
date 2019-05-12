@@ -194,7 +194,7 @@ public class Restaurant extends HttpServlet {
                 }
               }
 
-              RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp");
+              RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
               rd.forward(request, response);
             }
             else
