@@ -30,7 +30,7 @@ public class Dates extends HttpServlet {
         User user = (User) session.getAttribute("user");
         if(user == null){
           response.sendRedirect("/");
-        }else if(user.isLoggedIn() && user.getStatus().equals("Usuario")){
+        }else if(user.isLoggedIn() && user.getRole().equals("Usuario")){
           int dateId = Integer.parseInt(request.getParameter("id").trim());
           try(DBManager db = new DBManager()){
               User date = db.getUserInfo(dateId);

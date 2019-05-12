@@ -27,7 +27,7 @@ public class GetImage extends HttpServlet {
         User user = (User) session.getAttribute("user");
         byte[] buffer = new byte[10240];
 
-        if(user.isLoggedIn() && user.getStatus().equals("Usuario")){
+        if(user.isLoggedIn() && user.getRole().equals("Usuario")){
           try(DBManager db = new DBManager()){
             int id = Integer.parseInt(request.getParameter("id").trim());
             InputStream in = db.getImage(id);

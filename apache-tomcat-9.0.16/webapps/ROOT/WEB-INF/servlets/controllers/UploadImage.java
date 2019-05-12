@@ -37,7 +37,7 @@ public class UploadImage extends HttpServlet {
             photoStream = filePart.getInputStream();
         }
 
-		if(user.isLoggedIn() && user.getStatus().equals("Usuario")){
+		if(user.isLoggedIn() && user.getRole().equals("Usuario")){
 			try(DBManager db = new DBManager()){
 				int id = user.getId();
 				updated = db.postImage(id,photoStream);

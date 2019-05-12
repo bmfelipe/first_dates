@@ -100,6 +100,11 @@ public class DBManager implements AutoCloseable {
     public boolean registerUser(User user) throws SQLException {
       boolean registered = false;
       String query = "INSERT INTO 19_comweb_21d.Users (username, name, gender, birthdate, role) VALUES (?, ?, ?, ?, ?)";
+      
+      connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+      connection.setAutoCommit(false);
+      boolean success = false;
+
       PreparedStatement stmt = connection.prepareStatement(query);
       stmt.setString(1, user.getUsername());
       stmt.setString(2, user.getName());
@@ -732,7 +737,7 @@ public boolean acceptRefuseDate(int dateId, boolean confirm) throws SQLException
 
   connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
   connection.setAutoCommit(false);
-  Boolean success = false;
+  boolean success = false;
   String query;
   String state = "";
   int count;

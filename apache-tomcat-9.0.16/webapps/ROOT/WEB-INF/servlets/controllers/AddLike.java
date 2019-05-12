@@ -30,7 +30,7 @@ public class AddLike extends HttpServlet {
 
         if(user == null){
           response.sendRedirect("/");
-        }else if(user.isLoggedIn() && user.getStatus().equals("Usuario")){
+        }else if(user.isLoggedIn() && user.getRole().equals("Usuario")){
           try(DBManager db = new DBManager()){
 
 

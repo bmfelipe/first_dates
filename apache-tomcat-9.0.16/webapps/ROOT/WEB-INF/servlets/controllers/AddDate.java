@@ -32,7 +32,7 @@ public class AddDate extends HttpServlet {
 
         if(user == null){
           response.sendRedirect("/");
-        }else if(user.isLoggedIn() && user.getStatus().equals("Usuario")){
+        }else if(user.isLoggedIn() && user.getRole().equals("Usuario")){
           String confirm =  request.getParameter("confirm");
           if(confirm.equals("true")){
             try(DBManager db = new DBManager()){
