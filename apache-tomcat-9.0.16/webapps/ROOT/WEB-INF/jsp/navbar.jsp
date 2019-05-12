@@ -28,7 +28,7 @@
   .navbar {
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: black!important;
+    background-color: rgba(0, 0, 0, 0.7)!important;
   }
 
   .navbutton {
