@@ -45,6 +45,7 @@ public class UploadImage extends HttpServlet {
 					request.setAttribute("errorUploadPhoto", "No se han podido guardar los cambios");
 					//RequestDispatcher rd = request.getRequestDispatcher("/errorPage.jsp");
 					//rd.forward(request, response);
+					response.sendRedirect("/profile");
 				}else{
 					request.setAttribute("successUploadImage", "Se ha guardado la imagen");
 					//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
