@@ -180,9 +180,9 @@
             <hr/>
             <div id="date-info">
               <%if(date.getDescription() == null){%>
-              <h5>
+              <h6>
                 No hay descripción disponible
-              </h5>
+              </h6>
               <%}else{%>
             <h6>
               <%=date.getDescription()%>
