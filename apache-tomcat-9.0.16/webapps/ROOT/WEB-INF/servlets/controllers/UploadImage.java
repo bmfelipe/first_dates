@@ -22,7 +22,7 @@ public class UploadImage extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		boolean updated=false;
 		System.out.println("[1]Debug: Hola UploadImage" +request.getParameter("photo"));
-		File image = new File("/resources/default.jpng");
+		File image = new File("../default.jpng");
 		FileInputStream photoStream = new FileInputStream(image);
 
 		if(user.isLoggedIn()){
