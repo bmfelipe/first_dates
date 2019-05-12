@@ -54,10 +54,12 @@ public class Config extends HttpServlet {
 				}
 				catch (SQLException|NamingException e)
 				{
-	        e.printStackTrace();
-	        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
-	        rd.forward(request, response);
-	      }
+					request.setAttribute("successConfiguracion", "Se han guardado tus preferencias");
+					session.setAttribute("description",description)
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
+					rd.forward(request, response);
+				}
+
 			}
 			else
 			{
