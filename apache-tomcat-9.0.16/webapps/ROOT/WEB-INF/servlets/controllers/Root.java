@@ -33,20 +33,13 @@ public class Root extends HttpServlet {
         {
           response.sendRedirect("/login");
         }
-        else if (user.isLoggedIn())
+        else if (user.isLoggedIn() && user.getRole().equals("Admin"))
         {
-          if(user.getRole().equals("Admin"))
-          {
-            response.sendRedirect("/restaurant");
-          }
-          else
-          {
-            response.sendRedirect("/home");
-          }
+          response.sendRedirect("/restaurant");
         }
         else
         {
-          response.sendRedirect("/login");
+          response.sendRedirect("/home");
         }
       }
       catch(Exception e)
