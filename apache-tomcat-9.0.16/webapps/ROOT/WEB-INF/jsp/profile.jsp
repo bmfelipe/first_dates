@@ -34,7 +34,7 @@
     %>
     <div class="card mx-auto mb-4 overflow-auto">
       <h1><%=profile.getName()%></h1>
-      <img id="upload-image">
+      <img id="upload-image" src="/fixing/modelo.png">
       <!-- Upload image bar -->
       <%
       if(own_profile.equals("true")){

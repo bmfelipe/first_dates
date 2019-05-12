@@ -44,7 +44,7 @@
       height: 100vh;
     }
     h1{
-      margin-bottom: 19vh;
+      margin-bottom: 10vh;
     }
   </style>
 
