@@ -159,9 +159,9 @@ if(pendiente==0 && own_profile=="false"){%>
 img {
   margin-left: auto;
   margin-right: auto;
-  border-radius:50% 50% 50% 50%;
-  width:100px;
-  height:100px;
+  /*border-radius:50% 50% 50% 50%;*/
+  max-width:250px;
+  /*height:100px;*/
 }
 .imgUser{
   max-width: auto;
