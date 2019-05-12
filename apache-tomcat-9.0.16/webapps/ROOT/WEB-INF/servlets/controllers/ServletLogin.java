@@ -5,6 +5,7 @@ import jdbc.DBManager;
 import security.BCrypt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.naming.NamingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.IOException;
@@ -43,9 +44,8 @@ public class ServletLogin extends HttpServlet {
             {
                 user = db.searchUser(entryUsername);
             }
-            catch (SQLException ex)
+            catch (SQLException|NamingException ex)
             {
-                // Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
             }
 

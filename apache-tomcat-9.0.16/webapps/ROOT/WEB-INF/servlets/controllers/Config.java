@@ -21,46 +21,55 @@ public class Config extends HttpServlet {
 			request.setCharacterEncoding("utf-8");
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
-			//Parameters
-			//String name = request.getParameter("name");
-			int minAge = Integer.parseInt(request.getParameter("minAge"));
-			int maxAge = Integer.parseInt(request.getParameter("maxAge"));
-			System.out.println("Debuug: "+ minAge);
-			String sexPref= request.getParameter("gender");
-			String description = request.getParameter("descripcion");
 
-			boolean updated=false;
-			boolean describe_updated=false;
-
-			try(DBManager db = new DBManager())
+			if (user == null)
 			{
-				updated=db.updatePreferences(user.getId(),minAge,maxAge,sexPref);
-				describe_updated=db.updateDescription(user.getId(),description);
-				if(updated==false)
-				{
-					request.setAttribute("errorConfiguracion", "No se han podido guardar los cambios");
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
-					rd.forward(request, response);
-				}
-				else
-				{
-					request.setAttribute("successConfiguracion", "Se han guardado tus preferencias");
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
-					rd.forward(request, response);
-				}
-
+				response.sendRedirect("/");
 			}
-			catch (SQLException|NamingException e)
+			else if (user.isLoggedIn() && user.getRole().equals("Usuario"))
 			{
-        e.printStackTrace();//Send re
-        request.setAttribute("errorRegister", "Ha ocurrido un error en el registro");
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
-        rd.forward(request, response);
-      }
+				int minAge = Integer.parseInt(request.getParameter("minAge"));
+				int maxAge = Integer.parseInt(request.getParameter("maxAge"));
+				System.out.println("Debuug: "+ minAge);
+				String sexPref= request.getParameter("gender");
+				String description = request.getParameter("descripcion");
+
+				boolean updated=false;
+				boolean describe_updated=false;
+
+				try(DBManager db = new DBManager())
+				{
+					updated=db.updatePreferences(user.getId(),minAge,maxAge,sexPref);
+					describe_updated=db.updateDescription(user.getId(),description);
+					if(updated==false)
+					{
+						request.setAttribute("errorConfiguracion", "No se han podido guardar los cambios");
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
+						rd.forward(request, response);
+					}
+					else
+					{
+						request.setAttribute("successConfiguracion", "Se han guardado tus preferencias");
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
+						rd.forward(request, response);
+					}
+
+				}
+				catch (SQLException|NamingException e)
+				{
+	        e.printStackTrace();
+	        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
+	        rd.forward(request, response);
+	      }
+			}
+			else
+			{
+				response.sendRedirect("/");
+			}
     }
 		catch (Exception ex)
 		{
-      ex.printStackTrace();//Send re
+      ex.printStackTrace();
       response.sendRedirect("/errorPage.jsp");
     }
   }//Post

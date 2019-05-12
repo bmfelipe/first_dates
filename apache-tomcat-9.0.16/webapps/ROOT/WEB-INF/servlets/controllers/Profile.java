@@ -14,43 +14,68 @@ import javax.naming.NamingException;
 
 @WebServlet("/profile")
 public class Profile extends HttpServlet {
-	public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException
+	{
+		try
+		{
+			request.setCharacterEncoding("utf-8");
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user");
 
-		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-		String auxId=request.getParameter("id");
-		int profileId=0;
-		if(auxId!=null){
-			profileId = Integer.parseInt(request.getParameter("id").trim());
-		}
-		
-		String own_profile;
-		
-		try(DBManager db = new DBManager()){
-			if(auxId==null){
-				own_profile="true";
-				request.setAttribute("own_profile",own_profile);
-				request.setAttribute("target_profile",user);
-				List<DateMatch> mutual_dates = db.getDateList(user.getId());
-				request.setAttribute("mutual_dates",mutual_dates);
-				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
-				rd.forward(request, response);
-			}else{
-				own_profile="false";
-				request.setAttribute("own_profile",own_profile);
-				List<DateMatch> mutual_dates = db.getProfileDateList(user.getId(),profileId);
-				request.setAttribute("mutual_dates",mutual_dates);
-				User target_profile = db.getUserInfo(profileId);
-				request.setAttribute("target_profile",target_profile);
-				RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/profile.jsp");
-				rd.forward(request, response);
+			if(user == null)
+			{
+				response.sendRedirect("/");
 			}
+			else if (user.isLoggedIn() && user.getRole().equals("Usuario"))
+			{
+				String auxId=request.getParameter("id");
+				int profileId=0;
 
-		}catch (SQLException|NamingException e){
-              e.printStackTrace();//Send re
-              response.sendRedirect("/errorPage.jsp");
-          }
+				if(auxId!=null)
+				{
+					profileId = Integer.parseInt(request.getParameter("id").trim());
+				}
 
-      }
+				String own_profile;
+
+				try(DBManager db = new DBManager())
+				{
+					if(auxId==null)
+					{
+						own_profile="true";
+						request.setAttribute("own_profile",own_profile);
+						request.setAttribute("target_profile",user);
+						List<DateMatch> mutual_dates = db.getDateList(user.getId());
+						request.setAttribute("mutual_dates",mutual_dates);
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
+						rd.forward(request, response);
+					}
+					else
+					{
+						own_profile="false";
+						request.setAttribute("own_profile",own_profile);
+						List<DateMatch> mutual_dates = db.getProfileDateList(user.getId(),profileId);
+						request.setAttribute("mutual_dates",mutual_dates);
+						User target_profile = db.getUserInfo(profileId);
+						request.setAttribute("target_profile",target_profile);
+						RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/profile.jsp");
+						rd.forward(request, response);
+					}
+				}
+				catch (SQLException|NamingException e)
+				{
+	          e.printStackTrace();
+		    }
+			}
+			else
+			{
+				response.sendRedirect("/");
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			response.sendRedirect("/errorPage.jsp");
+		}
   }
+}
