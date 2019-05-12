@@ -63,7 +63,7 @@
 
       if (own_profile.equals("true")) {
       %><div id="like-dislike-buttons">
-        <a class="btn btn-secondary mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
+        <a class="btn btn-secondary btn-edit mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
       </div>
       <%
     }
@@ -187,7 +187,7 @@ hr{
   cursor: pointer;
 }
 
-.btn-secondary{
+.btn-edit{
   margin-bottom: 1vh;
 }
 
