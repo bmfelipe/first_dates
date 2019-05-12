@@ -49,17 +49,15 @@ public class Config extends HttpServlet {
 					}
 					else
 					{
+						user.setDescription(description);
+						session.setAttribute("user", user);
 						response.sendRedirect("/profile");
 					}
 				}
 				catch (SQLException|NamingException e)
 				{
-					request.setAttribute("successConfiguracion", "Se han guardado tus preferencias");
-					session.setAttribute("description",description)
-					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
-					rd.forward(request, response);
+					e.printStackTrace();
 				}
-
 			}
 			else
 			{
