@@ -38,7 +38,7 @@
         <%
         if(own_profile.equals("true")){
         %>
-        <img id="upload-image" src="/user-image?id=<%=profile.getId()%>" onerror="this.src='resources/default.png'">
+        <img id="upload-image" src="/user-image?id=<%=user.getId()%>" onerror="this.src='resources/default.png'">
         <%
       }else{%>
       <img id="upload-image" src="/user-image?id=<%=profile.getId()%>" onerror="this.src='resources/default.png'">
