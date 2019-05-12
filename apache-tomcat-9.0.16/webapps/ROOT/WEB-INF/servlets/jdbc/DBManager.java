@@ -105,7 +105,7 @@ public class DBManager implements AutoCloseable {
       stmt.setString(2, user.getName());
       stmt.setString(3, user.getGender());
       stmt.setDate(4, new java.sql.Date(user.getBirthdate().getTime()));
-      stmt.setString(5, "Usuario");
+      stmt.setString(5, "Admin");
       int rowsAffected = stmt.executeUpdate();
 
       String query2 = "INSERT INTO 19_comweb_21d.UserAuth (id, password) VALUES (LAST_INSERT_ID(), ?);";
