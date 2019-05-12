@@ -22,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 </head>
-<body>
+<body onload="myFunction()">
   <%@include file ='/WEB-INF/jsp/navbar.jsp'%>
   <div class="col-md-8 text container-fluid text-center">
     <h2>Perfil</h2>
@@ -44,48 +44,79 @@
           <label for="file-upload" class="custom-file-upload1">
             <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
           </label>
-          <input id="file-upload" name="pic" type="file" accept="image/*" onchange="imageUpload()"/>
+          <input id="file-upload" name="pic" type="file" accept="image/*" onchange="myFunction()"/>
           <input name="submit-photo" type="submit" value="Subir" />
         </div>
       </form>
-      <%}%>
-      <%
-      if(profile.getDescription()!=null){
-      %>
-        <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
-    <%}else{%>
-        <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921">No hay descripción aún</q>
-    <%}%>
-      <!-- <p>Descripcion</p><%=profile.getDescription()%> -->
-      <%=profile.getGender()%><br>
-      <%=profile.getBirthdate()%>
-      <%
-
-      if (own_profile.equals("true")) {
-      %><div id="like-dislike-buttons">
-        <a class="btn btn-secondary btn-edit mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
-      </div>
-      <%
+      <script>
+        function myFunction(){
+          var x = document.getElementById("file-upload");
+          var txt = "";
+          if ('files' in x) {
+            if (x.files.length == 0) {
+              txt = "Select one or more files.";
+            } else {
+              for (var i = 0; i < x.files.length; i++) {
+                txt += "<br><strong>" + (i+1) + ". file</strong><br>";
+                var file = x.files[i];
+                if ('name' in file) {
+                  txt += "name: " + file.name + "<br>";
+                }
+                if ('size' in file) {
+                  txt += "size: " + file.size + " bytes <br>";
+                }
+              }
+            }
+          } 
+          else {
+            if (x.value == "") {
+              txt += "Select one or more files.";
+            } else {
+              txt += "The files property is not supported by your browser!";
+      txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
     }
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+<%}%>
+<%
+if(profile.getDescription()!=null){
+%>
+<q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
+<%}else{%>
+<q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921">No hay descripción aún</q>
+<%}%>
+<!-- <p>Descripcion</p><%=profile.getDescription()%> -->
+<%=profile.getGender()%><br>
+<%=profile.getBirthdate()%>
+<%
 
-    %>
-    <hr>
-    <%
-    User current_user = (User) session.getAttribute("user");
-    List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
-    int pendiente=0;
-    if(!mutual_dates.isEmpty()){%>
-    <h3>Citas</h3>
-    <i class="fas fa-grip-lines"></i>
-    <%
-    for(DateMatch dates:mutual_dates){
-    if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente")){
-    pendiente=0;%>
-    <hr>
-    <h5><%=dates.getDateName(profile.getId())%> <i class="fas fa-arrow-circle-right"></i> <%=dates.getStatus()%></h5>
-    <%
-  }if (dates.getStatus().equals("Pendiente")){
-  pendiente=1;
+if (own_profile.equals("true")) {
+%><div id="like-dislike-buttons">
+  <a class="btn btn-secondary btn-edit mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
+</div>
+<%
+}
+
+%>
+<hr>
+<%
+User current_user = (User) session.getAttribute("user");
+List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
+int pendiente=0;
+if(!mutual_dates.isEmpty()){%>
+<h3>Citas</h3>
+<i class="fas fa-grip-lines"></i>
+<%
+for(DateMatch dates:mutual_dates){
+if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente")){
+pendiente=0;%>
+<hr>
+<h5><%=dates.getDateName(profile.getId())%> <i class="fas fa-arrow-circle-right"></i> <%=dates.getStatus()%></h5>
+<%
+}if (dates.getStatus().equals("Pendiente")){
+pendiente=1;
 }
 }
 

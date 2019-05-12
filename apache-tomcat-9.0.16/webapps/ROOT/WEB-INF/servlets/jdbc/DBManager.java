@@ -317,7 +317,6 @@ public class DBManager implements AutoCloseable {
   }
   return updated;
 
-
 }
 
 public String getUserName(int id)throws SQLException{
