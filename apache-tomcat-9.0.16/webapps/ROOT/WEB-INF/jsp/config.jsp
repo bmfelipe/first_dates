@@ -26,7 +26,7 @@
 					<form action="/config" method="post" class="form-horizontal">
 						<fieldset>
 							<!-- Form Name -->
-							<legend>Configuracion de usuario</legend>
+							<legend>Cambiar preferencias</legend>
 							<!-- Text input-->
 							<!-- Text input-->
 							<div class="form-group">

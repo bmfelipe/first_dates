@@ -24,10 +24,11 @@ public class Config extends HttpServlet {
 			//String name = request.getParameter("name");
 			int minAge = Integer.parseInt(request.getParameter("minAge"));
 			int maxAge = Integer.parseInt(request.getParameter("maxAge"));
+			System.out.println("Debuug: "+ minAge);
 			String sexPref= request.getParameter("gender");
 			String description = request.getParameter("descripcion");
 
-			boolean updated=false;
+			/*boolean updated=false;
 			boolean describe_updated=false;
 
 			try(DBManager db = new DBManager()){
@@ -48,7 +49,7 @@ public class Config extends HttpServlet {
               request.setAttribute("errorRegister", "Ha ocurrido un error en el registro");
               RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
               rd.forward(request, response);
-          }
+          }*/
 
 
       }catch (Exception ex){
