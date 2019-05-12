@@ -73,6 +73,10 @@
     min-height: 100vh;
   }
 
+  .fa-angle-down{
+    padding-bottom: 15px;
+  }
+
   </style>
 
   <body>
