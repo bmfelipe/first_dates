@@ -91,7 +91,7 @@
 							<div class="form-group">
 								<label class="col-md-4 control-label" ></label>  
 								<div class="col-md-4">
-									<a href="/config" class="btn btn-success" type="submit"><span class="glyphicon glyphicon-thumbs-up"></span> Submit</a>
+									<button href="/config" class="btn btn-success" type="submit"><span class="glyphicon glyphicon-thumbs-up"></span> Submit</button>
 									<a href="/profile-redirect" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
 
 								</div>
