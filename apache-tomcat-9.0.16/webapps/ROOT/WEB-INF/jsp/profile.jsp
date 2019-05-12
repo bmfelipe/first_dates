@@ -43,7 +43,7 @@
       <label for="file-upload" class="custom-file-upload1">
         <i class="fa fa-cloud-upload"></i> Seleccionar foto de perfil
       </label>
-      <input id="file-upload" name="photo" type="image"/>
+      <input id="file-upload" name="photo" type="file"/>
     </div>
     <%}%>
 
