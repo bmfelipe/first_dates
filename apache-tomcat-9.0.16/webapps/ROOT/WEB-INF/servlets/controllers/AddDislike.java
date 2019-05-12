@@ -29,7 +29,7 @@ public class AddDislike extends HttpServlet {
         User user = (User) session.getAttribute("user");
         if(user == null){
           response.sendRedirect("/");
-        }else if(user.isLoggedIn()){
+        }else if(user.isLoggedIn() && user.getStatus().equals("Usuario")){
           try(DBManager db = new DBManager()){
               int recomendationId = Integer.parseInt(request.getParameter("recommendationId").trim());
               Boolean control = db.addDislike(user.getId(), recomendationId);

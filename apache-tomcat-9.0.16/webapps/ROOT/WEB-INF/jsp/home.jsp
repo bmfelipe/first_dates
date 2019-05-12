@@ -207,13 +207,13 @@
                       %>
                       <div class="row">
                         <div class="col-3 text_center">
-                          <h4><%=date.getDateName(user.getId())%></h4>
+                          <h5><%=date.getDateName(user.getId())%></h5>
                         </div>
                         <div class="col-3 text_center">
                         <p><a class="btn btn-secondary" href="/profile?id=<%=date.getDateId(user.getId())%>" role="button">Perfil</a></p>
                         </div>
                         <div class="col-3 text_center">
-                          <h4><%=date.getStatus()%></h4>
+                          <h5><%=date.getStatus()%></h5>
                         </div>
                         <div class="col-3 text_center">
                           <%

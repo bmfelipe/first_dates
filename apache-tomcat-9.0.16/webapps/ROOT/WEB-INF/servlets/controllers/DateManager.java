@@ -32,7 +32,7 @@ public class DateManager extends HttpServlet {
 
         if(user == null){
           response.sendRedirect("/");
-        }else if(user.isLoggedIn()){
+        }else if(user.isLoggedIn() && user.getStatus().equals("Usuario")){
           String confirm =  request.getParameter("result");
           int dateId = Integer.parseInt(request.getParameter("id").trim());
           if(confirm.equals("yes")){

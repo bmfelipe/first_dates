@@ -18,9 +18,9 @@ import javax.servlet.annotation.MultipartConfig;
         maxRequestSize = 1024 * 1024 * 50)
 @WebServlet("/upload-image")
 public class UploadImage extends HttpServlet {
-	
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
-		
+
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
@@ -37,7 +37,7 @@ public class UploadImage extends HttpServlet {
             photoStream = filePart.getInputStream();
         }
 
-		if(user.isLoggedIn()){
+		if(user.isLoggedIn() && user.getStatus().equals("Usuario")){
 			try(DBManager db = new DBManager()){
 				int id = user.getId();
 				updated = db.postImage(id,photoStream);

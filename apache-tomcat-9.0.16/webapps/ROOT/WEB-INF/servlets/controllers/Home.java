@@ -29,7 +29,7 @@ public class Home extends HttpServlet {
         User user = (User) session.getAttribute("user");
         if(user == null){
           response.sendRedirect("/");
-        }else if(user.isLoggedIn()){
+        }else if(user.isLoggedIn() && user.getStatus().equals("Usuario")){
           try(DBManager db = new DBManager()){
               List<User> recommendations = db.getRecommendations(user.getId());
               request.setAttribute("recommendations",recommendations);
