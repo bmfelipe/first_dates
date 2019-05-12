@@ -33,7 +33,7 @@ public class GetImage extends HttpServlet {
             InputStream in = db.getImage(id);
             if(in != null){
               OutputStream output = response.getOutputStream();
-              response.setContentType("image/jpg");
+              response.setContentType("image/png");
               for (int length = 0; (length = in.read(buffer)) > 0;) {
                 output.write(buffer, 0, length);
               }

@@ -50,7 +50,7 @@
    }
    #date-container {
      overflow-y:auto;
-     overflow-x:auto;
+     overflow-x:hidden;
    }
    #no-rec {
      margin: auto;
@@ -117,7 +117,7 @@
 
                         <div class="carousel-item active" id="<%=recommendation.getId()%>">
                           <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" onerror="this.src='resources/default.png'">
-                          <h5 class="pt-2"><%=recommendation.getName()%></h5>
+                          <h2 class="pt-2"><%=recommendation.getName()%></h2>
                         </div>
                       <%
                       }else{
@@ -126,7 +126,7 @@
                         <div class="carousel-item" id="<%=recommendation.getId()%>">
                           <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" onerror="this.src='resources/default.png'">
 
-                          <h5 class="pt-2"><%=recommendation.getName()%></h5>
+                          <h2 class="pt-2"><%=recommendation.getName()%></h2>
                         </div>
                   <%
 
@@ -177,7 +177,7 @@
                 %>
             <div id="date-container">
 
-                  <table class="table table-striped table-hover table-dark table-fixed">
+                  <%-- <table class="table table-striped table-hover table-dark table-fixed">
 
                     <tbody>
 
@@ -198,12 +198,41 @@
                         <%
                         count++;
                       }
-                    %>
+                    %> --%>
+                    <%
+                    for(DateMatch date: dates){
+                      %>
+                      <div class="row">
+                        <div class="col-3 text_center">
+                          <h4><%=date.getDateName(user.getId())%></h4>
+                        </div>
+                        <div class="col-3 text_center">
+                        <p><a class="btn btn-secondary" href="/profile?id=<%=date.getDateId(user.getId())%>" role="button">Perfil</a></p>
+                        </div>
+                        <div class="col-3 text_center">
+                          <h4><%=date.getStatus()%></h4>
+                        </div>
+                        <div class="col-3 text_center">
+                          <%
+                          if(date.getStatus().equals("Cita solicitada")){%>
+                          <p><a class="btn btn-secondary btn-success" id="accept-date" href="/date-manager?result=yes&id=<%=date.getId()%>" role="button">Aceptar</a></p>
+                          <p><a class="btn btn-secondary btn-danger" id="reject-date"href="/date-manager?result=no&id=<%=date.getId()%>" role="button">Rechazar</a></p>
+                          <%}else{%>
+                          <p><a class="btn btn-secondary" href="/date?id=<%=date.getDateId(user.getId())%>" role="button">Editar</a></p>
+                          <%}%>
+                        </div>
+                      </div>
+                      <hr>
+
+                      <%
+                      count++;
+                    }
+                  %>
 
 
+                <%-- </tbody>
+              </table> --%>
 
-                </tbody>
-              </table>
 
             </div>
             <%}else{

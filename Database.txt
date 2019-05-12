@@ -63,7 +63,7 @@ CREATE TABLE `19_comweb_21d`.`Dates` (
   `dateRequest` DATE,
   `dateSetBy` INT,
   `dateResponse` DATE,
-  `status` ENUM('Pendiente', 'Rechazado', 'Aceptado', 'Fecha pendiente', 'Fecha fijada','Finalizado') NOT NULL,
+  `status` ENUM('Pendiente', 'Rechazado', 'Aceptado', 'Fecha pendiente', 'Fecha fijada','Finalizado', 'Cita solicitada', 'Cita rechazada') NOT NULL,
   PRIMARY KEY (`id`)
 );
 

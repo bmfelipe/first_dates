@@ -239,7 +239,7 @@ public class DBManager implements AutoCloseable {
     }
 
     public List<DateMatch> getDateList(int userId)throws SQLException {
-      String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND status NOT IN ('Rechazado','Pendiente','Finalizado')";
+      String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND status NOT IN ('Rechazado','Pendiente','Finalizado','Cita rechazada')";
 
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
@@ -726,6 +726,44 @@ public DateMatch getDaysUntilDate(int userId) throws SQLException{
   }
   return dateMatch;
 
+}
+
+public boolean acceptRefuseDate(int dateId, boolean confirm) throws SQLException{
+
+  connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+  connection.setAutoCommit(false);
+  Boolean success = false;
+  String query;
+  String state = "";
+  int count;
+  if(confirm){
+    state = "Aceptado";
+  }else{
+    state = "Cita rechazada";
+  }
+   query = "UPDATE Dates SET status = ? WHERE id = ? ";
+
+  try(PreparedStatement st = connection.prepareStatement(query)){
+    st.setString(1, state);
+    st.setInt(2,dateId);
+    count = st.executeUpdate();
+    if(count > 0){
+      success = true;
+    }
+
+  }
+
+
+
+
+  if(success){
+   connection.commit();
+  }else{
+   connection.rollback();
+  }
+ connection.setAutoCommit(true);
+
+ return success;
 }
 
 }
