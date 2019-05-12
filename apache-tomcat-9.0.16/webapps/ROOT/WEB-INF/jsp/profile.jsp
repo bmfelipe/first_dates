@@ -34,58 +34,66 @@
     %>
     <div class="card mx-auto mb-4 overflow-auto">
       <h1><%=profile.getName()%></h1>
-      <img id="upload-image" src="/fixing/modelo.png">
-      <!-- Upload image bar -->
       <%
       if(own_profile.equals("true")){
       %>
-      <form action="/upload-image" method="post" enctype="multipart/form-data">
-        <div class="custom-file-upload" style= padding-top:20px;>
-          <label for="file-upload" class="custom-file-upload1">
-            <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
-          </label>
-          <input id="file-upload" name="pic" type="file" accept="image/*"/>
-          <input name="submit-photo" type="submit" value="Subir" />
-        </div>
-      </form>
-      <%}%>
+      <img id="upload-image" src="/user-image?id=<%=own_profile.getId()%>" onerror="this.src='resources/default.png'">
       <%
-      if(profile.getDescription()!=null){
-      %>
-        <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
-    <%}else{%>
-        <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921">No hay descripción aún</q>
+    }else{%>
+    <img id="upload-image" src="/user-image?id=<%=profile.getId()%>" onerror="this.src='resources/default.png'">
     <%}%>
-      <!-- <p>Descripcion</p><%=profile.getDescription()%> -->
-      <%=profile.getGender()%><br>
-      <%=profile.getBirthdate()%>
-      <%
 
-      if (own_profile.equals("true")) {
-      %><div id="like-dislike-buttons">
-        <a class="btn btn-secondary btn-edit mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
-      </div>
-      <%
-    }
-
+    <!-- Upload image bar -->
+    <%
+    if(own_profile.equals("true")){
     %>
-    <hr>
+    <form action="/upload-image" method="post" enctype="multipart/form-data">
+      <div class="custom-file-upload" style= padding-top:20px;>
+        <label for="file-upload" class="custom-file-upload1">
+          <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
+        </label>
+        <input id="file-upload" name="pic" type="file" accept="image/*"/>
+        <input name="submit-photo" type="submit" value="Subir" />
+      </div>
+    </form>
+    <%}%>
     <%
-    User current_user = (User) session.getAttribute("user");
-    List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
-    int pendiente=0;
-    if(!mutual_dates.isEmpty()){%>
-    <h3>Citas</h3>
-    <i class="fas fa-grip-lines"></i>
+    if(profile.getDescription()!=null){
+    %>
+    <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
+    <%}else{%>
+    <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921">No hay descripción aún</q>
+    <%}%>
+    <!-- <p>Descripcion</p><%=profile.getDescription()%> -->
+    <%=profile.getGender()%><br>
+    <%=profile.getBirthdate()%>
     <%
-    for(DateMatch dates:mutual_dates){
-    if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente")){
-    pendiente=0;%>
-    <hr>
-    <h5><%=dates.getDateName(profile.getId())%> <i class="fas fa-arrow-circle-right"></i> <%=dates.getStatus()%></h5>
+
+    if (own_profile.equals("true")) {
+    %><div id="like-dislike-buttons">
+      <a class="btn btn-secondary btn-edit mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i> </a>
+    </div>
     <%
-  }if (dates.getStatus().equals("Pendiente")){
-  pendiente=1;
+  }
+
+  %>
+  <hr>
+  <%
+  User current_user = (User) session.getAttribute("user");
+  List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
+  int pendiente=0;
+  if(!mutual_dates.isEmpty()){%>
+  <h3>Citas</h3>
+  <i class="fas fa-grip-lines"></i>
+  <%
+  for(DateMatch dates:mutual_dates){
+  if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente")){
+  pendiente=0;%>
+  <hr>
+  <h5><%=dates.getDateName(profile.getId())%> <i class="fas fa-arrow-circle-right"></i> <%=dates.getStatus()%></h5>
+  <%
+}if (dates.getStatus().equals("Pendiente")){
+pendiente=1;
 }
 }
 
