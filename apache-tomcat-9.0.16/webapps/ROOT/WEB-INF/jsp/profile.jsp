@@ -103,6 +103,7 @@ if (own_profile.equals("true")) {
    background-size: cover;
    background-image: url("resources/background/photo3.jpg");
    color: white;
+   height: 100vh;
  }
  .container-fluid {
   padding-top: 25px;

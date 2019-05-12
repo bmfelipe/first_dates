@@ -28,7 +28,7 @@
 
   <style>
     body{
-      background-color: #333;
+      height: 100vh;
       background-size: cover;
       background-image: url("resources/background/photo5.jpg");
       color: white;
@@ -47,7 +47,7 @@
     }
 
     .card {
-      height: 73vh;
+      height: 80vh;
       background-color: rgba(20, 20, 20, 0.8);
       padding-top: 20px;
       padding-bottom: 20px;

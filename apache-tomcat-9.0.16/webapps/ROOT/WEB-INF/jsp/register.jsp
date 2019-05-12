@@ -22,6 +22,7 @@
       background-size: cover;
       background-image: url("resources/background/photo4.jpg");
       color: white;
+      height: 100vh;
     }
     .container-fluid {
       font-family: "Open Sans";
@@ -32,7 +33,7 @@
       padding: auto;
     }
     .btn {
-      margin-top: 2vh;
+      margin-top: 1vh;
     }
     .errorRegister {
       padding-top: 50px;
