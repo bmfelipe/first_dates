@@ -34,15 +34,18 @@
     %>
     <div class="card mx-auto mb-4 overflow-auto">
       <h1><%=profile.getName()%></h1>
-
+        <div id="test" class="rounded-circle">
+          <div id="img-container">
         <%
         if(own_profile.equals("true")){
         %>
-        <img id="upload-image" src="/user-image?id=<%=user.getId()%>" onerror="this.src='resources/default.png'">
+        <img id="upload-image"  src="/user-image?id=<%=user.getId()%>" onerror="this.src='resources/default.png'">
         <%
       }else{%>
       <img id="upload-image" src="/user-image?id=<%=profile.getId()%>" onerror="this.src='resources/default.png'">
       <%}%>
+    </div>
+  </div>
 
 
     <!-- Upload image bar -->
@@ -160,10 +163,22 @@ if(pendiente==0 && own_profile=="false"){%>
 }
 
 img {
-  margin-left: auto;
-  margin-right: auto;
-  border-radius:70% 70% 70% 70%;
-  max-width:250px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  /* border-radius:70% 70% 70% 70%; */
+  /* max-width:250px; */
+  /* min-height: 250px;
+  min-width: 250px; */
+  height:250px;
+  display:block;
+    margin:auto;
+  /* margin: auto; */
+  /* width: 250px; */
+
+  /* position: absolute; */
+
+  /* min-width: 20vh; */
+
   /*height:100px;*/
 }
 .imgUser{
@@ -208,6 +223,24 @@ hr{
 
 .btn-edit{
   margin-bottom: 1vh;
+}
+
+#test {
+  width:250px;
+  height:250px;
+  margin:auto;
+  overflow:hidden;
+  display:inline-block;
+  position: center;
+  object-fit: cover;
+
+
+  /* background-size: cover; */
+  /* padding-bottom:100%; */
+
+}
+#img-container{
+
 }
 
 </style>
