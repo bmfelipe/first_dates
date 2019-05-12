@@ -34,14 +34,16 @@
     %>
     <div class="card mx-auto mb-4 overflow-auto">
       <h1><%=profile.getName()%></h1>
-      <%
-      if(own_profile.equals("true")){
-      %>
+      <div class="imgUser">
+        <%
+        if(own_profile.equals("true")){
+        %>
+        <img id="upload-image" src="/user-image?id=<%=profile.getId()%>" onerror="this.src='resources/default.png'">
+        <%
+      }else{%>
       <img id="upload-image" src="/user-image?id=<%=profile.getId()%>" onerror="this.src='resources/default.png'">
-      <%
-    }else{%>
-    <img id="upload-image" src="/user-image?id=<%=profile.getId()%>" onerror="this.src='resources/default.png'">
-    <%}%>
+      <%}%>
+    </div>
 
     <!-- Upload image bar -->
     <%
@@ -157,6 +159,9 @@ if(pendiente==0 && own_profile=="false"){%>
 img {
   margin-left: auto;
   margin-right: auto;
+}
+.imgUser{
+  max-width: auto;
 }
 
 
