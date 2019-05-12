@@ -44,10 +44,17 @@
           <label for="file-upload" class="custom-file-upload1">
             <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
           </label>
-          <input id="file-upload" name="pic" type="file" accept="image/*"/>
+          <input id="file-upload" name="pic" type="file" accept="image/*" onchange="imageUpload()"/>
           <input name="submit-photo" type="submit" />
         </div>
       </form>
+
+      <script>
+        function imageUpload(){
+          var x = document.getElementById("file-upload");
+          var txt = file.name;   
+        } 
+      </script>
 
       <%}%>
       <%

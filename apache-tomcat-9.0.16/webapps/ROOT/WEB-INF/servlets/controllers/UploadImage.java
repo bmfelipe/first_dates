@@ -41,7 +41,7 @@ public class UploadImage extends HttpServlet {
 
 			}catch (SQLException|NamingException e){
 				e.printStackTrace();
-				response.sendRedirect("errorPage.jsp");
+				response.sendRedirect("/errorPage.jsp");
 			}
 
 		}else{

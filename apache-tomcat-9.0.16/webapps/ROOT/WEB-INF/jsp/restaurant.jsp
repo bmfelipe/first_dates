@@ -35,7 +35,7 @@
     }
 
     .container-fluid {
-      padding-top: 25px;
+      padding-top: 15px;
       font-family: "Open Sans";
     }
 
@@ -47,7 +47,7 @@
     }
 
     .card {
-      height: 80vh;
+      height: 70vh;
       background-color: rgba(20, 20, 20, 0.8);
       padding-top: 20px;
       padding-bottom: 20px;
