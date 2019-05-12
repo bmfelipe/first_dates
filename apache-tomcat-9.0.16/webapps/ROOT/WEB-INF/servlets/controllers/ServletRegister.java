@@ -98,9 +98,8 @@ public class ServletRegister extends HttpServlet {
         }
         catch(Exception ex)
         {
-            request.setAttribute("errorRegister", "Ha ocurrido un error en el registro");
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
-            rd.forward(request, response);
+            ex.printStackTrace();
+            response.sendRedirect("/errorPage.jsp");
         }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

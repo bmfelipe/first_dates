@@ -22,6 +22,8 @@ public class Root extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException
     {
+      try
+      {
         request.setCharacterEncoding("utf-8");
 
         HttpSession session = request.getSession();
@@ -46,5 +48,11 @@ public class Root extends HttpServlet {
         {
           response.sendRedirect("/login");
         }
+      }
+      catch(Exception e)
+      {
+        e.printStackTrace();
+        response.sendRedirect("/errorPage.jsp");
+      }
     }
 }

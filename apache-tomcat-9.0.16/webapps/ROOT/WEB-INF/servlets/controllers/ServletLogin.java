@@ -95,10 +95,7 @@ public class ServletLogin extends HttpServlet {
         catch(Exception ex)
         {
             ex.printStackTrace();
-            request.setAttribute("errorLogin", "Ha ocurrido un error en el login");
-            System.out.println("error");
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
-            rd.forward(request, response);
+            response.sendRedirect("/errorPage.jsp");
         }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

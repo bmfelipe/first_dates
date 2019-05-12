@@ -205,9 +205,7 @@ public class Restaurant extends HttpServlet {
         catch(Exception ex)
         {
             ex.printStackTrace();
-            request.setAttribute("errorRestaurant", "¡Ha ocurrido un error en el servidor!");
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
-            rd.forward(request, response);
+            response.sendRedirect("/errorPage.jsp");
         }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
