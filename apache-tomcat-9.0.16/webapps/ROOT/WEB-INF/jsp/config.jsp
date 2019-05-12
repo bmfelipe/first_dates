@@ -35,10 +35,10 @@
 								<div class="form-group">
 									<h5>Edad Mínima</h5>
 									<div class="input-group">
-										<input class="form-control" type="text" name="minAge" placeholder="Edad mínima deseada" autocomplete="off">
-	                  <div class="input-group-append">
-	                    <span class="fa fa-birthday-cake input-group-text" aria-hidden="true"></span>
-	                  </div>
+										<input class="form-control" type="text" name="minAge" placeholder="Edad mínima deseada" autocomplete="off" required>
+										<div class="input-group-append">
+											<span class="fa fa-birthday-cake input-group-text" aria-hidden="true"></span>
+										</div>
 									</div>
 								</div>
 
@@ -49,10 +49,10 @@
 								<div class="form-group">
 									<h5>Edad Máxima</h5>
 									<div class="input-group">
-										<input class="form-control" type="text" name="maxAge" placeholder="Edad máxima deseada" autocomplete="off">
-	                  <div class="input-group-append">
-	                    <span class="fa fa-birthday-cake input-group-text" aria-hidden="true"></span>
-	                  </div>
+										<input class="form-control" type="text" name="maxAge" placeholder="Edad máxima deseada" autocomplete="off" required>
+										<div class="input-group-append">
+											<span class="fa fa-birthday-cake input-group-text" aria-hidden="true"></span>
+										</div>
 									</div>
 								</div>
 
@@ -63,14 +63,14 @@
 								<div class="form-group">
 									<h5>Busco</h5>
 									<div class="input-group">
-										<select class="form-control" name="gender">
-		                  <option value="Mujer">Chicas</option>
-		                  <option value="Hombre">Chicos</option>
+										<select class="form-control" name="gender" required>
+											<option value="Mujer">Chicas</option>
+											<option value="Hombre">Chicos</option>
 											<option value="Ambos">Ambos</option>
-		                </select>
-		                <div class="input-group-append">
-		                  <span class="fa fa-venus-mars input-group-text start_date_calendar" aria-hidden="true"></span>
-		                </div>
+										</select>
+										<div class="input-group-append">
+											<span class="fa fa-venus-mars input-group-text start_date_calendar" aria-hidden="true"></span>
+										</div>
 									</div>
 								</div>
 
@@ -82,7 +82,7 @@
 								<div class="form-group">
 									<h5>Descripción</h5>
 									<div class="input-group">
-										<textarea class="form-control" rows="4" cols="30" id="Overview (max 200 words)" name="descripcion" placeholder="Descríbase aquí"></textarea>
+										<textarea class="form-control" rows="4" cols="30" id="Overview (max 200 words)" name="descripcion" placeholder="Descríbase aquí" required></textarea>
 									</div>
 								</div>
 
@@ -117,8 +117,8 @@
 	}
 
 	.fa-angle-down {
-    padding-bottom: 15px;
-  }
+		padding-bottom: 15px;
+	}
 
 	.opacity {
 		background-color: rgba(20, 20, 20, 0.5);
