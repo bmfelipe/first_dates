@@ -25,15 +25,13 @@
 <body>
   <%@include file ='/WEB-INF/jsp/navbar.jsp'%>
   <div class="col-md-8 text container-fluid text-center">
-    <div class="titles">
-      <h2>Perfil</h2>
-      <i class="fas fa-angle-down"></i>
-      <%
-      //HttpSession session = request.getSession();
-      User profile = (User) request.getAttribute("target_profile");
-      String own_profile = (String)request.getAttribute("own_profile");
-      %>
-    </div>
+    <h2>Perfil</h2>
+    <i class="fas fa-angle-down"></i>
+    <%
+    //HttpSession session = request.getSession();
+    User profile = (User) request.getAttribute("target_profile");
+    String own_profile = (String)request.getAttribute("own_profile");
+    %>
     <div class="card mx-auto mb-4 overflow-auto">
       <h1><%=profile.getName()%></h1>
       <img id="upload-image">
