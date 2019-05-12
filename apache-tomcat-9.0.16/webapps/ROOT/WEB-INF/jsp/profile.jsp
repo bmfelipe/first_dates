@@ -16,6 +16,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="jquery.roundimage.js"></script>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <meta charset="utf-8">
@@ -35,14 +39,14 @@
     <div class="card mx-auto mb-4 overflow-auto">
       <h1><%=profile.getName()%></h1>
 
-        <%
-        if(own_profile.equals("true")){
-        %>
-        <img id="upload-image" src="/user-image?id=<%=user.getId()%>" onerror="this.src='resources/default.png'">
-        <%
-      }else{%>
-      <img id="upload-image" src="/user-image?id=<%=profile.getId()%>" onerror="this.src='resources/default.png'">
-      <%}%>
+      <%
+      if(own_profile.equals("true")){
+      %>
+      <img id="upload-image" src="/user-image?id=<%=user.getId()%>" onerror="this.src='resources/default.png'">
+      <%
+    }else{%>
+    <img id="upload-image" src="/user-image?id=<%=profile.getId()%>" onerror="this.src='resources/default.png'">
+    <%}%>
 
 
     <!-- Upload image bar -->
