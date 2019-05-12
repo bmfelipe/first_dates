@@ -59,7 +59,7 @@ public class UploadImage extends HttpServlet {
 			}
 
 		}else{
-			response.sendRedirect("index");
+			response.sendRedirect("/");
 		}
 
 

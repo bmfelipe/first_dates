@@ -5,6 +5,7 @@ import jdbc.DBManager;
 import security.BCrypt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.naming.NamingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.IOException;
@@ -55,7 +56,7 @@ public class ServletRegister extends HttpServlet {
                 {
                   user = db.searchUser(request.getParameter("username"));
                 }
-                catch(SQLException e)
+                catch(SQLException|NamingException e)
                 {
                     e.printStackTrace();
                 }
@@ -73,7 +74,7 @@ public class ServletRegister extends HttpServlet {
                         Boolean registered = db.registerUser(user);
                         System.out.println("Registered user: "+registered);
                     }
-                    catch(SQLException e)
+                    catch(SQLException|NamingException e)
                     {
                         e.printStackTrace();
                     }

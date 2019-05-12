@@ -6,6 +6,7 @@ import beans.DateMatch;
 import jdbc.DBManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.naming.NamingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class Restaurant extends HttpServlet {
             {
               response.sendRedirect("/");
             }
-            else if (user.isLoggedIn())
+            else if (user.isLoggedIn() && user.getRole().equals("Admin"))
             {
               Boolean inserted = false;
               Boolean updated = false;
@@ -69,7 +70,7 @@ public class Restaurant extends HttpServlet {
                   confirmedDates = db.getConfirmedDateList(nowDate);
                   request.setAttribute("confirmedDates", confirmedDates);
               }
-              catch (SQLException ex)
+              catch (SQLException|NamingException ex)
               {
                   ex.printStackTrace();
               }
@@ -83,7 +84,7 @@ public class Restaurant extends HttpServlet {
                 {
                     availability = db.searchAvailability(date);
                 }
-                catch (SQLException ex)
+                catch (SQLException|NamingException ex)
                 {
                     ex.printStackTrace();
                 }
@@ -100,7 +101,7 @@ public class Restaurant extends HttpServlet {
                       inserted = db.insertAvailability(availability2);
                       System.out.println("Availability inserted: " + inserted);
                   }
-                  catch (SQLException ex)
+                  catch (SQLException|NamingException ex)
                   {
                       ex.printStackTrace();
                   }
@@ -128,7 +129,7 @@ public class Restaurant extends HttpServlet {
                     availability = db.searchAvailability(date);
                     pendingDates = db.getCountPendingDates(date);
                 }
-                catch (SQLException ex)
+                catch (SQLException|NamingException ex)
                 {
                     ex.printStackTrace();
                 }
@@ -166,7 +167,7 @@ public class Restaurant extends HttpServlet {
                             updated = database.updateAvailability(availability);
                             System.out.println("Availability updated: " + updated);
                         }
-                        catch (SQLException ex)
+                        catch (SQLException|NamingException ex)
                         {
                             ex.printStackTrace();
                         }
@@ -179,7 +180,7 @@ public class Restaurant extends HttpServlet {
                     }
 
                 }
-                catch (SQLException ex)
+                catch (SQLException|NamingException ex)
                 {
                     ex.printStackTrace();
                 }

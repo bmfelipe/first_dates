@@ -22,36 +22,45 @@ public class AddLike extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException
     {
-        request.setCharacterEncoding("utf-8");
-
-        HttpSession session = request.getSession();
-
-        User user = (User) session.getAttribute("user");
-
-        if(user == null){
-          response.sendRedirect("/");
-        }else if(user.isLoggedIn() && user.getRole().equals("Usuario")){
-          try(DBManager db = new DBManager()){
+        try {
 
 
-              int recommendationId = Integer.parseInt(request.getParameter("recommendationId").trim());
+          request.setCharacterEncoding("utf-8");
 
-              System.out.println("recommendationId " + recommendationId );
-              Boolean control = db.addLike(user.getId(), recommendationId);
+          HttpSession session = request.getSession();
 
-              if(control == false){
-                response.sendError(500);
-              }else{
-                response.setStatus(200);
-              }
+          User user = (User) session.getAttribute("user");
 
-          }catch (SQLException|NamingException e){
+          if(user == null){
+            response.sendRedirect("/");
+          }else if(user.isLoggedIn() && user.getRole().equals("Usuario")){
+            try(DBManager db = new DBManager()){
 
-              e.printStackTrace();
+
+                int recommendationId = Integer.parseInt(request.getParameter("recommendationId").trim());
+
+                System.out.println("recommendationId " + recommendationId );
+                Boolean control = db.addLike(user.getId(), recommendationId);
+
+                if(control == false){
+                  response.sendError(500);
+                }else{
+                  response.setStatus(200);
+                }
+
+            }catch (SQLException|NamingException e){
+
+                e.printStackTrace();
+
+
+            }
+
+          }else{
+            response.sendRedirect("/");
           }
-
-        }else{
-          response.sendRedirect("/");
+        }catch(Exception e){
+          e.printStackTrace();
+          response.sendRedirect("/errorPage.jsp");
         }
 
 
