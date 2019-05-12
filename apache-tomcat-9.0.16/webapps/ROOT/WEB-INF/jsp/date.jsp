@@ -68,7 +68,7 @@
 
    .opacity {
      background-color: rgba(20, 20, 20, 0.7);
-     height: 100vh;
+     min-height: 100vh;
    }
   </style>
 
