@@ -49,6 +49,9 @@
      margin-top: 10px;
    }
    #date-container {
+     padding-left: 10px;
+     padding-right: 10px;
+
      overflow-y:auto;
      overflow-x:hidden;
    }
