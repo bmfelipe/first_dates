@@ -19,7 +19,6 @@
 
   <style>
     body {
-      background-color: #333;
       background-size: cover;
       background-image: url("resources/background/photo4.jpg");
       color: white;
@@ -30,11 +29,10 @@
       padding-bottom: 10px;
     }
     .form-group {
-      padding-top: 30px;
+      padding: auto;
     }
     .btn {
-      margin-top: 30px;
-      margin-bottom: 10px;
+      margin-top: 2vh;
     }
     .errorRegister {
       padding-top: 50px;
@@ -45,7 +43,7 @@
       height: 100vh;
     }
     h1{
-      margin-bottom: 30px;
+      margin-bottom: 19vh;
     }
   </style>
 

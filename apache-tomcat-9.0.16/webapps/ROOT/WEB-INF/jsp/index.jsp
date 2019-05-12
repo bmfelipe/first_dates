@@ -16,7 +16,6 @@
 
   <style>
     body {
-      background-color: #333;
       background-size: cover;
       background-image: url("resources/background/photo1.jpg");
       color: white;
