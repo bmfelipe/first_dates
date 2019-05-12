@@ -99,7 +99,7 @@ if (own_profile.equals("true")) {
 </body>
 <style>
   body {
-    background-color: url(resources/background/photo4.jpg);
+    background-color: url("resources/background/photo4.jpg");
     color: white;
     height: 100vh;
 

@@ -119,7 +119,7 @@
 </body>
 <style type="text/css">
 	body {
-		background-color: url(resources/background/photo2.jpg);
+		background-color: url("resources/background/photo2.jpg");
 		color: white;
 		height: 100vh;
 
