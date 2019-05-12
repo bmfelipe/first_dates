@@ -54,7 +54,7 @@ public class Home extends HttpServlet {
 
           }catch (SQLException|NamingException e){
               e.printStackTrace();//Send re
-              response.sendRedirect("/internalError");
+              response.sendRedirect("/errorPage.jsp");
           }
 
           RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/home.jsp");

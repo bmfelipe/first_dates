@@ -42,6 +42,7 @@ public class Dates extends HttpServlet {
 
           }catch (SQLException|NamingException e){
               e.printStackTrace();//Send re
+              response.sendRedirect("/errorPage.jsp");
               // response.sendRedirect("/internalError");
           }
           RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/date.jsp");
