@@ -16,6 +16,7 @@ import javax.naming.NamingException;
 public class UploadImage extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException{
+		System.out.println("[1]Debug: Hola UploadImage");
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
