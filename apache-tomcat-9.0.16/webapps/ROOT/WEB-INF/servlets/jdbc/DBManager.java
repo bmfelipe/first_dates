@@ -175,32 +175,66 @@ public class DBManager implements AutoCloseable {
         }
 
       }
-      query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) <= ? and gender = ? AND role NOT LIKE 'Admin' "+numberElements+" ORDER BY RAND() LIMIT 20";
+      int numId;
+      if(preferences.getSexPref().equals("Ambos")){
+        query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) <= ? and (gender = 'Mujer' || gender = 'Hombre')  AND role NOT LIKE 'Admin' "+numberElements+" ORDER BY RAND() LIMIT 20";
+        numId = 3;
+        try(PreparedStatement st = connection.prepareStatement(query)){
+          st.setInt(1,preferences.getMinAge());
+          st.setInt(2,preferences.getMaxAge());
+          for(int uId :ids){
+            st.setInt(numId,uId);
+            numId++;
 
-      int numId = 4;
-      try(PreparedStatement st = connection.prepareStatement(query)){
-        st.setInt(1,preferences.getMinAge());
-        st.setInt(2,preferences.getMaxAge());
-        st.setString(3,preferences.getSexPref());
-        for(int uId :ids){
-          st.setInt(numId,uId);
-          numId++;
+          }
+          ResultSet rs = st.executeQuery();
+          while(rs.next()){
+            User recommendation = new User();
+            recommendation.setId(rs.getInt("id"));
+            recommendation.setUsername(rs.getString("username"));
+            recommendation.setName(rs.getString("name"));
+            recommendation.setGender(rs.getString("gender"));
+            recommendation.setBirthdate(rs.getDate("birthdate"));
 
+            recommendations.add(recommendation);
+          }
         }
-        ResultSet rs = st.executeQuery();
-        while(rs.next()){
-          User recommendation = new User();
-          recommendation.setId(rs.getInt("id"));
-          recommendation.setUsername(rs.getString("username"));
-          recommendation.setName(rs.getString("name"));
-          recommendation.setGender(rs.getString("gender"));
-          recommendation.setBirthdate(rs.getDate("birthdate"));
 
-          recommendations.add(recommendation);
-        }
+
+
+
+      }else{
+        query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) <= ? and gender = ?  AND role NOT LIKE 'Admin' "+numberElements+" ORDER BY RAND() LIMIT 20";
+        numId = 4;
+        try(PreparedStatement st = connection.prepareStatement(query)){
+          st.setInt(1,preferences.getMinAge());
+          st.setInt(2,preferences.getMaxAge());
+          st.setString(3,preferences.getSexPref());
+          for(int uId :ids){
+            st.setInt(numId,uId);
+            numId++;
+
+          }
+          ResultSet rs = st.executeQuery();
+          while(rs.next()){
+            User recommendation = new User();
+            recommendation.setId(rs.getInt("id"));
+            recommendation.setUsername(rs.getString("username"));
+            recommendation.setName(rs.getString("name"));
+            recommendation.setGender(rs.getString("gender"));
+            recommendation.setBirthdate(rs.getDate("birthdate"));
+
+            recommendations.add(recommendation);
+          }
+      }
+
+    }
+
+
+
 
         return recommendations;
-      }
+
       //return null;
     }
 
