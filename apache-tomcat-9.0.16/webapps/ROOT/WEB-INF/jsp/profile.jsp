@@ -94,14 +94,15 @@
   <hr>
   <h5><%=dates.getDateName(profile.getId())%> <i class="fas fa-arrow-circle-right"></i> <%=dates.getStatus()%></h5>
   <%
-}if (dates.getStatus().equals("Pendiente")){
+}if (!dates.getStatus().equals("Finalizado")){
 pendiente=1;
 }
 }
 
 }
 if(pendiente==0 && own_profile=="false"){%>
-<button class="btn btn-aux btn-secondary mr-1 text-center" role="button" id="date-btn">Proponer cita</button>
+<a class="btn btn-aux btn-secondary mr-1 text-center" role="button" href="/date-manager?result=add&id=<%=profile.getId()%>"  id="date-btn">Proponer cita</a>
+<!-- <a class="btn btn-secondary btn-edit mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i>Editar preferencias </a> -->
 <%}%>
 
   <!-- <div id="like-dislike-buttons">
