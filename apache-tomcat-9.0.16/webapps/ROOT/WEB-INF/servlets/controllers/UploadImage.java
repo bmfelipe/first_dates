@@ -23,7 +23,15 @@ public class UploadImage extends HttpServlet {
 		boolean updated=false;
 		//System.out.println("[1]Debug: Hola UploadImage " +request.getAttribute("pic"));
 		//File image = new File(request.getAttribute("pic"));
-		FileInputStream photoStream = new FileInputStream(request.getAttribute("pic"));
+		//FileInputStream photoStream = new FileInputStream(request.getAttribute("pic"));
+		InputStream photoStream = null;
+		Part filePart = request.getPart("pic");
+		if (filePart != null) {
+            //obtains input stream of the upload file
+            //the InputStream will point to a stream that contains
+            //the contents of the file
+            inputStream = filePart.getInputStream();
+        }
 
 		if(user.isLoggedIn()){
 			try(DBManager db = new DBManager()){
