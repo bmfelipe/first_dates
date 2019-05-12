@@ -17,7 +17,7 @@
         </li>
       </ul>
       <% HttpSession session = request.getSession();
-         User user = (User) session.getAttribute("user"); %>
+      User user = (User) session.getAttribute("user"); %>
       <%=user.getName()%>
       <a class="btn btn-secondary navbutton" href="/logout" role="button">Salir <i class="fas fa-sign-out-alt" aria-hidden="true"></i></a>
     </div>
@@ -35,3 +35,12 @@
     margin-left: 15px;
   }
 </style>
+
+<script>
+  var header = document.getElementById("navbarCollapse");
+  var btns = header.getElementsByClassName("li");
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  </script>
