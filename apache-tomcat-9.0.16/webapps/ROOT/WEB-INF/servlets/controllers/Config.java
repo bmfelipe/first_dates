@@ -22,8 +22,8 @@ public class Config extends HttpServlet {
 			User user = (User) session.getAttribute("user");
 			//Parameters
 			//String name = request.getParameter("name");
-			int minAge = Integer.parseInt(request.getParameter("minAge"));
-			int maxAge = Integer.parseInt(request.getParameter("maxAge"));
+			int minAge = Integer.parseInt(request.getParameter("minAge").trim());
+			int maxAge = Integer.parseInt(request.getParameter("maxAge").trim());
 			String sexPref= request.getParameter("gender");
 			String description = request.getParameter("descripcion");
 

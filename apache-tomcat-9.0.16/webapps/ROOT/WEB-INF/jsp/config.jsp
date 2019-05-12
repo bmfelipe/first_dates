@@ -31,11 +31,9 @@
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="Date Of Birth">Edad mínima</label>  
 								<div class="col-md-4">
-
 									<div class="input-group">
 										<div class="input-group-addon">
 											<i class="fa fa-birthday-cake"></i>
-
 										</div>
 										<input id="Date Of Birth" name="minAge" type="text" placeholder="Edad mínima" class="form-control input-md">
 									</div>
