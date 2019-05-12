@@ -22,7 +22,7 @@ public class Config extends HttpServlet {
 			User user = (User) session.getAttribute("user");
 			//Parameters
 			//String name = request.getParameter("name");
-			int minAge = Integer.parseInt(request.getParameter("minAge"));
+			int minAge = request.getParameter("minAge");
 			int maxAge = Integer.parseInt(request.getParameter("maxAge"));
 			String sexPref= request.getParameter("gender");
 			String description = request.getParameter("descripcion");
@@ -53,7 +53,7 @@ public class Config extends HttpServlet {
 
       }catch (Exception ex){
               ex.printStackTrace();//Send re
-              response.sendRedirect("/internalError");
+              response.sendRedirect("/errorPage.jsp");
           }
 
 
@@ -83,5 +83,5 @@ public class Config extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         processRequest(request, response);
     }
-  
+
 }//class
