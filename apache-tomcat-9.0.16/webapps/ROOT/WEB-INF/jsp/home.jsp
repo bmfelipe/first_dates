@@ -40,15 +40,11 @@
      box-shadow: none;
    }
 
-   .row {
-     height:78vh;
-     max-height: 78vh;
-   }
 
    .card {
      height: 80vh;
      background: #555;
-     background-color: rgba(245, 245, 245, 0.4);
+     background-color: rgba(245, 245, 245, 0.2);
 
    }
    .titles {
@@ -79,7 +75,7 @@
 
   .opacity {
     background-color: rgba(20, 20, 20, 0.7);
-    height: 100vh;
+    min-height: 100vh;
   }
 
   </style>
