@@ -476,7 +476,7 @@ public Boolean updateDescription(int id,String description) throws SQLException{
   String query ="UPDATE Users SET description=? WHERE id=?";
   try(PreparedStatement stmt = connection.prepareStatement(query)){
     stmt.setString(1,description);
-    stmt.setInt(4,id);
+    stmt.setInt(2,id);
     int rowsAffected = stmt.executeUpdate();
     if(rowsAffected != 0){
       updated = true;
