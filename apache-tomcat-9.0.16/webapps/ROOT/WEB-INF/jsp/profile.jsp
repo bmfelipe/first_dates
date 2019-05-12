@@ -37,7 +37,7 @@
     <img src="/modelo.png">
     <!-- Upload image bar -->
     <%
-      if(own_profile.equals("true")){
+    if(own_profile.equals("true")){
     %>
     <div class="custom-file-upload" style= padding-top:20px;>
       <label for="file-upload" class="custom-file-upload1">
@@ -99,25 +99,25 @@ if (own_profile.equals("true")) {
 </body>
 <style>
   body {
-    background-color: url("resources/background/photo4.jpg");
-    color: white;
-    height: 100vh;
+   background-image: url("resources/background/photo4.jpg");
+   color: white;
+   height: 100vh;
 
-  }
-  .container-fluid {
-    padding-top: 25px;
-    font-family: "Open Sans";
-
-
-  }
-  .dropdown-toggle::after {
-    display:none;
-  }
-  .btn:focus,.btn:active {
-   outline: none !important;
-   box-shadow: none;
  }
- .btn-aux{
+ .container-fluid {
+  padding-top: 25px;
+  font-family: "Open Sans";
+
+
+}
+.dropdown-toggle::after {
+  display:none;
+}
+.btn:focus,.btn:active {
+ outline: none !important;
+ box-shadow: none;
+}
+.btn-aux{
   margin: 4px 2px;
   margin-left: 250px;
   padding: 15px 15px;
@@ -133,7 +133,8 @@ if (own_profile.equals("true")) {
  height: 78vh;
  width: 700px;
  margin-bottom: 200px;
- background: #555;
+ background-color: rgba(20, 20, 20, 0.8);
+
 
 
 }

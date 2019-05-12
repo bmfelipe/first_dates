@@ -19,7 +19,7 @@
 </head>
 <body>
 	<%@include file ='/WEB-INF/jsp/navbar.jsp'%>
-	<div id="div-form">
+	<div id="div-form" >
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 ">
@@ -119,11 +119,15 @@
 </body>
 <style type="text/css">
 	body {
-		background-color: url("resources/background/photo2.jpg");
+		 background-image: url("resources/background/photo2.jpg");
 		color: white;
 		height: 100vh;
 
 	}
+	#div-form{
+		background-color: rgba(20, 20, 20, 0.8);
+	}
+
 </style>
 </html>
 
