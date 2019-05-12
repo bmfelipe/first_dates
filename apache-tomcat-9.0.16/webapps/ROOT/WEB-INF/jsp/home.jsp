@@ -19,7 +19,6 @@
 
   <style>
     body {
-      color: white;
       height: 100vh;
       background-size: cover;
       background-image: url("resources/background/photo1.jpg");
@@ -28,23 +27,21 @@
     .container-fluid {
       padding-top: 25px;
       font-family: "Open Sans";
-
-
     }
     .dropdown-toggle::after {
         display:none;
     }
     .btn:focus,.btn:active {
-     outline: none !important;
-     box-shadow: none;
-   }
+       outline: none !important;
+       box-shadow: none;
+    }
 
 
    .card {
      height: 80vh;
-     background: #555;
-     background-color: rgba(245, 245, 245, 0.2);
-
+     background-color: rgba(20, 20, 20, 0.8);
+     padding-top: 20px;
+     padding-bottom: 20px;
    }
    .titles {
      background: #777;
@@ -73,7 +70,7 @@
   }
 
   .opacity {
-    background-color: rgba(20, 20, 20, 0.7);
+    background-color: rgba(20, 20, 20, 0.6);
     min-height: 100vh;
   }
 
@@ -86,10 +83,9 @@
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-lg-4 ">
+          <h2>Recomendaciones</h2>
+          <i class="fas fa-angle-down"></i>
           <div class="card mb-4">
-            <div class="titles">
-              <h2>Recomendaciones</h2>
-            </div>
             <div id="left-container">
               <%
               List<User> recommendations = (List<User>) request.getAttribute("recommendations");
@@ -161,10 +157,9 @@
           </div>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
+          <h2>Citas</h2>
+          <i class="fas fa-angle-down"></i>
           <div class="card mb-4">
-            <div class="titles">
-              <h2>Citas</h2>
-            </div>
             <%
               List<DateMatch> dates = (List<DateMatch>) request.getAttribute("dates");
               int count = 0;
@@ -210,10 +205,9 @@
           </div>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
+          <h2>Días hasta siguiente cita</h2>
+          <i class="fas fa-angle-down"></i>
           <div class="card mb-4">
-            <div class="titles">
-              <h2>Dias hasta siguiente cita</h2>
-            </div>
             <%
             User userDateInfo = (User) request.getAttribute("userDateInfo");
             DateMatch dateInfo = (DateMatch) request.getAttribute("dateInfo");

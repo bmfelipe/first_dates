@@ -458,7 +458,7 @@ public List<Date> getAvailableDates () throws SQLException{
 public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref) throws SQLException{
 
   Boolean updated = false;
-  String query ="UPDATE Preferences SET minAge=?,maxAge=?, sexPref=? WHERE id=?";
+  String query ="UPDATE 19_comweb_21d.Preferences SET minAge=?,maxAge=?, sexPref=? WHERE id=?";
   try(PreparedStatement stmt = connection.prepareStatement(query)){
     stmt.setInt(1,minAge);
     stmt.setInt(2,maxAge);
@@ -473,7 +473,7 @@ public Boolean updatePreferences(int id,int minAge,int maxAge,String sexPref) th
 }
 public Boolean updateDescription(int id,String description) throws SQLException{
   Boolean updated = false;
-  String query ="UPDATE Users SET description=? WHERE id=?";
+  String query ="UPDATE 19_comweb_21d.Users SET description=? WHERE id=?";
   try(PreparedStatement stmt = connection.prepareStatement(query)){
     stmt.setString(1,description);
     stmt.setInt(2,id);
@@ -483,13 +483,8 @@ public Boolean updateDescription(int id,String description) throws SQLException{
     }
   }
 
-
   return updated;
-
 }
-
-
-
 
 public User getUserInfo(int id) throws SQLException{
   String query = "SELECT id ,name, username, gender, description, (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) AS age FROM Users WHERE id = ?";

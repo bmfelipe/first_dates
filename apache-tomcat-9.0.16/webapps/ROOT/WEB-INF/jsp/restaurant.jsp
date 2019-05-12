@@ -53,10 +53,6 @@
       padding-bottom: 20px;
     }
 
-    .titles {
-      background: #777;
-    }
-
     .error{
       padding-top: 15px;
       color: red;
