@@ -36,7 +36,7 @@
        box-shadow: none;
     }
    .card {
-     height: 80vh;
+     height: 72vh;
      background-color: rgba(20, 20, 20, 0.8);
      padding-top: 20px;
      padding-bottom: 20px;
