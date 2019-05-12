@@ -19,7 +19,6 @@
 
   <style>
     body {
-      background-color: #333;
       color: white;
       height: 100vh;
       background-size: cover;

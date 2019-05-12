@@ -1,4 +1,4 @@
-<%@ page language ="java" contentType="text/html" pageEncoding="UTF-8" session="false"%> 
+<%@ page language ="java" contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%@ page import='java.util.List'%>
 <%@ page import='beans.User'%>
 <%@ page import='beans.DateMatch'%>
@@ -30,7 +30,7 @@
 							<!-- Text input-->
 							<!-- Text input-->
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="Date Of Birth">Edad mínima</label>  
+								<label class="col-md-4 control-label" for="Date Of Birth">Edad mínima</label>
 								<div class="col-md-4">
 									<div class="input-group">
 										<div class="input-group-addon">
@@ -44,12 +44,12 @@
 							</div>
 							<!-- Text input-->
 							<div class="form-group">
-								<label class="col-md-4 control-label" for="Date Of Birth">Edad máxima</label>  
+								<label class="col-md-4 control-label" for="Date Of Birth">Edad máxima</label>
 								<div class="col-md-4">
 
 									<div class="input-group">
 										<div class="input-group-addon">
-											<i class="fa fa-birthday-cake"></i>     
+											<i class="fa fa-birthday-cake"></i>
 										</div>
 										<input id="Date Of Birth" name="maxAge" type="text" placeholder="Edad máxima" class="form-control input-md">
 									</div>
@@ -62,15 +62,15 @@
 							<!-- Multiple Radios (inline) -->
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="Gender">Busco</label>
-								<div class="col-md-4"> 
+								<div class="col-md-4">
 									<label class="radio-inline" for="Gender-0">
 										<input type="radio" name="gender" id="Gender-0" value="Hombre" checked="checked">
 										Chicos
-									</label> 
+									</label>
 									<label class="radio-inline" for="Gender-1">
 										<input type="radio" name="gender" id="Gender-1" value="Mujer">
 										Chicas
-									</label> 
+									</label>
 									<label class="radio-inline" for="Gender-2">
 										<input type="radio" name="gender" id="Gender-2" value="Ambos">
 										Ambos
@@ -82,14 +82,14 @@
 							<!-- Textarea -->
 							<div class="form-group">
 								<label class="col-md-4 control-label" for="Overview (max 200 words)">Descripción</label>
-								<div class="col-md-4">                     
+								<div class="col-md-4">
 									<textarea class="form-control" rows="10"  id="Overview (max 200 words)" name="descripcion">Descripción</textarea>
 								</div>
 							</div>
 
 
 							<div class="form-group">
-								<label class="col-md-4 control-label" ></label>  
+								<label class="col-md-4 control-label" ></label>
 								<div class="col-md-4">
 									<button href="/config" class="btn btn-success" type="submit"><span class="glyphicon glyphicon-thumbs-up"></span> Submit</button>
 									<a href="/profile-redirect" class="btn btn-danger" value=""><span class="glyphicon glyphicon-remove-sign"></span> Clear</a>
@@ -125,9 +125,8 @@
 
 	}
 	#div-form{
-		background-color: rgba(20, 20, 20, 0.8);
+		background-color: rgba(20, 20, 20, 0.7);
 	}
 
 </style>
 </html>
-

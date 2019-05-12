@@ -16,10 +16,10 @@
 
   <style>
     body {
-      background-color: #333;
       background-size: cover;
       background-image: url("resources/background/photo1.jpg");
       color: white;
+      height: 100vh;
     }
     .container-fluid {
       font-family: "Open Sans";
@@ -74,7 +74,7 @@
 
       <form action="/process-login" method="post" class="text-center">
         <div class="d-flex justify-content-center">
-          <div class="form-group col-sm-3">
+          <div class="form-group col-sm-2">
             <h5>Email</h5>
             <div class="start_date input-group mb-4">
               <input class="form-control" type="email" name="username" placeholder="Introduzca su email" value="<%=username%>" required>
@@ -86,7 +86,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-          <div class="form-group col-sm-3">
+          <div class="form-group col-sm-2">
             <h5>Contraseña</h5>
             <div class="start_date input-group mb-4">
               <input class="form-control" type="password" name="password" placeholder="Introduzca su contraseña" value="<%=password%>" required>

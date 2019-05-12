@@ -50,9 +50,8 @@ public class ServletLogout extends HttpServlet {
         }
         catch(Exception ex)
         {
-            request.setAttribute("errorLogout", "Ha ocurrido un error al cerrar sesión");
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
-            rd.forward(request, response);
+            ex.printStackTrace();
+            response.sendRedirect("/errorPage.jsp");
         }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

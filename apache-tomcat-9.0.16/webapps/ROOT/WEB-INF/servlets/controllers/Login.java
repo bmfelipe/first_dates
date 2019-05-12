@@ -22,8 +22,16 @@ public class Login extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws IOException, ServletException
     {
+      try
+      {
         request.setCharacterEncoding("utf-8");
         RequestDispatcher rd = request.getRequestDispatcher ("/WEB-INF/jsp/index.jsp");
         rd.forward(request, response);
+      }
+      catch(Exception e)
+      {
+        e.printStackTrace();
+        response.sendRedirect("/errorPage.jsp");
+      }
     }
 }

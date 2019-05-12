@@ -27,6 +27,7 @@
   <div class="col-md-8 text container-fluid text-center">
     <div class="titles">
       <h2>Perfil</h2>
+      <i class="fas fa-angle-down"></i>
       <%
       //HttpSession session = request.getSession();
       User profile = (User) request.getAttribute("target_profile");
@@ -41,7 +42,7 @@
     %>
     <div class="custom-file-upload" style= padding-top:20px;>
       <label for="file-upload" class="custom-file-upload1">
-        <i class="fa fa-cloud-upload"></i> Seleccionar foto de perfil
+        <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
       </label>
       <input id="file-upload" name="photo" type="file"/>
     </div>
@@ -99,10 +100,10 @@ if (own_profile.equals("true")) {
 </body>
 <style>
   body {
-   background-image: url("resources/background/photo4.jpg");
+   background-size: cover;
+   background-image: url("resources/background/photo3.jpg");
    color: white;
    height: 100vh;
-
  }
  .container-fluid {
   padding-top: 25px;
@@ -130,17 +131,13 @@ if (own_profile.equals("true")) {
 }
 
 .card {
- height: 78vh;
- width: 700px;
- margin-bottom: 200px;
+ height: auto;
+ width: 70%;
  background-color: rgba(20, 20, 20, 0.8);
-
-
-
+ padding-top: 20px;
+ padding-bottom: 30px;
 }
-.titles {
- background: #777;
-}
+
 #like-dislike-buttons {
  margin-top: 10px;
 }
