@@ -34,7 +34,7 @@
     %>
     <div class="card mx-auto mb-4 overflow-auto">
       <h1><%=profile.getName()%></h1>
-      <div class="imgUser">
+    
         <%
         if(own_profile.equals("true")){
         %>
@@ -43,7 +43,7 @@
       }else{%>
       <img id="upload-image" src="/user-image?id=<%=profile.getId()%>" onerror="this.src='resources/default.png'">
       <%}%>
-    </div>
+
 
     <!-- Upload image bar -->
     <%
