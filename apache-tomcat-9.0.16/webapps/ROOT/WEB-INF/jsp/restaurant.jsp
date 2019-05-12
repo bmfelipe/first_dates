@@ -53,6 +53,10 @@
       padding-bottom: 20px;
     }
 
+    .card::-webkit-scrollbar {
+      width: 0 !important
+    }
+
     .error{
       padding-top: 15px;
       color: red;
@@ -65,11 +69,6 @@
 
     .form-group {
       padding-top: 15px;
-    }
-
-    .scroll {
-      max-height: 100vh;
-      overflow-y: auto;
     }
 
     hr{
@@ -106,7 +105,7 @@
         <div class="col-lg-6">
           <h2>Gestión</h2>
           <i class="fas fa-angle-down"></i>
-          <div class="card mb-4 scroll">
+          <div class="card mb-4 overflow-auto">
             <h3>Registrar Mesas</h3>
             <i class="fas fa-grip-lines"></i>
             <form action="/restaurant" method="post" class="text_center">
@@ -190,7 +189,7 @@
         <div class="col-lg-6">
           <h2>Agenda</h2>
           <i class="fas fa-angle-down"></i>
-          <div class="card mb-4 scroll">
+          <div class="card mb-4 overflow-auto">
             <%
               List<DateMatch> confirmedDates = (List<DateMatch>) request.getAttribute("confirmedDates");
               for (DateMatch confirmedDate : confirmedDates) {

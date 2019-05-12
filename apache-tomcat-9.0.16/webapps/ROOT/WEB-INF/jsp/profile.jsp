@@ -34,7 +34,7 @@
       String own_profile = (String)request.getAttribute("own_profile");
       %>
     </div>
-    <div class="card mx-auto mb-4 scroll">
+    <div class="card mx-auto mb-4 overflow-auto">
       <h1><%=profile.getName()%></h1>
       <img src="/fixing/modelo.png">
       <!-- Upload image bar -->
@@ -170,9 +170,8 @@ hr{
  font-size: 15px;
 }
 
-.scroll {
-  max-height: 100vh;
-  overflow-y: auto;
+.card::-webkit-scrollbar {
+  width: 0 !important
 }
 
 .custom-file-upload input[type="file"] {

@@ -36,16 +36,17 @@
        box-shadow: none;
     }
 
-
    .card {
      height: 80vh;
      background-color: rgba(20, 20, 20, 0.8);
      padding-top: 20px;
      padding-bottom: 20px;
    }
-   .titles {
-     background: #777;
+
+   .card::-webkit-scrollbar {
+     width: 0 !important
    }
+
    #like-dislike-buttons {
      margin-top: 10px;
    }
@@ -85,7 +86,7 @@
         <div class="col-lg-4 ">
           <h2>Recomendaciones</h2>
           <i class="fas fa-angle-down"></i>
-          <div class="card mb-4">
+          <div class="card mb-4 overflow-auto">
             <div id="left-container">
               <%
               List<User> recommendations = (List<User>) request.getAttribute("recommendations");
@@ -159,7 +160,7 @@
         <div class="col-lg-4">
           <h2>Citas</h2>
           <i class="fas fa-angle-down"></i>
-          <div class="card mb-4">
+          <div class="card mb-4 overflow-auto">
             <%
               List<DateMatch> dates = (List<DateMatch>) request.getAttribute("dates");
               int count = 0;
@@ -207,7 +208,7 @@
         <div class="col-lg-4">
           <h2>Días hasta siguiente cita</h2>
           <i class="fas fa-angle-down"></i>
-          <div class="card mb-4">
+          <div class="card mb-4 overflow-auto">
             <%
             User userDateInfo = (User) request.getAttribute("userDateInfo");
             DateMatch dateInfo = (DateMatch) request.getAttribute("dateInfo");
