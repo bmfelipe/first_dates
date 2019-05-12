@@ -49,11 +49,8 @@ public class Config extends HttpServlet {
 					}
 					else
 					{
-						request.setAttribute("successConfiguracion", "Se han guardado tus preferencias");
-						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/config.jsp");
-						rd.forward(request, response);
+						response.sendRedirect("/profile");
 					}
-
 				}
 				catch (SQLException|NamingException e)
 				{
