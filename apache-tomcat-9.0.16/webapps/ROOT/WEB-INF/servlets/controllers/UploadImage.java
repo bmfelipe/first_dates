@@ -21,9 +21,9 @@ public class UploadImage extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		boolean updated=false;
-		System.out.println("[1]Debug: Hola UploadImage " +request.getAttribute("pic"));
-		File image = new File(request.getAttribute("pic"));
-		FileInputStream photoStream = new FileInputStream(image);
+		//System.out.println("[1]Debug: Hola UploadImage " +request.getAttribute("pic"));
+		//File image = new File(request.getAttribute("pic"));
+		FileInputStream photoStream = new FileInputStream(request.getAttribute("pic"));
 
 		if(user.isLoggedIn()){
 			try(DBManager db = new DBManager()){
