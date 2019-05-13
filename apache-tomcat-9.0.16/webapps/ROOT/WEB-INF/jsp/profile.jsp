@@ -67,7 +67,7 @@
     <%
     if(profile.getDescription()!=null){
     %>
-    <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=description.getDescription()%></q>
+    <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921"><%=profile.getDescription()%></q>
     <%}else{%>
     <q cite="https://www.imdb.com/title/tt0062622/quotes/qt0396921">No hay descripción aún</q>
     <%}%>
