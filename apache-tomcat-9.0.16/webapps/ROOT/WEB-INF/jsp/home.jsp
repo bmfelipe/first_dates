@@ -76,6 +76,8 @@
   }
   img {
     border-radius:50%;
+    max-height:250px;
+    max-width: 250px;
   }
 
   .opacity {
@@ -293,7 +295,7 @@ $('#like-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
   var len = $('#carousel-container').attr("len");
-    $.post('http://localhost:9189/add-like',{'recommendationId' : recommendationId})
+    $.post('http://monitor01.lab.it.uc3m.es:9189/add-like',{'recommendationId' : recommendationId})
     .done(function(data){
       $('.carousel').carousel('next');
 
@@ -323,7 +325,7 @@ $('#dislike-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
   var len = $('#carousel-container').attr("len");
-    $.post('http://localhost:9189/add-dislike',{'recommendationId' : recommendationId})
+    $.post('http://monitor01.lab.it.uc3m.es:9189/add-dislike',{'recommendationId' : recommendationId})
     .done(function(data){
       $('.carousel').carousel('next');
 

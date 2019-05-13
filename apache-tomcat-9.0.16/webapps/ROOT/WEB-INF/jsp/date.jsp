@@ -281,7 +281,7 @@
     // console.log(dates);
     var dateId = <%=dateInfo.getId()%>;
 
-      $.post('http://localhost:9189/add-dates',{
+      $.post('http://monitor01.lab.it.uc3m.es:9189/add-dates',{
         'dates' : dates,
         'id': dateId,
         'confirm': 'false'
@@ -297,7 +297,7 @@
     event.preventDefault();
     var dates = '<%=dateInfo.getDateRequest()%>';
     var dateId = <%=dateInfo.getId()%>;
-      $.post('http://localhost:9189/add-dates',{
+      $.post('http://monitor01.lab.it.uc3m.es:9189/add-dates',{
         'dates':dates,
         'confirm' : 'true',
         'id': dateId
