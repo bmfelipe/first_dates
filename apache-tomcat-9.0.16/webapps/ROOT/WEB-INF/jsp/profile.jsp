@@ -93,29 +93,30 @@
   <hr>
   <h3>Citas</h3>
   <i class="fas fa-grip-lines"></i>
-  <%
-  for(DateMatch dates:mutual_dates){
-  if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente") && !dates.getStatus().equals("Cita solicitada")){
-  pendiente=0;
-  no_puedo_ver_perfil=0;
-  %>
-  <hr>
-  <h5><%=dates.getDateName(profile.getId())%> <i class="fas fa-arrow-circle-right"></i> <%=dates.getStatus()%></h5>
+  <div class="col-3 text_center">
+    <%
+    for(DateMatch dates:mutual_dates){
+    if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente") && !dates.getStatus().equals("Cita solicitada")){
+    pendiente=0;
+    no_puedo_ver_perfil=0;
+    %>
+    <hr>
+    <h5><%=dates.getDateName(profile.getId())%> <i class="fas fa-arrow-circle-right"></i> <%=dates.getStatus()%></h5>
 
-  <%
-}if (dates.getStatus().equals("Pendiente") || dates.getStatus().equals("Rechazado") || dates.getStatus().equals("Cita solicitada") || dates.getStatus().equals("Cita rechazada") ){
-no_puedo_ver_perfil=1;
+    <%
+  }if (dates.getStatus().equals("Pendiente") || dates.getStatus().equals("Rechazado") || dates.getStatus().equals("Cita solicitada") || dates.getStatus().equals("Cita rechazada") ){
+  no_puedo_ver_perfil=1;
 }
 if(dates.getStatus().equals("Pendiente") || dates.getStatus().equals("Rechazado") || dates.getStatus().equals("Aceptado")){
 pendiente=1;
 }
 
-  if(no_puedo_ver_perfil==0 && own_profile=="true"){%>
-  <div class=" col-3 text_center">
-    <p><a class="btn btn-secondary" href="/profile?id=<%=dates.getDateId(user.getId())%>" role="button">Perfil</a></p>
-  </div>
+if(no_puedo_ver_perfil==0 && own_profile=="true"){%>
+<div class="col-3 text_center">
+  <p><a class="btn btn-secondary" href="/profile?id=<%=dates.getDateId(user.getId())%>" role="button">Perfil</a></p>
+</div>
 
-  <%}
+<%}
 }
 
 }
@@ -123,6 +124,7 @@ if(pendiente==0 && own_profile=="false"){%>
 <a class="btn btn-aux btn-secondary mr-1 text-center" role="button" href="/date-manager?result=add&id=<%=profile.getId()%>"  id="date-btn">Proponer cita</a>
 <!-- <a class="btn btn-secondary btn-edit mr-1" href="/profile-redirect" id="editProfile-btn" role="button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></i>Editar preferencias </a> -->
 <%}%>
+</div>
 
 
   <!-- <div id="like-dislike-buttons">
@@ -136,6 +138,8 @@ if(pendiente==0 && own_profile=="false"){%>
 </div>
 </body>
 <style>
+
+
   body {
    background-size: cover;
    background-image: url("resources/background/photo3.jpg");
