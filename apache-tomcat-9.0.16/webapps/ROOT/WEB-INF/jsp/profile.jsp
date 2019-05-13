@@ -62,7 +62,7 @@
           <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
         </label>
         <input id="file-upload" name="pic" type="file" accept="image/*"required/>
-        <input name="submit-photo" type="submit" value="Subir" />
+        <button name="submit-photo" type="submit" class="btn btn-secondary">Subir</button>
       </div>
     </form>
     <%}%>
@@ -86,13 +86,13 @@
   }
 
   %>
-  <hr>
   <%
   User current_user = (User) session.getAttribute("user");
   List<DateMatch> mutual_dates = (List<DateMatch>)request.getAttribute("mutual_dates");
   int pendiente=0;
   int no_puedo_ver_perfil=0;
   if(!mutual_dates.isEmpty()){%>
+  <hr>
   <h3>Citas</h3>
   <i class="fas fa-grip-lines"></i>
   <%
