@@ -261,7 +261,7 @@ public class DBManager implements AutoCloseable {
     }
 
     public List<DateMatch> getDateList(int userId)throws SQLException {
-      String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND status NOT IN ('Rechazado','Pendiente','Finalizado','Cita rechazada')";
+      String query = "SELECT * FROM Dates WHERE (dateOneId = ? AND status NOT IN ('Rechazado','Pendiente','Finalizado','Cita solicitada', 'Cita rechazada')) OR (dateTwoId = ? AND status NOT IN ('Rechazado','Pendiente','Finalizado', 'Cita rechazada'))";
 
       List<DateMatch> dates = new ArrayList<DateMatch>();
       try(PreparedStatement st = connection.prepareStatement(query)){
@@ -284,6 +284,31 @@ public class DBManager implements AutoCloseable {
       return dates;
     }
   }
+
+  public List<DateMatch> getWithFinalDateList(int userId)throws SQLException {
+    String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND status NOT IN ('Rechazado','Pendiente', 'Cita rechazada')";
+
+    List<DateMatch> dates = new ArrayList<DateMatch>();
+    try(PreparedStatement st = connection.prepareStatement(query)){
+     st.setInt(1,userId);
+     st.setInt(2,userId);
+     ResultSet rs = st.executeQuery();
+
+     while(rs.next()){
+      DateMatch dateMatch = new DateMatch();
+      dateMatch.setId(rs.getInt("id"));
+      dateMatch.setDateOneId(rs.getInt("dateOneId"));
+      dateMatch.setDateTwoId(rs.getInt("dateTwoId"));
+      dateMatch.setStatus(rs.getString("status"));
+      dateMatch.setDateRequest(rs.getDate("dateRequest"));
+      dateMatch.setDateResponse(rs.getDate("dateResponse"));
+      dateMatch.setDateSetBy(rs.getInt("dateSetBy"));
+
+      dates.add(dateMatch);
+    }
+    return dates;
+  }
+}
     //Returns dates the user and a certain profile had
   public List<DateMatch> getProfileDateList(int userId,int profileId) throws SQLException{
     String query = "SELECT * FROM Dates WHERE (dateOneId = ? or dateTwoId = ?) AND (dateOneId =? or dateTwoId =?) AND status NOT LIKE 'Rechazado'";

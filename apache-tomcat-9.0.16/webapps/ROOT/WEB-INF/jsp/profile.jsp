@@ -17,8 +17,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="jquery.roundimage.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -103,7 +101,7 @@
   %>
   <hr>
   <h5><%=dates.getDateName(profile.getId())%> <i class="fas fa-arrow-circle-right"></i> <%=dates.getStatus()%></h5>
- 
+
   <%
 }if (dates.getStatus().equals("Pendiente") || dates.getStatus().equals("Rechazado") || dates.getStatus().equals("Cita solicitada") || dates.getStatus().equals("Cita rechazada") ){
 no_puedo_ver_perfil=1;
@@ -111,7 +109,7 @@ no_puedo_ver_perfil=1;
 /*if(dates.getStatus().equals("Pendiente") || dates.getStatus().equals("Rechazado")){
 pendiente=1;
 }*/
- 
+
   if(no_puedo_ver_perfil==0 && own_profile=="true"){%>
   <div class=" col-3 text_center">
     <p><a class="btn btn-secondary" href="/profile?id=<%=dates.getDateId(user.getId())%>" role="button">Perfil</a></p>

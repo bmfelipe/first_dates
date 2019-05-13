@@ -45,7 +45,7 @@ public class Profile extends HttpServlet {
 						own_profile="true";
 						request.setAttribute("own_profile",own_profile);
 						request.setAttribute("target_profile",user);
-						List<DateMatch> mutual_dates = db.getDateList(user.getId());
+						List<DateMatch> mutual_dates = db.getWithFinalDateList(user.getId());
 						request.setAttribute("mutual_dates",mutual_dates);
 						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
 						rd.forward(request, response);
