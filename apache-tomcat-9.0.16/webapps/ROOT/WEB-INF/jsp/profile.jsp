@@ -95,7 +95,7 @@
   <i class="fas fa-grip-lines"></i>
   <%
   for(DateMatch dates:mutual_dates){
-  if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente")){
+  if(!dates.getStatus().equals("Rechazado") && !dates.getStatus().equals("Pendiente") && !dates.getStatus().equals("Cita solicitada")){
   pendiente=0;
   no_puedo_ver_perfil=0;
   %>
