@@ -89,7 +89,9 @@
 							</div>
 
 							<div class="d-flex justify-content-center">
-
+								<div class="errorConfiguracion">
+									${errorConfiguracion}
+								</div>
 								<div class="form-group">
 									<div class="input-group">
 										<button href="/config" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-thumbs-up"></span>Editar</button>
