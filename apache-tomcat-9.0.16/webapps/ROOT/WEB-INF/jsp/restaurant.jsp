@@ -92,12 +92,6 @@
 
   </style>
 
-  <%
-      Date date = new Date();
-      DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-      String strDate = dateFormat.format(date);
-  %>
-
   <body>
     <%@include file ='/WEB-INF/jsp/navbar-admin.jsp'%>
 
@@ -134,7 +128,6 @@
               </div>
               <button type="submit" class="btn btn-secondary">Registrar</button>
               <div class="success">${successInsertion}</div>
-              <div class="error">${errorInsertion}</div>
             </form>
             <hr>
             <h3>Buscar Mesas</h3>
@@ -153,7 +146,6 @@
               </div>
               <button type="submit" class="btn btn-secondary">Buscar</button>
               <div class="success">${successSearch}</div>
-              <div class="error">${errorSearch}</div>
             </form>
             <hr>
             <h3>Editar Mesas</h3>
@@ -183,7 +175,6 @@
               </div>
               <button type="submit" class="btn btn-secondary">Editar</button>
               <div class="success">${successUpdate}</div>
-              <div class="error">${errorUpdate}</div>
             </form>
           </div>
         </div>
@@ -253,6 +244,30 @@
 
   ];
 
+  var confirmed = [
+
+    <%
+    int size2 = confirmedDatesEdit.size();
+    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+    int index2 = 1;
+    String confirmedDateStr;
+
+    for(Date confirmDate : confirmedDatesEdit){
+
+        confirmedDateStr = sdf2.format(confirmDate);
+        // availableDateStr = String.format("%td-%tm-%tY",availableDate, availableDate,availableDate);
+        if(size2 != index2){%>
+          '<%=confirmedDateStr%>',
+        <%}else{%>
+          '<%=confirmedDateStr%>'
+        <%}
+        index++;
+
+    }
+    %>
+
+  ];
+
   $(document).ready(function() {
       $('#startdate_datepicker').datepicker({
           startDate: new Date(),
@@ -277,13 +292,13 @@
           daysOfWeekHighlighted: "6,0",
           orientation: 'bottom',
           weekStart: 1,
-          beforeShowDay:function(date) {
-            var currentDate =
-              date.getDate() + '-' +
-              (date.getMonth() + 1) +
-              '-' + date.getFullYear();
-            return (availableDates.indexOf(currentDate) != -1)
-          }
+          // beforeShowDay:function(date) {
+          //   var currentDate1 =
+          //     date.getDate() + '-' +
+          //     (date.getMonth() + 1) +
+          //     '-' + date.getFullYear();
+          //   return (availableDates.indexOf(currentDate1) != -1)
+          // }
       }).on('changeDate', function(e) {
           // `e` here contains the extra attributes
           $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
@@ -298,13 +313,14 @@
           daysOfWeekHighlighted: "6,0",
           orientation: 'bottom',
           weekStart: 1,
-          beforeShowDay:function(date) {
-            var currentDate =
-              date.getDate() + '-' +
-              (date.getMonth() + 1) +
-              '-' + date.getFullYear();
-            return (availableDates.indexOf(currentDate) != -1)
-          }
+          datesDisabled: confirmed,
+          // beforeShowDay:function(date) {
+          //   var currentDate2 =
+          //     date.getDate() + '-' +
+          //     (date.getMonth() + 1) +
+          //     '-' + date.getFullYear();
+          //   return (availableDates.indexOf(currentDate2) != -1)
+          // }
       }).on('changeDate', function(e) {
           // `e` here contains the extra attributes
           $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
