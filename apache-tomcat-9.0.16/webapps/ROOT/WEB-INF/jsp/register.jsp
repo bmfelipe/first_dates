@@ -176,7 +176,7 @@
           format: "yyyy-mm-dd",
           daysOfWeekHighlighted: "6,0",
           datesDisabled: ['31-08-2017'],
-          orientation: 'bottom',
+          orientation: 'top',
           weekStart: 1
       }).on('changeDate', function(e) {
           // `e` here contains the extra attributes

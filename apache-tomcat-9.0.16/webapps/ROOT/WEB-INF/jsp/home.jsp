@@ -74,6 +74,9 @@
   #days-left-container {
     overflow-y: hidden;
   }
+  img {
+    border-radius:50%;
+  }
 
   .opacity {
     background-color: rgba(20, 20, 20, 0.6);

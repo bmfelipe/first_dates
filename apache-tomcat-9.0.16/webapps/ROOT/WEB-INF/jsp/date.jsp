@@ -31,7 +31,7 @@
     }
 
     .container-fluid {
-      padding-top: 3vh;
+      padding-top: 1vh;
       font-family: "Open Sans";
     }
 
@@ -40,7 +40,7 @@
    }
 
    .card {
-     height: 70vh;
+     height: 74vh;
      background-color: rgba(20, 20, 20, 0.8);
      padding: 20px;
    }
@@ -74,6 +74,14 @@
      background-color: rgba(20, 20, 20, 0.7);
      min-height: 100vh;
    }
+
+   img {
+     border-radius:50%;
+   }
+
+   hr {
+     margin: 2px;
+   }
   </style>
 
   <body>
@@ -91,7 +99,9 @@
     <div class="container-fluid text-center">
       <div class="row">
         <div class="col-lg-4 ">
-          <h2>Yo</h2>
+          <div class="header">
+            <h2>Yo</h2>
+          </div>
           <i class="fas fa-angle-down"></i>
           <div class="card mb-4 overflow" id="you-card">
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
@@ -163,8 +173,10 @@
           <%-- </div> --%>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <h2>Tu Cita</h2>
-          <i class="fas fa-angle-down"></i>
+          <div class="header">
+            <h2>Tu Cita</h2>
+            <i class="fas fa-angle-down"></i>
+          </div>
           <div class="card mb-4">
             <div id="carousel-elem" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
