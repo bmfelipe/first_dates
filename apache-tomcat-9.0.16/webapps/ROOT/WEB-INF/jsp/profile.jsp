@@ -106,13 +106,13 @@
   <%
   if(no_puedo_ver_perfil==0 && own_profile=="true"){%>
   <div class="col-3 text_center">
-    <p><a class="btn btn-secondary" href="/profile?id=<%=date.getDateId(user.getId())%>" role="button">Perfil</a></p>
+    <p><a class="btn btn-secondary" href="/profile?id=<%=dates.getDateId(user.getId())%>" role="button">Perfil</a></p>
   </div>
 
   <%}%>
   <%
 }if (dates.getStatus().equals("Pendiente") || dates.getStatus().equals("Rechazado") || dates.getStatus().equals("Cita solicitada") || dates.getStatus().equals("Cita rechazada") ){
-no_puedo_ver_perfile=1;
+no_puedo_ver_perfil=1;
 }
 if(!dates.getStatus().equals("Finalizado")){
 pendiente=1;
