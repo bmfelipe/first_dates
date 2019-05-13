@@ -76,8 +76,8 @@
   }
   img {
     border-radius:50%;
-    max-height:250px;
-    max-width: 250px;
+    /* max-height:200px;
+    max-width: 200px; */
   }
 
   .opacity {
@@ -128,7 +128,7 @@
                       <div class="carousel-inner">
 
                         <div class="carousel-item active" id="<%=recommendation.getId()%>">
-                          <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" onerror="this.src='resources/default.png'">
+                          <img class="w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" onerror="this.src='resources/default.png'">
                           <h2 class="pt-2"><%=recommendation.getName()%></h2>
                         </div>
                       <%
@@ -136,7 +136,7 @@
                   %>
 
                         <div class="carousel-item" id="<%=recommendation.getId()%>">
-                          <img class=" w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" onerror="this.src='resources/default.png'">
+                          <img class="w-50" src="/user-image?id=<%=recommendation.getId()%>" id="car-<%=recommendation.getId()%>" onerror="this.src='resources/default.png'">
 
                           <h2 class="pt-2"><%=recommendation.getName()%></h2>
                         </div>
@@ -321,6 +321,7 @@ $('#carousel-elem').on('slide.bs.carousel', function (ev) {
 
 
 });
+
 $('#dislike-btn').on('click', function(event) {
   event.preventDefault();
   var recommendationId = $(this).attr("recommendation-id");
