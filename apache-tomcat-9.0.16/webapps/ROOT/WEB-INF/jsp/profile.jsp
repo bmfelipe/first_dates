@@ -61,7 +61,7 @@
         <label for="file-upload" class="custom-file-upload1">
           <i class="fas fa-cloud-upload-alt"></i> Seleccionar foto de perfil
         </label>
-        <input id="file-upload" name="pic" type="file" accept="image/*"/>
+        <input id="file-upload" name="pic" type="file" accept="image/*"required/>
         <input name="submit-photo" type="submit" value="Subir" />
       </div>
     </form>
@@ -169,11 +169,13 @@ if(pendiente==0 && own_profile=="false"){%>
 img {
   /* margin-left: auto;
   margin-right: auto; */
-  /* border-radius:70% 70% 70% 70%; */
+  border-radius:50%;
   /* max-width:250px; */
   /* min-height: 250px;
-  min-width: 250px; */
-  height:250px;
+  /* min-width: 250px; */ */
+  max-height:250px;
+  max-width: 250px;
+
   display:block;
     margin:auto;
   /* margin: auto; */
@@ -233,9 +235,7 @@ hr{
   width:250px;
   height:250px;
   margin:auto;
-  overflow:hidden;
-  display:inline-block;
-  position: center;
+  /* overflow:hidden; */
   object-fit: cover;
 
 

@@ -74,6 +74,10 @@
      background-color: rgba(20, 20, 20, 0.7);
      min-height: 100vh;
    }
+
+   img {
+     border-radius:50%;
+   }
   </style>
 
   <body>

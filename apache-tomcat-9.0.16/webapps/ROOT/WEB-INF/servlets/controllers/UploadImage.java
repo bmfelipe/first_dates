@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.io.InputStream;
 import javax.naming.NamingException;
 import javax.servlet.annotation.MultipartConfig;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
@@ -36,11 +38,26 @@ public class UploadImage extends HttpServlet {
             //the contents of the file
             photoStream = filePart.getInputStream();
         }
+      BufferedImage imBuff = ImageIO.read(photoStream);
+      int width = imBuff.getWidth();
+      int height = imBuff.getHeight();
+      int x = 0;
+      int y = 0;
+      if(width >height){
+        x = (width-height)/2;
+        imBuff = cropImage(imBuff, x,y, height, height);
+      }else{
+        y = (height-width)/2;
+        imBuff = cropImage(imBuff, x,y, width, width);
+      }
+      ByteArrayOutputStream os = new ByteArrayOutputStream();
+      ImageIO.write(imBuff, "png", os);
+      InputStream is = new ByteArrayInputStream(os.toByteArray());
 
 		if(user.isLoggedIn() && user.getRole().equals("Usuario")){
 			try(DBManager db = new DBManager()){
 				int id = user.getId();
-				updated = db.postImage(id,photoStream);
+				updated = db.postImage(id,is);
 				if(updated==false){
 					request.setAttribute("errorUploadPhoto", "No se han podido guardar los cambios");
 					//RequestDispatcher rd = request.getRequestDispatcher("/errorPage.jsp");
@@ -65,6 +82,11 @@ public class UploadImage extends HttpServlet {
 
 
 	}
+
+  public static BufferedImage cropImage(BufferedImage bufferedImage, int x, int y, int width, int height){
+    BufferedImage croppedImage = bufferedImage.getSubimage(x, y, width, height);
+    return croppedImage;
+}
 
 
 }
