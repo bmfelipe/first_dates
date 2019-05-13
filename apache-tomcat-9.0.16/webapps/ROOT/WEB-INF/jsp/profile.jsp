@@ -109,7 +109,7 @@
     <h5><%=dates.getDateName(profile.getId())%> <i class="fas fa-arrow-circle-right"></i> <%=dates.getStatus()%></h5>
     </div>
     <%
-  }if (dates.getStatus().equals("Pendiente") || dates.getStatus().equals("Rechazado") || dates.getStatus().equals("Cita solicitada") || dates.getStatus().equals("Cita rechazada") ){
+  }if (dates.getStatus().equals("Pendiente") || dates.getStatus().equals("Rechazado") || dates.getStatus().equals("Cita solicitada") || dates.getStatus().equals("Cita rechazada") || dates.getStatus().equals("Fecha rechazada")){
   no_puedo_ver_perfil=1;
 }
 if(dates.getStatus().equals("Pendiente") || dates.getStatus().equals("Rechazado") || dates.getStatus().equals("Aceptado")){
