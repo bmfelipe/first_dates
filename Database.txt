@@ -77,16 +77,7 @@ CREATE TABLE `19_comweb_21d`.`Availability` (
   PRIMARY KEY (`id`)
 );
 
-Valoraciones;
 
-CREATE TABLE `19_comweb_21d`.`Rates` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `usernameRate` VARCHAR(20) NOT NULL,
-  `usernameRated` VARCHAR(20) NOT NULL,
-  `rate` TINYINT(1) NOT NULL,
-  `dateRate` DATETIME NOT NULL,
-  PRIMARY KEY (`id`)
-);
 
 ######## INSERTS ########
 
@@ -170,15 +161,6 @@ CREATE TABLE `first_dates`.`Availability` (
   PRIMARY KEY (`id`)
 );
 
-Valoraciones:
 
-CREATE TABLE `first_dates`.`Rates` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `usernameRate` VARCHAR(20) NOT NULL,
-  `usernameRated` VARCHAR(20) NOT NULL,
-  `rate` TINYINT(1) NOT NULL,
-  `dateRate` DATETIME NOT NULL,
-  PRIMARY KEY (`id`)
-);
 
 ######## INSERTS ########
