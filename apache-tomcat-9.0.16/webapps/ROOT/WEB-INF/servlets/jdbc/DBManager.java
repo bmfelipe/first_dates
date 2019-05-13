@@ -199,11 +199,12 @@ public class DBManager implements AutoCloseable {
       }
       int numId;
       if(preferences.getSexPref().equals("Ambos")){
-        query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) <= ? and (gender = 'Mujer' || gender = 'Hombre')  AND role NOT LIKE 'Admin' "+numberElements+" ORDER BY RAND() LIMIT 20";
-        numId = 3;
+        query = "SELECT id, username, name, gender, birthdate, photo FROM Users WHERE (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) >= ? and (DATE_FORMAT(FROM_DAYS(DATEDIFF(now(),birthdate)+1), '%Y')) <= ? and (gender = 'Mujer' || gender = 'Hombre') AND id NOT LIKE ?  AND role NOT LIKE 'Admin' "+numberElements+" ORDER BY RAND() LIMIT 20";
+        numId = 4;
         try(PreparedStatement st = connection.prepareStatement(query)){
           st.setInt(1,preferences.getMinAge());
           st.setInt(2,preferences.getMaxAge());
+          st.setInt(3,userId);
           for(int uId :ids){
             st.setInt(numId,uId);
             numId++;
