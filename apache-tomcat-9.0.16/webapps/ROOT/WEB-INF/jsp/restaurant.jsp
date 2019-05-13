@@ -313,6 +313,7 @@
           daysOfWeekHighlighted: "6,0",
           orientation: 'bottom',
           weekStart: 1,
+          datesDisabled: confirmed,
           beforeShowDay:function(date) {
             var currentDate2 =
               date.getDate() + '-' +
