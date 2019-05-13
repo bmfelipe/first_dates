@@ -144,7 +144,7 @@ if(pendiente==0 && own_profile=="false"){%>
  }
 
  .container-fluid {
-  padding-top: 25px;
+  /* padding-top: 10px; */
   font-family: "Open Sans";
   margin:auto;
 
@@ -165,18 +165,18 @@ if(pendiente==0 && own_profile=="false"){%>
 }
 
 .row {
- height:78vh;
- max-height: 78vh;
+ height:75vh;
+ max-height: 75vh;
 }
 
 .card {
- height: 78vh;
+ height: 77vh;
  background-color: rgba(20, 20, 20, 0.8);
  padding-top: 2vh;
  padding-bottom: 2vh;
  width: 60%;
- margin-bottom: 1vh;
- margin-top: 1vh;
+ /* margin-bottom: 1vh; */
+ /* margin-top: 1vh; */
 }
 
 img {
