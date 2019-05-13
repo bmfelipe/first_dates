@@ -1,0 +1,9 @@
+Matthew Moorcroft 100346250
+Felipe Barbosa Martin 100315121
+Jesus Lopez Baeza-Rojano 100346898
+
+Hemos creado el proyecto para funcionar directamente desde el root
+de la url, es decir, monitor01.lab.it.uc3m.es:9189.
+
+Para compilar se puede usar: make all
+Para lanzar el servidor se puede usar: make reset
