@@ -224,7 +224,7 @@
     <%
     List<Date> availableDates =  (List<Date>)request.getAttribute("availableDates");
     int size = availableDates.size();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
     int index = 1;
     String availableDateStr;
 
@@ -248,10 +248,9 @@
 
     <%
     int size2 = confirmedDatesEdit.size();
-    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf2 = new SimpleDateFormat("dd-M-yyyy");
     int index2 = 1;
     String confirmedDateStr;
-
     for(Date confirmDate : confirmedDatesEdit){
 
         confirmedDateStr = sdf2.format(confirmDate);
@@ -267,15 +266,16 @@
     %>
 
   ];
+  var datesDisable = availableDates.concat(confirmed);
 
   $(document).ready(function() {
       $('#startdate_datepicker').datepicker({
           startDate: new Date(),
           multidate: false,
           autoclose:true,
-          format: "yyyy-mm-dd",
+          format: "dd-mm-yyyy",
           daysOfWeekHighlighted: "6,0",
-          datesDisabled: availableDates,
+          datesDisabled: datesDisable,
           orientation: 'bottom',
           weekStart: 1
       }).on('changeDate', function(e) {
@@ -288,17 +288,17 @@
           startDate: new Date(),
           multidate: false,
           autoclose:true,
-          format: "yyyy-mm-dd",
+          format: "dd-mm-yyyy",
           daysOfWeekHighlighted: "6,0",
           orientation: 'bottom',
           weekStart: 1,
-          // beforeShowDay:function(date) {
-          //   var currentDate1 =
-          //     date.getDate() + '-' +
-          //     (date.getMonth() + 1) +
-          //     '-' + date.getFullYear();
-          //   return (availableDates.indexOf(currentDate1) != -1)
-          // }
+          beforeShowDay:function(date) {
+            var currentDate1 =
+              date.getDate() + '-' +
+              (date.getMonth() + 1) +
+              '-' + date.getFullYear();
+            return (datesDisable.indexOf(currentDate1) != -1)
+          }
       }).on('changeDate', function(e) {
           // `e` here contains the extra attributes
           $(this).find('.input-group-addon .count').text(' ' + e.dates.length);
@@ -309,18 +309,17 @@
           startDate: new Date(),
           multidate: false,
           autoclose:true,
-          format: "yyyy-mm-dd",
+          format: "dd-mm-yyyy",
           daysOfWeekHighlighted: "6,0",
           orientation: 'bottom',
           weekStart: 1,
-          datesDisabled: confirmed,
-          // beforeShowDay:function(date) {
-          //   var currentDate2 =
-          //     date.getDate() + '-' +
-          //     (date.getMonth() + 1) +
-          //     '-' + date.getFullYear();
-          //   return (availableDates.indexOf(currentDate2) != -1)
-          // }
+          beforeShowDay:function(date) {
+            var currentDate2 =
+              date.getDate() + '-' +
+              (date.getMonth() + 1) +
+              '-' + date.getFullYear();
+            return (availableDates.indexOf(currentDate2) != -1)
+          }
       }).on('changeDate', function(e) {
           // `e` here contains the extra attributes
           $(this).find('.input-group-addon .count').text(' ' + e.dates.length);

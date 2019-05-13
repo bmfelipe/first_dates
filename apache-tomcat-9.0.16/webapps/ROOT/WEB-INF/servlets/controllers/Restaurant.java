@@ -56,7 +56,7 @@ public class Restaurant extends HttpServlet {
               Boolean updated = false;
               Availability availability = new Availability();
               Locale locale = new Locale("es", "ES");
-              SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
+              SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", locale);
               TimeZone timeZone = TimeZone.getTimeZone("Etc/GMT+1");
               List<DateMatch> confirmedDates = new ArrayList<DateMatch>();
               int pendingDates = 0;
