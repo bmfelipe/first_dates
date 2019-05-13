@@ -164,7 +164,7 @@ a {
   <h2>Unexpected Error <b>:(</b></h2><div class="error-502__container">
 	<div class="error-502">
 		<div class="error-502__text">
-			<h2><p>You can go back to our <a href="/">Homepage</a>.</p></h2>
+			<h2><p>You can go back to our <a href="/login">Homepage</a>.</p></h2>
 		</div>
 	</div>
 </div>

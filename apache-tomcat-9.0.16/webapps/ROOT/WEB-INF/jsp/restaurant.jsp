@@ -8,6 +8,7 @@
 <%@ page import='java.time.DayOfWeek' %>
 <%@ page import='java.time.LocalDate' %>
 <%@ page import='java.time.Month' %>
+<%@ page import='java.util.ArrayList' %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -192,7 +193,9 @@
           <div class="card mb-4 overflow-auto">
             <%
               List<DateMatch> confirmedDates = (List<DateMatch>) request.getAttribute("confirmedDates");
+              List<Date> confirmedDatesEdit = new ArrayList<Date>();
               for (DateMatch confirmedDate : confirmedDates) {
+                confirmedDatesEdit.add(new java.sql.Date(confirmedDate.getDateRequest().getTime()));
                 LocalDate currentDate = new java.sql.Date(confirmedDate.getDateRequest().getTime()).toLocalDate();
                 int dayOfMonth = currentDate.getDayOfMonth();
                 DayOfWeek dayOfWeek = currentDate.getDayOfWeek();
@@ -230,7 +233,7 @@
     <%
     List<Date> availableDates =  (List<Date>)request.getAttribute("availableDates");
     int size = availableDates.size();
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     int index = 1;
     String availableDateStr;
 
@@ -255,7 +258,7 @@
           startDate: new Date(),
           multidate: false,
           autoclose:true,
-          format: "dd-mm-yyyy",
+          format: "yyyy-mm-dd",
           daysOfWeekHighlighted: "6,0",
           datesDisabled: availableDates,
           orientation: 'bottom',
@@ -270,7 +273,7 @@
           startDate: new Date(),
           multidate: false,
           autoclose:true,
-          format: "dd-mm-yyyy",
+          format: "yyyy-mm-dd",
           daysOfWeekHighlighted: "6,0",
           orientation: 'bottom',
           weekStart: 1,
@@ -291,7 +294,7 @@
           startDate: new Date(),
           multidate: false,
           autoclose:true,
-          format: "dd-mm-yyyy",
+          format: "yyyy-mm-dd",
           daysOfWeekHighlighted: "6,0",
           orientation: 'bottom',
           weekStart: 1,
